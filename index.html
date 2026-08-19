@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GC-MS Headspace Tracker</title>
-<script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=cLguip9jfpFqkgKTteFzff2rngqaEp8YE9Ibuk-jJapWVwZRB08gYPVRvD7QoqyXGbIxw0EDZTnm-8ANPIknn0jMRIBmP4rVL27gLGnBuZteOLSzoE5jj8f_PmvDxCkTwPCcUzI5nPZQRrpnTlFbET0XF_5ZJYQJIHfvLdKdLmTTtGFYDSXHRQXCLtZA8YkW_q_75kzMWszDyNLMe_iSUoTf59cSOlLzQ39vhLMxDhnOaUs6etJU610P43fzGOHXBvf_czM3P0oeXoK2v73aJUZPdumKD6ST5JQFnJoJkonYuF3aD55cACdhi_gJyPR8hpWQBc0DXJdhIIoeuv0V4A" charset="UTF-8"></script><style>
+<style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
   :root{
@@ -830,6 +830,12 @@ body:before{
 .account-chip,.language-switch{background:rgba(255,255,255,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
 .account-chip{border-color:rgba(11,125,128,.13);box-shadow:0 8px 22px rgba(16,38,45,.06);padding:7px 9px 7px 7px;}
 .account-avatar{width:32px;height:32px;background:linear-gradient(145deg,var(--accent-soft),#FFDCC9);}
+
+/* Account dropdown must escape the header bento tile.
+   Earlier visual layers set .header{overflow:hidden}, which clipped Sign out. */
+.header{overflow:visible;z-index:60;}
+.header-actions,.account-menu-wrap{position:relative;z-index:120;}
+.account-menu{z-index:200;min-width:220px;}
 
 /* Floating workspace navigation */
 .nav-tabs{
