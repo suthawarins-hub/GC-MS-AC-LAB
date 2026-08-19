@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GC-MS Headspace Tracker</title>
-<style>
+<script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=cLguip9jfpFqkgKTteFzff2rngqaEp8YE9Ibuk-jJapWVwZRB08gYPVRvD7QoqyXGbIxw0EDZTnm-8ANPIknn0jMRIBmP4rVL27gLGnBuZteOLSzoE5jj8f_PmvDxCkTwPCcUzI5nPZQRrpnTlFbET0XF_5ZJYQJIHfvLdKdLmTTtGFYDSXHRQXCLtZA8YkW_q_75kzMWszDyNLMe_iSUoTf59cSOlLzQ39vhLMxDhnOaUs6etJU610P43fzGOHXBvf_czM3P0oeXoK2v73aJUZPdumKD6ST5JQFnJoJkonYuF3aD55cACdhi_gJyPR8hpWQBc0DXJdhIIoeuv0V4A" charset="UTF-8"></script><style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
   :root{
@@ -360,6 +360,13 @@
   .graph-status{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px;}
   .graph-badge{font-family:var(--font-mono);font-size:10.5px;border:1px solid var(--line);background:var(--bg);padding:4px 7px;border-radius:7px;color:var(--ink-soft);}
   .graph-quickbar{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap;padding:10px 11px;margin:0 0 10px;background:var(--bg);border:1px solid var(--line-soft);border-radius:11px;}
+  .research-graph-launcher{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:11px 0 2px;padding:9px 10px;border:1px solid var(--accent-2-soft);background:#F7FCFB;border-radius:11px;}
+  .research-graph-launcher .launcher-label{font-family:var(--font-display);font-size:11px;font-weight:800;color:var(--ink);margin-right:2px;}
+  .research-graph-mode-btn{border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:9px;padding:7px 10px;font-size:11px;font-weight:700;cursor:pointer;min-height:34px;}
+  .research-graph-mode-btn:hover{border-color:var(--accent-2);color:var(--accent-2);}
+  .research-graph-mode-btn.active{background:var(--accent-2);border-color:var(--accent-2);color:#fff;}
+  .research-graph-launcher .launcher-spacer{flex:1;}
+  @media(max-width:640px){.research-graph-launcher .launcher-label{width:100%}.research-graph-launcher .launcher-spacer{display:none}.research-graph-mode-btn{flex:1 1 calc(50% - 4px);}}
   .graph-quickbar-title{font-family:var(--font-display);font-size:11px;font-weight:800;color:var(--ink);align-self:center;margin-right:2px;white-space:nowrap;}
   .graph-quick-field{min-width:118px;flex:1 1 125px;}
   .graph-quick-field label{display:block;font-size:9.5px;font-weight:700;color:var(--ink-soft);margin:0 0 3px;text-transform:uppercase;letter-spacing:.03em;}
@@ -3830,6 +3837,14 @@ window.GCMS_SUPABASE_CONFIG = {
         '<label style="font-size:12px;display:flex;align-items:center;gap:6px;"><input type="checkbox" id="rgShowGrid"' + (researchState.showGrid ? " checked" : "") + '> Grid</label>' +
         '<label style="font-size:12px;display:flex;align-items:center;gap:6px;"><input type="checkbox" id="rgErrorBars"' + (researchState.showErrorBars ? " checked" : "") + '> SD error bars</label>' +
       '</div>' +
+      '<div class="research-graph-launcher no-print" aria-label="Research graph modes">' +
+        '<span class="launcher-label">Graph workspace</span>' +
+        '<button class="research-graph-mode-btn'+(researchState.graphType==='overlay'?' active':'')+'" data-rg-mode="overlay" type="button">Peak profile</button>' +
+        '<button class="research-graph-mode-btn'+(researchState.graphType==='compound'?' active':'')+'" data-rg-mode="compound" type="button">Compound comparison</button>' +
+        '<button class="research-graph-mode-btn'+(researchState.graphType==='scatter'?' active':'')+'" data-rg-mode="scatter" type="button">RT vs response</button>' +
+        '<button class="research-graph-mode-btn'+(researchState.graphType==='heatmap'?' active':'')+'" data-rg-mode="heatmap" type="button">Heatmap</button>' +
+        '<span class="launcher-spacer"></span><button class="btn btn-sm btn-primary" id="rgJumpPlot" type="button">ดูกราฟ ↓</button>' +
+      '</div>' +
       renderSampleExplorer('research', researchState.focusSample==='all'?'':researchState.focusSample) +
       '<div class="research-note"><b>หมายเหตุ:</b> ค่าเริ่มต้นใช้เฉพาะ Compound ที่ Match score ≥70 ในการวิเคราะห์ แต่ <b>ข้อมูล Score &lt;70 ยังคงถูกบันทึกครบ</b> และเรียกดูย้อนหลังได้จาก Score quality / หน้า “ข้อมูลทั้งหมด” · Peak profile เป็น stick profile จาก RT + response ไม่ใช่ raw TIC chromatogram</div>' +
     '</div>';
@@ -3842,9 +3857,7 @@ window.GCMS_SUPABASE_CONFIG = {
       '<div class="research-kpi"><div class="v" title="' + escapeHtml(topName) + '" style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(topName) + '</div><div class="k">สารเด่นตาม Metric</div></div>' +
     '</div>';
 
-    html += renderResearchPresencePanel();
-    html += renderResearchCommonCompoundsPanel();
-
+    // Keep the core graph workspace immediately after the KPI strip so graph features stay visible/discoverable.
     html += '<div class="research-grid"><div>';
     html += '<div class="selector-panel" style="margin-bottom:12px;">' +
       '<div class="selector-head"><div class="selector-title">1) เลือก Run เพื่อเปรียบเทียบ</div><div class="selector-actions">' +
@@ -3920,6 +3933,10 @@ window.GCMS_SUPABASE_CONFIG = {
       '</div>' +
     '</div></div>';
 
+    // Secondary analysis panels remain fully available below the graph workspace.
+    html += renderResearchPresencePanel();
+    html += renderResearchCommonCompoundsPanel();
+
     el.innerHTML = html;
     // Sample Explorer lives inside renderResearch(), so its DOM is replaced on every Research re-render.
     // Bind it immediately after innerHTML so Compare / Select All / View sample only / solvent chips / pagination work.
@@ -3976,6 +3993,16 @@ window.GCMS_SUPABASE_CONFIG = {
         renderResearch();
       });
     });
+    document.querySelectorAll(".research-graph-mode-btn").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        researchState.graphType=btn.getAttribute("data-rg-mode")||"overlay";
+        researchState.displayStyle="auto";
+        renderResearch();
+        requestAnimationFrame(function(){var plot=$("#researchPlot");if(plot&&plot.scrollIntoView)plot.scrollIntoView({behavior:"smooth",block:"center"});});
+      });
+    });
+    var jumpPlot=$("#rgJumpPlot");
+    if(jumpPlot)jumpPlot.addEventListener("click",function(){var plot=$("#researchPlot");if(plot&&plot.scrollIntoView)plot.scrollIntoView({behavior:"smooth",block:"center"});});
     var advJump=$("#rgAdvancedJump");
     if(advJump)advJump.addEventListener("click",function(){var target=$("#rgAdvancedSettings");if(target&&target.scrollIntoView)target.scrollIntoView({behavior:"smooth",block:"start"});});
     $("#rgLogY").addEventListener("change", function () { researchState.logY = this.checked; drawResearchPlot(); });
