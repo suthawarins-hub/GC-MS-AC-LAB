@@ -1029,6 +1029,37 @@ tbody tr:hover{background:#F6FAF9;}
   .dashboard-bento>.kpi-grid{grid-template-columns:1fr 1fr;}.quality-summary-grid{grid-template-columns:1fr 1fr;}
 }
 
+
+
+/* ---------- Research Intelligence Suite ---------- */
+.intel-card{border:1px solid rgba(11,125,128,.13);background:linear-gradient(145deg,#fff 0%,#F8FCFB 100%);}
+.dashboard-bento>.intel-insights{grid-column:span 5;margin:0;min-height:100%;}
+.dashboard-bento>.intel-qc{grid-column:span 7;margin:0;min-height:100%;}
+.dashboard-bento>.intel-trend{grid-column:span 8;margin:0;}
+.dashboard-bento>.intel-watch{grid-column:span 4;margin:0;}
+.dashboard-bento>.intel-heatmap{grid-column:span 8;margin:0;overflow:hidden;}
+.dashboard-bento>.intel-replicate{grid-column:span 4;margin:0;}
+.intel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+.intel-head h3{font-family:var(--font-display);font-size:15px;margin:0;letter-spacing:-.02em;}
+.intel-sub{font-size:10.5px;color:var(--ink-soft);margin-top:3px;}
+.insight-list{display:grid;gap:8px;}
+.insight-item{display:flex;gap:9px;align-items:flex-start;padding:9px 10px;border:1px solid var(--line-soft);border-radius:12px;background:rgba(255,255,255,.76);font-size:11.5px;color:var(--ink-soft);}
+.insight-item strong{color:var(--ink);}.insight-icon{width:25px;height:25px;border-radius:8px;display:grid;place-items:center;background:var(--accent-2-soft);color:var(--accent-2);font-weight:800;flex:none;}
+.qc-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;}.qc-metric{border:1px solid var(--line-soft);background:#fff;border-radius:12px;padding:10px;min-width:0;}.qc-metric .v{font-family:var(--font-display);font-size:18px;font-weight:800;}.qc-metric .k{font-size:9.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;margin-top:2px;}.qc-metric.good .v{color:var(--good)}.qc-metric.warn .v{color:var(--warn)}.qc-metric.bad .v{color:var(--bad)}
+.qc-status-line{display:flex;align-items:center;gap:8px;margin-top:10px;padding:9px 10px;border-radius:11px;font-size:11px;background:var(--bg);color:var(--ink-soft);}.qc-status-dot{width:9px;height:9px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px var(--good-bg);}.qc-status-line.warn .qc-status-dot{background:var(--warn);box-shadow:0 0 0 4px var(--warn-bg)}.qc-status-line.bad .qc-status-dot{background:var(--bad);box-shadow:0 0 0 4px var(--bad-bg)}
+.intel-control{display:flex;gap:7px;align-items:end;flex-wrap:wrap;margin-bottom:10px;}.intel-control .field{min-width:190px;flex:1}.intel-control select{font-size:12px;}
+.watch-list{display:grid;gap:7px;}.watch-item{display:flex;align-items:center;gap:8px;border:1px solid var(--line-soft);background:#fff;border-radius:11px;padding:8px 9px;}.watch-main{min-width:0;flex:1;}.watch-name{font-weight:750;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.watch-meta{font-family:var(--font-mono);font-size:9.5px;color:var(--ink-soft);}.star-btn{border:0;background:transparent;padding:2px 4px;cursor:pointer;font-size:15px;line-height:1;color:#AAB4B2}.star-btn.active{color:#D69518}.compound-profile-btn{border:0;background:transparent;color:var(--accent-2);font:inherit;font-weight:700;padding:0;cursor:pointer;text-align:left}.compound-profile-btn:hover{text-decoration:underline}.compound-actions-inline{display:inline-flex;align-items:center;gap:5px;max-width:100%;}
+.heatmap-scroll{overflow:auto;border:1px solid var(--line-soft);border-radius:12px;background:#fff;}.intel-heatmap-table{border-collapse:separate;border-spacing:3px;width:100%;min-width:660px;font-size:10px;padding:5px}.intel-heatmap-table th{position:static;background:transparent;border:0;padding:5px 6px;cursor:default;text-transform:none;font-size:9.5px}.intel-heatmap-table td{border:0;padding:0}.heat-cell{height:30px;min-width:54px;border-radius:7px;display:grid;place-items:center;font-family:var(--font-mono);font-size:9px}.heat-label{max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:4px 7px!important;font-weight:700}.heat-legend{display:flex;gap:7px;align-items:center;font-size:9.5px;color:var(--ink-soft);margin-top:7px}.heat-ramp{width:100px;height:7px;border-radius:99px;background:linear-gradient(90deg,rgba(20,125,130,.07),rgba(20,125,130,.95));}
+.replicate-list{display:grid;gap:7px}.replicate-row{border:1px solid var(--line-soft);border-radius:11px;background:#fff;padding:9px 10px}.replicate-top{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;font-weight:750}.replicate-meta{font-family:var(--font-mono);font-size:9.5px;color:var(--ink-soft);margin-top:4px}.cv-pill{border-radius:99px;padding:2px 7px;background:var(--bg);font-family:var(--font-mono);font-size:9.5px}.cv-pill.good{background:var(--good-bg);color:var(--good)}.cv-pill.warn{background:var(--warn-bg);color:var(--warn)}.cv-pill.bad{background:var(--bad-bg);color:var(--bad)}
+.data-health-panel{margin-top:10px;border:1px solid var(--line);border-radius:13px;padding:11px 12px;background:#fff}.data-health-panel.good{border-color:#CBE7D5;background:#F6FCF8}.data-health-panel.warn{border-color:#F0D7B3;background:#FFFBF5}.data-health-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}.data-health-title{font-weight:800;font-size:12px}.data-health-badge{font-family:var(--font-mono);font-size:9.5px;border-radius:99px;padding:3px 7px;background:var(--bg)}.data-health-list{display:flex;gap:6px;flex-wrap:wrap}.data-health-issue{font-size:10px;border:1px solid var(--line-soft);border-radius:8px;padding:5px 7px;background:#fff;color:var(--ink-soft)}
+.intel-modal-backdrop{position:fixed;inset:0;background:rgba(13,28,40,.42);z-index:180;display:flex;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(6px)}.intel-modal{width:min(940px,100%);max-height:88vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 90px rgba(13,28,40,.25);padding:20px}.intel-modal-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:14px}.intel-modal-title{font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.025em}.intel-modal-close{border:1px solid var(--line);background:#fff;border-radius:10px;width:35px;height:35px;font-size:18px;cursor:pointer}.profile-stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}.profile-stat{border:1px solid var(--line-soft);border-radius:11px;background:var(--bg);padding:9px}.profile-stat .v{font-family:var(--font-display);font-size:16px;font-weight:800}.profile-stat .k{font-size:9px;color:var(--ink-soft);text-transform:uppercase;margin-top:2px}.profile-recent{border:1px solid var(--line);border-radius:11px;overflow:auto;max-height:260px}.profile-recent table{font-size:10.5px}.profile-recent th,.profile-recent td{padding:7px 8px}
+.report-builder{margin-bottom:14px;border:1px solid rgba(11,125,128,.14);border-radius:16px;background:linear-gradient(135deg,#fff,#F6FBFA);padding:12px 13px}.report-builder-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.report-builder-title{font-weight:800;font-size:12.5px}.report-builder-options{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.report-builder-option{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:9px;padding:6px 8px;background:#fff;font-size:10.5px}.report-builder-option input{accent-color:var(--accent-2)}
+.run-notes-editor{margin:12px 0 0;border:1px solid var(--line-soft);border-radius:12px;background:var(--bg);padding:10px}.run-notes-editor textarea{min-height:72px;font-family:var(--font-body);font-size:12px;background:#fff}.run-notes-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:7px}.flash-focus{animation:intelFlash 1.8s ease}@keyframes intelFlash{0%{box-shadow:0 0 0 0 rgba(226,103,43,.5)}35%{box-shadow:0 0 0 5px rgba(226,103,43,.18)}100%{box-shadow:0 0 0 0 rgba(226,103,43,0)}}
+.report-jump-note{font-size:10px;color:var(--accent-2);font-weight:700;margin-left:4px}
+@media(max-width:1050px){.dashboard-bento>.intel-insights,.dashboard-bento>.intel-qc,.dashboard-bento>.intel-trend,.dashboard-bento>.intel-watch,.dashboard-bento>.intel-heatmap,.dashboard-bento>.intel-replicate{grid-column:1/-1}.profile-stat-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.qc-grid{grid-template-columns:repeat(2,1fr)}.profile-stat-grid{grid-template-columns:repeat(2,1fr)}.intel-modal{padding:15px;border-radius:18px}.report-builder-options{display:grid;grid-template-columns:1fr 1fr}.compound-actions-inline{gap:2px}}
+@media print{[data-report-builder-disabled="1"]{display:none!important}.report-builder,.run-notes-editor{display:none!important}}
+
 </style>
 
 <script>
@@ -1253,6 +1284,10 @@ window.GCMS_SUPABASE_CONFIG = {
         <div class="preview-box" id="previewBox">
           <div class="preview-count zero" id="previewCount">ยังไม่พบข้อมูล — วางตารางด้านบนเพื่อดูตัวอย่าง</div>
           <div class="preview-mini" id="previewMini"></div>
+        </div>
+        <div id="dataHealthPanel" class="data-health-panel good">
+          <div class="data-health-head"><div class="data-health-title">Data Health Check</div><span class="data-health-badge">Waiting for data</span></div>
+          <div class="data-health-list"><span class="data-health-issue">ระบบจะตรวจ duplicate, Score, RT และ Peak area ก่อนบันทึก</span></div>
         </div>
       </div>
 
@@ -1487,7 +1522,23 @@ window.GCMS_SUPABASE_CONFIG = {
     ["Identifications Score ≥80", "Identifications Score ≥80"], ["Final Peaks (Score ≥80)", "Final Peaks (Score ≥80)"],
     ["ทุก Solvent", "All solvents"], ["ทุกวันที่", "All dates"], ["ทุกครั้งที่", "All runs"],
     ["ค้นหาชื่อสาร...", "Search compounds..."], ["ล้างตัวกรอง", "Clear filters"], ["ดาวน์โหลด CSV", "Download CSV"],
-    ["เกณฑ์ที่เลือก", "Selected threshold"], ["เกณฑ์วิเคราะห์", "Analysis threshold"]
+    ["เกณฑ์ที่เลือก", "Selected threshold"], ["เกณฑ์วิเคราะห์", "Analysis threshold"],
+    ["สรุปอัตโนมัติจากข้อมูลที่บันทึกไว้ · ไม่แก้ Raw data", "Automatic summary from saved data · Raw data is unchanged"],
+    ["ควรทบทวน", "Review suggested"], ["เทียบ Run ก่อน", "Compare previous run"], ["สารเด่น", "Top compound"], ["Run ล่าสุด", "Latest run"],
+    ["ตรวจความสมบูรณ์ของข้อมูลและสัดส่วน peak ที่ต้องทบทวน", "Checks data integrity and the proportion of peaks requiring review"],
+    ["Data health อยู่ในเกณฑ์ดี", "Data health looks good"], ["มีรายการที่ควรตรวจทาน", "Some items should be reviewed"], ["พบรายการผิดปกติที่ควรตรวจสอบ", "Potential data issues detected"],
+    ["เลือก Compound", "Select compound"], ["ปักสารสำคัญเพื่อเรียกดูย้อนหลังได้เร็ว", "Pin important compounds for quick access"],
+    ["กด ☆ ข้างชื่อสารใน Records หรือ Report เพื่อเพิ่ม Watchlist", "Click ☆ beside a compound in Records or Report to add it to the Watchlist"],
+    ["Top 10 compounds · Mean Relative Peak Area (%) ต่อ Sample · Score ≥70", "Top 10 compounds · Mean Relative Peak Area (%) per sample · Score ≥70"],
+    ["ต่ำ", "Low"], ["สูง", "High"], ["ต้องมี Sample + Solvent เดียวกันอย่างน้อย 2 Runs เพื่อคำนวณ replicate CV", "At least 2 runs with the same sample + solvent are required for replicate CV"],
+    ["ระบบจะตรวจ duplicate, Score, RT และ Peak area ก่อนบันทึก", "Checks duplicates, Score, RT, and Peak area before saving"],
+    ["ไม่พบ duplicate หรือค่าผิดช่วงที่ชัดเจน", "No obvious duplicates or out-of-range values detected"],
+    ["สามารถบันทึกต่อได้ด้วย Save anyway หลังตรวจทาน", "After review, you can continue with Save anyway"],
+    ["พบรายการที่ควรตรวจทานก่อนบันทึก", "Items requiring review were found before saving"],
+    ["กลับไปตรวจข้อมูล", "Review data"],
+    ["เลือกส่วนที่จะรวมตอน Print / Save PDF · หน้าจอปกติยังแสดงฟีเจอร์ครบทั้งหมด", "Choose sections for Print / Save PDF · the normal workspace still shows all features"],
+    ["บันทึกสภาวะเครื่อง, ลักษณะ sample, solvent lot หรือข้อสังเกตของ Run นี้", "Record instrument conditions, sample appearance, solvent lot, or observations for this run"],
+    ["บันทึก Research Notes แล้ว", "Research Notes saved"]
   ].sort(function(a,b){ return b[0].length - a[0].length; });
 
   var i18nTextOriginal = new WeakMap();
@@ -1655,7 +1706,7 @@ window.GCMS_SUPABASE_CONFIG = {
     showAppShell();
     if(!appInitialized) await initApp(); else { await loadAll(); refreshAll(); applyLanguage(currentLang,false); }
   }
-  function clearWorkspaceMemory(){ runsIndex=[]; allCompounds=[]; allSpectra=[]; parsedPreview=[]; reportState.compareRuns=[]; }
+  function clearWorkspaceMemory(){ runsIndex=[]; allCompounds=[]; allSpectra=[]; parsedPreview=[]; reportState.compareRuns=[]; intelligenceState=defaultIntelligenceState(); reportNavigationFocus=null; }
   async function handleLoginSubmit(ev) {
     ev.preventDefault(); if(!sbClient)return;
     var email=document.getElementById("loginEmail").value.trim(), password=document.getElementById("loginPassword").value;
@@ -1732,6 +1783,7 @@ window.GCMS_SUPABASE_CONFIG = {
   var K_INDEX = "gcms:runs-index";
   var K_COMPOUNDS = "gcms:compounds";
   var K_SPECTRA = "gcms:spectra";
+  var K_INTELLIGENCE = "gcms:research-intelligence";
 
   /* ---------- state ---------- */
   var runsIndex = [];
@@ -1748,6 +1800,9 @@ window.GCMS_SUPABASE_CONFIG = {
   var VIEW_IDS = { dashboard: "viewDashboard", add: "viewAdd", records: "viewRecords", report: "viewReport", research: "viewResearch" };
   var reportState = { runId: null, sort: "rt_asc", metric: "relArea", labelCount: 12, selectedPeakKey: null, scoreMode: "qualified", compareRuns: [], topN: 5, topScope: "current", presenceMode:"shared", presenceX:2, presenceRule:"atleast" };
   var dashboardTopState = { group: "sample", solvent: "all" };
+  function defaultIntelligenceState(){return {watchlist:[],trendCompound:"",reportSections:{top:true,overview:true,labeled:true,peakTable:true,spectrum:true,comparison:true}};}
+  var intelligenceState = defaultIntelligenceState();
+  var reportNavigationFocus = null;
   var sampleExplorerState = {
     report: { q:"", solvent:"all", compareSolvents:[], part:"all", dateFrom:"", dateTo:"", sort:"recent", page:1, pageSize:12 },
     research: { q:"", solvent:"all", compareSolvents:[], part:"all", dateFrom:"", dateTo:"", sort:"recent", page:1, pageSize:12 }
@@ -1957,6 +2012,13 @@ window.GCMS_SUPABASE_CONFIG = {
       var r3 = await storageGet(K_SPECTRA);
       allSpectra = r3 && r3.value ? JSON.parse(r3.value) : [];
     } catch (e) { allSpectra = []; }
+    try {
+      var r4 = await storageGet(K_INTELLIGENCE);
+      var savedIntel = r4 && r4.value ? JSON.parse(r4.value) : {};
+      intelligenceState = Object.assign(defaultIntelligenceState(), savedIntel || {});
+      intelligenceState.reportSections = Object.assign(defaultIntelligenceState().reportSections, (savedIntel&&savedIntel.reportSections)||{});
+      if(!Array.isArray(intelligenceState.watchlist)) intelligenceState.watchlist=[];
+    } catch (e) { intelligenceState = defaultIntelligenceState(); }
   }
   async function persistIndex() {
     try { await storageSet(K_INDEX, JSON.stringify(runsIndex)); return true; }
@@ -1969,6 +2031,10 @@ window.GCMS_SUPABASE_CONFIG = {
   async function persistSpectra() {
     try { await storageSet(K_SPECTRA, JSON.stringify(allSpectra)); return true; }
     catch (e) { showToast("บันทึกไม่สำเร็จ ลองอีกครั้ง", true); return false; }
+  }
+  async function persistIntelligence() {
+    try { await storageSet(K_INTELLIGENCE, JSON.stringify(intelligenceState)); return true; }
+    catch (e) { showToast("บันทึกการตั้งค่า Research Intelligence ไม่สำเร็จ", true); return false; }
   }
 
   /* ---------- parsing pasted GC-MS table ---------- */
@@ -2186,7 +2252,7 @@ window.GCMS_SUPABASE_CONFIG = {
     var prev=document.getElementById(prefix+'Prev'); if(prev)prev.addEventListener('click',function(){st.page--;if(view==='report')renderReport();else renderResearch();});
     var next=document.getElementById(prefix+'Next'); if(next)next.addEventListener('click',function(){st.page++;if(view==='report')renderReport();else renderResearch();});
     if(view==='report'){
-      document.querySelectorAll('.sample-open-report').forEach(function(b){b.addEventListener('click',function(){reportState.runId=b.getAttribute('data-run');reportState.selectedPeakKey=null;reportLastPoint=null;renderReport();});});
+      document.querySelectorAll('.sample-open-report').forEach(function(b){b.addEventListener('click',function(){openReportAt(b.getAttribute('data-run'),null,'reportMainSheet');});});
       document.querySelectorAll('.sample-compare-latest').forEach(function(b){b.addEventListener('click',function(){var r=latestSampleCompareRun(b.getAttribute('data-sample'),'report');if(r)addReportCompareRun(r.id);else showToast('ไม่พบ Run ตาม Solvent สำหรับ Compare',true);renderReport();});});
     } else {
       document.querySelectorAll('.sample-solo').forEach(function(b){b.addEventListener('click',function(){var sample=b.getAttribute('data-sample');researchState.focusSample=sample;researchState.selectedRuns=sampleCompareRuns(sample,'research').map(function(r){return r.id;});researchState.selectedCompounds=[];researchState.userClearedCompounds=false;researchLastPoint=null;renderResearch();});});
@@ -2533,10 +2599,59 @@ window.GCMS_SUPABASE_CONFIG = {
     return '<div class="top-report-definition"><span>ⓘ</span><div><b>'+(mode==='species'?'Top compounds รวมตาม Plant species':'Top compounds ของแต่ละ Sample')+'</b><br>'+(solvent==='all'?'รวมทุก Solvent':'เฉพาะ Solvent: '+escapeHtml(solvent))+' · จัดอันดับจาก Mean Relative Peak Area (%) ภายในกลุ่มเท่านั้น</div></div>'+
       '<div class="top5-sample-grid">'+groups.map(function(g){
         var top=compoundRelativeStatsForRuns(g.runs,'qualified').slice(0,5), topShare=top.reduce(function(a,d){return a+(Number(d.value)||0);},0);
-        var rows=top.length?top.map(function(d,i){var pct=Math.max(0,Math.min(100,Number(d.value)||0));return '<div class="top5-row"><div class="top5-rank">'+(i+1)+'</div><div class="top5-body"><div class="top5-name" title="'+escapeHtml(d.label)+'">'+escapeHtml(d.label)+' <span class="top-report-share">'+fmtNum(d.value,3)+'%</span></div><div class="top5-track accurate"><div class="top5-fill" style="width:'+pct.toFixed(2)+'%"></div></div><div class="top5-axis"><span>0%</span><span>25</span><span>50</span><span>75</span><span>100%</span></div><div class="top5-meta">'+g.runs.length+' runs · พบ '+d.found+'/'+d.runCount+(d.avgRt===null?'':' · RT≈'+fmtNum(d.avgRt,3))+'</div></div></div>';}).join(''):'<div class="empty-chart" style="padding:18px 0;">ไม่มีสาร Score ≥ 70</div>';
+        var rows=top.length?top.map(function(d,i){var pct=Math.max(0,Math.min(100,Number(d.value)||0));return '<div class="top5-row"><div class="top5-rank">'+(i+1)+'</div><div class="top5-body"><div class="top5-name" title="'+escapeHtml(d.label)+'">'+compoundActionHtml(d.label)+' <span class="top-report-share">'+fmtNum(d.value,3)+'%</span></div><div class="top5-track accurate"><div class="top5-fill" style="width:'+pct.toFixed(2)+'%"></div></div><div class="top5-axis"><span>0%</span><span>25</span><span>50</span><span>75</span><span>100%</span></div><div class="top5-meta">'+g.runs.length+' runs · พบ '+d.found+'/'+d.runCount+(d.avgRt===null?'':' · RT≈'+fmtNum(d.avgRt,3))+'</div></div></div>';}).join(''):'<div class="empty-chart" style="padding:18px 0;">ไม่มีสาร Score ≥ 70</div>';
         return '<div class="top5-sample-card"><div class="top5-head"><div><div class="top5-sample" title="'+escapeHtml(g.name)+'">'+escapeHtml(g.name)+'</div><div class="mini-muted">Top 5 · Relative Peak Area (%) · '+escapeHtml(solvent==='all'?'All solvents':solvent)+'</div></div><button class="btn btn-sm top5-compare-btn" data-top-mode="'+escapeHtml(mode)+'" data-top-group="'+escapeHtml(g.name)+'" type="button">Compare</button></div><div class="top-report-card-summary"><span class="top-report-mini-pill">'+top.length+' compounds</span><span class="top-report-mini-pill">สัดส่วน Top 5 ≈ '+fmtNum(topShare,2)+'%</span><span class="top-report-mini-pill">'+g.runs.length+' runs</span></div>'+rows+'</div>';
       }).join('')+'</div>';
   }
+
+
+  /* ---------- Research Intelligence helpers ---------- */
+  function compoundKeyName(name){return String(name||"").trim().toLowerCase();}
+  function meanNum(arr){var a=(arr||[]).filter(function(v){return isFinite(Number(v));}).map(Number);return a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;}
+  function sdNum(arr){var a=(arr||[]).filter(function(v){return isFinite(Number(v));}).map(Number);if(a.length<2)return 0;var m=meanNum(a);return Math.sqrt(a.reduce(function(x,y){return x+Math.pow(y-m,2);},0)/(a.length-1));}
+  function cvNum(arr){var m=meanNum(arr);return m&&isFinite(m)?sdNum(arr)/m*100:null;}
+  function compoundRowsByName(name,mode){var k=compoundKeyName(name);return allCompounds.filter(function(c){return compoundKeyName(c.compound)===k && compoundMatchesScoreMode(c,mode||"qualified");});}
+  function compoundCatalog(mode){var map={};allCompounds.forEach(function(c){if(!compoundMatchesScoreMode(c,mode||"qualified"))return;var k=compoundKeyName(c.compound);if(!k)return;if(!map[k])map[k]={label:c.compound,count:0,rel:0};map[k].count++;map[k].rel+=Number(c.relArea)||0;});return Object.keys(map).map(function(k){return map[k];}).sort(function(a,b){return b.rel-a.rel||b.count-a.count;});}
+  function ensureTrendCompound(){var cat=compoundCatalog("qualified");if(!cat.length){intelligenceState.trendCompound="";return "";}var valid=cat.some(function(x){return compoundKeyName(x.label)===compoundKeyName(intelligenceState.trendCompound);});if(!valid)intelligenceState.trendCompound=cat[0].label;return intelligenceState.trendCompound;}
+  function compoundTrendData(name){var key=compoundKeyName(name);return runsIndex.slice().sort(function(a,b){return String(a.date||a.createdAt||"").localeCompare(String(b.date||b.createdAt||""))||Number(a.runNo||0)-Number(b.runNo||0);}).map(function(r){var v=allCompounds.filter(function(c){return c.runId===r.id&&compoundKeyName(c.compound)===key&&compoundMatchesScoreMode(c,"qualified");}).reduce(function(a,c){return a+(Number(c.relArea)||0);},0);return {label:runsIndex.length>12?("R"+r.runNo):(fmtDate(r.date)||("R"+r.runNo)),tooltip:(r.sample||"Sample")+" · "+fmtDate(r.date)+" · Run "+r.runNo,value:v};});}
+  function latestRunSorted(){return runsIndex.slice().sort(function(a,b){return String(b.createdAt||b.date||"").localeCompare(String(a.createdAt||a.date||""));});}
+  function smartInsightData(){var rr=latestRunSorted();if(!rr.length)return [];var latest=rr[0],rows=allCompounds.filter(function(c){return c.runId===latest.id;});var q=rows.filter(function(c){return compoundMatchesScoreMode(c,"qualified");});var top=q.slice().sort(function(a,b){return(Number(b.relArea)||0)-(Number(a.relArea)||0);})[0];var high=q.filter(function(c){return validScore(c)!==null&&validScore(c)>=90;}).length;var low=rows.length-q.length;var prev=rr.find(function(r){return r.id!==latest.id&&r.sample===latest.sample&&r.solvent===latest.solvent;});var deltaText="ยังไม่มี Run ก่อนหน้าที่ตรง Sample + Solvent";if(prev&&top){var prevVal=allCompounds.filter(function(c){return c.runId===prev.id&&compoundKeyName(c.compound)===compoundKeyName(top.compound)&&compoundMatchesScoreMode(c,"qualified");}).reduce(function(a,c){return a+(Number(c.relArea)||0);},0);var d=(Number(top.relArea)||0)-prevVal;deltaText=top.compound+" "+(d>=0?"เพิ่ม":"ลด")+" "+fmtNum(Math.abs(d),2)+" percentage points จาก Run ก่อนหน้า";}return [
+    {icon:"◎",title:"Run ล่าสุด",text:latest.sample+" · "+latest.solvent+" · "+fmtDate(latest.date)+" · "+q.length+" peaks ผ่าน Score ≥70"},
+    {icon:"↑",title:"สารเด่น",text:top?(top.compound+" · Relative area "+fmtNum(top.relArea,2)+"%"):"ยังไม่มีสารผ่านเกณฑ์"},
+    {icon:"↔",title:"เทียบ Run ก่อน",text:deltaText},
+    {icon:"✓",title:"High confidence",text:high+" peaks Score ≥90"+(q.length?(" · "+fmtNum(high/q.length*100,1)+"% ของ peaks ที่ใช้วิเคราะห์"):"")},
+    {icon:"!",title:"ควรทบทวน",text:low+" peaks Score <70 / ไม่มี score ยังคงเก็บใน Raw data"}
+  ];}
+  function qcMetrics(){var missing=0,invalidArea=0,dup=0,seen={},rtMap={};allCompounds.forEach(function(c){if(validScore(c)===null)missing++;if((c.peakArea!==null&&c.peakArea!==undefined&&Number(c.peakArea)<0)||(c.relArea!==null&&c.relArea!==undefined&&Number(c.relArea)<0))invalidArea++;var k=c.runId+"|"+String(c.no)+"|"+String(c.rt)+"|"+compoundKeyName(c.compound);if(seen[k])dup++;seen[k]=1;var ck=compoundKeyName(c.compound);if(ck&&c.rt!==null&&c.rt!==undefined&&isFinite(Number(c.rt))){if(!rtMap[ck])rtMap[ck]=[];rtMap[ck].push(Number(c.rt));}});var rtSpread=Object.keys(rtMap).filter(function(k){return rtMap[k].length>=2&&sdNum(rtMap[k])>0.10;}).length;var low=allCompounds.filter(function(c){return !isQualifiedCompound(c);}).length;var lowPct=allCompounds.length?low/allCompounds.length*100:0;var status=(invalidArea||dup>3)?"bad":((missing||lowPct>30||rtSpread>5)?"warn":"good");return {missing:missing,invalidArea:invalidArea,duplicates:dup,rtSpread:rtSpread,low:low,lowPct:lowPct,status:status};}
+  function replicateSummaries(){var groups={};runsIndex.forEach(function(r){var k=[r.sample,r.solvent,r.part||""].join("¦");if(!groups[k])groups[k]={sample:r.sample,solvent:r.solvent,part:r.part||"",runs:[]};groups[k].runs.push(r);});return Object.keys(groups).map(function(k){var g=groups[k];if(g.runs.length<2)return null;var runIds=g.runs.map(function(r){return r.id;}),names={};allCompounds.forEach(function(c){if(runIds.indexOf(c.runId)!==-1&&compoundMatchesScoreMode(c,"qualified"))names[compoundKeyName(c.compound)]=c.compound;});var cvs=[];Object.keys(names).forEach(function(n){var vals=runIds.map(function(id){return allCompounds.filter(function(c){return c.runId===id&&compoundKeyName(c.compound)===n&&compoundMatchesScoreMode(c,"qualified");}).reduce(function(a,c){return a+(Number(c.relArea)||0);},0);});var cv=cvNum(vals),mn=meanNum(vals),sd=sdNum(vals);if(cv!==null&&isFinite(cv))cvs.push({name:names[n],cv:cv,mean:mn,sd:sd});});cvs.sort(function(a,b){return b.cv-a.cv;});var av=meanNum(cvs.map(function(x){return x.cv;}));return {sample:g.sample,solvent:g.solvent,part:g.part,n:g.runs.length,meanCv:av,worst:cvs[0]||null,compounds:cvs.length};}).filter(Boolean).sort(function(a,b){return (a.meanCv===null?999:a.meanCv)-(b.meanCv===null?999:b.meanCv);});}
+  function renderSmartInsightsCard(){var d=smartInsightData();return '<div class="card intel-card intel-insights"><div class="intel-head"><div><h3>Smart Insights</h3><div class="intel-sub">สรุปอัตโนมัติจากข้อมูลที่บันทึกไว้ · ไม่แก้ Raw data</div></div><span class="graph-badge">Research assistant</span></div><div class="insight-list">'+(d.length?d.map(function(x){return '<div class="insight-item"><span class="insight-icon">'+x.icon+'</span><div><strong>'+escapeHtml(x.title)+'</strong><br>'+escapeHtml(x.text)+'</div></div>';}).join(''):'<div class="empty-chart">ยังไม่มีข้อมูลสำหรับสร้าง Insights</div>')+'</div></div>';}
+  function renderQcCard(){var q=qcMetrics();var statusText=q.status==='good'?'Data health อยู่ในเกณฑ์ดี':q.status==='warn'?'มีรายการที่ควรตรวจทาน':'พบรายการผิดปกติที่ควรตรวจสอบ';return '<div class="card intel-card intel-qc"><div class="intel-head"><div><h3>Quality Control Panel</h3><div class="intel-sub">ตรวจความสมบูรณ์ของข้อมูลและสัดส่วน peak ที่ต้องทบทวน</div></div><span class="graph-badge">'+escapeHtml(q.status.toUpperCase())+'</span></div><div class="qc-grid"><div class="qc-metric '+(q.duplicates?'warn':'good')+'"><div class="v">'+q.duplicates+'</div><div class="k">Possible duplicates</div></div><div class="qc-metric '+(q.missing?'warn':'good')+'"><div class="v">'+q.missing+'</div><div class="k">Missing scores</div></div><div class="qc-metric '+(q.invalidArea?'bad':'good')+'"><div class="v">'+q.invalidArea+'</div><div class="k">Invalid areas</div></div><div class="qc-metric '+(q.rtSpread>5?'warn':'good')+'"><div class="v">'+q.rtSpread+'</div><div class="k">RT SD &gt;0.10 min</div></div><div class="qc-metric '+(q.lowPct>30?'warn':'good')+'"><div class="v">'+fmtNum(q.lowPct,1)+'%</div><div class="k">Score &lt;70</div></div></div><div class="qc-status-line '+q.status+'"><span class="qc-status-dot"></span><span>'+escapeHtml(statusText)+' · Raw records '+allCompounds.length.toLocaleString('en-US')+'</span></div></div>';}
+  function renderCompoundTrendCard(){var name=ensureTrendCompound(),cat=compoundCatalog("qualified").slice(0,80),data=name?compoundTrendData(name):[];return '<div class="card intel-card intel-trend"><div class="intel-head"><div><h3>Run-to-Run Compound Trend</h3><div class="intel-sub">Relative Peak Area (%) ของสารที่เลือกตามลำดับ Run · Run ที่ไม่พบสารแสดงเป็น 0</div></div><button class="btn btn-sm compound-profile-open-current" type="button"'+(name?'':' disabled')+'>Compound profile</button></div><div class="intel-control"><div class="field"><label>เลือก Compound</label><select id="intelTrendCompound">'+cat.map(function(x){return '<option value="'+escapeHtml(x.label)+'"'+(compoundKeyName(x.label)===compoundKeyName(name)?' selected':'')+'>'+escapeHtml(x.label)+'</option>';}).join('')+'</select></div></div>'+(data.length?renderMultiLineChartSVG(data,[{key:'value',label:'Relative Peak Area (%)',color:'var(--accent)'}],{ariaLabel:'Compound trend across runs'}):'<div class="empty-chart">ยังไม่มีสาร Score ≥70</div>')+'</div>';}
+  function watchStats(name){var rows=compoundRowsByName(name,"qualified"),runs=new Set(rows.map(function(c){return c.runId;})),samples=new Set(rows.map(function(c){var r=runById(c.runId);return r?r.sample:"";}));return {runs:runs.size,samples:samples.size,mean:meanNum(rows.map(function(c){return Number(c.relArea)||0;}))};}
+  function renderWatchlistCard(){var items=intelligenceState.watchlist||[];return '<div class="card intel-card intel-watch"><div class="intel-head"><div><h3>★ Watched Compounds</h3><div class="intel-sub">ปักสารสำคัญเพื่อเรียกดูย้อนหลังได้เร็ว</div></div><span class="graph-badge">'+items.length+' pinned</span></div><div class="watch-list">'+(items.length?items.slice(0,10).map(function(name){var st=watchStats(name);return '<div class="watch-item"><button class="star-btn active compound-star-btn" data-compound="'+escapeHtml(name)+'" type="button" title="Unpin">★</button><div class="watch-main"><button class="compound-profile-btn" data-compound="'+escapeHtml(name)+'" type="button">'+escapeHtml(name)+'</button><div class="watch-meta">'+st.samples+' samples · '+st.runs+' runs · mean '+fmtNum(st.mean,2)+'%</div></div></div>';}).join(''):'<div class="empty-chart" style="padding:22px 5px">กด ☆ ข้างชื่อสารใน Records หรือ Report เพื่อเพิ่ม Watchlist</div>')+'</div></div>';}
+  function topHeatmapData(){var samples=uniqueSorted(runsIndex.map(function(r){return r.sample;})).slice(0,8),cat=compoundCatalog("qualified").slice(0,10);var matrix=cat.map(function(c){return {name:c.label,vals:samples.map(function(sample){var rs=runsIndex.filter(function(r){return r.sample===sample;}),vals=rs.map(function(r){return allCompounds.filter(function(x){return x.runId===r.id&&compoundKeyName(x.compound)===compoundKeyName(c.label)&&compoundMatchesScoreMode(x,"qualified");}).reduce(function(a,x){return a+(Number(x.relArea)||0);},0);});return meanNum(vals)||0;})};});var max=0;matrix.forEach(function(r){r.vals.forEach(function(v){if(v>max)max=v;});});return {samples:samples,matrix:matrix,max:max};}
+  function renderHeatmapCard(){var d=topHeatmapData();var head='<tr><th>Compound</th>'+d.samples.map(function(s){return '<th title="'+escapeHtml(s)+'">'+escapeHtml(String(s).slice(0,14))+'</th>';}).join('')+'</tr>';var body=d.matrix.map(function(r){return '<tr><td class="heat-label"><button class="compound-profile-btn" data-compound="'+escapeHtml(r.name)+'" type="button">'+escapeHtml(r.name)+'</button></td>'+r.vals.map(function(v){var a=d.max?Math.max(.06,Math.min(.95,v/d.max*.9+.05)):.04;return '<td><div class="heat-cell" title="'+escapeHtml(r.name)+' · '+fmtNum(v,3)+'%" style="background:rgba(20,125,130,'+a.toFixed(3)+');color:'+(a>.52?'#fff':'#244')+'">'+(v?fmtNum(v,1):'0')+'</div></td>';}).join('')+'</tr>';}).join('');return '<div class="card intel-card intel-heatmap"><div class="intel-head"><div><h3>Sample × Compound Heatmap</h3><div class="intel-sub">Top 10 compounds · Mean Relative Peak Area (%) ต่อ Sample · Score ≥70</div></div><span class="graph-badge">'+d.samples.length+' samples</span></div>'+(d.samples.length&&d.matrix.length?'<div class="heatmap-scroll"><table class="intel-heatmap-table"><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div><div class="heat-legend"><span>ต่ำ</span><span class="heat-ramp"></span><span>สูง</span></div>':'<div class="empty-chart">ยังไม่มีข้อมูลเพียงพอ</div>')+'</div>';}
+  function renderReplicateCard(){var d=replicateSummaries().slice(0,6);return '<div class="card intel-card intel-replicate"><div class="intel-head"><div><h3>Replicate Summary</h3><div class="intel-sub">CV% ของ Relative Peak Area · missing detection = 0</div></div><span class="graph-badge">'+replicateSummaries().length+' groups</span></div><div class="replicate-list">'+(d.length?d.map(function(x){var cv=x.meanCv,cls=cv===null?'':(cv<=20?'good':(cv<=40?'warn':'bad'));return '<div class="replicate-row"><div class="replicate-top"><span>'+escapeHtml(x.sample)+'</span><span class="cv-pill '+cls+'">CV '+fmtNum(cv,1)+'%</span></div><div class="replicate-meta">'+escapeHtml(x.solvent)+(x.part?' · '+escapeHtml(x.part):'')+' · n='+x.n+' · '+x.compounds+' compounds'+(x.worst?' · highest: '+escapeHtml(x.worst.name)+' '+fmtNum(x.worst.cv,1)+'%':'')+'</div></div>';}).join(''):'<div class="empty-chart" style="padding:22px 4px">ต้องมี Sample + Solvent เดียวกันอย่างน้อย 2 Runs เพื่อคำนวณ replicate CV</div>')+'</div></div>';}
+  async function toggleWatchCompound(name){name=String(name||"").trim();if(!name)return;var arr=(intelligenceState.watchlist||[]).slice(),key=compoundKeyName(name),i=arr.findIndex(function(x){return compoundKeyName(x)===key;});if(i>=0)arr.splice(i,1);else arr.push(name);intelligenceState.watchlist=arr;await persistIntelligence();if(currentView==='dashboard')renderDashboard();else if(currentView==='records')renderMain();else if(currentView==='report')renderReport();}
+  function isWatched(name){var k=compoundKeyName(name);return (intelligenceState.watchlist||[]).some(function(x){return compoundKeyName(x)===k;});}
+  function compoundActionHtml(name){return '<span class="compound-actions-inline"><button class="star-btn compound-star-btn'+(isWatched(name)?' active':'')+'" data-compound="'+escapeHtml(name)+'" type="button" title="'+(isWatched(name)?'Unpin':'Pin compound')+'">'+(isWatched(name)?'★':'☆')+'</button><button class="compound-profile-btn" data-compound="'+escapeHtml(name)+'" type="button">'+escapeHtml(name)+'</button></span>';}
+  function ensureCompoundProfileModal(){var b=document.getElementById('compoundProfileBackdrop');if(b)return b;b=document.createElement('div');b.id='compoundProfileBackdrop';b.className='intel-modal-backdrop hidden';b.innerHTML='<div class="intel-modal" id="compoundProfileModal"><div id="compoundProfileContent"></div></div>';document.body.appendChild(b);b.addEventListener('click',function(e){if(e.target===b)b.classList.add('hidden');});return b;}
+  function openCompoundProfile(name){var rows=compoundRowsByName(name,'all'),q=compoundRowsByName(name,'qualified'),runIds=new Set(q.map(function(c){return c.runId;})),samples=new Set(),solvents=new Set();q.forEach(function(c){var r=runById(c.runId);if(r){samples.add(r.sample);solvents.add(r.solvent);}});var avgRt=meanNum(q.map(function(c){return c.rt;})),avgScore=meanNum(q.map(function(c){return validScore(c);}).filter(function(x){return x!==null;})),meanRel=meanNum(q.map(function(c){return Number(c.relArea)||0;})),totalArea=q.reduce(function(a,c){return a+(Number(c.peakArea)||0);},0),trend=compoundTrendData(name);var recent=q.slice().sort(function(a,b){var ra=runById(a.runId),rb=runById(b.runId);return String((rb&&(rb.createdAt||rb.date))||'').localeCompare(String((ra&&(ra.createdAt||ra.date))||''));}).slice(0,20);var b=ensureCompoundProfileModal(),c=document.getElementById('compoundProfileContent');c.innerHTML='<div class="intel-modal-head"><div><div class="intel-modal-title">'+escapeHtml(name)+'</div><div class="intel-sub">Compound Profile · '+rows.length+' raw detections · '+q.length+' detections Score ≥70</div></div><div style="display:flex;gap:7px"><button class="star-btn compound-star-btn'+(isWatched(name)?' active':'')+'" data-compound="'+escapeHtml(name)+'" type="button" style="font-size:20px">'+(isWatched(name)?'★':'☆')+'</button><button class="intel-modal-close" id="compoundProfileClose" type="button">×</button></div></div><div class="profile-stat-grid"><div class="profile-stat"><div class="v">'+samples.size+'</div><div class="k">Samples</div></div><div class="profile-stat"><div class="v">'+runIds.size+'</div><div class="k">Runs</div></div><div class="profile-stat"><div class="v">'+fmtNum(avgRt,3)+'</div><div class="k">Mean RT</div></div><div class="profile-stat"><div class="v">'+fmtNum(avgScore,1)+'</div><div class="k">Mean score</div></div><div class="profile-stat"><div class="v">'+fmtNum(meanRel,2)+'%</div><div class="k">Mean rel. area</div></div></div><div class="card" style="margin:0 0 12px;padding:14px"><div class="section-title">Run-to-Run trend</div>'+renderMultiLineChartSVG(trend,[{key:'value',label:'Relative Peak Area (%)',color:'var(--accent)'}],{ariaLabel:'Compound profile trend'})+'</div><div class="intel-head" style="margin-bottom:7px"><div><h3>Recent detections</h3><div class="intel-sub">Solvents: '+escapeHtml(Array.from(solvents).join(', ')||'—')+' · Total integrated peak area '+fmtNum(totalArea,0)+'</div></div></div><div class="profile-recent"><table><thead><tr><th>Date</th><th>Sample</th><th>Solvent</th><th class="num">RT</th><th class="num">Score</th><th class="num">Rel.%</th><th></th></tr></thead><tbody>'+recent.map(function(x){var r=runById(x.runId);return '<tr><td>'+escapeHtml(r?fmtDate(r.date):'—')+'</td><td>'+escapeHtml(r?r.sample:'—')+'</td><td>'+escapeHtml(r?r.solvent:'—')+'</td><td class="num">'+fmtNum(x.rt,3)+'</td><td class="num">'+fmtNum(x.score,1)+'</td><td class="num">'+fmtNum(x.relArea,3)+'</td><td><button class="btn btn-sm profile-open-report" data-run="'+escapeHtml(x.runId)+'" data-peak="'+escapeHtml(reportPeakKey(x))+'" type="button">Open Report</button></td></tr>';}).join('')+'</tbody></table></div>';b.classList.remove('hidden');document.getElementById('compoundProfileClose').onclick=function(){b.classList.add('hidden');};wireCompoundActionEvents(b);b.querySelectorAll('.profile-open-report').forEach(function(btn){btn.addEventListener('click',function(){b.classList.add('hidden');openReportAt(btn.getAttribute('data-run'),btn.getAttribute('data-peak'),'reportPeakTableSection');});});}
+  function wireCompoundActionEvents(root){(root||document).querySelectorAll('.compound-profile-btn').forEach(function(btn){if(btn.dataset.wired)return;btn.dataset.wired='1';btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openCompoundProfile(btn.getAttribute('data-compound'));});});(root||document).querySelectorAll('.compound-star-btn').forEach(function(btn){if(btn.dataset.wired)return;btn.dataset.wired='1';btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();toggleWatchCompound(btn.getAttribute('data-compound'));});});}
+  function renderDashboardIntelligence(){return renderSmartInsightsCard()+renderQcCard()+renderCompoundTrendCard()+renderWatchlistCard()+renderHeatmapCard()+renderReplicateCard();}
+  function wireDashboardIntelligence(){var sel=document.getElementById('intelTrendCompound');if(sel)sel.addEventListener('change',function(){intelligenceState.trendCompound=this.value;persistIntelligence();renderDashboard();});var p=document.querySelector('.compound-profile-open-current');if(p)p.addEventListener('click',function(){if(intelligenceState.trendCompound)openCompoundProfile(intelligenceState.trendCompound);});wireCompoundActionEvents(document.getElementById('viewDashboard'));}
+
+  function previewHealthIssues(rows){rows=rows||[];var issues=[],dupNo={},dupPeak={},missingScore=0,invalidScore=0,invalidArea=0,missingRt=0;rows.forEach(function(c){var no=String(c.no||'');if(no){if(dupNo[no])dupNo[no]++;else dupNo[no]=1;}var pk=String(c.rt)+'|'+compoundKeyName(c.compound);if(dupPeak[pk])dupPeak[pk]++;else dupPeak[pk]=1;if(c.rt===null||c.rt===undefined||!isFinite(Number(c.rt)))missingRt++;var sc=validScore(c);if(sc===null)missingScore++;else if(sc<0||sc>100)invalidScore++;if((c.peakArea!==null&&c.peakArea!==undefined&&Number(c.peakArea)<0)||(c.relArea!==null&&c.relArea!==undefined&&Number(c.relArea)<0))invalidArea++;});var dn=Object.keys(dupNo).filter(function(k){return dupNo[k]>1;}).length,dp=Object.keys(dupPeak).filter(function(k){return dupPeak[k]>1;}).length,relSum=rows.reduce(function(a,c){return a+(Number(c.relArea)||0);},0);if(dn)issues.push({level:'warn',text:dn+' duplicate No.'});if(dp)issues.push({level:'warn',text:dp+' duplicate RT + compound'});if(missingRt)issues.push({level:'warn',text:missingRt+' missing RT'});if(missingScore)issues.push({level:'warn',text:missingScore+' missing score'});if(invalidScore)issues.push({level:'bad',text:invalidScore+' score outside 0–100'});if(invalidArea)issues.push({level:'bad',text:invalidArea+' negative area'});if(relSum>105)issues.push({level:'warn',text:'Relative area sum ≈ '+fmtNum(relSum,1)+'%'});return issues;}
+  function renderDataHealthPanel(){var el=document.getElementById('dataHealthPanel');if(!el)return;var issues=previewHealthIssues(parsedPreview);if(!parsedPreview.length){el.className='data-health-panel good';el.innerHTML='<div class="data-health-head"><div class="data-health-title">Data Health Check</div><span class="data-health-badge">Waiting for data</span></div><div class="data-health-list"><span class="data-health-issue">ระบบจะตรวจ duplicate, Score, RT และ Peak area ก่อนบันทึก</span></div>';return;}el.className='data-health-panel '+(issues.length?'warn':'good');el.innerHTML='<div class="data-health-head"><div class="data-health-title">Data Health Check</div><span class="data-health-badge">'+(issues.length?(issues.length+' issue'+(issues.length===1?'':'s')):'Ready to save')+'</span></div><div class="data-health-list">'+(issues.length?issues.map(function(x){return '<span class="data-health-issue">'+escapeHtml(x.text)+'</span>';}).join(''):'<span class="data-health-issue">✓ ไม่พบ duplicate หรือค่าผิดช่วงที่ชัดเจน</span>')+'</div>'+(issues.length?'<div class="mini-muted" style="margin-top:7px">สามารถบันทึกต่อได้ด้วย Save anyway หลังตรวจทาน</div>':'') ;}
+  function showDataHealthConfirm(issues){var old=document.getElementById('dataHealthConfirm');if(old)old.remove();var b=document.createElement('div');b.id='dataHealthConfirm';b.className='intel-modal-backdrop';b.innerHTML='<div class="intel-modal" style="width:min(560px,100%)"><div class="intel-modal-head"><div><div class="intel-modal-title">Data Health Check</div><div class="intel-sub">พบรายการที่ควรตรวจทานก่อนบันทึก</div></div></div><div class="data-health-list">'+issues.map(function(x){return '<span class="data-health-issue">'+escapeHtml(x.text)+'</span>';}).join('')+'</div><div class="form-actions"><button class="btn btn-ghost" id="healthCancel" type="button">กลับไปตรวจข้อมูล</button><button class="btn btn-primary" id="healthSaveAnyway" type="button">Save anyway</button></div></div>';document.body.appendChild(b);document.getElementById('healthCancel').onclick=function(){b.remove();};document.getElementById('healthSaveAnyway').onclick=function(){b.remove();saveRun(true);};}
+
+  function renderReportBuilderPanel(){var s=intelligenceState.reportSections||defaultIntelligenceState().reportSections;var opts=[['top','Top compounds'],['overview','Peak profile'],['labeled','Labeled peaks'],['peakTable','Peak table'],['spectrum','Mass spectrum'],['comparison','Comparison']];return '<div class="report-builder no-print"><div class="report-builder-head"><div><div class="report-builder-title">Report Builder</div><div class="intel-sub">เลือกส่วนที่จะรวมตอน Print / Save PDF · หน้าจอปกติยังแสดงฟีเจอร์ครบทั้งหมด</div></div><button class="btn btn-sm" id="reportBuilderAll" type="button">Select all</button></div><div class="report-builder-options">'+opts.map(function(x){return '<label class="report-builder-option"><input type="checkbox" data-report-builder="'+x[0]+'"'+(s[x[0]]!==false?' checked':'')+'> '+x[1]+'</label>';}).join('')+'</div></div>';}
+  function applyReportBuilderVisibility(){var s=intelligenceState.reportSections||{};var map={top:'reportTopSection',overview:'reportOverviewSection',labeled:'reportLabeledSection',peakTable:'reportPeakTableSection',spectrum:'reportSpectrumSection',comparison:'reportComparisonSection'};Object.keys(map).forEach(function(k){var el=document.getElementById(map[k]);if(el)el.setAttribute('data-report-builder-disabled',s[k]===false?'1':'0');});}
+  function wireReportBuilder(){document.querySelectorAll('[data-report-builder]').forEach(function(cb){cb.addEventListener('change',function(){intelligenceState.reportSections[cb.getAttribute('data-report-builder')]=cb.checked;persistIntelligence();applyReportBuilderVisibility();});});var all=document.getElementById('reportBuilderAll');if(all)all.addEventListener('click',function(){Object.keys(intelligenceState.reportSections).forEach(function(k){intelligenceState.reportSections[k]=true;});persistIntelligence();renderReport();});applyReportBuilderVisibility();}
+  async function saveRunNotesFromReport(){var r=reportRun(),ta=document.getElementById('reportRunNotes');if(!r||!ta)return;r.notes=ta.value.trim();var ok=await persistIndex();if(ok){showToast('บันทึก Research Notes แล้ว');renderReport();}}
+  function renderRunNotesEditor(run){return '<div class="run-notes-editor no-print"><div class="intel-head" style="margin-bottom:7px"><div><h3>Research Notes · Run #'+escapeHtml(run.runNo)+'</h3><div class="intel-sub">บันทึกสภาวะเครื่อง, ลักษณะ sample, solvent lot หรือข้อสังเกตของ Run นี้</div></div></div><textarea id="reportRunNotes" placeholder="เช่น sample สีเข้ม, baseline มี noise, solvent lot ใหม่...">'+escapeHtml(run.notes||'')+'</textarea><div class="run-notes-actions"><button class="btn btn-sm btn-primary" id="saveReportRunNotes" type="button">Save notes</button></div></div>';}
+  function openReportAt(runId,peakKey,targetId){var c=peakKey?allCompounds.find(function(x){return x.runId===runId&&reportPeakKey(x)===peakKey;}):null;reportState.runId=runId;reportState.selectedPeakKey=peakKey||null;reportLastPoint=c?{run:runById(runId),c:c}:null;if(c&&!compoundMatchesScoreMode(c,reportState.scoreMode))reportState.scoreMode='all';reportNavigationFocus={targetId:targetId||'reportMainSheet',peakKey:peakKey||null};switchView('report');}
+  function applyReportNavigationFocus(){if(!reportNavigationFocus)return;var f=reportNavigationFocus;reportNavigationFocus=null;setTimeout(function(){var target=null;if(f.peakKey){document.querySelectorAll('.report-peak-row').forEach(function(tr){if(!target&&tr.getAttribute('data-key')===f.peakKey)target=tr;});}if(!target)target=document.getElementById(f.targetId||'reportMainSheet');if(target){target.classList.add('flash-focus');target.scrollIntoView({behavior:'smooth',block:f.peakKey?'center':'start'});setTimeout(function(){target.classList.remove('flash-focus');},1900);}},80);}
 
   /* ---------- rendering: dashboard view ---------- */
   function renderDashboard() {
@@ -2584,6 +2699,7 @@ window.GCMS_SUPABASE_CONFIG = {
     }).join("") + '</div>';
 
     html += '<div class="dashboard-bento-heading">'+featureTitleHtml('สรุปคุณภาพ Peak','peakQuality')+'</div>'; html += renderPeakQualitySummary(allCompounds, {scopeLabel:'ข้อมูลทั้งหมด / all saved records', filterLabel:'Score ≥70', compact:true});
+    html += renderDashboardIntelligence();
 
     html += '<div class="card bento-chromatogram">' +
       '<div class="section-title">' + featureTitleHtml('Chromatogram ภาพรวม','peakProfile') + '</div>' +
@@ -2686,6 +2802,7 @@ window.GCMS_SUPABASE_CONFIG = {
       });
     });
 
+    wireDashboardIntelligence();
     renderChromatogramInto("#dashChromaSvg", "#dashChromaCaption");
   }
 
@@ -2856,21 +2973,21 @@ window.GCMS_SUPABASE_CONFIG = {
     var definition = '<div class="top-report-definition"><span>ⓘ</span><div><b>Top compounds ของแต่ละ Sample คำนวณแยกจากกัน</b><br>จัดอันดับจาก Relative Peak Area (%) ของ Sample นั้นเอง ไม่รวมค่าจาก Sample อื่น' +
       (samples.length > 1 ? '<br><b>Compare mode:</b> แต่ละ Sample มี Top '+reportState.topN+' ของตัวเอง ส่วน Heatmap ใช้เพื่อเปรียบเทียบเท่านั้น' : '') + '</div></div>';
     if (scopeEmpty) {
-      return '<div class="report-sheet top-report"><div class="report-section-head"><h3>' + featureTitleHtml('Top Compounds Report','topReport') + '</h3><span class="report-hint">Top 3 / 5 / 10 · Relative Peak Area (%) per Sample</span></div>'+controls+definition+'<div class="report-compare-empty"><b>ยังไม่มี Sample ใน Compare Tray</b><br>เพิ่ม Sample ที่ต้องการเปรียบเทียบลง Compare Tray ก่อน</div></div>';
+      return '<div class="report-sheet top-report" id="reportTopSection"><div class="report-section-head"><h3>' + featureTitleHtml('Top Compounds Report','topReport') + '</h3><span class="report-hint">Top 3 / 5 / 10 · Relative Peak Area (%) per Sample</span></div>'+controls+definition+'<div class="report-compare-empty"><b>ยังไม่มี Sample ใน Compare Tray</b><br>เพิ่ม Sample ที่ต้องการเปรียบเทียบลง Compare Tray ก่อน</div></div>';
     }
     var cards = samples.map(function(sample){
       var top = topCompoundsBySampleRelativeArea(sample, reportState.topN, reportState.scoreMode);
       var topShare = top.reduce(function(a,d){return a+(Number(d.value)||0);},0);
       var rows = top.length ? top.map(function(d,i){
         var pct = Math.max(0, Math.min(100, Number(d.value)||0));
-        return '<div class="top5-row"><div class="top5-rank">'+(i+1)+'</div><div class="top5-body"><div class="top5-name" title="'+escapeHtml(d.label)+'">'+escapeHtml(d.label)+' <span class="top-report-share">'+fmtNum(d.value,3)+'%</span></div><div class="top5-track accurate"><div class="top5-fill" style="width:'+pct.toFixed(2)+'%"></div></div><div class="top5-axis"><span>0%</span><span>25</span><span>50</span><span>75</span><span>100%</span></div><div class="top5-meta">'+escapeHtml(sampleRelativeMethodText(sample))+' · พบ '+d.found+'/'+d.runCount+' runs'+(d.avgRt===null?'':' · RT≈'+fmtNum(d.avgRt,3))+(d.meanScore===null?'':' · Score≈'+fmtNum(d.meanScore,1))+'</div></div></div>';
+        return '<div class="top5-row"><div class="top5-rank">'+(i+1)+'</div><div class="top5-body"><div class="top5-name" title="'+escapeHtml(d.label)+'">'+compoundActionHtml(d.label)+' <span class="top-report-share">'+fmtNum(d.value,3)+'%</span></div><div class="top5-track accurate"><div class="top5-fill" style="width:'+pct.toFixed(2)+'%"></div></div><div class="top5-axis"><span>0%</span><span>25</span><span>50</span><span>75</span><span>100%</span></div><div class="top5-meta">'+escapeHtml(sampleRelativeMethodText(sample))+' · พบ '+d.found+'/'+d.runCount+' runs'+(d.avgRt===null?'':' · RT≈'+fmtNum(d.avgRt,3))+(d.meanScore===null?'':' · Score≈'+fmtNum(d.meanScore,1))+'</div></div></div>';
       }).join('') : '<div class="empty-chart" style="padding:18px 0;">ไม่มีข้อมูลตาม Score filter ที่เลือก</div>';
       return '<div class="top-report-card"><div class="top-report-card-title" title="'+escapeHtml(sample)+'">'+escapeHtml(sample)+'</div><div class="top-report-card-sub">Top '+reportState.topN+' · Relative Peak Area (%) ของ Sample · '+escapeHtml(scoreModeLabel(reportState.scoreMode))+'</div><div class="top-report-card-summary"><span class="top-report-mini-pill">'+top.length+' compounds</span><span class="top-report-mini-pill">สัดส่วน Top '+reportState.topN+' ≈ '+fmtNum(topShare,2)+'%</span><span class="top-report-mini-pill">ไม่รวมอันดับข้าม Sample</span></div>'+rows+'</div>';
     }).join('');
     var flat = reportTopRowsForSamples();
-    var body = flat.map(function(d){return '<tr><td>'+escapeHtml(d.sample)+'</td><td class="num">'+d.rank+'</td><td class="compound-cell">'+escapeHtml(d.label)+'</td><td class="num">'+fmtNum(d.value,3)+'</td><td class="num">'+d.found+'/'+d.runCount+'</td><td class="num">'+fmtNum(d.avgRt,3)+'</td><td class="num">'+fmtNum(d.meanScore,1)+'</td></tr>';}).join('');
+    var body = flat.map(function(d){return '<tr><td>'+escapeHtml(d.sample)+'</td><td class="num">'+d.rank+'</td><td class="compound-cell">'+compoundActionHtml(d.label)+'</td><td class="num">'+fmtNum(d.value,3)+'</td><td class="num">'+d.found+'/'+d.runCount+'</td><td class="num">'+fmtNum(d.avgRt,3)+'</td><td class="num">'+fmtNum(d.meanScore,1)+'</td></tr>';}).join('');
     var multi = samples.length > 1 ? '<div class="report-section"><div class="report-section-head"><h3>Top '+reportState.topN+' Comparison Heatmap</h3><span class="report-hint">Relative Peak Area (%) · อันดับยังคำนวณแยกต่อ Sample</span></div><div id="reportTopHeatmap" class="report-plot compact"></div></div>' : '';
-    return '<div class="report-sheet top-report"><div class="report-section-head"><h3>' + featureTitleHtml('Top Compounds Report','topReport') + '</h3><span class="report-hint">Top 3 / 5 / 10 · Relative Peak Area (%) per Sample</span></div>'+controls+definition+'<div class="top-report-note">'+escapeHtml(samples.length === 1 ? sampleRelativeMethodText(samples[0]) : 'แต่ละ Sample คำนวณ Relative Peak Area (%) แยกจากกัน · ถ้ามีหลาย Run ใช้ค่าเฉลี่ยภายใน Sample นั้น · Score filter: '+scoreModeLabel(reportState.scoreMode))+'</div><div class="top-report-grid">'+cards+'</div>'+multi+'<div class="report-section"><div class="report-section-head"><h3>Top '+reportState.topN+' Summary</h3><span class="report-hint">'+samples.length+' Sample'+(samples.length===1?'':'s')+' · ไม่รวมอันดับข้าม Sample</span></div><div class="top-report-table"><table><thead><tr><th>Sample</th><th class="num">อันดับ</th><th>Compound</th><th class="num">Relative Peak Area (%)</th><th class="num">Runs ที่พบ</th><th class="num">RT≈</th><th class="num">Mean Score</th></tr></thead><tbody>'+body+'</tbody></table></div></div></div>';
+    return '<div class="report-sheet top-report" id="reportTopSection"><div class="report-section-head"><h3>' + featureTitleHtml('Top Compounds Report','topReport') + '</h3><span class="report-hint">Top 3 / 5 / 10 · Relative Peak Area (%) per Sample</span></div>'+controls+definition+'<div class="top-report-note">'+escapeHtml(samples.length === 1 ? sampleRelativeMethodText(samples[0]) : 'แต่ละ Sample คำนวณ Relative Peak Area (%) แยกจากกัน · ถ้ามีหลาย Run ใช้ค่าเฉลี่ยภายใน Sample นั้น · Score filter: '+scoreModeLabel(reportState.scoreMode))+'</div><div class="top-report-grid">'+cards+'</div>'+multi+'<div class="report-section"><div class="report-section-head"><h3>Top '+reportState.topN+' Summary</h3><span class="report-hint">'+samples.length+' Sample'+(samples.length===1?'':'s')+' · ไม่รวมอันดับข้าม Sample</span></div><div class="top-report-table"><table><thead><tr><th>Sample</th><th class="num">อันดับ</th><th>Compound</th><th class="num">Relative Peak Area (%)</th><th class="num">Runs ที่พบ</th><th class="num">RT≈</th><th class="num">Mean Score</th></tr></thead><tbody>'+body+'</tbody></table></div></div></div>';
   }
 
   function drawReportTopHeatmap() {
@@ -2951,10 +3068,11 @@ window.GCMS_SUPABASE_CONFIG = {
       '<button class="btn btn-sm" id="reportPrintBtn" type="button">พิมพ์ / Save PDF</button>' +
       '<button class="btn btn-sm" id="reportCsvBtn" type="button">Export CSV</button>' +
     '</div>';
+    html += renderReportBuilderPanel();
     html += renderReportTopCompoundsSection();
     html += renderReportCompareTray(run);
 
-    html += '<div class="report-sheet">' +
+    html += '<div class="report-sheet" id="reportMainSheet">' +
       '<div class="report-title-row"><div><p class="eyebrow" style="margin-bottom:3px;">GC·MS — ANALYSIS REPORT</p><h2>'+escapeHtml(run.sample)+(run.part?' · '+escapeHtml(run.part):'')+'</h2><div class="meta">Run #'+escapeHtml(run.runNo)+' · '+escapeHtml(fmtDate(run.date))+' · '+escapeHtml(run.solvent)+'</div></div><div class="graph-badge">'+rows.length+' peaks · '+escapeHtml(scoreModeLabel(reportState.scoreMode))+'</div></div>' +
       renderPeakQualitySummary(rawRunCompounds, {scopeLabel:'Run #'+run.runNo+' · '+run.sample, filterLabel:scoreModeLabel(reportState.scoreMode), compact:true}) +
       '<div class="report-info-grid">' +
@@ -2973,23 +3091,24 @@ window.GCMS_SUPABASE_CONFIG = {
         '<div class="report-summary"><div class="v">'+fmtNum(avgScore,1)+'</div><div class="k">Mean score</div></div>' +
         '<div class="report-summary"><div class="v" title="'+escapeHtml(topRel?topRel.compound:'')+'">'+escapeHtml(topRel?String(topRel.compound).slice(0,22):'—')+'</div><div class="k">Top relative area</div></div>' +
       '</div>' +
-      '<div class="report-section"><div class="report-section-head"><h3>' + featureTitleHtml('Sample Peak Profile','peakProfile') + '</h3><span class="report-hint">ข้อมูลนี้เป็น peak profile จาก identified peaks ที่บันทึกไว้ ไม่ใช่ raw TIC</span></div><div id="reportOverviewPlot" class="report-plot"></div></div>' +
-      '<div class="report-section"><div class="report-section-head"><h3>Labeled Peaks</h3><span class="report-hint">แสดงชื่อสารบน peak เด่นเพื่ออ่านผลได้เร็ว</span></div><div id="reportLabeledPlot" class="report-plot compact"></div></div>' +
+      renderRunNotesEditor(run) +
+      '<div class="report-section" id="reportOverviewSection"><div class="report-section-head"><h3>' + featureTitleHtml('Sample Peak Profile','peakProfile') + '</h3><span class="report-hint">ข้อมูลนี้เป็น peak profile จาก identified peaks ที่บันทึกไว้ ไม่ใช่ raw TIC</span></div><div id="reportOverviewPlot" class="report-plot"></div></div>' +
+      '<div class="report-section" id="reportLabeledSection"><div class="report-section-head"><h3>Labeled Peaks</h3><span class="report-hint">แสดงชื่อสารบน peak เด่นเพื่ออ่านผลได้เร็ว</span></div><div id="reportLabeledPlot" class="report-plot compact"></div></div>' +
       '<div id="reportInspector" class="report-inspector empty">ชี้เมาส์เพื่อดูค่า และ <b>คลิก peak หรือแถวในตาราง</b> เพื่อปักรายละเอียดสาร</div>' +
-      '<div class="report-section"><div class="report-section-head"><h3>' + featureTitleHtml('Chromatogram / Identified Peak Table','peakTable') + '</h3><span class="report-hint">แตะหัวคอลัมน์เพื่อเรียงข้อมูล · แตะซ้ำเพื่อสลับ น้อย→มาก / มาก→น้อย</span></div>' +
+      '<div class="report-section" id="reportPeakTableSection"><div class="report-section-head"><h3>' + featureTitleHtml('Chromatogram / Identified Peak Table','peakTable') + '</h3><span class="report-hint">แตะหัวคอลัมน์เพื่อเรียงข้อมูล · แตะซ้ำเพื่อสลับ น้อย→มาก / มาก→น้อย</span></div>' +
       '<div class="report-table-wrap"><table><thead><tr>' +
         reportSortHeader("no","No.",true) + reportSortHeader("rt","RT (min)",true) + reportSortHeader("compound","Compound",false) + reportSortHeader("score","Score",true) + '<th>Confidence</th>' + reportSortHeader("peakArea","Peak area",true) + reportSortHeader("relArea","Rel. area (%)",true) +
       '</tr></thead><tbody>' +
-      rows.map(function(c){var cf=reportConfidence(c.score); var k=reportPeakKey(c); return '<tr class="report-peak-row'+(reportState.selectedPeakKey===k?' selected':'')+'" data-key="'+escapeHtml(k)+'"><td class="num">'+escapeHtml(c.no)+'</td><td class="num">'+fmtNum(c.rt,3)+'</td><td class="compound-cell">'+escapeHtml(c.compound)+'</td><td class="num">'+fmtNum(c.score,1)+'</td><td><span class="confidence '+cf.cls+'">'+cf.label+'</span></td><td class="num">'+fmtNum(c.peakArea,0)+'</td><td class="num">'+fmtNum(c.relArea,3)+'</td></tr>';}).join('') +
+      rows.map(function(c){var cf=reportConfidence(c.score); var k=reportPeakKey(c); return '<tr class="report-peak-row'+(reportState.selectedPeakKey===k?' selected':'')+'" data-key="'+escapeHtml(k)+'"><td class="num">'+escapeHtml(c.no)+'</td><td class="num">'+fmtNum(c.rt,3)+'</td><td class="compound-cell">'+compoundActionHtml(c.compound)+'</td><td class="num">'+fmtNum(c.score,1)+'</td><td><span class="confidence '+cf.cls+'">'+cf.label+'</span></td><td class="num">'+fmtNum(c.peakArea,0)+'</td><td class="num">'+fmtNum(c.relArea,3)+'</td></tr>';}).join('') +
       '</tbody></table></div></div>' +
-      '<div class="report-section"><div class="report-section-head"><h3>' + featureTitleHtml('Final Peak Spectrum','spectrum') + '</h3><span class="report-hint">Observed Spectrum · Mirror Plot · Library Spectrum</span></div><div id="reportSpectrumWorkspace"></div></div>' +
+      '<div class="report-section" id="reportSpectrumSection"><div class="report-section-head"><h3>' + featureTitleHtml('Final Peak Spectrum','spectrum') + '</h3><span class="report-hint">Observed Spectrum · Mirror Plot · Library Spectrum</span></div><div id="reportSpectrumWorkspace"></div></div>' +
     '</div>';
 
     html += renderReportComparisonSection();
     el.innerHTML = html;
     wireReportEvents();
     wireSampleExplorer('report');
-    requestAnimationFrame(function(){ drawReportPlots(); drawReportComparePlots(); drawReportTopHeatmap(); if(reportLastPoint) renderReportInspector(reportLastPoint); renderSpectrumWorkspace(run, selectedPeak); });
+    requestAnimationFrame(function(){ drawReportPlots(); drawReportComparePlots(); drawReportTopHeatmap(); if(reportLastPoint) renderReportInspector(reportLastPoint); renderSpectrumWorkspace(run, selectedPeak); applyReportBuilderVisibility(); applyReportNavigationFocus(); });
   }
 
   function wireReportEvents() {
@@ -3017,6 +3136,9 @@ window.GCMS_SUPABASE_CONFIG = {
     var pr=$("#reportPrintBtn"); if(pr) pr.addEventListener("click",function(){window.print();});
     var csv=$("#reportCsvBtn"); if(csv) csv.addEventListener("click",exportReportCsv);
     document.querySelectorAll(".report-peak-row").forEach(function(tr){tr.addEventListener("click",function(){var run=reportRun();if(!run)return;var key=tr.getAttribute("data-key");var c=reportRows(run.id).find(function(x){return reportPeakKey(x)===key;});if(c) selectReportPeak(run,c);});});
+    wireCompoundActionEvents(document.getElementById("viewReport"));
+    wireReportBuilder();
+    var saveNotes=document.getElementById("saveReportRunNotes"); if(saveNotes)saveNotes.addEventListener("click",saveRunNotesFromReport);
   }
 
   function drawReportPlots() {
@@ -4440,6 +4562,7 @@ window.GCMS_SUPABASE_CONFIG = {
     html += thHtml("score", "Score", true);
     html += thHtml("peakArea", "Peak area", true);
     html += thHtml("relArea", "Rel. area (%)", true);
+    html += '<th>Actions</th>';
     html += '</tr></thead><tbody>';
 
     var shown = rows.slice(0, ROW_CAP);
@@ -4452,10 +4575,11 @@ window.GCMS_SUPABASE_CONFIG = {
       html += '<td><span class="tag-solvent">' + escapeHtml(x.run.solvent) + '</span></td>';
       html += '<td class="num">' + escapeHtml(x.c.no) + '</td>';
       html += '<td class="num">' + fmtNum(x.c.rt, 3) + '</td>';
-      html += '<td class="compound-cell">' + escapeHtml(x.c.compound) + '</td>';
+      html += '<td class="compound-cell">' + compoundActionHtml(x.c.compound) + '</td>';
       html += '<td class="num"><span class="pill ' + tier + '">' + fmtNum(x.c.score, 1) + '</span></td>';
       html += '<td class="num">' + fmtNum(x.c.peakArea, 0) + '</td>';
       html += '<td class="num">' + fmtNum(x.c.relArea, 3) + '</td>';
+      html += '<td><button class="btn btn-sm open-report-peak" data-run-id="'+escapeHtml(x.run.id)+'" data-peak-key="'+escapeHtml(reportPeakKey(x.c))+'" type="button">Open Report</button></td>';
       html += '</tr>';
     });
     html += '</tbody></table>';
@@ -4559,12 +4683,11 @@ window.GCMS_SUPABASE_CONFIG = {
     document.querySelectorAll(".open-report").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
-        reportState.runId = btn.getAttribute("data-run-id");
-        reportState.selectedPeakKey = null;
-        reportLastPoint = null;
-        switchView("report");
+        openReportAt(btn.getAttribute("data-run-id"), null, "reportMainSheet");
       });
     });
+    document.querySelectorAll(".open-report-peak").forEach(function(btn){btn.addEventListener("click",function(e){e.stopPropagation();openReportAt(btn.getAttribute("data-run-id"),btn.getAttribute("data-peak-key"),"reportPeakTableSection");});});
+    wireCompoundActionEvents(document.getElementById("mainArea"));
     document.querySelectorAll(".ask-del").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
@@ -4663,6 +4786,7 @@ window.GCMS_SUPABASE_CONFIG = {
         return '<div>#' + c.no + ' · RT ' + fmtNum(c.rt, 3) + ' · ' + escapeHtml(c.compound) + ' · score ' + fmtNum(c.score, 1) + '</div>';
       }).join("") + (parsedPreview.length > 4 ? '<div>… และอีก ' + (parsedPreview.length - 4) + ' รายการ</div>' : '');
     }
+    renderDataHealthPanel();
     updateSaveEnabled();
   }
 
@@ -4688,7 +4812,8 @@ window.GCMS_SUPABASE_CONFIG = {
     updatePreview();
   }
 
-  async function saveRun() {
+  async function saveRun(forceSave) {
+    if(forceSave!==true){var healthIssues=previewHealthIssues(parsedPreview);if(healthIssues.length){showDataHealthConfirm(healthIssues);return;}}
     var sample = currentFormSample();
     var solvent = currentFormSolvent();
     var date = $("#fDate").value;
@@ -4739,6 +4864,7 @@ window.GCMS_SUPABASE_CONFIG = {
     researchState.userClearedCompounds = false;
     researchLastPoint = null;
     reportState.runId = null; reportState.selectedPeakKey = null; reportLastPoint = null;
+    intelligenceState = defaultIntelligenceState(); await persistIntelligence();
     refreshAll();
     showToast("ล้างข้อมูลทั้งหมดแล้ว");
   }
