@@ -224,6 +224,9 @@
   .section-title{font-family:var(--font-display);font-size:15.5px;font-weight:600;margin:0 0 12px;}
   .footer-note{text-align:center;color:var(--ink-soft);font-size:11.5px;margin-top:26px;}
   .footer-note button{background:none;border:none;color:var(--ink-soft);text-decoration:underline;cursor:pointer;font-size:11.5px;padding:0;}
+  .copyright-credit{display:inline-flex;align-items:center;gap:5px;color:var(--ink-faint);font-size:10.5px;letter-spacing:.01em;white-space:nowrap;}
+  .footer-copyright{display:block;margin-top:7px;}
+  .auth-copyright{text-align:center;margin-top:12px;color:var(--ink-faint);font-size:10px;letter-spacing:.015em;}
 
   .custom-inline{margin-top:6px;}
   .hidden{display:none !important;}
@@ -1073,6 +1076,15 @@ tbody tr:hover{background:#F6FAF9;}
 @media(max-width:640px){.qc-grid{grid-template-columns:repeat(2,1fr)}.profile-stat-grid{grid-template-columns:repeat(2,1fr)}.intel-modal{padding:15px;border-radius:18px}.report-builder-options{display:grid;grid-template-columns:1fr 1fr}.compound-actions-inline{gap:2px}}
 @media print{[data-report-builder-disabled="1"]{display:none!important}.report-builder,.run-notes-editor{display:none!important}}
 
+
+/* ---------- admin-only authentication ---------- */
+.auth-admin-note{
+  display:flex;align-items:flex-start;gap:10px;margin:20px 0 18px;padding:12px 13px;
+  border:1px solid var(--accent-2-soft);background:#F5FBFA;border-radius:12px;color:var(--ink-soft);
+}
+.auth-admin-note-icon{width:28px;height:28px;display:grid;place-items:center;flex:none;border-radius:9px;background:var(--surface);border:1px solid var(--line);font-size:13px;}
+.auth-admin-note strong{display:block;color:var(--ink);font-size:11.5px;margin-bottom:2px;}
+.auth-admin-note span:not(.auth-admin-note-icon){display:block;font-size:10.5px;line-height:1.5;}
 </style>
 
 <script>
@@ -1151,12 +1163,12 @@ window.GCMS_SUPABASE_CONFIG = {
       <div class="auth-brand">
         <p class="eyebrow">GC·MS — SECURE WORKSPACE</p>
         <h3>เข้าสู่ระบบนักวิจัย</h3>
-        <p>เข้าสู่พื้นที่ข้อมูลของคุณ หรือสร้างบัญชีใหม่เพื่อเริ่มบันทึกงานวิจัย</p>
+        <p>เข้าสู่ระบบด้วยบัญชีที่ผู้ดูแลระบบจัดให้เท่านั้น</p>
       </div>
 
-      <div class="auth-tabs" role="tablist" aria-label="Authentication">
-        <button class="auth-tab active" id="authLoginTab" type="button">เข้าสู่ระบบ</button>
-        <button class="auth-tab" id="authSignupTab" type="button">สร้างบัญชี</button>
+      <div class="auth-admin-note" role="note">
+        <span class="auth-admin-note-icon">🔒</span>
+        <div><strong>Admin-managed accounts</strong><span>ระบบนี้ไม่เปิดให้สมัครสมาชิกเอง หากต้องการบัญชี กรุณาติดต่อผู้ดูแลระบบ</span></div>
       </div>
 
       <form class="auth-form" id="loginForm">
@@ -1166,14 +1178,6 @@ window.GCMS_SUPABASE_CONFIG = {
         <div class="auth-secondary"><button class="auth-link" id="forgotPasswordBtn" type="button">ลืมรหัสผ่าน?</button></div>
       </form>
 
-      <form class="auth-form hidden" id="signupForm">
-        <div class="field"><label for="signupName">ชื่อที่แสดงในระบบ</label><input id="signupName" type="text" maxlength="80" required placeholder="เช่น Dr. Somchai / สมชาย"></div>
-        <div class="field"><label for="signupEmail">อีเมล</label><input id="signupEmail" type="email" autocomplete="email" required placeholder="name@example.com"></div>
-        <div class="field"><label for="signupPassword">รหัสผ่าน</label><input id="signupPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="อย่างน้อย 8 ตัวอักษร"></div>
-        <div class="field"><label for="signupPassword2">ยืนยันรหัสผ่าน</label><input id="signupPassword2" type="password" autocomplete="new-password" required minlength="8" placeholder="กรอกรหัสผ่านอีกครั้ง"></div>
-        <button class="btn btn-primary auth-submit" id="signupSubmit" type="submit">สร้างบัญชี</button>
-        <div class="auth-note">ชื่อที่แสดงสามารถเปลี่ยนภายหลังได้จากเมนูบัญชี</div>
-      </form>
 
       <div class="auth-message" id="authMessage" aria-live="polite"></div>
       <div class="auth-config-warning hidden" id="authConfigWarning">ยังไม่ได้ตั้งค่า Supabase URL / Publishable key ใน index.html</div>
@@ -1181,6 +1185,7 @@ window.GCMS_SUPABASE_CONFIG = {
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v10H5z" stroke="currentColor" stroke-width="1.8"/></svg>
         <span>ใช้เฉพาะ Publishable key ในหน้าเว็บ ไม่ใส่ Secret/Service Role key ใน index.html</span>
       </div>
+      <div class="auth-copyright">© 2026 AreWarin X Arnold Ang</div>
     </section>
   </div>
 </div>
@@ -1324,6 +1329,7 @@ window.GCMS_SUPABASE_CONFIG = {
   <div class="footer-note">
     ข้อมูลของบัญชีนี้ถูกบันทึกแยกใน Supabase ·
     <button id="resetAllBtn" type="button">ล้างข้อมูลทั้งหมด</button>
+    <span class="copyright-credit footer-copyright">© 2026 AreWarin X Arnold Ang</span>
   </div>
 
 </div>
@@ -1375,11 +1381,12 @@ window.GCMS_SUPABASE_CONFIG = {
     ["แต่ละบัญชีมี workspace แยกจากกัน พร้อม Dashboard, Analysis Report, Top compounds, Common/Exclusive compounds, Compare และ Research Graphs", "Each account has a separate workspace with Dashboard, Analysis Report, Top compounds, Common/Exclusive compounds, Compare, and Research Graphs"],
     ["ข้อมูลแยกตามบัญชี", "Account-isolated data"], ["เห็นเฉพาะข้อมูลของผู้ใช้ที่เข้าสู่ระบบ", "Only the signed-in user's data is visible"],
     ["เปรียบเทียบ Sample, Solvent และ compounds", "Compare samples, solvents, and compounds"], ["ปรับกราฟ วิเคราะห์ และ Export ได้จาก workspace เดียว", "Adjust graphs, analyze, and export from one workspace"],
-    ["เข้าสู่พื้นที่ข้อมูลของคุณ หรือสร้างบัญชีใหม่เพื่อเริ่มบันทึกงานวิจัย", "Open your workspace or create a new account to start recording research data"],
+    ["เข้าสู่ระบบด้วยบัญชีที่ผู้ดูแลระบบจัดให้เท่านั้น", "Sign in with an account provided by an administrator only"],
+    ["ระบบนี้ไม่เปิดให้สมัครสมาชิกเอง หากต้องการบัญชี กรุณาติดต่อผู้ดูแลระบบ", "Self-registration is disabled. Contact an administrator if you need an account"],
+    ["Admin-managed accounts", "Admin-managed accounts"],
     ["ใช้เฉพาะ Publishable key ในหน้าเว็บ ไม่ใส่ Secret/Service Role key ใน index.html", "Use only the Publishable key in the browser; never put a Secret/Service Role key in index.html"],
     ["เข้าสู่ระบบนักวิจัย", "Researcher sign in"], ["ข้อมูล GC-MS ของแต่ละบัญชีถูกแยกจากกันด้วย Supabase Auth + Row Level Security", "Each account has a private GC-MS workspace protected by Supabase Auth + Row Level Security"],
-    ["เข้าสู่ระบบ", "Sign in"], ["สร้างบัญชี", "Create account"], ["อีเมล", "Email"], ["รหัสผ่าน", "Password"], ["อย่างน้อย 8 ตัวอักษร", "At least 8 characters"], ["ลืมรหัสผ่าน?", "Forgot password?"],
-    ["ชื่อที่แสดงในระบบ", "Display name"], ["ยืนยันรหัสผ่าน", "Confirm password"], ["กรอกรหัสผ่านอีกครั้ง", "Enter the password again"], ["ชื่อที่แสดงสามารถเปลี่ยนภายหลังได้จากเมนูบัญชี", "You can change your display name later from the account menu"],
+    ["เข้าสู่ระบบ", "Sign in"], ["อีเมล", "Email"], ["รหัสผ่าน", "Password"], ["อย่างน้อย 8 ตัวอักษร", "At least 8 characters"], ["ลืมรหัสผ่าน?", "Forgot password?"],
     ["ยังไม่ได้ตั้งค่า Supabase URL / Publishable key ใน index.html", "Supabase URL / publishable key has not been configured in index.html"], ["แก้ไขชื่อที่แสดง", "Edit display name"], ["ออกจากระบบ", "Sign out"],
     ["โปรไฟล์ผู้ใช้", "User profile"], ["ชื่อผู้วิจัย", "Researcher name"], ["ยกเลิก", "Cancel"], ["บันทึกชื่อ", "Save name"], ["ตั้งรหัสผ่านใหม่", "Set a new password"], ["รหัสผ่านใหม่", "New password"], ["บันทึกรหัสผ่านใหม่", "Save new password"],
     ["ข้อมูลของบัญชีนี้ถูกบันทึกแยกใน Supabase", "This account's data is stored separately in Supabase"],
@@ -1665,7 +1672,6 @@ window.GCMS_SUPABASE_CONFIG = {
   var currentAuthUser = null;
   var currentProfile = null;
   var authUiWired = false;
-  var authMode = "login";
 
   function getSupabaseConfig() {
     var cfg = window.GCMS_SUPABASE_CONFIG || {};
@@ -1680,14 +1686,7 @@ window.GCMS_SUPABASE_CONFIG = {
     el.className = "auth-message" + (type ? " " + type : "");
   }
   function setAuthBusy(busy) {
-    ["loginSubmit","signupSubmit","forgotPasswordBtn"].forEach(function(id){ var el=document.getElementById(id); if(el) el.disabled=!!busy; });
-  }
-  function setAuthMode(mode) {
-    authMode = mode === "signup" ? "signup" : "login";
-    var lt=document.getElementById("authLoginTab"), st=document.getElementById("authSignupTab"), lf=document.getElementById("loginForm"), sf=document.getElementById("signupForm");
-    if(lt)lt.classList.toggle("active",authMode==="login"); if(st)st.classList.toggle("active",authMode==="signup");
-    if(lf)lf.classList.toggle("hidden",authMode!=="login"); if(sf)sf.classList.toggle("hidden",authMode!=="signup");
-    setAuthMessage("");
+    ["loginSubmit","forgotPasswordBtn"].forEach(function(id){ var el=document.getElementById(id); if(el) el.disabled=!!busy; });
   }
   function showAuthGate() {
     var gate=document.getElementById("authGate"), app=document.getElementById("app");
@@ -1728,20 +1727,6 @@ window.GCMS_SUPABASE_CONFIG = {
     catch(err){ setAuthMessage(err&&err.message?err.message:"เข้าสู่ระบบไม่สำเร็จ","err"); }
     finally{ setAuthBusy(false); }
   }
-  async function handleSignupSubmit(ev) {
-    ev.preventDefault(); if(!sbClient)return;
-    var name=document.getElementById("signupName").value.trim(), email=document.getElementById("signupEmail").value.trim(), p1=document.getElementById("signupPassword").value, p2=document.getElementById("signupPassword2").value;
-    if(name.length<2){setAuthMessage("กรุณาระบุชื่อที่แสดงอย่างน้อย 2 ตัวอักษร","err");return;}
-    if(p1.length<8){setAuthMessage("รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร","err");return;}
-    if(p1!==p2){setAuthMessage("รหัสผ่านทั้งสองช่องไม่ตรงกัน","err");return;}
-    setAuthBusy(true); setAuthMessage("กำลังสร้างบัญชี...");
-    try{
-      var r=await sbClient.auth.signUp({email:email,password:p1,options:{data:{display_name:name}}}); if(r.error)throw r.error;
-      if(r.data&&r.data.session){setAuthMessage("สร้างบัญชีและเข้าสู่ระบบแล้ว","ok");}
-      else setAuthMessage("สร้างบัญชีแล้ว กรุณาตรวจอีเมลเพื่อยืนยันบัญชีก่อนเข้าสู่ระบบ","ok");
-    }catch(err){setAuthMessage(err&&err.message?err.message:"สร้างบัญชีไม่สำเร็จ","err");}
-    finally{setAuthBusy(false);}
-  }
   async function sendPasswordReset() {
     if(!sbClient)return; var email=document.getElementById("loginEmail").value.trim();
     if(!email){setAuthMessage("กรอกอีเมลก่อน แล้วกดลืมรหัสผ่านอีกครั้ง","err");return;}
@@ -1761,9 +1746,7 @@ window.GCMS_SUPABASE_CONFIG = {
   async function saveRecoveredPassword(){var input=document.getElementById("newPasswordInput"),msg=document.getElementById("passwordMessage"),p=input?input.value:"";if(p.length<8){if(msg){msg.textContent="รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร";msg.className="auth-message err";}return;}var r=await sbClient.auth.updateUser({password:p});if(r.error){if(msg){msg.textContent=r.error.message;msg.className="auth-message err";}return;}if(msg){msg.textContent="เปลี่ยนรหัสผ่านแล้ว";msg.className="auth-message ok";}setTimeout(function(){var b=document.getElementById("passwordBackdrop");if(b)b.classList.add("hidden");},700);}
   function wireAuthUi(){
     if(authUiWired)return;authUiWired=true;
-    document.getElementById("authLoginTab").addEventListener("click",function(){setAuthMode("login");});
-    document.getElementById("authSignupTab").addEventListener("click",function(){setAuthMode("signup");});
-    document.getElementById("loginForm").addEventListener("submit",handleLoginSubmit); document.getElementById("signupForm").addEventListener("submit",handleSignupSubmit);
+    document.getElementById("loginForm").addEventListener("submit",handleLoginSubmit);
     document.getElementById("forgotPasswordBtn").addEventListener("click",sendPasswordReset);
     var chip=document.getElementById("accountChip"),menu=document.getElementById("accountMenu"); chip.addEventListener("click",function(){var open=menu.classList.toggle("hidden");chip.setAttribute("aria-expanded",open?"false":"true");});
     document.getElementById("editProfileBtn").addEventListener("click",function(){menu.classList.add("hidden");openProfileModal();}); document.getElementById("logoutBtn").addEventListener("click",doLogout);
