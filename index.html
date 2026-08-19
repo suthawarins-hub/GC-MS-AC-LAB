@@ -3921,6 +3921,9 @@ window.GCMS_SUPABASE_CONFIG = {
     '</div></div>';
 
     el.innerHTML = html;
+    // Sample Explorer lives inside renderResearch(), so its DOM is replaced on every Research re-render.
+    // Bind it immediately after innerHTML so Compare / Select All / View sample only / solvent chips / pagination work.
+    wireSampleExplorer('research');
     wireResearchEvents();
     researchApplySearchFilters();
     requestAnimationFrame(function () {
