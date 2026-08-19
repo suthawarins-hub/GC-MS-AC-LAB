@@ -866,6 +866,12 @@ body:before{
 .dashboard-bento>.bento-chromatogram{grid-column:1/-1;margin:0;min-height:154px;background:linear-gradient(135deg,#FFFFFF 0%,#F8FCFB 100%);}
 .dashboard-bento>.bento-charts{grid-column:1/-1;margin:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;}
 .dashboard-bento>.bento-charts>.card{grid-column:span 6;margin:0;min-height:270px;}
+.dashboard-bento>.bento-charts>.bento-line-trend{grid-column:1/-1;min-height:330px;background:linear-gradient(145deg,#fff 0%,#F5FBFA 100%);}
+.chart-subtitle{margin:-8px 0 10px;color:var(--ink-soft);font-size:11px;}
+.line-chart-legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:2px 0 8px;font-size:10.5px;color:var(--ink-soft);font-family:var(--font-mono);}
+.line-chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+.line-chart-legend i{width:18px;height:3px;border-radius:99px;display:inline-block;}
+.dashboard-line-svg{width:100%;height:238px;display:block;overflow:visible;}
 .dashboard-bento>.bento-charts>.card:nth-child(1){background:linear-gradient(145deg,#fff 0%,#FBF8F6 100%);}
 .dashboard-bento>.bento-charts>.card:nth-child(2){background:linear-gradient(145deg,#fff 0%,#F4FBFA 100%);}
 .dashboard-bento>.bento-charts>.card:nth-child(3){background:linear-gradient(145deg,#fff 0%,#F7FAFC 100%);}
@@ -2349,6 +2355,46 @@ window.GCMS_SUPABASE_CONFIG = {
       bars + labels + '</svg>';
   }
 
+  function renderMultiLineChartSVG(data, series, opts) {
+    opts = opts || {};
+    series = series || [];
+    if (!data.length || !series.length) return '<div class="empty-chart">ยังไม่มีข้อมูลเพียงพอ</div>';
+    var W = 760, H = opts.height || 238, padL = 42, padR = 18, padB = 48, padT = 18;
+    var innerW = W - padL - padR, innerH = H - padT - padB;
+    var allValues = [];
+    data.forEach(function(d){ series.forEach(function(s){ var v=Number(d[s.key]); if(isFinite(v)) allValues.push(v); }); });
+    var maxV = Math.max.apply(null, allValues.concat([1]));
+    maxV = Math.max(1, Math.ceil(maxV));
+    var xAt = function(i){ return data.length <= 1 ? padL + innerW/2 : padL + (i/(data.length-1))*innerW; };
+    var yAt = function(v){ return padT + innerH - ((Number(v)||0)/maxV)*innerH; };
+    var grid = '', yLabels = '';
+    for(var g=0;g<=4;g++){
+      var val = maxV*(g/4), y = yAt(val);
+      grid += '<line x1="'+padL+'" y1="'+y.toFixed(1)+'" x2="'+(W-padR)+'" y2="'+y.toFixed(1)+'" stroke="var(--line-soft)" stroke-width="1"></line>';
+      yLabels += '<text x="'+(padL-8)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end" font-size="9.5" font-family="var(--font-mono)" fill="var(--ink-soft)">'+Math.round(val)+'</text>';
+    }
+    var paths='', dots='';
+    series.forEach(function(sr){
+      var pts=[];
+      data.forEach(function(d,i){ pts.push(xAt(i).toFixed(1)+','+yAt(d[sr.key]).toFixed(1)); });
+      paths += '<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+sr.color+'" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></polyline>';
+      data.forEach(function(d,i){
+        var x=xAt(i), y=yAt(d[sr.key]), val=Number(d[sr.key])||0;
+        dots += '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.6" fill="#fff" stroke="'+sr.color+'" stroke-width="2"><title>'+escapeHtml(d.tooltip || d.label)+' · '+escapeHtml(sr.label)+': '+val+'</title></circle>';
+      });
+    });
+    var labels='';
+    var step = data.length > 10 ? Math.ceil(data.length/7) : 1;
+    data.forEach(function(d,i){
+      if(i%step!==0 && i!==data.length-1) return;
+      labels += '<text x="'+xAt(i).toFixed(1)+'" y="'+(H-13)+'" text-anchor="middle" font-size="9.5" fill="var(--ink-soft)">'+escapeHtml(d.label)+'</text>';
+    });
+    var legend = '<div class="line-chart-legend">'+series.map(function(sr){return '<span><i style="background:'+sr.color+'"></i>'+escapeHtml(sr.label)+'</span>';}).join('')+'</div>';
+    return legend + '<svg class="dashboard-line-svg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="'+escapeHtml(opts.ariaLabel || 'Line chart')+'">'+
+      grid+yLabels+paths+dots+labels+
+      '<line x1="'+padL+'" y1="'+(H-padB)+'" x2="'+(W-padR)+'" y2="'+(H-padB)+'" stroke="var(--line)" stroke-width="1"></line></svg>';
+  }
+
   function renderHBarChartSVG(data) {
     if (!data.length) return '<div class="empty-chart">ยังไม่มีข้อมูลเพียงพอ</div>';
     var maxV = Math.max.apply(null, data.map(function (d) { return d.value; }).concat([1]));
@@ -2564,7 +2610,22 @@ window.GCMS_SUPABASE_CONFIG = {
       { label: "<70 / missing", value: tierCounts.low, color: "var(--bad)" }
     ];
 
+    var qualityTrendRuns = runsIndex.slice().sort(function(a,b){
+      return String(a.date || a.createdAt || '').localeCompare(String(b.date || b.createdAt || '')) || Number(a.runNo || 0) - Number(b.runNo || 0);
+    }).slice(-14);
+    var qualityTrendData = qualityTrendRuns.map(function(r){
+      var rows = allCompounds.filter(function(c){ return c.runId === r.id; });
+      return {
+        label: qualityTrendRuns.length > 9 ? ('R'+r.runNo) : (fmtDate(r.date) || ('R'+r.runNo)),
+        tooltip: (r.sample || 'Sample')+' · '+fmtDate(r.date)+' · Run '+r.runNo,
+        s70: rows.filter(function(c){return compoundMatchesScoreMode(c,'qualified');}).length,
+        s80: rows.filter(function(c){return compoundMatchesScoreMode(c,'score80');}).length,
+        s90: rows.filter(function(c){return compoundMatchesScoreMode(c,'high');}).length
+      };
+    });
+
     html += '<div class="charts-grid bento-charts">';
+    html += '<div class="card bento-line-trend"><div class="section-title">Peak Quality Trend — จำนวน Peaks ที่ผ่านเกณฑ์ในแต่ละ Run</div><div class="chart-subtitle">แสดงสูงสุด 14 Runs ล่าสุด · เปรียบเทียบ Score ≥70 / ≥80 / ≥90</div>' + renderMultiLineChartSVG(qualityTrendData,[{key:'s70',label:'Score ≥70',color:'var(--accent-2)'},{key:'s80',label:'Score ≥80',color:'#4F7FA8'},{key:'s90',label:'Score ≥90',color:'var(--good)'}],{ariaLabel:'Peak quality trend by run'}) + '</div>';
     html += '<div class="card"><div class="section-title">จำนวนครั้งที่วิเคราะห์ต่อเดือน</div>' + renderBarChartSVG(monthData) + '</div>';
     html += '<div class="card"><div class="section-title">สัดส่วนตาม Solvent</div>' + renderDonutSVG(solventSegs, { centerLabel: "ครั้ง" }) + '</div>';
     html += '<div class="card"><div class="section-title">ตัวอย่างที่วิเคราะห์บ่อยที่สุด</div>' + renderHBarChartSVG(sampleData) + '</div>';
