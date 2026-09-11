@@ -1808,7 +1808,7 @@ window.GCMS_SUPABASE_CONFIG = {
     reportComparison:{th:["Report Comparison","เปรียบเทียบ Run/Sample จาก Compare Tray ในหน้า Report เดียว","มี Peak Profile overlay, Heatmap, Top compounds และ Common compounds","ควรใช้ตัวกรอง Solvent/Score เดียวกันเมื่ออยากเทียบเชิงทดลองอย่างเป็นธรรม"],en:["Report Comparison","Compares selected runs/samples from the Compare Tray in one report.","Includes peak-profile overlay, heatmap, top compounds, and common compounds.","Use consistent solvent and score filters for fair experimental comparison."]},
     commonCompounds:{th:["Common Compounds","หารายชื่อสารที่พบอย่างน้อย 1 Run ในทุก Sample ที่เลือก","จำนวน Runs ที่พบจะแสดงแยกเพื่อให้เห็นความสม่ำเสมอของ replicate","เหมาะสำหรับหาสารร่วมก่อนส่งไป Heatmap หรือกราฟเปรียบเทียบ"],en:["Common Compounds","Finds compounds detected in at least one run of every selected sample.","Run detection counts are shown to reveal replicate consistency.","Useful for identifying shared compounds before heatmap or comparison analysis."]},
     presenceAnalysis:{th:["Compound Presence & Exclusivity","สรุปว่าสารแต่ละชนิดพบในกี่ Sample และคิด Prevalence จาก Sample ที่เลือกใน Compare","โหมด Shared เลือกได้ว่าต้องพบอย่างน้อย X Sample หรือเท่ากับ X Sample โดย X เริ่มที่ 2","Exclusive to Sample = พบเฉพาะ Sample เดียวในชุดเปรียบเทียบ; Exclusive to Plant species = พบเฉพาะ species เดียว แม้จะพบหลายส่วนของพืช species นั้น"],en:["Compound Presence & Exclusivity","Summarizes how many selected samples contain each compound and calculates prevalence across the comparison set.","Shared mode supports at least X or exactly X samples, with X starting at 2.","Sample-exclusive means detected in only one selected sample; species-exclusive means detected only in one plant species, even if present in multiple plant parts of that species."]},
-    compoundLibrary:{th:["Compound Library / คลังสาร","รวมสารที่ตรวจพบจาก GC-MS แบบไม่ซ้ำ พร้อมสถิติการพบ ข้อมูลระบุสาร และความเกี่ยวข้องต่อสุขภาพแบบสั้น","AI Compound Knowledge ให้เลือก Score ขั้นต่ำ คัดลอก Prompt และนำตาราง Common name / Thai common name / Properties-Benefits กลับมาบันทึกเพื่อใช้ซ้ำทุก Run","กดดึงข้อมูลอ้างอิงเพื่อเติมชื่อมาตรฐาน สูตรโมเลกุล รวมถึง annotation ด้าน Pharmacology, biological role และ Safety จาก PubChem","คำว่า Health relevance หมายถึงสิ่งที่มีข้อมูลอ้างอิงว่าสารเกี่ยวข้องกับชีววิทยา สุขภาพ ยา หรือความปลอดภัยอย่างไร ไม่ได้แปลว่าการพบสารในตัวอย่างพิสูจน์ว่าตัวอย่างนั้นดีต่อสุขภาพ"],en:["Compound Library","Collects unique GC-MS compounds with detection statistics, identity information, and a concise health-relevance summary.","AI Compound Knowledge can filter by minimum score, copy an AI-ready prompt, and import Common name / Thai common name / Properties-Benefits for reuse across runs.","Reference lookup adds standard identity data plus PubChem annotations on pharmacology, biological role, medication, and safety.","Health relevance describes documented biological, clinical, or safety context; detecting a compound does not by itself prove that the sample provides a health benefit."]},
+    compoundLibrary:{th:["Compound Library / คลังสาร","รวมสารที่ตรวจพบจาก GC-MS แบบไม่ซ้ำ พร้อมสถิติการพบ ข้อมูลระบุสาร และความเกี่ยวข้องต่อสุขภาพแบบสั้น","AI Compound Knowledge ให้เลือก Score ขั้นต่ำ คัดลอก Prompt และนำตาราง Common name / Thai common name / Properties-Benefits / References / Source URL กลับมาบันทึกเพื่อใช้ซ้ำทุก Run","กดดึงข้อมูลอ้างอิงเพื่อเติมชื่อมาตรฐาน สูตรโมเลกุล รวมถึง annotation ด้าน Pharmacology, biological role และ Safety จาก PubChem","คำว่า Health relevance หมายถึงสิ่งที่มีข้อมูลอ้างอิงว่าสารเกี่ยวข้องกับชีววิทยา สุขภาพ ยา หรือความปลอดภัยอย่างไร ไม่ได้แปลว่าการพบสารในตัวอย่างพิสูจน์ว่าตัวอย่างนั้นดีต่อสุขภาพ"],en:["Compound Library","Collects unique GC-MS compounds with detection statistics, identity information, and a concise health-relevance summary.","AI Compound Knowledge can filter by minimum score, copy an AI-ready prompt, and import Common name / Thai common name / Properties-Benefits / References / Source URL for reuse across runs.","Reference lookup adds standard identity data plus PubChem annotations on pharmacology, biological role, medication, and safety.","Health relevance describes documented biological, clinical, or safety context; detecting a compound does not by itself prove that the sample provides a health benefit."]},
     researchGraph:{th:["Research Graph Studio","พื้นที่วิเคราะห์เปรียบเทียบแบบยืดหยุ่น เลือก Run ได้ไม่จำกัด พร้อมเลือก Compound, Metric, Normalization และ Grouping","Peak profile overlay ใช้ดูตำแหน่งพีค, Compound comparison ใช้เทียบสาร, Heatmap ใช้ดูหลายสารหลาย Run","ก่อนสรุปผลควรตรวจจำนวน replicate และเงื่อนไขทดลองให้สอดคล้องกัน"],en:["Research Graph Studio","Flexible comparison workspace with unlimited run selection plus compounds, metrics, normalization, and grouping.","Use peak overlay for peak locations, compound comparison for selected compounds, and heatmap for many compounds across runs.","Before interpretation, verify replicate counts and experimental conditions are comparable."]},
     graphDisplay:{th:["Graph Display Options","เลือกวิธีนำเสนอข้อมูลชุดเดียวกัน เช่นแท่ง เส้น จุด หรือ stick peak โดยไม่เปลี่ยนข้อมูลต้นฉบับ","Error bar จะแสดง SD เมื่อมีการรวม replicate; Legend/Grid/ขนาดกราฟปรับเพื่อให้อ่านง่ายขึ้น","เส้นที่เชื่อม peak เป็นเพียงการช่วยมองแนวโน้มของจุดที่ตรวจพบ ไม่ใช่ raw TIC chromatogram"],en:["Graph Display Options","Choose how the same data are presented, such as bars, lines, markers, or stick peaks, without changing the underlying data.","Error bars show SD when replicates are grouped; legend, grid, and plot size can be adjusted for readability.","Lines connecting detected peaks are only a visual aid and are not a reconstructed raw TIC chromatogram."]}
   };
@@ -1878,7 +1878,7 @@ window.GCMS_SUPABASE_CONFIG = {
     showAppShell();
     if(!appInitialized) await initApp(); else { await loadAll(); refreshAll(); applyLanguage(currentLang,false); }
   }
-  function clearWorkspaceMemory(){ runsIndex=[]; allCompounds=[]; allSpectra=[]; parsedPreview=[]; reportState.compareRuns=[]; intelligenceState=defaultIntelligenceState(); compoundLibraryCache={}; researchSuite=defaultResearchSuite(); compoundLibraryState={q:"",status:"all",sort:"occurrence",page:1,pageSize:12,syncing:false}; compoundKnowledgeState={minScore:70,importText:""}; exportOptions={includeBenefits:false}; reportNavigationFocus=null; }
+  function clearWorkspaceMemory(){ runsIndex=[]; allCompounds=[]; allSpectra=[]; parsedPreview=[]; reportState.compareRuns=[]; intelligenceState=defaultIntelligenceState(); compoundLibraryCache={}; researchSuite=defaultResearchSuite(); compoundLibraryState={q:"",status:"all",sort:"occurrence",page:1,pageSize:12,syncing:false}; compoundKnowledgeState={minScore:70,importText:""}; exportOptions={includeBenefits:false,includeReferences:false}; reportNavigationFocus=null; }
   async function handleLoginSubmit(ev) {
     ev.preventDefault(); if(!sbClient)return;
     var email=document.getElementById("loginEmail").value.trim(), password=document.getElementById("loginPassword").value;
@@ -1965,7 +1965,7 @@ window.GCMS_SUPABASE_CONFIG = {
   var researchSuite = defaultResearchSuite();
   var compoundLibraryState = { q:"", status:"all", sort:"occurrence", page:1, pageSize:12, syncing:false };
   var compoundKnowledgeState = { minScore:70, importText:"" };
-  var exportOptions = { includeBenefits:false };
+  var exportOptions = { includeBenefits:false, includeReferences:false };
   var reportNavigationFocus = null;
   var sampleExplorerState = {
     report: { q:"", solvent:"all", compareSolvents:[], part:"all", dateFrom:"", dateTo:"", sort:"recent", page:1, pageSize:12 },
@@ -2188,6 +2188,9 @@ window.GCMS_SUPABASE_CONFIG = {
       compoundLibraryCache = r5 && r5.value ? JSON.parse(r5.value) : {};
       if(!compoundLibraryCache || typeof compoundLibraryCache !== "object" || Array.isArray(compoundLibraryCache)) compoundLibraryCache={};
     } catch (e) { compoundLibraryCache = {}; }
+    // Merge dedicated Compound Knowledge rows from Supabase over the legacy JSON cache.
+    // If the migration table has not been installed yet, the app keeps working from K_LIBRARY.
+    try { await loadCompoundKnowledgeTable(); } catch (_knowledgeLoadError) {}
     try {
       var r6 = await storageGet(K_RESEARCH_SUITE);
       var savedSuite = r6 && r6.value ? JSON.parse(r6.value) : {};
@@ -3126,6 +3129,60 @@ window.GCMS_SUPABASE_CONFIG = {
     var c=compoundKnowledgeFor(name);
     return String(c.aiBenefits || c.manualHealthSummary || '').trim();
   }
+  function compoundReferences(name){ return String((compoundKnowledgeFor(name).aiReferences)||'').trim(); }
+  function compoundSourceUrl(name){ return String((compoundKnowledgeFor(name).aiSourceUrl)||'').trim(); }
+
+  async function loadCompoundKnowledgeTable(){
+    if(!sbClient||!currentAuthUser)return false;
+    try{
+      var res=await sbClient.from('gcms_compound_knowledge')
+        .select('compound_name,compound_key,common_name,common_name_th,properties_benefits,references_text,source_url,source,updated_at')
+        .eq('user_id',currentAuthUser.id);
+      if(res.error)throw res.error;
+      (res.data||[]).forEach(function(row){
+        var key=libraryKey(row.compound_key||row.compound_name);if(!key)return;var old=compoundLibraryCache[key]||{};
+        compoundLibraryCache[key]=Object.assign({},old,{
+          aiKnowledgeVersion:2,
+          aiSource:row.source||old.aiSource||'AI',
+          aiUpdatedAt:row.updated_at||old.aiUpdatedAt||'',
+          aiCommonName:row.common_name||old.aiCommonName||'',
+          aiThaiCommonName:row.common_name_th||old.aiThaiCommonName||'',
+          aiBenefits:row.properties_benefits||old.aiBenefits||'',
+          aiReferences:row.references_text||old.aiReferences||'',
+          aiSourceUrl:row.source_url||old.aiSourceUrl||''
+        });
+      });
+      return true;
+    }catch(err){
+      console.warn('gcms_compound_knowledge is unavailable; using legacy compound cache.',err);
+      return false;
+    }
+  }
+
+  async function upsertCompoundKnowledgeRows(rows){
+    if(!rows||!rows.length||!sbClient||!currentAuthUser)return false;
+    var payload=rows.map(function(r){var cached=compoundLibraryCache[libraryKey(r.compound)]||{};return {
+      user_id:currentAuthUser.id,
+      compound_name:r.compound,
+      compound_key:libraryKey(r.compound),
+      common_name:String(cached.aiCommonName||r.commonName||'').trim()||null,
+      common_name_th:String(cached.aiThaiCommonName||r.thaiCommonName||'').trim()||null,
+      properties_benefits:String(cached.aiBenefits||r.benefits||'').trim()||null,
+      references_text:String(cached.aiReferences||r.references||'').trim()||null,
+      source_url:String(cached.aiSourceUrl||r.sourceUrl||'').trim()||null,
+      source:'AI',
+      updated_at:new Date().toISOString()
+    };});
+    try{
+      var res=await sbClient.from('gcms_compound_knowledge').upsert(payload,{onConflict:'user_id,compound_key'});
+      if(res.error)throw res.error;
+      return true;
+    }catch(err){
+      console.warn('Could not write gcms_compound_knowledge; legacy cache was still saved.',err);
+      showToast('บันทึกใน Compound Library แล้ว แต่ตาราง gcms_compound_knowledge ยังไม่พร้อม กรุณารัน SQL update',true);
+      return false;
+    }
+  }
   function aiKnowledgePromptRows(minScore){
     minScore=Number(minScore); if(!isFinite(minScore))minScore=70; minScore=Math.max(0,Math.min(100,minScore));
     var map={};
@@ -3138,17 +3195,25 @@ window.GCMS_SUPABASE_CONFIG = {
   function buildCompoundAiPrompt(minScore){
     var rows=aiKnowledgePromptRows(minScore),threshold=Math.max(0,Math.min(100,Number(minScore)||0));
     var intro=[
-      'ช่วยจัดทำข้อมูลสำหรับ Compound Library จากรายชื่อสาร GC-MS ด้านล่าง',
-      'เงื่อนไขสำคัญ:',
-      '1) ใช้เฉพาะสารที่ให้มา ห้ามเพิ่มหรือลบแถว',
-      '2) คงค่า Compound name ให้ตรงกับต้นฉบับทุกตัวอักษร เพื่อให้ระบบจับคู่กลับได้',
-      '3) Common name = ชื่อสามัญทั่วไป/ชื่อที่ใช้เรียกโดยทั่วไป (ถ้าไม่มีชื่อสามัญชัดเจน ให้ใช้ชื่อมาตรฐานที่เหมาะสม)',
-      '4) Thai common name = ชื่อสามัญภาษาไทยถ้ามี ถ้าไม่มีให้เว้นว่าง',
-      '5) Properties/Benefits = สรุปคุณสมบัติทางชีวภาพหรือสรรพคุณที่มีรายงานอย่างระมัดระวัง 1–2 ประโยค ไม่กล่าวเกินหลักฐาน และไม่สรุปว่าการตรวจพบด้วย GC-MS เท่ากับมีผลรักษาในตัวอย่าง',
-      '6) ตอบกลับเป็น TSV เท่านั้น (คั่นคอลัมน์ด้วย TAB) ห้ามใช้ Markdown table และห้ามใส่ข้อความก่อนหรือหลังตาราง',
-      '7) ใช้หัวตารางนี้ให้ตรง: Compound name\tCommon name\tThai common name\tProperties/Benefits',
+      'You are assisting with scientific annotation of compounds detected by GC-MS.',
       '',
-      'รายการนี้คัดจาก Score ≥ '+threshold+':',
+      'For EACH compound below, provide the requested information while keeping the original GC-MS Compound name EXACTLY unchanged so the system can match the row back to its source.',
+      '',
+      'REQUIREMENTS:',
+      '1) Compound name: copy the supplied GC-MS compound name exactly. Do not rename, normalize, abbreviate, add, or omit compounds.',
+      '2) Common name: provide an established/common English name if available. If no established common name exists, use the most appropriate recognized name; do not invent one.',
+      '3) Thai common name: provide a recognized Thai common name when available. If none is established, provide a cautious Thai transliteration or leave blank; do not invent medicinal/traditional names.',
+      '4) Properties / Benefits: summarize documented biological activity, pharmacological properties, food/aroma relevance, industrial use, or other scientifically supported properties in 1–2 concise sentences.',
+      '5) Clearly distinguish experimental/in-vitro or in-vivo activity, traditional/reported use, and established clinical benefit. Detection by GC-MS alone does NOT prove that the sample provides the same health benefit.',
+      '6) References: cite reliable sources that actually support the Properties / Benefits. Prefer peer-reviewed journal articles and authoritative databases/agencies such as PubMed/NCBI, PubChem, NIH, WHO, EFSA, FDA, or EMA. Include author or organization, year, journal/database, and DOI/PMID when available.',
+      '7) Source URL: provide a DOI URL, PubMed URL, PubChem URL, or other authoritative source URL. Multiple URLs may be separated by " | ".',
+      '8) NEVER fabricate references, article titles, authors, journals, DOI, PMID, or URLs. If a reliable reference cannot be verified, write "Reference not verified" in References and leave Source URL blank.',
+      '9) Do not infer medicinal benefit solely from chemical class or structural similarity. Be conservative with health claims.',
+      '10) Return ONLY TSV (TAB-separated values). Do not use a Markdown table, code fence, introduction, explanation, or text after the table.',
+      '11) Use EXACTLY this header:',
+      'Compound name\tCommon name\tThai common name\tProperties / Benefits\tReferences\tSource URL',
+      '',
+      'The following list was selected from GC-MS identifications with Score ≥ '+threshold+':',
       'Compound name\tBest score'
     ];
     rows.forEach(function(r){intro.push(r.name+'\t'+fmtNum(r.bestScore,1));});
@@ -3175,39 +3240,55 @@ window.GCMS_SUPABASE_CONFIG = {
       compound:['compoundname','compound','originalcompound','originalname','ชื่อสาร'],
       common:['commonname','common','trivialname','ทั่วไป','ชื่อสามัญ','ชื่อสามัญทั่วไป'],
       thai:['thaicommonname','thainame','ชื่อไทย','ชื่อสามัญภาษาไทย'],
-      benefits:['propertiesbenefits','benefits','properties','healthrelevance','biologicalrelevance','สรรพคุณ','ประโยชน์','คุณสมบัติ','คุณสมบัติสรรพคุณ']
+      benefits:['propertiesbenefits','benefits','properties','healthrelevance','biologicalrelevance','สรรพคุณ','ประโยชน์','คุณสมบัติ','คุณสมบัติสรรพคุณ'],
+      references:['references','reference','refs','citation','citations','อ้างอิง','เอกสารอ้างอิง','แหล่งอ้างอิง'],
+      sourceUrl:['sourceurl','url','source','link','links','doiurl','pubmedurl','pubchemurl','แหล่งที่มา','ลิงก์']
     };
     function idx(type){for(var i=0;i<hdr.length;i++){if(aliases[type].indexOf(hdr[i])!==-1)return i;}return -1;}
-    var ci=idx('compound'),co=idx('common'),ti=idx('thai'),bi=idx('benefits'),start=1;
-    if(ci<0){ci=0;co=1;ti=2;bi=3;start=0;}
-    var out=[];for(var r=start;r<matrix.length;r++){var row=matrix[r],name=String(row[ci]||'').trim();if(!name||/^compound\s*name$/i.test(name))continue;out.push({compound:name,commonName:String(row[co]||'').trim(),thaiCommonName:String(row[ti]||'').trim(),benefits:String(row[bi]||'').trim()});}
+    var ci=idx('compound'),co=idx('common'),ti=idx('thai'),bi=idx('benefits'),ri=idx('references'),ui=idx('sourceUrl'),start=1;
+    if(ci<0){ci=0;co=1;ti=2;bi=3;ri=4;ui=5;start=0;}
+    var out=[];for(var r=start;r<matrix.length;r++){var row=matrix[r],name=String(row[ci]||'').trim();if(!name||/^compound\s*name$/i.test(name))continue;out.push({compound:name,commonName:String(row[co]||'').trim(),thaiCommonName:String(row[ti]||'').trim(),benefits:String(row[bi]||'').trim(),references:String(row[ri]||'').trim(),sourceUrl:String(row[ui]||'').trim()});}
     return out;
   }
   async function importCompoundAiKnowledge(text){
-    var rows=parseCompoundKnowledgeTable(text);if(!rows.length){showToast('ไม่พบตาราง AI ที่อ่านได้ กรุณาใช้ TSV ตามหัวตารางที่กำหนด',true);return;}
-    var known=new Set(libraryUniqueRows().map(function(d){return d.key;})),saved=0,unmatched=[];
-    rows.forEach(function(r){var key=libraryKey(r.compound);if(!known.has(key)){unmatched.push(r.compound);return;}var old=compoundLibraryCache[key]||{},patch={aiKnowledgeVersion:1,aiSource:'manual-ai-import',aiUpdatedAt:new Date().toISOString()};if(r.commonName)patch.aiCommonName=r.commonName;if(r.thaiCommonName)patch.aiThaiCommonName=r.thaiCommonName;if(r.benefits)patch.aiBenefits=r.benefits;compoundLibraryCache[key]=Object.assign({},old,patch);saved++;});
-    if(saved)await persistCompoundLibrary();compoundKnowledgeState.importText='';renderLibrary();showToast('บันทึกข้อมูล AI '+saved+' สาร'+(unmatched.length?' · จับคู่ไม่ได้ '+unmatched.length+' สาร':'')+(unmatched.length?' (ตรวจ Compound name)':''),!saved);
+    var rows=parseCompoundKnowledgeTable(text);if(!rows.length){showToast('ไม่พบตาราง AI ที่อ่านได้ กรุณาใช้ TSV ตามหัวตาราง 6 คอลัมน์ที่กำหนด',true);return;}
+    var known=new Set(libraryUniqueRows().map(function(d){return d.key;})),saved=0,unmatched=[],matched=[];
+    rows.forEach(function(r){
+      var key=libraryKey(r.compound);if(!known.has(key)){unmatched.push(r.compound);return;}
+      var old=compoundLibraryCache[key]||{},patch={aiKnowledgeVersion:2,aiSource:'AI',aiUpdatedAt:new Date().toISOString()};
+      if(r.commonName)patch.aiCommonName=r.commonName;
+      if(r.thaiCommonName)patch.aiThaiCommonName=r.thaiCommonName;
+      if(r.benefits)patch.aiBenefits=r.benefits;
+      if(r.references)patch.aiReferences=r.references;
+      if(r.sourceUrl)patch.aiSourceUrl=r.sourceUrl;
+      compoundLibraryCache[key]=Object.assign({},old,patch);matched.push(r);saved++;
+    });
+    if(saved){
+      await persistCompoundLibrary();
+      await upsertCompoundKnowledgeRows(matched);
+    }
+    compoundKnowledgeState.importText='';renderLibrary();
+    showToast('บันทึกข้อมูล AI '+saved+' สาร'+(unmatched.length?' · จับคู่ไม่ได้ '+unmatched.length+' สาร':'')+(unmatched.length?' (ตรวจ Compound name)':''),!saved);
   }
   function renderAiKnowledgeWorkflow(){
-    var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),remembered=libraryUniqueRows().filter(function(d){var c=libraryCacheFor(d.name)||{};return !!(c.aiCommonName||c.aiThaiCommonName||c.aiBenefits);}).length;
+    var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),remembered=libraryUniqueRows().filter(function(d){var c=libraryCacheFor(d.name)||{};return !!(c.aiCommonName||c.aiThaiCommonName||c.aiBenefits||c.aiReferences||c.aiSourceUrl);}).length;
     return '<section class="ai-knowledge-panel">'+
-      '<div class="ai-knowledge-head"><div><div class="ai-knowledge-title">✦ AI Compound Knowledge · คัดลอกชื่อสาร → เติมชื่อสามัญ/สรรพคุณ</div><div class="ai-knowledge-sub">เลือกระดับ Score ขั้นต่ำ ระบบจะรวมชื่อสารแบบไม่ซ้ำและสร้าง Prompt พร้อมส่ง AI จากนั้นนำตาราง TSV ที่ AI ตอบกลับมาวางเพื่อบันทึกเป็นความจำของ Compound Library แยกตามบัญชี</div></div><span class="library-status ok">Remembered '+remembered+'</span></div>'+
+      '<div class="ai-knowledge-head"><div><div class="ai-knowledge-title">✦ AI Compound Knowledge · ชื่อสามัญ / สรรพคุณ / อ้างอิง</div><div class="ai-knowledge-sub">เลือกระดับ Score ขั้นต่ำ ระบบจะรวมชื่อสารแบบไม่ซ้ำและสร้าง Prompt ที่บังคับให้ AI ระบุแหล่งอ้างอิงโดยไม่สร้างข้อมูลขึ้นเอง จากนั้นวาง TSV 6 คอลัมน์กลับมาเพื่อบันทึกเป็นความจำของ Compound Library แยกตามบัญชี</div></div><span class="library-status ok">Remembered '+remembered+'</span></div>'+
       '<div class="ai-knowledge-controls"><div class="field"><label>Minimum score</label><input id="aiKnowledgeScore" type="number" min="0" max="100" step="1" value="'+escapeHtml(compoundKnowledgeState.minScore)+'"></div><div class="ai-knowledge-count">พร้อมส่ง <b>'+rows.length+'</b> สารที่มี Score ≥ '+escapeHtml(compoundKnowledgeState.minScore)+'</div><button class="btn btn-primary" id="copyAiKnowledgePrompt" type="button"'+(!rows.length?' disabled':'')+'>คัดลอก Prompt สำหรับ AI</button></div>'+
-      '<div class="ai-knowledge-import"><div class="field"><label>วางตารางที่ AI ตอบกลับ (TSV)</label><textarea id="aiKnowledgeImport" placeholder="Compound name\tCommon name\tThai common name\tProperties/Benefits">'+escapeHtml(compoundKnowledgeState.importText||'')+'</textarea></div><div class="ai-knowledge-actions"><button class="btn btn-primary" id="importAiKnowledgeBtn" type="button">นำเข้าและจดจำ</button><button class="btn btn-sm" id="clearAiKnowledgeImport" type="button">ล้างช่อง</button></div></div>'+
-      '<div class="ai-knowledge-format"><b>Export behavior:</b> CSV จะเพิ่ม CommonName + ThaiCommonName อัตโนมัติจากคลังสาร ส่วน Properties/Benefits เลือกเปิดได้ด้วยตัวเลือก “รวมสรรพคุณ” ก่อนดาวน์โหลด · ระบบไม่แก้ชื่อ Compound ดิบจาก GC-MS</div>'+
+      '<div class="ai-knowledge-import"><div class="field"><label>วางตารางที่ AI ตอบกลับ (TSV)</label><textarea id="aiKnowledgeImport" placeholder="Compound name\tCommon name\tThai common name\tProperties / Benefits\tReferences\tSource URL">'+escapeHtml(compoundKnowledgeState.importText||'')+'</textarea></div><div class="ai-knowledge-actions"><button class="btn btn-primary" id="importAiKnowledgeBtn" type="button">นำเข้าและจดจำ</button><button class="btn btn-sm" id="clearAiKnowledgeImport" type="button">ล้างช่อง</button></div></div>'+
+      '<div class="ai-knowledge-format"><b>Export behavior:</b> CommonName + ThaiCommonName ติด CSV อัตโนมัติ · “รวมสรรพคุณ” เพิ่ม Properties / Benefits · “รวมอ้างอิง” เพิ่ม References + Source URL · ระบบไม่แก้ชื่อ Compound ดิบจาก GC-MS</div>'+
     '</section>';
   }
   function libraryCardHtml(d){
     var c=libraryCacheFor(d.name)||{}, status=c.status||'local', statusLabel=status==='ok'?'Reference':status==='loading'?'Loading…':status==='error'?'Not found':'Local only';
     var summary=c.manualSummary||c.description|| (currentLang==='en'?'Reference details have not been loaded yet.':'ยังไม่ได้ดึงข้อมูลอ้างอิง — กด “ดึงข้อมูล” เพื่อเติมข้อมูล');
-    var aiCommon=String(c.aiCommonName||'').trim(),aiThai=String(c.aiThaiCommonName||'').trim(),aiBenefits=String(c.aiBenefits||'').trim();
+    var aiCommon=String(c.aiCommonName||'').trim(),aiThai=String(c.aiThaiCommonName||'').trim(),aiBenefits=String(c.aiBenefits||'').trim(),aiRefs=String(c.aiReferences||'').trim(),aiUrl=String(c.aiSourceUrl||'').trim();
     var title=aiCommon||(c.title&&libraryKey(c.title)!==libraryKey(d.name)?c.title:''),health=libraryHealthSummary(c),safety=librarySafetySummary(c),hasRisk=(c.safetyTags||[]).some(function(t){return t!=='lowHazard';});
     var healthBadge=(c.healthTags&&c.healthTags.length)?(currentLang==='en'?'Referenced':'มีข้อมูลอ้างอิง'):(currentLang==='en'?'Limited data':'ข้อมูลจำกัด');
     return '<article class="library-card" data-library-card="'+escapeHtml(d.key)+'">'+
       '<div class="library-card-head"><div style="min-width:0"><div class="library-card-name">'+escapeHtml(d.name)+'</div>'+(title?'<div class="library-card-common">'+escapeHtml(title)+'</div>':'')+'</div><span class="library-status '+(status==='ok'?'ok':status==='error'?'err':status==='loading'?'loading':'')+'">'+escapeHtml(statusLabel)+'</span></div>'+
       '<div class="library-meta"><div class="library-meta-cell"><div class="k">Detected</div><div class="v">'+d.detections+' peaks · '+d.runs+' runs</div></div><div class="library-meta-cell"><div class="k">Samples</div><div class="v">'+d.samples+'</div></div><div class="library-meta-cell"><div class="k">Mean RT</div><div class="v">'+fmtNum(d.meanRt,3)+' min</div></div><div class="library-meta-cell"><div class="k">Mean score</div><div class="v">'+fmtNum(d.meanScore,1)+'</div></div></div>'+
-      ((aiCommon||aiThai||aiBenefits)?'<div class="library-ai-memory"><div class="library-ai-name">✦ AI memory</div>'+(aiCommon?'<b>Common name:</b> '+escapeHtml(aiCommon)+'<br>':'')+(aiThai?'<b>ชื่อไทย:</b> '+escapeHtml(aiThai)+'<br>':'')+(aiBenefits?'<b>สรรพคุณ:</b> '+escapeHtml(libraryShortText(aiBenefits,240)):'')+'</div>':'')+
+      ((aiCommon||aiThai||aiBenefits||aiRefs||aiUrl)?'<div class="library-ai-memory"><div class="library-ai-name">✦ AI memory</div>'+(aiCommon?'<b>Common name:</b> '+escapeHtml(aiCommon)+'<br>':'')+(aiThai?'<b>ชื่อไทย:</b> '+escapeHtml(aiThai)+'<br>':'')+(aiBenefits?'<b>สรรพคุณ:</b> '+escapeHtml(libraryShortText(aiBenefits,240))+'<br>':'')+(aiRefs?'<b>อ้างอิง:</b> '+escapeHtml(libraryShortText(aiRefs,260))+'<br>':'')+(aiUrl?'<b>Source URL:</b> '+escapeHtml(libraryShortText(aiUrl,260)):'')+'</div>':'')+
       '<div class="library-health"><div class="library-health-head"><span class="library-health-title">♥ '+(currentLang==='en'?'Health relevance':'ความสำคัญต่อสุขภาพ')+'</span><span class="library-health-badge">'+escapeHtml(healthBadge)+'</span></div><div class="library-health-text">'+escapeHtml(libraryShortText(health,260))+'</div>'+(c.healthEvidence?'<div class="library-health-evidence"><b>'+(currentLang==='en'?'Reference note:':'ข้อความอ้างอิง:')+'</b> '+escapeHtml(libraryShortText(c.healthEvidence,180))+'</div>':'')+'</div>'+
       (safety?'<div class="library-safety '+(hasRisk?'risk':'')+'"><b>⚠ '+(currentLang==='en'?'Safety':'ข้อควรระวัง')+':</b> '+escapeHtml(libraryShortText(safety,220))+(c.safetyEvidence?'<div class="library-health-evidence">'+escapeHtml(libraryShortText(c.safetyEvidence,150))+'</div>':'')+'</div>':'')+
       '<div class="library-summary"><b>'+(currentLang==='en'?'Identity / short reference':'ข้อมูลสารแบบสั้น')+'</b><br>'+escapeHtml(libraryShortText(summary,230))+'</div>'+
@@ -3224,11 +3305,11 @@ window.GCMS_SUPABASE_CONFIG = {
     var el=document.getElementById('viewLibrary');if(!el)return;
     var all=libraryUniqueRows(),q=String(compoundLibraryState.q||'').trim().toLowerCase();
     var enriched=all.map(function(d){d.cache=libraryCacheFor(d.name)||{};return d;});
-    if(q)enriched=enriched.filter(function(d){var c=d.cache||{};return [d.name,c.title,c.iupacName,c.formula,c.aiCommonName,c.aiThaiCommonName,c.aiBenefits,c.manualSummary,c.manualHealthSummary,c.description,(c.healthTags||[]).join(' '),(c.safetyTags||[]).join(' '),c.healthEvidence,c.safetyEvidence].some(function(v){return String(v||'').toLowerCase().indexOf(q)!==-1;});});
+    if(q)enriched=enriched.filter(function(d){var c=d.cache||{};return [d.name,c.title,c.iupacName,c.formula,c.aiCommonName,c.aiThaiCommonName,c.aiBenefits,c.aiReferences,c.aiSourceUrl,c.manualSummary,c.manualHealthSummary,c.description,(c.healthTags||[]).join(' '),(c.safetyTags||[]).join(' '),c.healthEvidence,c.safetyEvidence].some(function(v){return String(v||'').toLowerCase().indexOf(q)!==-1;});});
     if(compoundLibraryState.status==='referenced')enriched=enriched.filter(function(d){return d.cache&&d.cache.status==='ok';});
     if(compoundLibraryState.status==='missing')enriched=enriched.filter(function(d){return !d.cache||d.cache.status!=='ok';});
     enriched.sort(function(a,b){if(compoundLibraryState.sort==='name')return a.name.localeCompare(b.name);if(compoundLibraryState.sort==='score')return (b.meanScore||0)-(a.meanScore||0);if(compoundLibraryState.sort==='recent'){var ad=libraryLatestDetection(a.name),bd=libraryLatestDetection(b.name),ar=ad&&runById(ad.runId),br=bd&&runById(bd.runId);return String((br&&(br.createdAt||br.date))||'').localeCompare(String((ar&&(ar.createdAt||ar.date))||''));}return b.detections-a.detections;});
-    var total=all.length,refCount=all.filter(function(d){var c=libraryCacheFor(d.name);return c&&c.status==='ok'&&c.healthVersion===1;}).length,manualCount=all.filter(function(d){var c=libraryCacheFor(d.name);return c&&(c.manualSummary||c.manualHealthSummary||c.aiCommonName||c.aiThaiCommonName||c.aiBenefits);}).length;
+    var total=all.length,refCount=all.filter(function(d){var c=libraryCacheFor(d.name);return c&&c.status==='ok'&&c.healthVersion===1;}).length,manualCount=all.filter(function(d){var c=libraryCacheFor(d.name);return c&&(c.manualSummary||c.manualHealthSummary||c.aiCommonName||c.aiThaiCommonName||c.aiBenefits||c.aiReferences||c.aiSourceUrl);}).length;
     var pages=Math.max(1,Math.ceil(enriched.length/compoundLibraryState.pageSize));compoundLibraryState.page=Math.min(Math.max(1,compoundLibraryState.page),pages);var start=(compoundLibraryState.page-1)*compoundLibraryState.pageSize,shown=enriched.slice(start,start+compoundLibraryState.pageSize);
     var html='<div class="library-shell"><div class="library-hero"><section class="library-hero-main"><h2>'+featureTitleHtml(currentLang==='en'?'Compound Library':'Compound Library · คลังสาร','compoundLibrary')+'</h2><p>'+(currentLang==='en'?'A health-oriented compound library built from compounds detected in your GC-MS records. It summarizes documented biological/clinical relevance and safety context from public chemical annotations without changing your raw data.':'รวมสารที่ตรวจพบจาก GC-MS แบบไม่ซ้ำ พร้อมสรุปสั้น ๆ ว่าเกี่ยวข้องกับสุขภาพอย่างไร มีบทบาททางชีวภาพ/ยาอะไร และมีข้อควรระวังอะไร โดยไม่แก้ข้อมูลดิบของ GC-MS')+'</p><span class="library-source-badge"><span class="library-source-dot"></span>'+(currentLang==='en'?'Public reference lookup · cached per account':'Public reference lookup · เก็บ cache แยกตามบัญชี')+'</span></section><aside class="library-hero-side"><div class="library-kpis"><div class="library-kpi"><div class="v">'+total+'</div><div class="k">Unique compounds</div></div><div class="library-kpi"><div class="v">'+refCount+'</div><div class="k">Referenced</div></div><div class="library-kpi"><div class="v">'+(total-refCount)+'</div><div class="k">Waiting</div></div><div class="library-kpi"><div class="v">'+manualCount+'</div><div class="k">Admin notes</div></div></div></aside></div>'+
       renderAiKnowledgeWorkflow()+
@@ -3524,6 +3605,7 @@ window.GCMS_SUPABASE_CONFIG = {
       '<button class="btn btn-sm" id="reportCompareBtn" type="button">ส่งไป Compare</button>' +
       '<button class="btn btn-sm" id="reportPrintBtn" type="button">พิมพ์ / Save PDF</button>' +
       '<label class="export-option" title="Common name จะถูกรวมอัตโนมัติ"><input id="reportExportBenefits" type="checkbox"'+(exportOptions.includeBenefits?' checked':'')+'> รวมสรรพคุณ</label>' +
+      '<label class="export-option"><input id="reportExportReferences" type="checkbox"'+(exportOptions.includeReferences?' checked':'')+'> รวมอ้างอิง</label>' +
       '<button class="btn btn-sm" id="reportCsvBtn" type="button">Export CSV + ชื่อสามัญ</button>' +
     '</div>';
     html += renderReportBuilderPanel();
@@ -3593,6 +3675,7 @@ window.GCMS_SUPABASE_CONFIG = {
     var commonToResearch=$("#reportCommonToResearch"); if(commonToResearch)commonToResearch.addEventListener('click',function(){var runs=reportCompareRunObjects(),d=commonCompoundsAcrossSamples(runs,reportState.scoreMode);if(!d.compounds.length)return;researchState.selectedRuns=runs.map(function(r){return r.id;});researchState.selectedCompounds=d.compounds.map(function(c){return c.label;});researchState.userClearedCompounds=false;researchState.initialized=true;researchState.scoreMode=reportState.scoreMode;researchState.groupBy='sample';researchState.graphType=d.compounds.length>20?'heatmap':'compound';switchView('research');});
     var pr=$("#reportPrintBtn"); if(pr) pr.addEventListener("click",function(){window.print();});
     var reportBenefits=$("#reportExportBenefits"); if(reportBenefits) reportBenefits.addEventListener("change",function(){exportOptions.includeBenefits=!!this.checked;});
+    var reportReferences=$("#reportExportReferences"); if(reportReferences) reportReferences.addEventListener("change",function(){exportOptions.includeReferences=!!this.checked;});
     var csv=$("#reportCsvBtn"); if(csv) csv.addEventListener("click",exportReportCsv);
     document.querySelectorAll(".report-peak-row").forEach(function(tr){tr.addEventListener("click",function(){var run=reportRun();if(!run)return;var key=tr.getAttribute("data-key");var c=reportRows(run.id).find(function(x){return reportPeakKey(x)===key;});if(c) selectReportPeak(run,c);});});
     wireCompoundActionEvents(document.getElementById("viewReport"));
@@ -3943,7 +4026,7 @@ window.GCMS_SUPABASE_CONFIG = {
   }
 
   function exportReportCsv(){
-    var run=reportRun();if(!run)return;var rows=reportRows(run.id),header=['No','RT(min)','Compound','CommonName','ThaiCommonName','Score','PeakArea','RelativeArea(%)'];if(exportOptions.includeBenefits)header.push('Properties/Benefits');var lines=[header.join(',')];rows.forEach(function(c){var vals=[c.no,c.rt,c.compound,compoundCommonName(c.compound),compoundThaiCommonName(c.compound),c.score,c.peakArea,c.relArea];if(exportOptions.includeBenefits)vals.push(compoundBenefits(c.compound));lines.push(vals.map(function(v){var x=v===null||v===undefined?'':String(v);return /[,"\n]/.test(x)?'"'+x.replace(/"/g,'""')+'"':x;}).join(','));});var blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8;'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='gcms-analysis-report-'+String(run.sample).replace(/[^a-z0-9_-]+/gi,'_')+'.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+    var run=reportRun();if(!run)return;var rows=reportRows(run.id),header=['No','RT(min)','Compound','CommonName','ThaiCommonName','Score','PeakArea','RelativeArea(%)'];if(exportOptions.includeBenefits)header.push('Properties/Benefits');if(exportOptions.includeReferences)header.push('References','SourceURL');var lines=[header.join(',')];rows.forEach(function(c){var vals=[c.no,c.rt,c.compound,compoundCommonName(c.compound),compoundThaiCommonName(c.compound),c.score,c.peakArea,c.relArea];if(exportOptions.includeBenefits)vals.push(compoundBenefits(c.compound));if(exportOptions.includeReferences)vals.push(compoundReferences(c.compound),compoundSourceUrl(c.compound));lines.push(vals.map(function(v){var x=v===null||v===undefined?'':String(v);return /[,"\n]/.test(x)?'"'+x.replace(/"/g,'""')+'"':x;}).join(','));});var blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8;'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='gcms-analysis-report-'+String(run.sample).replace(/[^a-z0-9_-]+/gi,'_')+'.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
   }
 
 
@@ -5020,6 +5103,7 @@ window.GCMS_SUPABASE_CONFIG = {
     html += '<button class="btn btn-ghost btn-sm" id="clearFilterBtn" type="button">ล้างตัวกรอง</button>';
     html += '<div class="filter-spacer"></div>';
     html += '<label class="export-option" title="Common name และ Thai common name จะถูกรวมอัตโนมัติ"><input id="exportBenefitsToggle" type="checkbox"'+(exportOptions.includeBenefits?' checked':'')+'> รวมสรรพคุณ</label>';
+    html += '<label class="export-option"><input id="exportReferencesToggle" type="checkbox"'+(exportOptions.includeReferences?' checked':'')+'> รวมอ้างอิง</label>';
     html += '<button class="btn btn-sm" id="exportCsvBtn" type="button">ดาวน์โหลด CSV + ชื่อสามัญ</button>';
     html += '</div>';
 
@@ -5144,6 +5228,7 @@ window.GCMS_SUPABASE_CONFIG = {
       renderMain();
     });
     var exportBenefitsToggle=$("#exportBenefitsToggle");if(exportBenefitsToggle)exportBenefitsToggle.addEventListener("change",function(){exportOptions.includeBenefits=!!this.checked;});
+    var exportReferencesToggle=$("#exportReferencesToggle");if(exportReferencesToggle)exportReferencesToggle.addEventListener("change",function(){exportOptions.includeReferences=!!this.checked;});
     var exportBtn = $("#exportCsvBtn");
     if (exportBtn) exportBtn.addEventListener("click", exportCsv);
 
@@ -5194,10 +5279,12 @@ window.GCMS_SUPABASE_CONFIG = {
     var rows = getFilteredRows();
     var header = ["Date", "RunNo", "Sample", "Part", "Solvent", "No.", "RT(min)", "Compound", "CommonName", "ThaiCommonName", "Score", "PeakArea", "RelativeArea(%)"];
     if(exportOptions.includeBenefits)header.push("Properties/Benefits");
+    if(exportOptions.includeReferences)header.push("References","SourceURL");
     var lines = [header.join(",")];
     rows.forEach(function (x) {
       var vals = [x.run.date, x.run.runNo, x.run.sample, x.run.part || "", x.run.solvent, x.c.no, x.c.rt, x.c.compound, compoundCommonName(x.c.compound), compoundThaiCommonName(x.c.compound), x.c.score, x.c.peakArea, x.c.relArea];
       if(exportOptions.includeBenefits)vals.push(compoundBenefits(x.c.compound));
+      if(exportOptions.includeReferences)vals.push(compoundReferences(x.c.compound),compoundSourceUrl(x.c.compound));
       lines.push(vals.map(function (v) {
         var s = v === null || v === undefined ? "" : String(v);
         if (s.indexOf(",") !== -1 || s.indexOf('"') !== -1) s = '"' + s.replace(/"/g, '""') + '"';
@@ -5329,7 +5416,7 @@ window.GCMS_SUPABASE_CONFIG = {
 
   function csvEscape(v){v=v===null||v===undefined?'':String(v);return /[,"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
   function compoundMatrixCsv(mode){var M=matrixForRuns(analysisRuns(),mode||'raw',80),lines=[['RunID','Sample','Group','Project','Experiment'].concat(M.cols).map(csvEscape).join(',')];M.runs.forEach(function(r,i){lines.push([r.id,r.sample,r.biologicalGroup||'',(projectById(r.projectId)||{}).name||'',(experimentById(r.experimentId)||{}).name||''].concat(M.X[i]).map(csvEscape).join(','));});return lines.join('\n');}
-  async function exportResearchPackage(){if(!window.JSZip){showToast('JSZip library ยังโหลดไม่สำเร็จ',true);return;}var zip=new JSZip(),meta={exportedAt:rsNow(),projects:researchSuite.projects,experiments:researchSuite.experiments,methods:researchSuite.methods,riStandards:researchSuite.riStandards,settings:researchSuite.settings,trashCount:(researchSuite.trash||[]).length};zip.file('README.txt','GC-MS Research Package\nGenerated: '+meta.exportedAt+'\n\nContents:\n- runs.json / compounds.json / spectra.json\n- compound_library.json (common names / AI benefits / reference cache)\n- project_method_metadata.json\n- compound_matrix_raw.csv\n- compound_matrix_blank_subtracted.csv\n- audit_trail.json\n\nRaw data are preserved. Derived matrices may use canonical compound aliases.');zip.file('runs.json',JSON.stringify(runsIndex,null,2));zip.file('compounds.json',JSON.stringify(allCompounds,null,2));zip.file('spectra.json',JSON.stringify(allSpectra,null,2));zip.file('compound_library.json',JSON.stringify(compoundLibraryCache,null,2));zip.file('project_method_metadata.json',JSON.stringify(meta,null,2));zip.file('audit_trail.json',JSON.stringify(researchSuite.audit||[],null,2));zip.file('compound_matrix_raw.csv','\ufeff'+compoundMatrixCsv('raw'));zip.file('compound_matrix_blank_subtracted.csv','\ufeff'+compoundMatrixCsv('blank'));zip.file('compound_matrix_internal_standard.csv','\ufeff'+compoundMatrixCsv('is'));['suitePca','suiteDendro','suiteVolcanoSvg'].forEach(function(id){var node=document.getElementById(id);if(node){var svg=node.tagName&&node.tagName.toLowerCase()==='svg'?node:node.querySelector('svg');if(svg)zip.file('figures/'+id+'.svg',new XMLSerializer().serializeToString(svg));}});var blob=await zip.generateAsync({type:'blob'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='gcms-research-package-'+new Date().toISOString().slice(0,10)+'.zip';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);addAudit('research_package_exported','ZIP package',{});persistResearchSuite();showToast('Export Research Package แล้ว');}
+  async function exportResearchPackage(){if(!window.JSZip){showToast('JSZip library ยังโหลดไม่สำเร็จ',true);return;}var zip=new JSZip(),meta={exportedAt:rsNow(),projects:researchSuite.projects,experiments:researchSuite.experiments,methods:researchSuite.methods,riStandards:researchSuite.riStandards,settings:researchSuite.settings,trashCount:(researchSuite.trash||[]).length};zip.file('README.txt','GC-MS Research Package\nGenerated: '+meta.exportedAt+'\n\nContents:\n- runs.json / compounds.json / spectra.json\n- compound_library.json (common names / AI benefits / citations / source URLs / reference cache)\n- project_method_metadata.json\n- compound_matrix_raw.csv\n- compound_matrix_blank_subtracted.csv\n- audit_trail.json\n\nRaw data are preserved. Derived matrices may use canonical compound aliases.');zip.file('runs.json',JSON.stringify(runsIndex,null,2));zip.file('compounds.json',JSON.stringify(allCompounds,null,2));zip.file('spectra.json',JSON.stringify(allSpectra,null,2));zip.file('compound_library.json',JSON.stringify(compoundLibraryCache,null,2));zip.file('project_method_metadata.json',JSON.stringify(meta,null,2));zip.file('audit_trail.json',JSON.stringify(researchSuite.audit||[],null,2));zip.file('compound_matrix_raw.csv','\ufeff'+compoundMatrixCsv('raw'));zip.file('compound_matrix_blank_subtracted.csv','\ufeff'+compoundMatrixCsv('blank'));zip.file('compound_matrix_internal_standard.csv','\ufeff'+compoundMatrixCsv('is'));['suitePca','suiteDendro','suiteVolcanoSvg'].forEach(function(id){var node=document.getElementById(id);if(node){var svg=node.tagName&&node.tagName.toLowerCase()==='svg'?node:node.querySelector('svg');if(svg)zip.file('figures/'+id+'.svg',new XMLSerializer().serializeToString(svg));}});var blob=await zip.generateAsync({type:'blob'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='gcms-research-package-'+new Date().toISOString().slice(0,10)+'.zip';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);addAudit('research_package_exported','ZIP package',{});persistResearchSuite();showToast('Export Research Package แล้ว');}
 
   function arrayBufferFile(file){return new Promise(function(resolve,reject){var fr=new FileReader();fr.onload=function(){resolve(fr.result);};fr.onerror=reject;fr.readAsArrayBuffer(file);});}
   function textFile(file){return new Promise(function(resolve,reject){var fr=new FileReader();fr.onload=function(){resolve(fr.result);};fr.onerror=reject;fr.readAsText(file);});}
