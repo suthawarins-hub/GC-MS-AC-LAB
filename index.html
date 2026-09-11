@@ -1143,6 +1143,33 @@ tbody tr:hover{background:#F6FAF9;}
 @media(max-width:960px){.library-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.library-hero{grid-template-columns:1fr;}.library-toolbar{grid-template-columns:1fr 1fr;}.library-toolbar .btn{width:100%;}}
 @media(max-width:620px){.library-grid{grid-template-columns:1fr;}.library-toolbar{grid-template-columns:1fr;}.library-kpis{grid-template-columns:repeat(2,1fr);}.library-card{padding:12px;}}
 
+
+/* ========== Research Suite 2026: projects, methods, QC, RI, multivariate, stats ========== */
+.suite-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:16px}
+.suite-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.suite-grid,.suite-grid.three{grid-template-columns:1fr}}
+.suite-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
+.suite-card h3{font-family:var(--font-display);font-size:14px;margin:0 0 4px}.suite-sub{font-size:11px;color:var(--ink-soft);margin-bottom:11px;line-height:1.5}
+.suite-toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:end}.suite-toolbar .field{min-width:135px;flex:1}.suite-toolbar .btn{flex:none}
+.suite-list{display:flex;flex-direction:column;gap:7px}.suite-row{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:9px 10px;border:1px solid var(--line-soft);border-radius:9px;background:var(--bg)}
+.suite-row-main{min-width:0}.suite-row-title{font-size:12px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.suite-row-meta{font-size:9.8px;color:var(--ink-soft);font-family:var(--font-mono);margin-top:2px}
+.suite-badge{font-family:var(--font-mono);font-size:9px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:3px 6px;background:#fff;white-space:nowrap}.suite-badge.good{background:var(--good-bg);color:var(--good);border-color:#cbe7d5}.suite-badge.warn{background:var(--warn-bg);color:var(--warn)}.suite-badge.bad{background:var(--bad-bg);color:var(--bad)}
+.suite-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}.suite-kpi{border:1px solid var(--line-soft);background:var(--bg);border-radius:10px;padding:9px}.suite-kpi .v{font-family:var(--font-display);font-size:16px;font-weight:800}.suite-kpi .k{font-size:9px;text-transform:uppercase;color:var(--ink-soft)}
+@media(max-width:620px){.suite-kpis{grid-template-columns:repeat(2,1fr)}}
+.method-details{margin-top:12px;border:1px dashed var(--line);border-radius:11px;background:var(--bg);padding:10px}.method-details summary{font-size:12px;font-weight:800;cursor:pointer}.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}@media(max-width:850px){.method-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.method-grid{grid-template-columns:1fr}}
+.batch-drop{border:1.5px dashed var(--accent-2);background:#f8fdfc;border-radius:11px;padding:12px;margin-top:10px}.batch-drop input{font-size:12px}.batch-status{font-size:10.5px;color:var(--ink-soft);margin-top:6px}
+.stats-layout{display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,2.3fr);gap:14px}@media(max-width:900px){.stats-layout{grid-template-columns:1fr}}
+.stats-panel{border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px}.stats-plot{height:380px;border:1px solid var(--line-soft);border-radius:10px;background:#fff;overflow:auto;padding:8px}.stats-table{border:1px solid var(--line);border-radius:10px;overflow:auto;max-height:460px;margin-top:10px}.stats-table table{font-size:11px}.stats-table th,.stats-table td{padding:7px 8px}
+.audit-list{max-height:360px;overflow:auto}.audit-item{padding:8px 0;border-bottom:1px solid var(--line-soft);font-size:11px}.audit-time{font-family:var(--font-mono);font-size:9px;color:var(--ink-soft)}
+.matrix-table{overflow:auto;max-height:390px;border:1px solid var(--line);border-radius:10px}.matrix-table table{font-size:10.5px}.matrix-table th,.matrix-table td{padding:6px 7px}
+.identity-pair{border:1px solid var(--line);border-radius:9px;padding:8px;margin-bottom:7px;background:var(--bg)}.identity-pair strong{font-size:11.5px}.identity-pair small{display:block;color:var(--ink-soft);margin:3px 0 6px}
+.ri-table{max-height:280px;overflow:auto;border:1px solid var(--line);border-radius:9px}.ri-table table{font-size:10.5px}.ri-table th,.ri-table td{padding:6px 7px}
+.upset-row{display:grid;grid-template-columns:170px 1fr 45px;gap:8px;align-items:center;margin:6px 0;font-size:10.5px}.upset-bar{height:12px;background:var(--accent-2-soft);border-radius:5px;overflow:hidden}.upset-fill{height:100%;background:var(--accent-2)}
+.confidence-meter{display:flex;align-items:center;gap:6px}.confidence-track{width:68px;height:7px;border-radius:999px;background:var(--line-soft);overflow:hidden}.confidence-fill{height:100%;background:var(--accent-2)}
+.project-form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}@media(max-width:680px){.project-form-grid{grid-template-columns:1fr}}
+.suite-section-title{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 10px}.suite-section-title h2{font-family:var(--font-display);font-size:17px;margin:0}.suite-note{font-size:10px;color:var(--ink-soft);line-height:1.5}
+.form-grid.advanced-meta{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+
 </style>
 
 <script>
@@ -1157,6 +1184,8 @@ window.GCMS_SUPABASE_CONFIG = {
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 
 </head>
 <body>
@@ -1293,6 +1322,15 @@ window.GCMS_SUPABASE_CONFIG = {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       <span class="tab-label">คลังสาร</span>
     </button>
+
+    <button class="nav-tab" data-view="projects" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 7h6l2 2h8v10H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 7V5h7l2 2" stroke="currentColor" stroke-width="1.8"/></svg>
+      <span class="tab-label">Projects</span>
+    </button>
+    <button class="nav-tab" data-view="statistics" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 19V9m5 10V5m5 14v-7m4 7V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="tab-label">Statistics</span>
+    </button>
     <button class="nav-tab" data-view="report" type="button">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l3 3v15H6z" stroke="currentColor" stroke-width="1.8"/><path d="M9 10h6M9 14h6M9 18h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       <span class="tab-label">Analysis Report</span>
@@ -1357,6 +1395,37 @@ window.GCMS_SUPABASE_CONFIG = {
         </div>
       </div>
 
+      <div class="form-grid advanced-meta">
+        <div class="field"><label for="fProject">Project</label><select id="fProject"><option value="">— Unassigned —</option></select></div>
+        <div class="field"><label for="fExperiment">Experiment</label><select id="fExperiment"><option value="">— Unassigned —</option></select></div>
+        <div class="field"><label for="fBioGroup">Biological group</label><input type="text" id="fBioGroup" placeholder="เช่น Control, Treatment A"></div>
+        <div class="field"><label for="fReplicate">Replicate</label><input type="text" id="fReplicate" placeholder="เช่น R1 / Bio1 / Tech2"></div>
+        <div class="field"><label for="fRunType">Run type</label><select id="fRunType"><option value="sample">Sample</option><option value="blank">Blank</option><option value="qc">QC</option><option value="standard">Standard</option></select></div>
+        <div class="field"><label for="fMethod">GC-MS Method</label><select id="fMethod"><option value="">— None —</option></select></div>
+        <div class="field"><label for="fInternalStandard">Internal standard</label><input type="text" id="fInternalStandard" placeholder="Compound name"></div>
+        <div class="field"><label for="fISAmount">IS amount / concentration</label><input type="number" step="any" id="fISAmount" placeholder="optional"></div>
+      </div>
+      <details class="method-details"><summary>Method / run metadata (optional)</summary><div class="method-grid">
+        <div class="field"><label>Instrument</label><input id="fInstrument" type="text" placeholder="e.g. Agilent 7890/5977"></div>
+        <div class="field"><label>GC column</label><input id="fColumn" type="text" placeholder="e.g. HP-5MS"></div>
+        <div class="field"><label>Carrier gas</label><input id="fCarrier" type="text" placeholder="He"></div>
+        <div class="field"><label>Flow (mL/min)</label><input id="fFlow" type="number" step="any"></div>
+        <div class="field"><label>Headspace temp (°C)</label><input id="fHsTemp" type="number" step="any"></div>
+        <div class="field"><label>Headspace time (min)</label><input id="fHsTime" type="number" step="any"></div>
+        <div class="field"><label>Injection mode</label><input id="fInjection" type="text" placeholder="Split / splitless"></div>
+        <div class="field"><label>Split ratio</label><input id="fSplit" type="text" placeholder="e.g. 10:1"></div>
+        <div class="field"><label>Oven program</label><input id="fOven" type="text" placeholder="40°C 3 min → 5°C/min → 250°C"></div>
+        <div class="field"><label>Ionization</label><input id="fIonization" type="text" placeholder="EI 70 eV"></div>
+        <div class="field"><label>Scan range</label><input id="fScanRange" type="text" placeholder="m/z 35–550"></div>
+        <div class="field"><label>Solvent lot</label><input id="fSolventLot" type="text"></div>
+      </div></details>
+
+      <div class="batch-drop no-print">
+        <b>Batch Import · CSV / TSV / XLSX</b><div class="suite-note">เลือกหลายไฟล์ได้ ระบบจะใช้ metadata ด้านบนเป็นค่าเริ่มต้น และสร้าง 1 Run ต่อไฟล์</div>
+        <input id="batchFiles" type="file" multiple accept=".csv,.tsv,.txt,.xlsx,.xls"><button class="btn btn-sm" id="batchImportBtn" type="button" style="margin-left:7px">Import files</button>
+        <div class="batch-status" id="batchStatus"></div>
+      </div>
+
       <div class="paste-area">
         <label for="pasteInput">วางตารางผล GC-MS ที่นี่</label>
         <div class="cols-hint">คอลัมน์ที่รองรับ: No. · RT (min) · Best compound name · Score · Peak area · Relative area (%) — คัดลอกมาจาก Excel ได้เลย (รวมหัวตารางก็ได้)</div>
@@ -1385,6 +1454,10 @@ window.GCMS_SUPABASE_CONFIG = {
   </div>
 
   <div id="viewLibrary" class="view-panel hidden"></div>
+
+  <div id="viewProjects" class="view-panel hidden"></div>
+
+  <div id="viewStatistics" class="view-panel hidden"></div>
 
   <div id="viewReport" class="view-panel hidden"></div>
 
@@ -1786,7 +1859,7 @@ window.GCMS_SUPABASE_CONFIG = {
     showAppShell();
     if(!appInitialized) await initApp(); else { await loadAll(); refreshAll(); applyLanguage(currentLang,false); }
   }
-  function clearWorkspaceMemory(){ runsIndex=[]; allCompounds=[]; allSpectra=[]; parsedPreview=[]; reportState.compareRuns=[]; intelligenceState=defaultIntelligenceState(); compoundLibraryCache={}; compoundLibraryState={q:"",status:"all",sort:"occurrence",page:1,pageSize:12,syncing:false}; reportNavigationFocus=null; }
+  function clearWorkspaceMemory(){ runsIndex=[]; allCompounds=[]; allSpectra=[]; parsedPreview=[]; reportState.compareRuns=[]; intelligenceState=defaultIntelligenceState(); compoundLibraryCache={}; researchSuite=defaultResearchSuite(); compoundLibraryState={q:"",status:"all",sort:"occurrence",page:1,pageSize:12,syncing:false}; reportNavigationFocus=null; }
   async function handleLoginSubmit(ev) {
     ev.preventDefault(); if(!sbClient)return;
     var email=document.getElementById("loginEmail").value.trim(), password=document.getElementById("loginPassword").value;
@@ -1849,6 +1922,7 @@ window.GCMS_SUPABASE_CONFIG = {
   var K_SPECTRA = "gcms:spectra";
   var K_INTELLIGENCE = "gcms:research-intelligence";
   var K_LIBRARY = "gcms:compound-library";
+  var K_RESEARCH_SUITE = "gcms:research-suite-v1";
 
   /* ---------- state ---------- */
   var runsIndex = [];
@@ -1862,12 +1936,14 @@ window.GCMS_SUPABASE_CONFIG = {
   var activeConfirmDeleteId = null;
   var ROW_CAP = 500;
   var currentView = "dashboard";
-  var VIEW_IDS = { dashboard: "viewDashboard", add: "viewAdd", records: "viewRecords", library: "viewLibrary", report: "viewReport", research: "viewResearch" };
+  var VIEW_IDS = { dashboard: "viewDashboard", add: "viewAdd", records: "viewRecords", library: "viewLibrary", projects:"viewProjects", statistics:"viewStatistics", report: "viewReport", research: "viewResearch" };
   var reportState = { runId: null, sort: "rt_asc", metric: "relArea", labelCount: 12, selectedPeakKey: null, scoreMode: "qualified", compareRuns: [], topN: 5, topScope: "current", presenceMode:"shared", presenceX:2, presenceRule:"atleast" };
   var dashboardTopState = { group: "sample", solvent: "all" };
   function defaultIntelligenceState(){return {watchlist:[],trendCompound:"",reportSections:{top:true,overview:true,labeled:true,peakTable:true,spectrum:true,comparison:true}};}
   var intelligenceState = defaultIntelligenceState();
   var compoundLibraryCache = {};
+  function defaultResearchSuite(){return {projects:[],experiments:[],methods:[],riStandards:[],referenceRI:{},aliases:{},audit:[],trash:[],settings:{blankThreshold:0.20,defaultNormalize:"none"}};}
+  var researchSuite = defaultResearchSuite();
   var compoundLibraryState = { q:"", status:"all", sort:"occurrence", page:1, pageSize:12, syncing:false };
   var reportNavigationFocus = null;
   var sampleExplorerState = {
@@ -2091,7 +2167,16 @@ window.GCMS_SUPABASE_CONFIG = {
       compoundLibraryCache = r5 && r5.value ? JSON.parse(r5.value) : {};
       if(!compoundLibraryCache || typeof compoundLibraryCache !== "object" || Array.isArray(compoundLibraryCache)) compoundLibraryCache={};
     } catch (e) { compoundLibraryCache = {}; }
+    try {
+      var r6 = await storageGet(K_RESEARCH_SUITE);
+      var savedSuite = r6 && r6.value ? JSON.parse(r6.value) : {};
+      researchSuite = Object.assign(defaultResearchSuite(), savedSuite || {});
+      ["projects","experiments","methods","riStandards","audit","trash"].forEach(function(k){if(!Array.isArray(researchSuite[k]))researchSuite[k]=[];});
+      if(!researchSuite.referenceRI||typeof researchSuite.referenceRI!=="object")researchSuite.referenceRI={};
+      if(!researchSuite.aliases||typeof researchSuite.aliases!=="object")researchSuite.aliases={};
+    } catch(e){ researchSuite=defaultResearchSuite(); }
   }
+  async function persistResearchSuite(){try{await storageSet(K_RESEARCH_SUITE,JSON.stringify(researchSuite));return true;}catch(e){showToast("บันทึก Research Suite ไม่สำเร็จ",true);return false;}}
   async function persistIndex() {
     try { await storageSet(K_INDEX, JSON.stringify(runsIndex)); return true; }
     catch (e) { showToast("บันทึกไม่สำเร็จ ลองอีกครั้ง", true); return false; }
@@ -2724,7 +2809,7 @@ window.GCMS_SUPABASE_CONFIG = {
   function renderReportBuilderPanel(){var s=intelligenceState.reportSections||defaultIntelligenceState().reportSections;var opts=[['top','Top compounds'],['overview','Peak profile'],['labeled','Labeled peaks'],['peakTable','Peak table'],['spectrum','Mass spectrum'],['comparison','Comparison']];return '<div class="report-builder no-print"><div class="report-builder-head"><div><div class="report-builder-title">Report Builder</div><div class="intel-sub">เลือกส่วนที่จะรวมตอน Print / Save PDF · หน้าจอปกติยังแสดงฟีเจอร์ครบทั้งหมด</div></div><button class="btn btn-sm" id="reportBuilderAll" type="button">Select all</button></div><div class="report-builder-options">'+opts.map(function(x){return '<label class="report-builder-option"><input type="checkbox" data-report-builder="'+x[0]+'"'+(s[x[0]]!==false?' checked':'')+'> '+x[1]+'</label>';}).join('')+'</div></div>';}
   function applyReportBuilderVisibility(){var s=intelligenceState.reportSections||{};var map={top:'reportTopSection',overview:'reportOverviewSection',labeled:'reportLabeledSection',peakTable:'reportPeakTableSection',spectrum:'reportSpectrumSection',comparison:'reportComparisonSection'};Object.keys(map).forEach(function(k){var el=document.getElementById(map[k]);if(el)el.setAttribute('data-report-builder-disabled',s[k]===false?'1':'0');});}
   function wireReportBuilder(){document.querySelectorAll('[data-report-builder]').forEach(function(cb){cb.addEventListener('change',function(){intelligenceState.reportSections[cb.getAttribute('data-report-builder')]=cb.checked;persistIntelligence();applyReportBuilderVisibility();});});var all=document.getElementById('reportBuilderAll');if(all)all.addEventListener('click',function(){Object.keys(intelligenceState.reportSections).forEach(function(k){intelligenceState.reportSections[k]=true;});persistIntelligence();renderReport();});applyReportBuilderVisibility();}
-  async function saveRunNotesFromReport(){var r=reportRun(),ta=document.getElementById('reportRunNotes');if(!r||!ta)return;r.notes=ta.value.trim();var ok=await persistIndex();if(ok){showToast('บันทึก Research Notes แล้ว');renderReport();}}
+  async function saveRunNotesFromReport(){var r=reportRun(),ta=document.getElementById('reportRunNotes');if(!r||!ta)return;r.notes=ta.value.trim();var ok=await persistIndex();if(ok){addAudit('run_notes_updated',r.sample+' · Run '+r.runNo,{runId:r.id});await persistResearchSuite();showToast('บันทึก Research Notes แล้ว');renderReport();}}
   function renderRunNotesEditor(run){return '<div class="run-notes-editor no-print"><div class="intel-head" style="margin-bottom:7px"><div><h3>Research Notes · Run #'+escapeHtml(run.runNo)+'</h3><div class="intel-sub">บันทึกสภาวะเครื่อง, ลักษณะ sample, solvent lot หรือข้อสังเกตของ Run นี้</div></div></div><textarea id="reportRunNotes" placeholder="เช่น sample สีเข้ม, baseline มี noise, solvent lot ใหม่...">'+escapeHtml(run.notes||'')+'</textarea><div class="run-notes-actions"><button class="btn btn-sm btn-primary" id="saveReportRunNotes" type="button">Save notes</button></div></div>';}
   function openReportAt(runId,peakKey,targetId){var c=peakKey?allCompounds.find(function(x){return x.runId===runId&&reportPeakKey(x)===peakKey;}):null;reportState.runId=runId;reportState.selectedPeakKey=peakKey||null;reportLastPoint=c?{run:runById(runId),c:c}:null;if(c&&!compoundMatchesScoreMode(c,reportState.scoreMode))reportState.scoreMode='all';reportNavigationFocus={targetId:targetId||'reportMainSheet',peakKey:peakKey||null};switchView('report');}
   function applyReportNavigationFocus(){if(!reportNavigationFocus)return;var f=reportNavigationFocus;reportNavigationFocus=null;setTimeout(function(){var target=null;if(f.peakKey){document.querySelectorAll('.report-peak-row').forEach(function(tr){if(!target&&tr.getAttribute('data-key')===f.peakKey)target=tr;});}if(!target)target=document.getElementById(f.targetId||'reportMainSheet');if(target){target.classList.add('flash-focus');target.scrollIntoView({behavior:'smooth',block:f.peakKey?'center':'start'});setTimeout(function(){target.classList.remove('flash-focus');},1900);}},80);}
@@ -3065,6 +3150,8 @@ window.GCMS_SUPABASE_CONFIG = {
     renderMain();
     renderDashboard();
     renderLibrary();
+    renderProjects();
+    renderStatistics();
     renderReport();
     renderResearch();
   }
@@ -3081,6 +3168,8 @@ window.GCMS_SUPABASE_CONFIG = {
     });
     if (view === "dashboard") renderDashboard();
     if (view === "library") renderLibrary();
+    if (view === "projects") renderProjects();
+    if (view === "statistics") renderStatistics();
     if (view === "report") renderReport();
     if (view === "research") renderResearch();
   }
@@ -5010,6 +5099,7 @@ window.GCMS_SUPABASE_CONFIG = {
   }
 
   async function deleteRun(id) {
+    var deletedRun=runById(id); if(deletedRun){researchSuite.trash=researchSuite.trash||[];researchSuite.trash.unshift({id:uid("trash"),deletedAt:rsNow(),run:JSON.parse(JSON.stringify(deletedRun)),compounds:allCompounds.filter(function(c){return c.runId===id;}).map(function(c){return JSON.parse(JSON.stringify(c));}),spectra:allSpectra.filter(function(x){return x.runId===id;}).map(function(x){return JSON.parse(JSON.stringify(x));})});researchSuite.trash=researchSuite.trash.slice(0,50);addAudit("run_deleted_soft",deletedRun.sample+" · Run "+deletedRun.runNo,{runId:id}); await persistResearchSuite();}
     runsIndex = runsIndex.filter(function (r) { return r.id !== id; });
     allCompounds = allCompounds.filter(function (c) { return c.runId !== id; });
     allSpectra = allSpectra.filter(function (x) { return x.runId !== id; });
@@ -5023,6 +5113,114 @@ window.GCMS_SUPABASE_CONFIG = {
     refreshAll();
     showToast("ลบชุดข้อมูลแล้ว");
   }
+
+
+  /* ========== Research Suite 2026 ========== */
+  function rsNow(){return new Date().toISOString();}
+  function rsNum(v){v=Number(v);return isFinite(v)?v:null;}
+  function rsMean(a){a=(a||[]).filter(function(x){return isFinite(Number(x));}).map(Number);return a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;}
+  function rsSd(a){a=(a||[]).filter(function(x){return isFinite(Number(x));}).map(Number);if(a.length<2)return 0;var m=rsMean(a);return Math.sqrt(a.reduce(function(s,x){return s+(x-m)*(x-m);},0)/(a.length-1));}
+  function rsMedian(a){a=(a||[]).filter(function(x){return isFinite(Number(x));}).map(Number).sort(function(a,b){return a-b;});if(!a.length)return null;var i=Math.floor(a.length/2);return a.length%2?a[i]:(a[i-1]+a[i])/2;}
+  function addAudit(action,label,detail){researchSuite.audit.unshift({id:uid('audit'),at:rsNow(),action:action,label:label||'',detail:detail||{},user:currentProfile&&currentProfile.display_name?currentProfile.display_name:(currentAuthUser&&currentAuthUser.email?currentAuthUser.email:'')});researchSuite.audit=researchSuite.audit.slice(0,500);}
+  function projectById(id){return researchSuite.projects.find(function(x){return x.id===id;})||null;}
+  function experimentById(id){return researchSuite.experiments.find(function(x){return x.id===id;})||null;}
+  function methodById(id){return researchSuite.methods.find(function(x){return x.id===id;})||null;}
+  function canonicalCompoundName(name){var k=compoundKeyName(name||'');return researchSuite.aliases[k]||String(name||'').trim();}
+  function collectMethodMetaFromForm(){function v(id){var e=$(id);return e?String(e.value||'').trim():'';}function n(id){var e=$(id);return e&&e.value!==''?Number(e.value):null;}return {instrument:v('#fInstrument'),column:v('#fColumn'),carrier:v('#fCarrier'),flow:n('#fFlow'),headspaceTemp:n('#fHsTemp'),headspaceTime:n('#fHsTime'),injection:v('#fInjection'),split:v('#fSplit'),oven:v('#fOven'),ionization:v('#fIonization'),scanRange:v('#fScanRange'),solventLot:v('#fSolventLot')};}
+  function applyMethodToForm(id){var m=methodById(id);if(!m)return;var x=m.meta||{};[['#fInstrument','instrument'],['#fColumn','column'],['#fCarrier','carrier'],['#fFlow','flow'],['#fHsTemp','headspaceTemp'],['#fHsTime','headspaceTime'],['#fInjection','injection'],['#fSplit','split'],['#fOven','oven'],['#fIonization','ionization'],['#fScanRange','scanRange'],['#fSolventLot','solventLot']].forEach(function(p){var e=$(p[0]);if(e)e.value=x[p[1]]===null||x[p[1]]===undefined?'':x[p[1]];});}
+  function refreshSuiteFormSelects(){var p=$('#fProject'),e=$('#fExperiment'),m=$('#fMethod');if(p){var pv=p.value;p.innerHTML='<option value="">— Unassigned —</option>'+researchSuite.projects.map(function(x){return '<option value="'+escapeHtml(x.id)+'">'+escapeHtml(x.name)+'</option>';}).join('');p.value=researchSuite.projects.some(function(x){return x.id===pv;})?pv:'';}if(e){var ev=e.value,pid=p?p.value:'';var ex=researchSuite.experiments.filter(function(x){return !pid||x.projectId===pid;});e.innerHTML='<option value="">— Unassigned —</option>'+ex.map(function(x){return '<option value="'+escapeHtml(x.id)+'">'+escapeHtml(x.name)+'</option>';}).join('');e.value=ex.some(function(x){return x.id===ev;})?ev:'';}if(m){var mv=m.value;m.innerHTML='<option value="">— None —</option>'+researchSuite.methods.map(function(x){return '<option value="'+escapeHtml(x.id)+'">'+escapeHtml(x.name)+'</option>';}).join('');m.value=researchSuite.methods.some(function(x){return x.id===mv;})?mv:'';}}
+
+  function runRowsRaw(runId){return allCompounds.filter(function(c){return c.runId===runId;});}
+  function blankReferenceRuns(run){return runsIndex.filter(function(r){return r.runType==='blank'&&(!run.projectId||r.projectId===run.projectId)&&(!run.methodId||r.methodId===run.methodId);});}
+  function compoundValueInRun(runId,name){return runRowsRaw(runId).filter(function(c){return compoundKeyName(canonicalCompoundName(c.compound))===compoundKeyName(canonicalCompoundName(name));}).reduce(function(a,c){return a+(Number(c.relArea)||0);},0);}
+  function blankAdjustedValue(run,c){var raw=Number(c.relArea)||0;if(!run||run.runType!=='sample')return raw;var blanks=blankReferenceRuns(run);if(!blanks.length)return raw;var vals=blanks.map(function(b){return compoundValueInRun(b.id,c.compound);});return Math.max(0,raw-(rsMean(vals)||0));}
+  function internalStandardNormalized(run,c){var raw=blankAdjustedValue(run,c);if(!run||!run.internalStandard)return raw;var isv=compoundValueInRun(run.id,run.internalStandard);return isv>0?raw/isv:raw;}
+  function suiteMetric(run,c,mode){if(mode==='blank')return blankAdjustedValue(run,c);if(mode==='is')return internalStandardNormalized(run,c);return Number(c.relArea)||0;}
+
+  function sortedRIStandards(){return (researchSuite.riStandards||[]).filter(function(x){return isFinite(Number(x.carbon))&&isFinite(Number(x.rt));}).slice().sort(function(a,b){return Number(a.rt)-Number(b.rt);});}
+  function calcRI(rt){rt=Number(rt);var a=sortedRIStandards();if(!isFinite(rt)||a.length<2)return null;for(var i=0;i<a.length-1;i++){var lo=a[i],hi=a[i+1];if(rt>=Number(lo.rt)&&rt<=Number(hi.rt)){var d=Number(hi.rt)-Number(lo.rt);if(!d)return 100*Number(lo.carbon);return 100*(Number(lo.carbon)+(rt-Number(lo.rt))/d*(Number(hi.carbon)-Number(lo.carbon)));}}return null;}
+  function referenceRIFor(name){var v=researchSuite.referenceRI[compoundKeyName(canonicalCompoundName(name))];return isFinite(Number(v))?Number(v):null;}
+  function spectrumCosine(run,c){var sp=findSpectrum(run.id,c);if(!sp||!Array.isArray(sp.observed)||!Array.isArray(sp.library)||!sp.observed.length||!sp.library.length)return null;var om={},lm={};sp.observed.forEach(function(p){om[Math.round(Number(p.mz))]=Number(p.intensity||p.abundance||p.y||0);});sp.library.forEach(function(p){lm[Math.round(Number(p.mz))]=Number(p.intensity||p.abundance||p.y||0);});var keys={};Object.keys(om).forEach(function(k){keys[k]=1;});Object.keys(lm).forEach(function(k){keys[k]=1;});var dot=0,oa=0,la=0;Object.keys(keys).forEach(function(k){var x=om[k]||0,y=lm[k]||0;dot+=x*y;oa+=x*x;la+=y*y;});return oa&&la?dot/Math.sqrt(oa*la):null;}
+  function replicateConsistency(run,c){if(!run)return null;var peers=runsIndex.filter(function(r){return r.sample===run.sample&&r.solvent===run.solvent&&(r.biologicalGroup||'')===(run.biologicalGroup||'')&&r.runType!=='blank';});if(peers.length<2)return null;var detected=peers.filter(function(r){return compoundValueInRun(r.id,c.compound)>0;}).length;return detected/peers.length;}
+  function identificationConfidence(run,c){var parts=[],w=0,sum=0;var sc=validScore(c);if(sc!==null){parts.push(['Library match',sc/100,.45]);}var ri=calcRI(c.rt),ref=referenceRIFor(c.compound);if(ri!==null&&ref!==null){parts.push(['RI match',Math.max(0,1-Math.abs(ri-ref)/100),.25]);}var cos=spectrumCosine(run,c);if(cos!==null)parts.push(['Spectrum',Math.max(0,Math.min(1,cos)),.20]);var rep=replicateConsistency(run,c);if(rep!==null)parts.push(['Replicate',rep,.10]);parts.forEach(function(p){sum+=p[1]*p[2];w+=p[2];});var pct=w?sum/w*100:(sc!==null?sc:0),level=pct>=85?'High':pct>=70?'Medium':'Tentative';return {score:pct,level:level,ri:ri,refRI:ref,deltaRI:ri!==null&&ref!==null?ri-ref:null,spectrum:cos,replicate:rep};}
+
+  function createProject(){var name=window.prompt('Project name');if(!name||!name.trim())return;var p={id:uid('project'),name:name.trim(),description:'',createdAt:rsNow()};researchSuite.projects.push(p);addAudit('project_created',p.name,{projectId:p.id});persistResearchSuite().then(function(){refreshSuiteFormSelects();renderProjects();showToast('สร้าง Project แล้ว');});}
+  function createExperiment(){if(!researchSuite.projects.length){showToast('สร้าง Project ก่อน',true);return;}var pid=$('#projExperimentProject')?$('#projExperimentProject').value:researchSuite.projects[0].id;if(!pid){showToast('เลือก Project',true);return;}var name=window.prompt('Experiment name');if(!name||!name.trim())return;var e={id:uid('exp'),projectId:pid,name:name.trim(),createdAt:rsNow()};researchSuite.experiments.push(e);addAudit('experiment_created',e.name,{experimentId:e.id,projectId:pid});persistResearchSuite().then(function(){refreshSuiteFormSelects();renderProjects();});}
+  function createMethod(){var name=window.prompt('Method name');if(!name||!name.trim())return;var meta=collectMethodMetaFromForm();var m={id:uid('method'),name:name.trim(),meta:meta,createdAt:rsNow()};researchSuite.methods.push(m);addAudit('method_created',m.name,{methodId:m.id});persistResearchSuite().then(function(){refreshSuiteFormSelects();renderProjects();showToast('บันทึก Method template แล้ว');});}
+  function projectRunCount(id){return runsIndex.filter(function(r){return r.projectId===id;}).length;}
+
+  function restoreTrash(id){var t=(researchSuite.trash||[]).find(function(x){return x.id===id;});if(!t)return;researchSuite.trash=researchSuite.trash.filter(function(x){return x.id!==id;});runsIndex.push(t.run);allCompounds=allCompounds.concat(t.compounds||[]);allSpectra=allSpectra.concat(t.spectra||[]);addAudit('run_restored',t.run.sample+' · Run '+t.run.runNo,{runId:t.run.id});Promise.all([persistIndex(),persistCompounds(),persistSpectra(),persistResearchSuite()]).then(function(){refreshAll();showToast('Restore Run แล้ว');});}
+  function qcWorkflowSummary(){var blanks=runsIndex.filter(function(r){return r.runType==='blank';}),qcs=runsIndex.filter(function(r){return r.runType==='qc';}),samples=runsIndex.filter(function(r){return !r.runType||r.runType==='sample';}),cont=[];var names={};blanks.forEach(function(r){runRowsRaw(r.id).filter(isQualifiedCompound).forEach(function(c){names[canonicalCompoundName(c.compound)]=1;});});Object.keys(names).forEach(function(name){var bv=rsMean(blanks.map(function(r){return compoundValueInRun(r.id,name);}))||0,sv=rsMean(samples.map(function(r){return compoundValueInRun(r.id,name);}))||0,ratio=sv>0?bv/sv:(bv>0?Infinity:0);if(bv>0&&ratio>=Number(researchSuite.settings.blankThreshold||.2))cont.push({name:name,blank:bv,sample:sv,ratio:ratio});});cont.sort(function(a,b){return b.ratio-a.ratio;});var qcCv=[];if(qcs.length>=2){var qnames={};qcs.forEach(function(r){runRowsRaw(r.id).filter(isQualifiedCompound).forEach(function(c){qnames[canonicalCompoundName(c.compound)]=1;});});Object.keys(qnames).forEach(function(name){var vals=qcs.map(function(r){return compoundValueInRun(r.id,name);}),m=rsMean(vals)||0,cv=m?rsSd(vals)/m*100:null;if(cv!==null)qcCv.push({name:name,cv:cv});});qcCv.sort(function(a,b){return b.cv-a.cv;});}return {blankN:blanks.length,qcN:qcs.length,sampleN:samples.length,cont:cont,qcCv:qcCv};}
+  function renderQcWorkflowCard(){var q=qcWorkflowSummary();return '<div class="suite-card"><h3>Blank / QC / Internal Standard Workflow</h3><div class="suite-sub">Blank subtraction, IS normalization และ contamination/QC screening โดยไม่แก้ Raw data</div><div class="suite-kpis"><div class="suite-kpi"><div class="v">'+q.blankN+'</div><div class="k">Blank runs</div></div><div class="suite-kpi"><div class="v">'+q.qcN+'</div><div class="k">QC runs</div></div><div class="suite-kpi"><div class="v">'+q.cont.length+'</div><div class="k">Blank flags</div></div><div class="suite-kpi"><div class="v">'+(q.qcCv.length?fmtNum(rsMedian(q.qcCv.map(function(x){return x.cv;})),1)+'%':'—')+'</div><div class="k">Median QC CV</div></div></div>'+(q.cont.length?'<div class="matrix-table"><table><thead><tr><th>Blank-associated compound</th><th class="num">Blank mean</th><th class="num">Sample mean</th><th class="num">Ratio</th></tr></thead><tbody>'+q.cont.slice(0,12).map(function(x){return '<tr><td>'+escapeHtml(x.name)+'</td><td class="num">'+fmtNum(x.blank,3)+'</td><td class="num">'+fmtNum(x.sample,3)+'</td><td class="num"><span class="suite-badge warn">'+(isFinite(x.ratio)?fmtNum(x.ratio*100,0)+'%':'∞')+'</span></td></tr>';}).join('')+'</tbody></table></div>':'<div class="empty-chart">ยังไม่มี blank contamination flag</div>')+(q.qcCv.length?'<div class="suite-note" style="margin-top:8px">Highest QC CV: '+escapeHtml(q.qcCv[0].name)+' · '+fmtNum(q.qcCv[0].cv,1)+'%</div>':'')+'</div>';}
+  function renderProjects(){var el=$('#viewProjects');if(!el)return;var projectOptions=researchSuite.projects.map(function(p){return '<option value="'+escapeHtml(p.id)+'">'+escapeHtml(p.name)+'</option>';}).join('');var projHtml=researchSuite.projects.length?researchSuite.projects.map(function(p){var ex=researchSuite.experiments.filter(function(x){return x.projectId===p.id;});return '<div class="suite-row"><div class="suite-row-main"><div class="suite-row-title">'+escapeHtml(p.name)+'</div><div class="suite-row-meta">'+ex.length+' experiments · '+projectRunCount(p.id)+' runs</div></div><span class="suite-badge">Project</span></div>';}).join(''):'<div class="empty-chart">ยังไม่มี Project</div>';
+    var methodHtml=researchSuite.methods.length?researchSuite.methods.map(function(m){var x=m.meta||{};return '<div class="suite-row"><div class="suite-row-main"><div class="suite-row-title">'+escapeHtml(m.name)+'</div><div class="suite-row-meta">'+escapeHtml(x.instrument||'No instrument')+' · '+escapeHtml(x.column||'No column')+'</div></div><button class="btn btn-sm proj-use-method" data-id="'+escapeHtml(m.id)+'">Use</button></div>';}).join(''):'<div class="empty-chart">ยังไม่มี Method template · กรอก Method metadata ใน Add Data แล้วกด Save current form as method</div>';
+    var riRows=sortedRIStandards().map(function(x,i){return '<tr><td>C'+escapeHtml(x.carbon)+'</td><td class="num">'+fmtNum(x.rt,3)+'</td><td><button class="btn btn-sm ri-del" data-i="'+i+'">×</button></td></tr>';}).join('');
+    var pairs=findIdentityCandidates();
+    var audit=(researchSuite.audit||[]).slice(0,60).map(function(a){return '<div class="audit-item"><b>'+escapeHtml(a.action)+'</b> · '+escapeHtml(a.label||'')+'<div class="audit-time">'+escapeHtml(a.at||'')+(a.user?' · '+escapeHtml(a.user):'')+'</div></div>';}).join('')||'<div class="empty-chart">ยังไม่มี audit events</div>';
+    el.innerHTML='<div class="suite-section-title"><div><h2>Project & Research Data Management</h2><div class="suite-sub">Project → Experiment → Sample → Replicate → Run · ฟีเจอร์เดิมยังทำงานเหมือนเดิม</div></div><button class="btn btn-primary" id="projNew">+ Project</button></div>'+ 
+    '<div class="suite-grid"><div class="suite-card"><h3>Projects & Experiments</h3><div class="suite-sub">จัดกลุ่มงานก่อนทำ PCA / Statistics และทำให้ replicate มีความหมายชัดเจน</div><div class="suite-toolbar"><div class="field"><label>Project for new experiment</label><select id="projExperimentProject">'+('<option value="">— select —</option>'+projectOptions)+'</select></div><button class="btn btn-sm" id="projNewExperiment">+ Experiment</button></div><div class="suite-list" style="margin-top:10px">'+projHtml+'</div></div>'+ 
+    '<div class="suite-card"><h3>GC-MS Method Templates</h3><div class="suite-sub">บันทึก Instrument / Column / Oven / Headspace / MS settings แล้ว reuse ใน Run ใหม่</div><div class="suite-toolbar"><button class="btn btn-sm btn-primary" id="projSaveMethod">Save current Add Data form as method</button></div><div class="suite-list" style="margin-top:10px">'+methodHtml+'</div></div></div>'+ 
+    '<div class="suite-grid"><div class="suite-card"><h3>Retention Index Calibration</h3><div class="suite-sub">Van den Dool & Kratz linear RI จาก alkane standards; ใช้ประกอบการให้ Identification Confidence</div><div class="suite-toolbar"><div class="field"><label>Carbon no.</label><input id="riCarbon" type="number" min="5" max="50" placeholder="8"></div><div class="field"><label>RT (min)</label><input id="riRt" type="number" step="any" placeholder="3.125"></div><button class="btn btn-sm" id="riAdd">Add standard</button></div><div class="ri-table" style="margin-top:10px"><table><thead><tr><th>Alkane</th><th class="num">RT</th><th></th></tr></thead><tbody>'+riRows+'</tbody></table></div></div>'+ 
+    '<div class="suite-card"><h3>Canonical Compound Identity / Duplicate Resolver</h3><div class="suite-sub">รวม synonym ในการวิเคราะห์โดยไม่แก้ Raw data; ใช้ canonical name ใน matrix/statistics</div><div id="identityCandidates">'+(pairs.length?pairs.slice(0,12).map(function(p){return '<div class="identity-pair"><strong>'+escapeHtml(p.a)+'</strong><small>↔ '+escapeHtml(p.b)+' · similarity '+fmtNum(p.score*100,0)+'%</small><button class="btn btn-sm identity-merge" data-a="'+escapeHtml(p.a)+'" data-b="'+escapeHtml(p.b)+'">Merge B → A</button></div>';}).join(''):'<div class="empty-chart">ยังไม่พบชื่อที่น่าจะซ้ำกัน</div>')+'</div></div></div>'+ 
+    '<div class="suite-grid">'+renderQcWorkflowCard()+'<div class="suite-card"><h3>Deleted Runs / Restore</h3><div class="suite-sub">Soft delete keeps a recoverable snapshot (latest 50 deletions)</div><div class="suite-list">'+((researchSuite.trash||[]).length?(researchSuite.trash||[]).slice(0,12).map(function(t){return '<div class="suite-row"><div class="suite-row-main"><div class="suite-row-title">'+escapeHtml(t.run.sample)+' · Run '+escapeHtml(t.run.runNo)+'</div><div class="suite-row-meta">deleted '+escapeHtml(t.deletedAt||'')+'</div></div><button class="btn btn-sm trash-restore" data-id="'+escapeHtml(t.id)+'">Restore</button></div>';}).join(''):'<div class="empty-chart">Trash is empty</div>')+'</div></div></div><div class="suite-grid"><div class="suite-card"><h3>Identification Confidence</h3><div class="suite-sub">Library score + Retention Index + Spectrum cosine + replicate consistency</div>'+renderConfidencePreview()+'</div><div class="suite-card"><h3>Audit Trail / Version History</h3><div class="suite-sub">ติดตามการสร้าง/ลบ Run, Project, Method, RI และการรวมชื่อสาร</div><div class="audit-list">'+audit+'</div></div></div>';
+    wireProjects();}
+  function wireProjects(){var b=$('#projNew');if(b)b.onclick=createProject;b=$('#projNewExperiment');if(b)b.onclick=createExperiment;b=$('#projSaveMethod');if(b)b.onclick=createMethod;b=$('#riAdd');if(b)b.onclick=function(){var c=Number($('#riCarbon').value),rt=Number($('#riRt').value);if(!isFinite(c)||!isFinite(rt)){showToast('กรอก Carbon และ RT',true);return;}researchSuite.riStandards.push({carbon:c,rt:rt});researchSuite.riStandards.sort(function(a,b){return Number(a.rt)-Number(b.rt);});addAudit('ri_standard_added','C'+c+' @ '+rt,{carbon:c,rt:rt});persistResearchSuite().then(renderProjects);};document.querySelectorAll('.ri-del').forEach(function(x){x.onclick=function(){var arr=sortedRIStandards(),rec=arr[Number(x.getAttribute('data-i'))];var idx=researchSuite.riStandards.indexOf(rec);if(idx>=0)researchSuite.riStandards.splice(idx,1);persistResearchSuite().then(renderProjects);};});document.querySelectorAll('.trash-restore').forEach(function(x){x.onclick=function(){restoreTrash(x.getAttribute('data-id'));};});document.querySelectorAll('.proj-use-method').forEach(function(x){x.onclick=function(){switchView('add');var sel=$('#fMethod');if(sel){sel.value=x.getAttribute('data-id');applyMethodToForm(sel.value);}showToast('โหลด Method ลงฟอร์มแล้ว');};});document.querySelectorAll('.identity-merge').forEach(function(x){x.onclick=function(){var a=x.getAttribute('data-a'),bb=x.getAttribute('data-b');researchSuite.aliases[compoundKeyName(bb)]=a;addAudit('compound_alias_merged',bb+' → '+a,{canonical:a,alias:bb});persistResearchSuite().then(function(){renderProjects();renderStatistics();});};});}
+
+  function normNameLoose(x){return String(x||'').toLowerCase().replace(/\b(iso|n|sec|tert)[-\s]?/g,'').replace(/[^a-z0-9]/g,'');}
+  function bigrams(x){var a=[];for(var i=0;i<x.length-1;i++)a.push(x.slice(i,i+2));return a;}
+  function dice(a,b){a=normNameLoose(a);b=normNameLoose(b);if(!a||!b)return 0;if(a===b)return 1;var aa=bigrams(a),bb=bigrams(b),used={},hit=0;aa.forEach(function(g){for(var i=0;i<bb.length;i++){if(!used[i]&&bb[i]===g){used[i]=1;hit++;break;}}});return 2*hit/(aa.length+bb.length||1);}
+  function findIdentityCandidates(){var names={};allCompounds.forEach(function(c){names[c.compound]=1;});var arr=Object.keys(names),out=[];for(var i=0;i<arr.length;i++)for(var j=i+1;j<arr.length;j++){var sc=dice(arr[i],arr[j]);if(sc>=.82&&compoundKeyName(arr[i])!==compoundKeyName(arr[j]))out.push({a:arr[i],b:arr[j],score:sc});}return out.sort(function(a,b){return b.score-a.score;});}
+  function renderConfidencePreview(){var rows=[];runsIndex.slice(-12).forEach(function(r){runRowsRaw(r.id).filter(function(c){return isQualifiedCompound(c);}).slice(0,3).forEach(function(c){var q=identificationConfidence(r,c);rows.push({run:r,c:c,q:q});});});rows.sort(function(a,b){return b.q.score-a.q.score;});if(!rows.length)return '<div class="empty-chart">เพิ่มข้อมูลก่อนเพื่อคำนวณ confidence</div>';return '<div class="matrix-table"><table><thead><tr><th>Compound</th><th>Run</th><th>RI / ΔRI</th><th>Confidence</th><th>Ref RI</th></tr></thead><tbody>'+rows.slice(0,20).map(function(x){return '<tr><td>'+escapeHtml(x.c.compound)+'</td><td>'+escapeHtml(x.run.sample)+' R'+escapeHtml(x.run.runNo)+'</td><td class="num">'+(x.q.ri===null?'—':fmtNum(x.q.ri,0))+(x.q.deltaRI===null?'':' / '+fmtNum(x.q.deltaRI,0))+'</td><td><span class="suite-badge '+(x.q.level==='High'?'good':x.q.level==='Medium'?'warn':'')+'">'+x.q.level+' '+fmtNum(x.q.score,0)+'</span></td><td><button class="btn btn-sm conf-refri" data-name="'+escapeHtml(x.c.compound)+'">'+(x.q.refRI===null?'Set RI':fmtNum(x.q.refRI,0))+'</button></td></tr>';}).join('')+'</tbody></table></div>';} 
+
+  function groupValue(run,field){if(field==='sample')return run.sample||'Unassigned';if(field==='solvent')return run.solvent||'Unassigned';if(field==='experiment')return (experimentById(run.experimentId)||{}).name||'Unassigned';if(field==='project')return (projectById(run.projectId)||{}).name||'Unassigned';return run.biologicalGroup||'Unassigned';}
+  function analysisRuns(){return runsIndex.filter(function(r){return r.runType!=='blank'&&r.runType!=='standard'&&r.runType!=='qc';});}
+  function matrixForRuns(runs,mode,topN){runs=runs||analysisRuns();var freq={};allCompounds.forEach(function(c){if(runs.some(function(r){return r.id===c.runId;})&&isQualifiedCompound(c)){var k=compoundKeyName(canonicalCompoundName(c.compound));if(!freq[k])freq[k]={name:canonicalCompoundName(c.compound),n:0,sum:0};freq[k].n++;freq[k].sum+=Number(c.relArea)||0;}});var cols=Object.keys(freq).map(function(k){return freq[k];}).sort(function(a,b){return b.n-a.n||b.sum-a.sum;}).slice(0,topN||25);var X=runs.map(function(r){return cols.map(function(cc){var raw=runRowsRaw(r.id).filter(function(c){return compoundKeyName(canonicalCompoundName(c.compound))===compoundKeyName(cc.name)&&isQualifiedCompound(c);});return raw.reduce(function(a,c){return a+suiteMetric(r,c,mode);},0);});});return {runs:runs,cols:cols.map(function(x){return x.name;}),X:X};}
+  function standardizeMatrix(X){if(!X.length)return {Z:[],means:[],sds:[]};var m=X[0].length,means=[],sds=[];for(var j=0;j<m;j++){var col=X.map(function(r){return Number(r[j])||0;}),mu=rsMean(col)||0,sd=rsSd(col)||1;if(!sd)sd=1;means[j]=mu;sds[j]=sd;}return {Z:X.map(function(r){return r.map(function(x,j){return ((Number(x)||0)-means[j])/sds[j];});}),means:means,sds:sds};}
+  function covMatrix(Z){if(!Z.length)return [];var n=Z.length,m=Z[0].length,C=Array.from({length:m},function(){return Array(m).fill(0);});for(var i=0;i<m;i++)for(var j=i;j<m;j++){var v=0;for(var r=0;r<n;r++)v+=Z[r][i]*Z[r][j];v/=Math.max(1,n-1);C[i][j]=C[j][i]=v;}return C;}
+  function matVec(A,v){return A.map(function(row){return row.reduce(function(s,x,i){return s+x*v[i];},0);});}
+  function dot(a,b){return a.reduce(function(s,x,i){return s+x*b[i];},0);}
+  function unit(v){var n=Math.sqrt(dot(v,v))||1;return v.map(function(x){return x/n;});}
+  function powerEigen(A,orth){if(!A.length)return {v:[],lambda:0};var v=unit(Array(A.length).fill(0).map(function(_,i){return 1+(i%3)*.1;}));for(var k=0;k<80;k++){var w=matVec(A,v);(orth||[]).forEach(function(o){var d=dot(w,o);w=w.map(function(x,i){return x-d*o[i];});});v=unit(w);}return {v:v,lambda:dot(v,matVec(A,v))};}
+  function pcaData(mode){var M=matrixForRuns(analysisRuns(),mode,25),S=standardizeMatrix(M.X),C=covMatrix(S.Z),e1=powerEigen(C,[]),e2=powerEigen(C,[e1.v]),tot=C.reduce(function(s,row,i){return s+(row[i]||0);},0)||1;var scores=S.Z.map(function(r){return [dot(r,e1.v),dot(r,e2.v)];});return {runs:M.runs,cols:M.cols,scores:scores,load1:e1.v,load2:e2.v,var1:e1.lambda/tot*100,var2:e2.lambda/tot*100,Z:S.Z};}
+  function renderPcaSvg(p,field){if(!p.scores.length)return '<div class="empty-chart">Not enough data</div>';var W=760,H=350,pad=45,xs=p.scores.map(function(x){return x[0];}),ys=p.scores.map(function(x){return x[1];}),xmin=Math.min.apply(null,xs),xmax=Math.max.apply(null,xs),ymin=Math.min.apply(null,ys),ymax=Math.max.apply(null,ys);if(xmin===xmax){xmin--;xmax++;}if(ymin===ymax){ymin--;ymax++;}function sx(x){return pad+(x-xmin)/(xmax-xmin)*(W-2*pad)}function sy(y){return H-pad-(y-ymin)/(ymax-ymin)*(H-2*pad)}var groups={},palette=['#147D82','#E2672B','#4F7FA8','#B9791F','#2F8F5B','#8C5DA8','#C0433F','#5B6472'];p.runs.forEach(function(r){var g=groupValue(r,field);if(groups[g]===undefined)groups[g]=Object.keys(groups).length;});var pts=p.scores.map(function(q,i){var r=p.runs[i],g=groupValue(r,field),co=palette[groups[g]%palette.length];return '<circle cx="'+sx(q[0])+'" cy="'+sy(q[1])+'" r="5" fill="'+co+'"><title>'+escapeHtml(r.sample)+' · '+escapeHtml(g)+'</title></circle><text x="'+(sx(q[0])+7)+'" y="'+(sy(q[1])+3)+'" font-size="8" fill="#5B6472">'+escapeHtml(String(r.sample).slice(0,12))+'</text>';}).join('');return '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:100%"><line x1="'+pad+'" y1="'+(H-pad)+'" x2="'+(W-pad)+'" y2="'+(H-pad)+'" stroke="#DCE3E0"/><line x1="'+pad+'" y1="'+pad+'" x2="'+pad+'" y2="'+(H-pad)+'" stroke="#DCE3E0"/>'+pts+'<text x="'+(W/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10">PC1 '+fmtNum(p.var1,1)+'%</text><text x="12" y="'+(H/2)+'" font-size="10" transform="rotate(-90 12 '+(H/2)+')">PC2 '+fmtNum(p.var2,1)+'%</text></svg>';}
+  function euclid(a,b){return Math.sqrt(a.reduce(function(s,x,i){return s+(x-b[i])*(x-b[i]);},0));}
+  function hclust(Z,runs){var clusters=Z.map(function(z,i){return {members:[i],left:null,right:null,height:0,label:runs[i].sample+' R'+runs[i].runNo};});function dist(a,b){var vals=[];a.members.forEach(function(i){b.members.forEach(function(j){vals.push(euclid(Z[i],Z[j]));});});return rsMean(vals)||0;}while(clusters.length>1){var bi=0,bj=1,bd=Infinity;for(var i=0;i<clusters.length;i++)for(var j=i+1;j<clusters.length;j++){var d=dist(clusters[i],clusters[j]);if(d<bd){bd=d;bi=i;bj=j;}}var a=clusters[bi],b=clusters[bj],n={members:a.members.concat(b.members),left:a,right:b,height:bd,label:''};clusters=clusters.filter(function(_,k){return k!==bi&&k!==bj;});clusters.push(n);}return clusters[0]||null;}
+  function dendroSvg(root){if(!root)return '<div class="empty-chart">Not enough data</div>';var leaves=[];function walk(n){if(!n.left&&!n.right){leaves.push(n);return;}walk(n.left);walk(n.right);}walk(root);var maxH=root.height||1,W=760,rowH=22,H=Math.max(180,leaves.length*rowH+35),padL=170,padR=30,ymap=new Map();leaves.forEach(function(n,i){ymap.set(n,20+i*rowH);});function y(n){if(ymap.has(n))return ymap.get(n);var yy=(y(n.left)+y(n.right))/2;ymap.set(n,yy);return yy;}function x(n){return padL+(1-(n.height/maxH))*(W-padL-padR);}var lines='';function draw(n){if(!n.left&&!n.right)return;var xx=x(n),yl=y(n.left),yr=y(n.right),xl=x(n.left),xr=x(n.right);lines+='<line x1="'+xx+'" y1="'+yl+'" x2="'+xl+'" y2="'+yl+'" stroke="#147D82"/><line x1="'+xx+'" y1="'+yr+'" x2="'+xr+'" y2="'+yr+'" stroke="#147D82"/><line x1="'+xx+'" y1="'+yl+'" x2="'+xx+'" y2="'+yr+'" stroke="#147D82"/>';draw(n.left);draw(n.right);}draw(root);var labels=leaves.map(function(n){return '<text x="4" y="'+(y(n)+3)+'" font-size="9" fill="#5B6472">'+escapeHtml(n.label.slice(0,25))+'</text>';}).join('');return '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:'+H+'px">'+labels+lines+'</svg>';}
+
+  function erfApprox(x){var s=x<0?-1:1;x=Math.abs(x);var a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911,t=1/(1+p*x),y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);return s*y;}
+  function normalP2(z){return Math.max(0,Math.min(1,1-erfApprox(Math.abs(z)/Math.sqrt(2))));}
+  function welch(a,b){a=a.map(Number);b=b.map(Number);var ma=rsMean(a)||0,mb=rsMean(b)||0,va=Math.pow(rsSd(a),2),vb=Math.pow(rsSd(b),2),se=Math.sqrt(va/Math.max(1,a.length)+vb/Math.max(1,b.length));var t=se?(ma-mb)/se:0,pooled=Math.sqrt(((Math.max(0,a.length-1)*va)+(Math.max(0,b.length-1)*vb))/Math.max(1,a.length+b.length-2))||0;return {a:ma,b:mb,t:t,p:normalP2(t),effect:pooled?(ma-mb)/pooled:0,fc:(ma+.000001)/(mb+.000001),n1:a.length,n2:b.length};}
+  function mannWhitney(a,b){a=a.map(Number);b=b.map(Number);var all=a.map(function(v){return {v:v,g:0};}).concat(b.map(function(v){return {v:v,g:1};})).sort(function(x,y){return x.v-y.v;});var ranks=Array(all.length),i=0;while(i<all.length){var j=i+1;while(j<all.length&&all[j].v===all[i].v)j++;var rk=(i+1+j)/2;for(var k=i;k<j;k++)ranks[k]=rk;i=j;}var r1=0;all.forEach(function(x,idx){if(x.g===0)r1+=ranks[idx];});var n1=a.length,n2=b.length,U1=r1-n1*(n1+1)/2,mu=n1*n2/2,sd=Math.sqrt(n1*n2*(n1+n2+1)/12)||1,z=(U1-mu)/sd;var ma=rsMean(a)||0,mb=rsMean(b)||0;return {a:ma,b:mb,p:normalP2(z),effect:z/Math.sqrt(Math.max(1,n1+n2)),fc:(ma+.000001)/(mb+.000001),n1:n1,n2:n2};}
+  function bhAdjust(rows){var sorted=rows.slice().sort(function(a,b){return a.p-b.p;}),m=sorted.length,min=1;for(var i=m-1;i>=0;i--){var q=Math.min(1,sorted[i].p*m/(i+1));min=Math.min(min,q);sorted[i].q=min;}return rows;}
+  function statGroups(field){var o={};analysisRuns().forEach(function(r){var g=groupValue(r,field);if(!o[g])o[g]=[];o[g].push(r);});return o;}
+  function statsRows(field,aName,bName,mode){var groups=statGroups(field),A=groups[aName]||[],B=groups[bName]||[],M=matrixForRuns(A.concat(B),mode,60),rows=[],test=renderStatistics.test||'welch';M.cols.forEach(function(name){var av=A.map(function(r){return compoundValueMetric(r,name,mode);}),bv=B.map(function(r){return compoundValueMetric(r,name,mode);}),w=test==='mw'?mannWhitney(av,bv):welch(av,bv);rows.push({name:name,p:w.p,q:1,log2fc:Math.log(w.fc)/Math.log(2),effect:w.effect,meanA:w.a,meanB:w.b,n1:w.n1,n2:w.n2});});return bhAdjust(rows).sort(function(a,b){return a.q-b.q;});}
+  function compoundValueMetric(r,name,mode){return runRowsRaw(r.id).filter(function(c){return compoundKeyName(canonicalCompoundName(c.compound))===compoundKeyName(name)&&isQualifiedCompound(c);}).reduce(function(s,c){return s+suiteMetric(r,c,mode);},0);}
+  function volcanoSvg(rows){if(!rows.length)return '<div class="empty-chart">Select two groups</div>';var W=720,H=340,pad=40,maxX=Math.max(1,Math.max.apply(null,rows.map(function(r){return Math.abs(r.log2fc)||0;}))),maxY=Math.max(2,Math.max.apply(null,rows.map(function(r){return -Math.log10(Math.max(r.q,1e-8));})));function sx(x){return pad+(x+maxX)/(2*maxX)*(W-2*pad)}function sy(y){return H-pad-y/maxY*(H-2*pad)}var pts=rows.slice(0,150).map(function(r){var y=-Math.log10(Math.max(r.q,1e-8)),sig=r.q<.05&&Math.abs(r.log2fc)>=1,fill=sig?'#E2672B':'#8aa0a4';return '<circle cx="'+sx(r.log2fc)+'" cy="'+sy(y)+'" r="3.5" fill="'+fill+'"><title>'+escapeHtml(r.name)+' · log2FC '+fmtNum(r.log2fc,2)+' · q '+fmtNum(r.q,4)+'</title></circle>';}).join('');return '<svg id="suiteVolcanoSvg" viewBox="0 0 '+W+' '+H+'" style="width:100%;height:100%"><line x1="'+sx(0)+'" y1="'+pad+'" x2="'+sx(0)+'" y2="'+(H-pad)+'" stroke="#DCE3E0"/><line x1="'+pad+'" y1="'+sy(-Math.log10(.05))+'" x2="'+(W-pad)+'" y2="'+sy(-Math.log10(.05))+'" stroke="#B9791F" stroke-dasharray="4 4"/>'+pts+'<text x="'+(W/2)+'" y="'+(H-7)+'" text-anchor="middle" font-size="10">log2 fold change</text><text x="12" y="'+(H/2)+'" font-size="10" transform="rotate(-90 12 '+(H/2)+')">-log10 FDR</text></svg>';}
+
+  function presenceSets(field){var groups=statGroups(field),names=Object.keys(groups),map={};names.forEach(function(g){map[g]=new Set();groups[g].forEach(function(r){runRowsRaw(r.id).filter(isQualifiedCompound).forEach(function(c){map[g].add(canonicalCompoundName(c.compound));});});});return {groups:names,map:map};}
+  function vennOrUpSet(field){var d=presenceSets(field),g=d.groups;if(g.length<2)return '<div class="empty-chart">ต้องมีอย่างน้อย 2 groups</div>';if(g.length<=3){var W=680,H=310,circles=g.map(function(name,i){var pos=[[260,150],[390,150],[325,205]][i],co=['rgba(20,125,130,.25)','rgba(226,103,43,.25)','rgba(79,127,168,.25)'][i];return '<circle cx="'+pos[0]+'" cy="'+pos[1]+'" r="105" fill="'+co+'" stroke="#667"/><text x="'+pos[0]+'" y="'+(pos[1]-112)+'" text-anchor="middle" font-size="11">'+escapeHtml(name)+' ('+d.map[name].size+')</text>';}).join('');return '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:300px">'+circles+'<text x="340" y="295" text-anchor="middle" font-size="9" fill="#5B6472">Presence visualization · click-through intersections shown in UpSet table below</text></svg>'+upsetHtml(d);}return upsetHtml(d);}
+  function upsetHtml(d){var groups=d.groups,comb={};var all=new Set();groups.forEach(function(g){d.map[g].forEach(function(x){all.add(x);});});all.forEach(function(c){var key=groups.map(function(g){return d.map[g].has(c)?'1':'0';}).join('');if(!comb[key])comb[key]={n:0,items:[]};comb[key].n++;comb[key].items.push(c);});var rows=Object.keys(comb).map(function(k){return {key:k,n:comb[k].n,items:comb[k].items};}).sort(function(a,b){return b.n-a.n;}).slice(0,18),max=rows.length?rows[0].n:1;return '<div style="margin-top:8px">'+rows.map(function(r){var lab=groups.filter(function(_,i){return r.key[i]==='1';}).join(' + ')||'None';return '<div class="upset-row"><span title="'+escapeHtml(r.items.slice(0,20).join(', '))+'">'+escapeHtml(lab)+'</span><span class="upset-bar"><span class="upset-fill" style="display:block;width:'+(r.n/max*100)+'%"></span></span><b>'+r.n+'</b></div>';}).join('')+'</div>';}
+
+  function renderStatistics(){var el=$('#viewStatistics');if(!el)return;var field=(renderStatistics.field||'biologicalGroup'),mode=(renderStatistics.mode||'raw'),groups=Object.keys(statGroups(field));var a=renderStatistics.a&&groups.indexOf(renderStatistics.a)>=0?renderStatistics.a:(groups[0]||''),b=renderStatistics.b&&groups.indexOf(renderStatistics.b)>=0?renderStatistics.b:(groups[1]||'');renderStatistics.a=a;renderStatistics.b=b;var opts=groups.map(function(g){return '<option>'+escapeHtml(g)+'</option>';}).join(''),rows=a&&b&&a!==b?statsRows(field,a,b,mode):[],pca=pcaData(mode),tree=hclust(pca.Z,pca.runs);
+    el.innerHTML='<div class="suite-section-title"><div><h2>Statistics & Multivariate Analysis</h2><div class="suite-sub">PCA · Hierarchical clustering · two-group statistics · Volcano · Venn / UpSet · normalization</div></div><button class="btn btn-primary" id="exportResearchPackage">Export Research Package</button></div>'+ 
+    '<div class="stats-layout"><aside class="stats-panel"><div class="field"><label>Grouping</label><select id="statsField"><option value="biologicalGroup"'+(field==='biologicalGroup'?' selected':'')+'>Biological group</option><option value="sample"'+(field==='sample'?' selected':'')+'>Sample</option><option value="experiment"'+(field==='experiment'?' selected':'')+'>Experiment</option><option value="project"'+(field==='project'?' selected':'')+'>Project</option><option value="solvent"'+(field==='solvent'?' selected':'')+'>Solvent</option></select></div><div class="field" style="margin-top:8px"><label>Normalization</label><select id="statsMode"><option value="raw"'+(mode==='raw'?' selected':'')+'>Relative Area</option><option value="blank"'+(mode==='blank'?' selected':'')+'>Blank-subtracted</option><option value="is"'+(mode==='is'?' selected':'')+'>Internal-standard normalized</option></select></div><div class="field" style="margin-top:8px"><label>Two-group test</label><select id="statsTest"><option value="welch"'+((renderStatistics.test||'welch')==='welch'?' selected':'')+'>Welch t (screening)</option><option value="mw"'+(renderStatistics.test==='mw'?' selected':'')+'>Mann–Whitney U (normal approx.)</option></select></div><div class="field" style="margin-top:8px"><label>Group A</label><select id="statsA">'+opts+'</select></div><div class="field" style="margin-top:8px"><label>Group B</label><select id="statsB">'+opts+'</select></div><div class="suite-note" style="margin-top:10px">Welch statistic uses a normal approximation for screening; confirm inferential results in R/SPSS/Prism for publication. BH-FDR is applied across compounds.</div></aside>'+ 
+    '<main><div class="suite-grid"><div class="suite-card"><h3>PCA Score Plot</h3><div class="suite-sub">Top 25 prevalent compounds · autoscaled matrix · PC1 '+fmtNum(pca.var1,1)+'% / PC2 '+fmtNum(pca.var2,1)+'%</div><div class="stats-plot" id="suitePca">'+renderPcaSvg(pca,field)+'</div></div><div class="suite-card"><h3>Hierarchical Clustering Dendrogram</h3><div class="suite-sub">Average linkage · Euclidean distance on autoscaled matrix</div><div class="stats-plot" id="suiteDendro">'+dendroSvg(tree)+'</div></div></div>'+ 
+    '<div class="suite-grid"><div class="suite-card"><h3>Volcano Plot · '+escapeHtml(a||'A')+' vs '+escapeHtml(b||'B')+'</h3><div class="suite-sub">log2 fold change + BH-FDR; orange = q&lt;0.05 and |log2FC|≥1</div><div class="stats-plot">'+volcanoSvg(rows)+'</div></div><div class="suite-card"><h3>Venn / UpSet Presence Analysis</h3><div class="suite-sub">Presence is based on qualified compounds (current raw records are unchanged)</div><div class="stats-plot">'+vennOrUpSet(field)+'</div></div></div>'+ 
+    '<div class="suite-card"><h3>Statistical Comparison Table</h3><div class="stats-table"><table><thead><tr><th>Compound</th><th class="num">Mean A</th><th class="num">Mean B</th><th class="num">log2FC</th><th class="num">Effect d</th><th class="num">p approx.</th><th class="num">FDR q</th></tr></thead><tbody>'+rows.slice(0,120).map(function(r){return '<tr><td>'+escapeHtml(r.name)+'</td><td class="num">'+fmtNum(r.meanA,3)+'</td><td class="num">'+fmtNum(r.meanB,3)+'</td><td class="num">'+fmtNum(r.log2fc,2)+'</td><td class="num">'+fmtNum(r.effect,2)+'</td><td class="num">'+fmtNum(r.p,4)+'</td><td class="num"><b>'+fmtNum(r.q,4)+'</b></td></tr>';}).join('')+'</tbody></table></div></div></main></div>';
+    var sa=$('#statsA'),sb=$('#statsB');if(sa)sa.value=a;if(sb)sb.value=b;wireStatistics();}
+  function wireStatistics(){var e=$('#statsField');if(e)e.onchange=function(){renderStatistics.field=e.value;renderStatistics.a='';renderStatistics.b='';renderStatistics();};e=$('#statsMode');if(e)e.onchange=function(){renderStatistics.mode=e.value;renderStatistics();};e=$('#statsTest');if(e)e.onchange=function(){renderStatistics.test=e.value;renderStatistics();};e=$('#statsA');if(e)e.onchange=function(){renderStatistics.a=e.value;renderStatistics();};e=$('#statsB');if(e)e.onchange=function(){renderStatistics.b=e.value;renderStatistics();};e=$('#exportResearchPackage');if(e)e.onclick=exportResearchPackage;}
+
+  function csvEscape(v){v=v===null||v===undefined?'':String(v);return /[,"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+  function compoundMatrixCsv(mode){var M=matrixForRuns(analysisRuns(),mode||'raw',80),lines=[['RunID','Sample','Group','Project','Experiment'].concat(M.cols).map(csvEscape).join(',')];M.runs.forEach(function(r,i){lines.push([r.id,r.sample,r.biologicalGroup||'',(projectById(r.projectId)||{}).name||'',(experimentById(r.experimentId)||{}).name||''].concat(M.X[i]).map(csvEscape).join(','));});return lines.join('\n');}
+  async function exportResearchPackage(){if(!window.JSZip){showToast('JSZip library ยังโหลดไม่สำเร็จ',true);return;}var zip=new JSZip(),meta={exportedAt:rsNow(),projects:researchSuite.projects,experiments:researchSuite.experiments,methods:researchSuite.methods,riStandards:researchSuite.riStandards,settings:researchSuite.settings,trashCount:(researchSuite.trash||[]).length};zip.file('README.txt','GC-MS Research Package\nGenerated: '+meta.exportedAt+'\n\nContents:\n- runs.json / compounds.json / spectra.json\n- project_method_metadata.json\n- compound_matrix_raw.csv\n- compound_matrix_blank_subtracted.csv\n- audit_trail.json\n\nRaw data are preserved. Derived matrices may use canonical compound aliases.');zip.file('runs.json',JSON.stringify(runsIndex,null,2));zip.file('compounds.json',JSON.stringify(allCompounds,null,2));zip.file('spectra.json',JSON.stringify(allSpectra,null,2));zip.file('project_method_metadata.json',JSON.stringify(meta,null,2));zip.file('audit_trail.json',JSON.stringify(researchSuite.audit||[],null,2));zip.file('compound_matrix_raw.csv','\ufeff'+compoundMatrixCsv('raw'));zip.file('compound_matrix_blank_subtracted.csv','\ufeff'+compoundMatrixCsv('blank'));zip.file('compound_matrix_internal_standard.csv','\ufeff'+compoundMatrixCsv('is'));['suitePca','suiteDendro','suiteVolcanoSvg'].forEach(function(id){var node=document.getElementById(id);if(node){var svg=node.tagName&&node.tagName.toLowerCase()==='svg'?node:node.querySelector('svg');if(svg)zip.file('figures/'+id+'.svg',new XMLSerializer().serializeToString(svg));}});var blob=await zip.generateAsync({type:'blob'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='gcms-research-package-'+new Date().toISOString().slice(0,10)+'.zip';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);addAudit('research_package_exported','ZIP package',{});persistResearchSuite();showToast('Export Research Package แล้ว');}
+
+  function arrayBufferFile(file){return new Promise(function(resolve,reject){var fr=new FileReader();fr.onload=function(){resolve(fr.result);};fr.onerror=reject;fr.readAsArrayBuffer(file);});}
+  function textFile(file){return new Promise(function(resolve,reject){var fr=new FileReader();fr.onload=function(){resolve(fr.result);};fr.onerror=reject;fr.readAsText(file);});}
+  function rowsToParsed(rows){if(!rows||!rows.length)return [];var lines=rows.map(function(r){return r.join('\t');}).join('\n');return parsePastedData(lines);}
+  async function parsedFromFile(file){var ext=(file.name.split('.').pop()||'').toLowerCase();if((ext==='xlsx'||ext==='xls')&&window.XLSX){var ab=await arrayBufferFile(file),wb=XLSX.read(ab,{type:'array'}),ws=wb.Sheets[wb.SheetNames[0]],rows=XLSX.utils.sheet_to_json(ws,{header:1,raw:false});return rowsToParsed(rows);}return parsePastedData(await textFile(file));}
+  async function batchImportFiles(){var input=$('#batchFiles'),status=$('#batchStatus');if(!input||!input.files.length){showToast('เลือกไฟล์ก่อน',true);return;}var files=Array.prototype.slice.call(input.files),saved=0,failed=[];status.textContent='Importing '+files.length+' files…';for(var i=0;i<files.length;i++){try{var parsed=await parsedFromFile(files[i]);if(!parsed.length)throw new Error('No recognizable rows');var sample=currentFormSample()||files[i].name.replace(/\.[^.]+$/,'');var solvent=currentFormSolvent()||'Unspecified';var id=uid('run'),runNo=nextRunNo(sample,solvent),meta={id:id,date:$('#fDate').value||todayISO(),runNo:runNo,sample:sample,part:$('#fPart').value.trim(),solvent:solvent,notes:'Batch import: '+files[i].name,projectId:$('#fProject').value||'',experimentId:$('#fExperiment').value||'',biologicalGroup:$('#fBioGroup').value.trim(),replicate:$('#fReplicate').value.trim(),runType:$('#fRunType').value||'sample',methodId:$('#fMethod').value||'',internalStandard:$('#fInternalStandard').value.trim(),internalStandardAmount:$('#fISAmount').value!==''?Number($('#fISAmount').value):null,methodMeta:collectMethodMetaFromForm(),compoundCount:parsed.length,createdAt:rsNow(),sourceFile:files[i].name};runsIndex.push(meta);allCompounds=allCompounds.concat(parsed.map(function(c){return {runId:id,no:c.no,rt:c.rt,compound:c.compound,score:c.score,peakArea:c.peakArea,relArea:c.relArea};}));addAudit('batch_run_imported',files[i].name,{runId:id,rows:parsed.length});saved++;}catch(err){failed.push(files[i].name+': '+err.message);}}await persistIndex();await persistCompounds();await persistResearchSuite();status.textContent='Imported '+saved+'/'+files.length+(failed.length?' · Failed: '+failed.join(' | '):'');refreshAll();showToast('Batch import '+saved+' runs');}
+
+  function wireResearchSuiteStatic(){refreshSuiteFormSelects();var p=$('#fProject');if(p)p.addEventListener('change',refreshSuiteFormSelects);var m=$('#fMethod');if(m)m.addEventListener('change',function(){applyMethodToForm(m.value);});var b=$('#batchImportBtn');if(b)b.addEventListener('click',batchImportFiles);document.addEventListener('click',function(ev){var x=ev.target.closest&&ev.target.closest('.conf-refri');if(x){var name=x.getAttribute('data-name'),cur=referenceRIFor(name),v=window.prompt('Reference RI for '+name,cur===null?'':cur);if(v===null)return;v=Number(v);if(!isFinite(v)){delete researchSuite.referenceRI[compoundKeyName(canonicalCompoundName(name))];}else researchSuite.referenceRI[compoundKeyName(canonicalCompoundName(name))]=v;addAudit('reference_ri_updated',name,{ri:isFinite(v)?v:null});persistResearchSuite().then(function(){renderProjects();renderStatistics();});}});}
 
   /* ---------- form: preset selects ---------- */
   function fillPresetSelect(id, presets) {
@@ -5086,6 +5284,9 @@ window.GCMS_SUPABASE_CONFIG = {
       $("#fSolventCustom").value = "";
       $("#fSolventCustom").classList.add("hidden");
       $("#fNotes").value = "";
+      ["#fProject","#fExperiment","#fMethod"].forEach(function(id){if($(id))$(id).value="";});
+      ["#fBioGroup","#fReplicate","#fInternalStandard","#fISAmount","#fInstrument","#fColumn","#fCarrier","#fFlow","#fHsTemp","#fHsTime","#fInjection","#fSplit","#fOven","#fIonization","#fScanRange","#fSolventLot"].forEach(function(id){if($(id))$(id).value="";});
+      if($("#fRunType"))$("#fRunType").value="sample";
     }
     $("#fRunNo").value = "";
     $("#pasteInput").value = "";
@@ -5108,6 +5309,15 @@ window.GCMS_SUPABASE_CONFIG = {
       part: $("#fPart").value.trim(),
       solvent: solvent,
       notes: $("#fNotes").value.trim(),
+      projectId: $("#fProject") ? $("#fProject").value : "",
+      experimentId: $("#fExperiment") ? $("#fExperiment").value : "",
+      biologicalGroup: $("#fBioGroup") ? $("#fBioGroup").value.trim() : "",
+      replicate: $("#fReplicate") ? $("#fReplicate").value.trim() : "",
+      runType: $("#fRunType") ? $("#fRunType").value : "sample",
+      methodId: $("#fMethod") ? $("#fMethod").value : "",
+      internalStandard: $("#fInternalStandard") ? $("#fInternalStandard").value.trim() : "",
+      internalStandardAmount: $("#fISAmount") && $("#fISAmount").value!=="" ? Number($("#fISAmount").value) : null,
+      methodMeta: collectMethodMetaFromForm(),
       compoundCount: parsedPreview.length,
       createdAt: new Date().toISOString()
     };
@@ -5123,6 +5333,7 @@ window.GCMS_SUPABASE_CONFIG = {
       var saved70 = compoundsToSave.filter(function(c){return compoundMatchesScoreMode(c,"qualified");}).length;
       var saved80 = compoundsToSave.filter(function(c){return compoundMatchesScoreMode(c,"score80");}).length;
       var saved90 = compoundsToSave.filter(function(c){return compoundMatchesScoreMode(c,"high");}).length;
+      addAudit("run_created", meta.sample+" · Run "+meta.runNo, {runId:id,projectId:meta.projectId,experimentId:meta.experimentId,runType:meta.runType}); await persistResearchSuite();
       showToast(t("บันทึกแล้ว · Raw ","Saved · Raw ") + compoundsToSave.length + " · ≥70 " + saved70 + " · ≥80 " + saved80 + " · ≥90 " + saved90);
       resetForm(true);
       $("#fRunNo").value = "";
@@ -5146,6 +5357,7 @@ window.GCMS_SUPABASE_CONFIG = {
     reportState.runId = null; reportState.selectedPeakKey = null; reportLastPoint = null;
     intelligenceState = defaultIntelligenceState(); await persistIntelligence();
     compoundLibraryCache = {}; await persistCompoundLibrary();
+    researchSuite = defaultResearchSuite(); await persistResearchSuite();
     refreshAll();
     showToast("ล้างข้อมูลทั้งหมดแล้ว");
   }
@@ -5202,6 +5414,7 @@ window.GCMS_SUPABASE_CONFIG = {
     updatePreview();
 
     await loadAll();
+    wireResearchSuiteStatic();
     refreshAll();
     applyLanguage(currentLang, false);
     updateGlobalScoreButtons();
