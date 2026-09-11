@@ -581,6 +581,19 @@
   .presence-help-note{font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin-top:8px;}
   @media(max-width:640px){.presence-controls .field{min-width:0;flex:1 1 140px}.presence-table{max-height:440px}.presence-samples{min-width:180px}}
 
+  /* ---------- dashboard: plant-exclusive compounds ---------- */
+  .plant-exclusive-card{border-left:4px solid var(--accent-2);}
+  .plant-exclusive-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+  .plant-exclusive-actions{display:flex;align-items:end;gap:7px;flex-wrap:wrap;}
+  .plant-exclusive-actions .field{min-width:145px;}
+  .plant-exclusive-note{font-size:11px;line-height:1.55;color:var(--ink-soft);margin:4px 0 10px;}
+  .plant-exclusive-table{max-height:430px;}
+  .plant-exclusive-table table{font-size:11.5px;min-width:1000px;}
+  .plant-exclusive-table th,.plant-exclusive-table td{padding:7px 9px;vertical-align:top;}
+  .plant-exclusive-table td.pe-benefit{white-space:normal;min-width:240px;max-width:360px;line-height:1.45;}
+  .plant-exclusive-table td.pe-species{font-weight:800;color:var(--accent-2);}
+  .plant-exclusive-badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--accent-2-soft);background:#F2FAF9;color:var(--accent-2);padding:4px 8px;border-radius:99px;font-family:var(--font-mono);font-size:10px;font-weight:800;}
+
 
 /* ---------- Supabase account / auth ---------- */
 .auth-gate{
@@ -1982,6 +1995,7 @@ window.GCMS_SUPABASE_CONFIG = {
   var VIEW_IDS = { dashboard: "viewDashboard", add: "viewAdd", records: "viewRecords", library: "viewLibrary", projects:"viewProjects", statistics:"viewStatistics", report: "viewReport", research: "viewResearch" };
   var reportState = { runId: null, sort: "rt_asc", metric: "relArea", labelCount: 12, selectedPeakKey: null, scoreMode: "qualified", compareRuns: [], topN: 5, topScope: "current", presenceMode:"shared", presenceX:2, presenceRule:"atleast" };
   var dashboardTopState = { group: "sample", solvent: "all" };
+  var dashboardExclusiveState = { scoreMode: "qualified" };
   function defaultIntelligenceState(){return {watchlist:[],trendCompound:"",reportSections:{top:true,overview:true,labeled:true,peakTable:true,spectrum:true,comparison:true}};}
   var intelligenceState = defaultIntelligenceState();
   var compoundLibraryCache = {};
@@ -2863,6 +2877,37 @@ window.GCMS_SUPABASE_CONFIG = {
   function applyReportNavigationFocus(){if(!reportNavigationFocus)return;var f=reportNavigationFocus;reportNavigationFocus=null;setTimeout(function(){var target=null;if(f.peakKey){document.querySelectorAll('.report-peak-row').forEach(function(tr){if(!target&&tr.getAttribute('data-key')===f.peakKey)target=tr;});}if(!target)target=document.getElementById(f.targetId||'reportMainSheet');if(target){target.classList.add('flash-focus');target.scrollIntoView({behavior:'smooth',block:f.peakKey?'center':'start'});setTimeout(function(){target.classList.remove('flash-focus');},1900);}},80);}
 
   /* ---------- rendering: dashboard view ---------- */
+  function dashboardPlantExclusiveData(){
+    var d=compoundPresenceAcrossSamples(runsIndex,dashboardExclusiveState.scoreMode||"qualified");
+    var rows=filterPresenceCompounds(d,"exclusiveSpecies",2,"atleast");
+    return {data:d,rows:rows};
+  }
+  function dashboardExclusiveKnowledge(name){
+    var c=libraryCacheFor(name)||{};
+    return {
+      common:String(c.aiCommonName||c.title||'').trim(),
+      thai:String(c.aiThaiCommonName||'').trim(),
+      benefits:String(c.aiBenefits||c.manualHealthSummary||'').trim(),
+      references:String(c.aiReferences||'').trim(),
+      sourceUrl:String(c.aiSourceUrl||'').trim()
+    };
+  }
+  function renderDashboardPlantExclusiveCard(){
+    var x=dashboardPlantExclusiveData(), d=x.data, rows=x.rows, shown=rows.slice(0,80);
+    var controls='<div class="plant-exclusive-actions"><div class="field"><label>Minimum Match Score</label><select id="dashExclusiveScore"><option value="qualified"'+(dashboardExclusiveState.scoreMode==='qualified'?' selected':'')+'>Score ≥70</option><option value="score80"'+(dashboardExclusiveState.scoreMode==='score80'?' selected':'')+'>Score ≥80</option><option value="high"'+(dashboardExclusiveState.scoreMode==='high'?' selected':'')+'>Score ≥90</option></select></div><button class="btn btn-sm btn-primary" id="dashExclusiveExport" type="button"'+(!rows.length?' disabled':'')+'>Export Plant-exclusive CSV</button></div>';
+    if((d.species||[]).length<2){return '<div class="card plant-exclusive-card"><div class="plant-exclusive-head"><div><div class="section-title" style="margin-bottom:2px;">Plant-exclusive compounds <span class="plant-exclusive-badge">Dataset-exclusive</span></div><div class="plant-exclusive-note">ต้องมีข้อมูลอย่างน้อย 2 Plant species จึงจะตรวจว่าสารใดพบเฉพาะ species เดียวได้</div></div>'+controls+'</div><div class="empty-chart">ยังมี Plant species ไม่เพียงพอสำหรับการเปรียบเทียบ</div></div>';}
+    var body=shown.map(function(c){var k=dashboardExclusiveKnowledge(c.label);return '<tr><td class="compound-cell">'+escapeHtml(c.label)+'</td><td>'+escapeHtml(k.common||'—')+'</td><td>'+escapeHtml(k.thai||'—')+'</td><td class="pe-species">'+escapeHtml(c.exclusiveSpecies)+'</td><td class="num">'+c.speciesSampleCount+'/'+c.speciesTotalSamples+'</td><td class="num">'+fmtNum(c.speciesPrevalence,1)+'%</td><td class="num">'+fmtNum(c.meanScore,1)+'</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td><td class="pe-benefit">'+escapeHtml(k.benefits?libraryShortText(k.benefits,230):'ยังไม่มีข้อมูลสรรพคุณใน Compound Knowledge')+'</td></tr>';}).join('');
+    var table=rows.length?'<div class="table-wrap plant-exclusive-table"><table><thead><tr><th>Compound</th><th>Common name</th><th>Thai name</th><th>Dataset-exclusive species</th><th class="num">Samples</th><th class="num">Within-species prevalence</th><th class="num">Mean score</th><th class="num">Mean Rel.%</th><th>Properties / Benefits</th></tr></thead><tbody>'+body+'</tbody></table></div>':'<div class="empty-chart">ไม่พบสารที่จำกัดอยู่ใน Plant species เดียวตาม Score filter ปัจจุบัน</div>';
+    return '<div class="card plant-exclusive-card"><div class="plant-exclusive-head"><div><div class="section-title" style="margin-bottom:2px;">Plant-exclusive compounds <span class="plant-exclusive-badge">Dataset-exclusive</span></div><div class="plant-exclusive-note">ตรวจจาก '+d.species.length+' Plant species / '+d.samples.length+' Samples ในฐานข้อมูล · “Exclusive” หมายถึงพบเฉพาะ species เดียวภายในชุดข้อมูลนี้ ไม่ใช่ข้อสรุปว่าสารไม่มีในพืชชนิดอื่นนอกฐานข้อมูล</div></div>'+controls+'</div><div class="presence-summary-line"><span class="pill high">'+rows.length+' compounds</span><span class="pill">'+d.species.length+' species</span><span class="pill">'+scoreModeLabel(dashboardExclusiveState.scoreMode)+'</span></div>'+table+(rows.length>shown.length?'<div class="truncate-note">แสดง 80 รายการแรกจาก '+rows.length+' รายการ · Export CSV จะส่งออกทั้งหมด</div>':'')+'</div>';
+  }
+  function exportDashboardPlantExclusiveCsv(){
+    var x=dashboardPlantExclusiveData(),d=x.data,rows=x.rows;if(!rows.length){showToast('ไม่พบสาร Plant-exclusive ตามเงื่อนไขปัจจุบัน',true);return;}
+    var cols=['Compound','CommonName','ThaiCommonName','ExclusivePlantSpecies','SamplesDetectedInSpecies','TotalSamplesInSpecies','WithinSpeciesPrevalencePercent','MeanScore','MeanRelativeArea','PropertiesBenefits','References','SourceURL'];
+    var lines=[cols.join(',')];
+    rows.forEach(function(c){var k=dashboardExclusiveKnowledge(c.label),vals=[c.label,k.common,k.thai,c.exclusiveSpecies,c.speciesSampleCount,c.speciesTotalSamples,c.speciesPrevalence,c.meanScore,c.meanRelArea,k.benefits,k.references,k.sourceUrl];lines.push(vals.map(function(v){var z=v===null||v===undefined?'':String(v);return /[,"\n]/.test(z)?'"'+z.replace(/"/g,'""')+'"':z;}).join(','));});
+    var blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='gcms-plant-exclusive-'+dashboardExclusiveState.scoreMode+'.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  }
+
   function renderDashboard() {
     var el = $("#viewDashboard");
     if (!el) return;
@@ -2980,6 +3025,8 @@ window.GCMS_SUPABASE_CONFIG = {
       '<div style="margin:-4px 0 12px;color:var(--ink-soft);font-size:12px;">เลือกดู Top 5 แยก Sample, รวมตาม Plant species และกรองตาม Solvent ได้ · ใช้ Mean Relative Peak Area (%) ภายในกลุ่ม · Score &lt;70 ยังเก็บย้อนหลัง</div>' +
       renderDashboardTop5Cards() + '</div>';
 
+    html += renderDashboardPlantExclusiveCard();
+
     var recent = runsIndex.slice().sort(function (a, b) { return (b.createdAt || "").localeCompare(a.createdAt || ""); }).slice(0, 5);
     html += '<div class="card bento-recent"><div class="section-title">ครั้งที่บันทึกล่าสุด</div><div class="recent-list">' +
       recent.map(function (r) {
@@ -3001,6 +3048,8 @@ window.GCMS_SUPABASE_CONFIG = {
     });
     var dtg=document.getElementById("dashTopGroup"); if(dtg)dtg.addEventListener("change",function(){dashboardTopState.group=this.value;renderDashboard();});
     var dts=document.getElementById("dashTopSolvent"); if(dts)dts.addEventListener("change",function(){dashboardTopState.solvent=this.value;renderDashboard();});
+    var des=document.getElementById("dashExclusiveScore"); if(des)des.addEventListener("change",function(){dashboardExclusiveState.scoreMode=this.value;renderDashboard();});
+    var dee=document.getElementById("dashExclusiveExport"); if(dee)dee.addEventListener("click",exportDashboardPlantExclusiveCsv);
     el.querySelectorAll(".top5-compare-btn").forEach(function(btn){
       btn.addEventListener("click",function(){
         var mode=btn.getAttribute("data-top-mode")||"sample", name=btn.getAttribute("data-top-group")||"", ids=dashboardTopRunIds(mode,name,dashboardTopState.solvent), runSet=new Set(ids);
