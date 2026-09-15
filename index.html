@@ -164,6 +164,22 @@
   .result-meta{font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
   .result-meta b{color:var(--ink);}
 
+  /* ---------- records: bulk metadata editor ---------- */
+  .bulk-edit-card{border:1px solid var(--accent-2-soft);background:#FBFEFE;border-radius:13px;padding:12px 14px;margin:-2px 0 14px;}
+  .bulk-edit-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
+  .bulk-edit-title{font-family:var(--font-display);font-size:13.5px;font-weight:800;}
+  .bulk-edit-sub{font-size:10.5px;color:var(--ink-soft);margin-top:2px;line-height:1.45;}
+  .bulk-edit-count{font-family:var(--font-mono);font-size:10.5px;font-weight:800;color:var(--accent-2);background:var(--accent-2-soft);padding:4px 8px;border-radius:99px;}
+  .bulk-edit-grid{display:grid;grid-template-columns:minmax(150px,.75fr) auto auto auto minmax(250px,1.35fr) minmax(190px,.9fr) auto;gap:7px;align-items:end;}
+  .bulk-edit-grid .field label{font-size:9.5px;}
+  .bulk-edit-grid .btn{min-height:39px;white-space:nowrap;}
+  .bulk-edit-mixture{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:10.5px;color:var(--ink-soft);display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+  .bulk-edit-mixture b{color:var(--ink);}
+  .bulk-run-select{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--ink-soft);font-weight:700;cursor:pointer;white-space:nowrap;}
+  .bulk-run-select input{accent-color:var(--accent-2);}
+  @media(max-width:1120px){.bulk-edit-grid{grid-template-columns:repeat(4,minmax(130px,1fr));}.bulk-edit-grid .field.bulk-solvent-field{grid-column:span 2}.bulk-edit-grid .field.bulk-custom-field{grid-column:span 2}}
+  @media(max-width:700px){.bulk-edit-grid{grid-template-columns:1fr 1fr}.bulk-edit-grid .field.bulk-solvent-field,.bulk-edit-grid .field.bulk-custom-field{grid-column:1/-1}.bulk-edit-grid .btn.bulk-apply{grid-column:1/-1}.bulk-edit-card{padding:11px}}
+
   /* ---------- table ---------- */
   .table-wrap{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:auto;max-height:640px;}
   table{border-collapse:collapse;width:100%;font-size:13px;}
@@ -1018,6 +1034,113 @@ tbody tr:hover{background:#F6FAF9;}
 .auth-submit{min-height:51px;border-radius:13px;}
 .auth-security-note{padding:12px;border:1px solid var(--line-soft);border-radius:14px;background:#F8FAF9;}
 
+
+
+/* ===== Login redesign · Research portal 2026 ===== */
+.auth-gate{
+  padding:34px;
+  background:
+    radial-gradient(circle at 7% 8%,rgba(14,123,128,.17),transparent 28rem),
+    radial-gradient(circle at 93% 88%,rgba(235,106,42,.14),transparent 28rem),
+    linear-gradient(135deg,#EDF4F3 0%,#F8FAFA 52%,#F3F6F5 100%);
+}
+.auth-card{
+  width:min(1160px,100%);
+  grid-template-columns:minmax(0,1.16fr) minmax(400px,.84fr);
+  border:1px solid rgba(255,255,255,.94);
+  border-radius:36px;
+  box-shadow:0 40px 110px rgba(13,45,55,.18),0 2px 0 rgba(255,255,255,.8) inset;
+  overflow:hidden;
+}
+.auth-showcase{
+  min-height:680px;
+  padding:40px 42px 34px;
+  background:
+    radial-gradient(circle at 84% 13%,rgba(139,224,212,.20),transparent 17rem),
+    radial-gradient(circle at 11% 95%,rgba(235,106,42,.22),transparent 20rem),
+    linear-gradient(150deg,#102833 0%,#164552 52%,#0D7B80 112%);
+}
+.auth-product-mark{width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,.11);box-shadow:0 10px 25px rgba(0,0,0,.08);}
+.auth-product{font-size:14px;letter-spacing:-.025em;}
+.auth-private-pill{padding:8px 11px;background:rgba(255,255,255,.07);backdrop-filter:blur(10px);}
+.auth-hero{margin-top:66px;max-width:575px;}
+.auth-hero .eyebrow{font-size:10.5px;letter-spacing:.16em;color:#9EDFD8;}
+.auth-hero h2{font-size:42px;line-height:1.08;letter-spacing:-.045em;margin-bottom:16px;}
+.auth-hero p{font-size:13.5px;line-height:1.8;color:#C6D8DB;max-width:535px;}
+.auth-spectrum-card{margin-top:32px;padding:18px 19px 14px;border-radius:22px;background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 20px 45px rgba(3,31,37,.12);}
+.auth-spectrum-head strong{font-size:11.5px;}.auth-spectrum-head{color:#ABC4C7;}
+.auth-feature-grid{grid-template-columns:1.15fr 1fr 1fr;gap:9px;margin-top:14px;}
+.auth-feature{padding:13px 14px;border-radius:16px;background:rgba(255,255,255,.055);backdrop-filter:blur(8px);}
+.auth-feature strong{font-size:10.8px;}.auth-feature span{font-size:9.5px;color:#B7CDD0;}
+.auth-showcase-foot{font-size:9.8px;color:#9CB8BC;}
+
+.auth-panel{
+  position:relative;
+  padding:36px 42px 34px;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(14,123,128,.055),transparent 18rem),
+    linear-gradient(180deg,#FFFFFF 0%,#FBFCFC 100%);
+}
+.auth-panel:before{content:"";position:absolute;left:42px;right:42px;top:0;height:3px;border-radius:0 0 99px 99px;background:linear-gradient(90deg,var(--accent-2),rgba(14,123,128,.12),var(--accent));opacity:.78;}
+.auth-panel-top{justify-content:space-between;align-items:center;margin-bottom:32px;}
+.auth-access-status{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:800;color:var(--accent-2);letter-spacing:.03em;text-transform:uppercase;}
+.auth-access-status-dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 5px var(--good-bg);}
+.auth-panel .language-switch{background:#F4F7F7;border-color:#E2E9EA;border-radius:12px;}
+.auth-panel .language-btn{min-width:46px;padding:7px 11px;}
+.auth-brand{margin-bottom:22px;}
+.auth-brand .eyebrow{font-size:10px;letter-spacing:.13em;margin-bottom:9px;}
+.auth-brand h3{font-size:30px;line-height:1.18;letter-spacing:-.04em;margin-bottom:8px;}
+.auth-brand p{font-size:12px;line-height:1.7;max-width:42ch;}
+.auth-admin-note{margin:0 0 20px;padding:11px 12px;border:1px solid #E6ECEC;border-radius:14px;background:#F8FAFA;box-shadow:none;}
+.auth-admin-note-icon{width:31px;height:31px;border-radius:10px;background:#fff;color:var(--accent-2);font-size:14px;}
+.auth-admin-note strong{font-size:11px;}.auth-admin-note span:not(.auth-admin-note-icon){font-size:9.8px;}
+.auth-form{gap:15px;}
+.auth-form .field{gap:0;}
+.auth-form .field label{font-size:10px;font-weight:800;color:#53666F;margin-bottom:7px;letter-spacing:.035em;text-transform:uppercase;}
+.auth-input-wrap{position:relative;display:flex;align-items:center;}
+.auth-input-icon{position:absolute;left:14px;display:grid;place-items:center;color:#7B8D94;pointer-events:none;z-index:1;}
+.auth-input-icon svg{display:block;}
+.auth-form .auth-input-wrap input{min-height:54px;padding:10px 45px 10px 43px;border-radius:14px;background:#F8FAFA;border:1px solid #DDE6E7;font-size:14px;transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;}
+.auth-form .auth-input-wrap input:hover{border-color:#CAD7D9;background:#fff;}
+.auth-form .auth-input-wrap input:focus{border-color:var(--accent-2);background:#fff;box-shadow:0 0 0 4px rgba(14,123,128,.09);outline:none;}
+.auth-password-toggle{position:absolute;right:8px;width:37px;height:37px;border:0;border-radius:10px;background:transparent;color:#71848C;cursor:pointer;display:grid;place-items:center;}
+.auth-password-toggle:hover{background:#EAF3F2;color:var(--accent-2);}
+.auth-submit{position:relative;min-height:54px;margin-top:2px;border:0;border-radius:14px;background:linear-gradient(135deg,#0E7B80,#09676C);box-shadow:0 12px 26px rgba(14,123,128,.22);font-size:12.5px;letter-spacing:.01em;transition:transform .12s ease,box-shadow .12s ease,filter .12s ease;}
+.auth-submit:hover{filter:brightness(1.04);box-shadow:0 15px 32px rgba(14,123,128,.27);transform:translateY(-1px);}
+.auth-submit:active{transform:translateY(0);}
+.auth-submit-inner{display:inline-flex;align-items:center;justify-content:center;gap:9px;}
+.auth-submit-arrow{font-size:16px;line-height:1;transition:transform .15s ease;}.auth-submit:hover .auth-submit-arrow{transform:translateX(3px);}
+.auth-secondary{margin-top:-2px;justify-content:flex-end;}
+.auth-link{font-size:10.8px;padding:4px 0;}
+.auth-login-meta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:13px;padding-top:13px;border-top:1px solid var(--line-soft);font-size:9.5px;color:var(--ink-faint);}
+.auth-login-meta-dot{width:4px;height:4px;border-radius:50%;background:#AAB8BD;}
+.auth-message{margin-top:8px;min-height:18px;}
+.auth-security-note{margin-top:16px;padding:11px 12px;border:1px solid var(--line-soft);border-radius:13px;background:#F8FAFA;font-size:9.6px;color:#7A8B92;}
+.auth-copyright{margin-top:13px;color:#A0ACB1;font-size:9px;}
+
+@media(max-width:900px){
+  .auth-gate{padding:20px;align-items:flex-start;}
+  .auth-card{grid-template-columns:1fr;max-width:690px;border-radius:30px;}
+  .auth-showcase{min-height:0;padding:28px 30px 26px;}
+  .auth-hero{margin-top:30px;}.auth-hero h2{font-size:32px;max-width:560px;}
+  .auth-spectrum-card{margin-top:22px;}.auth-feature-grid{grid-template-columns:repeat(3,1fr);}
+  .auth-panel{padding:31px 34px 34px;}.auth-panel:before{left:34px;right:34px;}.auth-panel-top{margin-bottom:25px;}
+}
+@media(max-width:560px){
+  .auth-gate{padding:0;align-items:stretch;background:#fff;}
+  .auth-card{border:0;border-radius:0;box-shadow:none;min-height:100vh;}
+  .auth-showcase{padding:21px 18px 22px;}
+  .auth-showcase-top{align-items:center;}.auth-product{font-size:12px;}.auth-product-mark{width:37px;height:37px;}
+  .auth-hero{margin-top:25px;}.auth-hero h2{font-size:27px;}.auth-hero p{font-size:11.5px;line-height:1.65;}
+  .auth-spectrum-card{padding:13px;border-radius:16px;}.auth-spectrum-svg{height:74px;}
+  .auth-feature-grid{grid-template-columns:1fr;gap:6px;}.auth-feature{display:grid;grid-template-columns:25px 1fr;column-gap:8px;padding:9px 10px;}.auth-feature-icon{grid-row:1/3;margin:0;}.auth-feature strong{margin:0;}
+  .auth-showcase-foot{display:none;}
+  .auth-panel{padding:25px 18px 30px;}.auth-panel:before{left:18px;right:18px;}.auth-panel-top{margin-bottom:22px;}.auth-access-status{font-size:9px;}
+  .auth-brand h3{font-size:25px;}.auth-admin-note{margin-bottom:17px;}
+  .auth-form .auth-input-wrap input{min-height:52px;}.auth-submit{min-height:52px;}
+}
+
 /* Small motion only where useful */
 .card,.sample-card,.recent-item,.nav-tab,.stat-chip{transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease,background .16s ease;}
 @media (prefers-reduced-motion:reduce){.card,.sample-card,.recent-item,.nav-tab,.stat-chip{transition:none!important;}}
@@ -1184,7 +1307,7 @@ tbody tr:hover{background:#F6FAF9;}
 .ai-preview-chip.skip{background:var(--bg);color:var(--ink-soft);}
 .ai-preview-chip.bad{background:var(--bad-bg);border-color:#f1cecb;color:var(--bad);}
 .ai-knowledge-preview-table{overflow:auto;max-height:360px;}
-.ai-knowledge-preview-table table{min-width:1160px;font-size:10.5px;}
+.ai-knowledge-preview-table table{min-width:1420px;font-size:10.5px;}
 .ai-knowledge-preview-table th,.ai-knowledge-preview-table td{padding:7px 8px;vertical-align:top;}
 .ai-knowledge-preview-table td{white-space:normal;line-height:1.4;max-width:220px;word-break:break-word;}
 .ai-knowledge-preview-table td.preview-compound{min-width:180px;font-weight:700;}
@@ -1198,6 +1321,13 @@ tbody tr:hover{background:#F6FAF9;}
 .ai-knowledge-import-options{display:flex;gap:8px;align-items:end;flex-wrap:wrap;margin-top:8px;}
 .ai-knowledge-import-options .field{min-width:220px;}
 .ai-knowledge-duplicate-note{font-size:9.8px;color:var(--ink-soft);line-height:1.45;flex:1;min-width:230px;}
+.formula-prompt-panel{border:1px solid var(--accent-soft);background:#fffaf6;border-radius:12px;padding:11px 12px;display:grid;gap:8px;}
+.formula-prompt-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.formula-prompt-title{font-family:var(--font-display);font-size:12.5px;font-weight:800;color:var(--ink);}
+.formula-prompt-sub{font-size:10px;color:var(--ink-soft);line-height:1.5;margin-top:2px;max-width:75ch;}
+.formula-prompt-actions{display:flex;gap:6px;flex-wrap:wrap;}
+.formula-prompt-panel textarea{min-height:165px;background:#fff;font-size:10.5px;line-height:1.45;}
+.formula-source-note{font-size:9.5px;color:var(--ink-soft);line-height:1.45;border-top:1px dashed var(--line);padding-top:7px;}
 
 .compound-info-link{border:0;background:transparent;padding:0;color:var(--accent-2);font:inherit;font-weight:750;cursor:pointer;text-align:left;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;white-space:normal;}
 .compound-info-link:hover{color:var(--accent);}
@@ -1449,6 +1579,7 @@ window.GCMS_SUPABASE_CONFIG = {
 
     <section class="auth-panel">
       <div class="auth-panel-top">
+        <div class="auth-access-status"><span class="auth-access-status-dot"></span><span>Secure researcher access</span></div>
         <div class="language-switch" role="group" aria-label="Language / ภาษา">
           <button class="language-btn active" data-lang-switch="th" type="button">ไทย</button>
           <button class="language-btn" data-lang-switch="en" type="button">EN</button>
@@ -1456,21 +1587,37 @@ window.GCMS_SUPABASE_CONFIG = {
       </div>
 
       <div class="auth-brand">
-        <p class="eyebrow">GC·MS — SECURE WORKSPACE</p>
-        <h3>เข้าสู่ระบบนักวิจัย</h3>
-        <p>เข้าสู่ระบบด้วยบัญชีที่ผู้ดูแลระบบจัดให้เท่านั้น</p>
+        <p class="eyebrow">GC·MS — RESEARCHER PORTAL</p>
+        <h3>ยินดีต้อนรับกลับสู่ Workspace</h3>
+        <p>เข้าสู่ระบบเพื่อดูข้อมูล GC-MS, เปรียบเทียบตัวอย่าง และทำงานวิเคราะห์ต่อจากที่บันทึกไว้</p>
       </div>
 
       <div class="auth-admin-note" role="note">
-        <span class="auth-admin-note-icon">🔒</span>
-        <div><strong>Admin-managed accounts</strong><span>ระบบนี้ไม่เปิดให้สมัครสมาชิกเอง หากต้องการบัญชี กรุณาติดต่อผู้ดูแลระบบ</span></div>
+        <span class="auth-admin-note-icon" aria-hidden="true">⌾</span>
+        <div><strong>Private research workspace</strong><span>บัญชีถูกจัดการโดยผู้ดูแลระบบ และข้อมูลของแต่ละผู้ใช้แยกจากกัน</span></div>
       </div>
 
       <form class="auth-form" id="loginForm">
-        <div class="field"><label for="loginEmail">อีเมล</label><input id="loginEmail" type="email" autocomplete="email" required placeholder="name@example.com"></div>
-        <div class="field"><label for="loginPassword">รหัสผ่าน</label><input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="อย่างน้อย 8 ตัวอักษร"></div>
-        <button class="btn btn-primary auth-submit" id="loginSubmit" type="submit">เข้าสู่ระบบ</button>
+        <div class="field">
+          <label for="loginEmail">อีเมล</label>
+          <div class="auth-input-wrap">
+            <span class="auth-input-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8"/><path d="m5 7 7 6 7-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <input id="loginEmail" type="email" autocomplete="email" required placeholder="name@example.com">
+          </div>
+        </div>
+        <div class="field">
+          <label for="loginPassword">รหัสผ่าน</label>
+          <div class="auth-input-wrap">
+            <span class="auth-input-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="กรอกรหัสผ่าน">
+            <button class="auth-password-toggle" id="toggleLoginPassword" type="button" aria-label="แสดงรหัสผ่าน" title="แสดง/ซ่อนรหัสผ่าน">
+              <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-primary auth-submit" id="loginSubmit" type="submit"><span class="auth-submit-inner">เข้าสู่ระบบ <span class="auth-submit-arrow">→</span></span></button>
         <div class="auth-secondary"><button class="auth-link" id="forgotPasswordBtn" type="button">ลืมรหัสผ่าน?</button></div>
+        <div class="auth-login-meta"><span>Private workspace</span><span class="auth-login-meta-dot"></span><span>RLS protected</span><span class="auth-login-meta-dot"></span><span>Supabase Auth</span></div>
       </form>
 
 
@@ -2102,6 +2249,8 @@ window.GCMS_SUPABASE_CONFIG = {
     if(authUiWired)return;authUiWired=true;
     document.getElementById("loginForm").addEventListener("submit",handleLoginSubmit);
     document.getElementById("forgotPasswordBtn").addEventListener("click",sendPasswordReset);
+    var togglePw=document.getElementById("toggleLoginPassword"),loginPw=document.getElementById("loginPassword");
+    if(togglePw&&loginPw)togglePw.addEventListener("click",function(){var show=loginPw.type==="password";loginPw.type=show?"text":"password";togglePw.setAttribute("aria-label",show?"ซ่อนรหัสผ่าน":"แสดงรหัสผ่าน");togglePw.style.color=show?"var(--accent-2)":"";});
     var chip=document.getElementById("accountChip"),menu=document.getElementById("accountMenu"); chip.addEventListener("click",function(){var open=menu.classList.toggle("hidden");chip.setAttribute("aria-expanded",open?"false":"true");});
     document.getElementById("editProfileBtn").addEventListener("click",function(){menu.classList.add("hidden");openProfileModal();}); document.getElementById("logoutBtn").addEventListener("click",doLogout);
     document.getElementById("profileCloseBtn").addEventListener("click",closeProfileModal);document.getElementById("profileCancelBtn").addEventListener("click",closeProfileModal);document.getElementById("profileSaveBtn").addEventListener("click",saveProfileName);
@@ -2146,6 +2295,7 @@ window.GCMS_SUPABASE_CONFIG = {
   var sortKey = "score";
   var sortDir = "asc";
   var filters = { q: "", sampleQ: "", date: "all", solvent: "all", sample: "all", run: "all", scoreMode: "qualified" };
+  var recordBulkState = { selectedRunIds:[], date:"all" };
   var activeConfirmDeleteId = null;
   var ROW_CAP = 500;
   var currentView = "dashboard";
@@ -2208,7 +2358,8 @@ window.GCMS_SUPABASE_CONFIG = {
     "T. tomentosa ML", "T. tomentosa YL", "T. tomentosa Fr",
     "C. timorensis", "C. tetrandra", "C. sativa L Leaf", "C. sativa L Flower"
   ];
-  var SOLVENT_PRESETS = ["Hexane (H)", "Ethanol (E)"];
+  var SOLVENT_MIXTURE_1111 = "Hexane:Ethanol:Methanol:Ethyl acetate (1:1:1:1)";
+  var SOLVENT_PRESETS = ["Hexane (H)", "Ethanol (E)", SOLVENT_MIXTURE_1111];
   var CUSTOM_VALUE = "__custom__";
 
   /* ---------- dom helpers ---------- */
@@ -3434,22 +3585,32 @@ window.GCMS_SUPABASE_CONFIG = {
   async function loadCompoundKnowledgeTable(){
     if(!sbClient||!currentAuthUser)return false;
     try{
-      var fields='compound_name,compound_key,common_name,common_name_th,activity_categories,properties_benefits,references_text,source_url,source,updated_at';
+      var fields='compound_name,compound_key,common_name,common_name_th,molecular_formula,formula_reference,formula_source_url,formula_verified_at,activity_categories,properties_benefits,references_text,source_url,source,updated_at';
       var res=await sbClient.from('gcms_compound_knowledge').select(fields).eq('user_id',currentAuthUser.id);
       if(res.error){
-        var legacy=await sbClient.from('gcms_compound_knowledge')
-          .select('compound_name,compound_key,common_name,common_name_th,properties_benefits,references_text,source_url,source,updated_at')
+        var categoryFallback=await sbClient.from('gcms_compound_knowledge')
+          .select('compound_name,compound_key,common_name,common_name_th,activity_categories,properties_benefits,references_text,source_url,source,updated_at')
           .eq('user_id',currentAuthUser.id);
-        if(legacy.error)throw legacy.error;res=legacy;
+        if(!categoryFallback.error)res=categoryFallback;
+        else{
+          var legacy=await sbClient.from('gcms_compound_knowledge')
+            .select('compound_name,compound_key,common_name,common_name_th,properties_benefits,references_text,source_url,source,updated_at')
+            .eq('user_id',currentAuthUser.id);
+          if(legacy.error)throw legacy.error;res=legacy;
+        }
       }
       (res.data||[]).forEach(function(row){
         var key=libraryKey(row.compound_key||row.compound_name);if(!key)return;var old=compoundLibraryCache[key]||{};
         compoundLibraryCache[key]=Object.assign({},old,{
-          aiKnowledgeVersion:3,
+          aiKnowledgeVersion:4,
           aiSource:row.source||old.aiSource||'AI',
           aiUpdatedAt:row.updated_at||old.aiUpdatedAt||'',
           aiCommonName:row.common_name||old.aiCommonName||'',
           aiThaiCommonName:row.common_name_th||old.aiThaiCommonName||'',
+          formula:row.molecular_formula||old.formula||'',
+          formulaReference:row.formula_reference||old.formulaReference||'',
+          formulaSourceUrl:row.formula_source_url||old.formulaSourceUrl||'',
+          formulaVerifiedAt:row.formula_verified_at||old.formulaVerifiedAt||'',
           aiCategories:normalizeCompoundCategories(row.activity_categories!==undefined?row.activity_categories:(old.aiCategories||[])),
           aiBenefits:row.properties_benefits||old.aiBenefits||'',
           aiReferences:row.references_text||old.aiReferences||'',
@@ -3465,18 +3626,23 @@ window.GCMS_SUPABASE_CONFIG = {
 
   async function upsertCompoundKnowledgeRows(rows){
     if(!rows||!rows.length||!sbClient||!currentAuthUser)return false;
-    var payload=rows.map(function(r){var cached=compoundLibraryCache[libraryKey(r.compound)]||{};return {
+    var now=new Date().toISOString();
+    var payload=rows.map(function(r){var cached=compoundLibraryCache[libraryKey(r.compound)]||{},formula=String(cached.formula||r.formula||'').trim();return {
       user_id:currentAuthUser.id,
       compound_name:r.compound,
       compound_key:libraryKey(r.compound),
       common_name:String(cached.aiCommonName||r.commonName||'').trim()||null,
       common_name_th:String(cached.aiThaiCommonName||r.thaiCommonName||'').trim()||null,
+      molecular_formula:formula||null,
+      formula_reference:String(cached.formulaReference||r.formulaReference||'').trim()||null,
+      formula_source_url:String(cached.formulaSourceUrl||r.formulaSourceUrl||'').trim()||null,
+      formula_verified_at:formula?(cached.formulaVerifiedAt||now):null,
       activity_categories:normalizeCompoundCategories(cached.aiCategories||r.categories||[]),
       properties_benefits:String(cached.aiBenefits||r.benefits||'').trim()||null,
       references_text:String(cached.aiReferences||r.references||'').trim()||null,
       source_url:String(cached.aiSourceUrl||r.sourceUrl||'').trim()||null,
       source:'AI',
-      updated_at:new Date().toISOString()
+      updated_at:now
     };});
     try{
       var res=await sbClient.from('gcms_compound_knowledge').upsert(payload,{onConflict:'user_id,compound_key'});
@@ -3484,10 +3650,11 @@ window.GCMS_SUPABASE_CONFIG = {
       return true;
     }catch(err){
       console.warn('Could not write gcms_compound_knowledge; legacy cache was still saved.',err);
-      showToast('บันทึกใน Compound Library แล้ว แต่หมวดหมู่ยังส่งขึ้น Supabase ไม่สำเร็จ · กรุณารัน SQL category update',true);
+      showToast('บันทึกใน Compound Library แล้ว แต่ Molecular formula ยังส่งขึ้น Supabase ไม่สำเร็จ · กรุณารัน SQL formula update',true);
       return false;
     }
   }
+
   function aiKnowledgePromptRows(minScore){
     minScore=Number(minScore); if(!isFinite(minScore))minScore=70; minScore=Math.max(0,Math.min(100,minScore));
     var map={};
@@ -3511,15 +3678,21 @@ window.GCMS_SUPABASE_CONFIG = {
     var intro=[
       'You are verifying molecular formulas for compounds identified by GC-MS for a scientific phytochemical table.',
       '',
+      'TASK: For every supplied GC-MS compound name, find and verify the exact molecular formula using authoritative chemical sources.',
+      '',
       'RULES:',
       '1) Keep each supplied Compound name EXACTLY unchanged so the result can be matched back to the GC-MS record.',
-      '2) Return the authoritative neutral molecular formula for that exact compound/identity when it can be verified. Prefer PubChem, NIST Chemistry WebBook, ChemSpider, peer-reviewed articles, or another authoritative chemical database.',
-      '3) Do NOT infer or guess a formula from a similar compound. If the identity is ambiguous or the formula cannot be verified, leave Molecular formula blank and write "Formula not verified" in References.',
-      '4) Preserve element capitalization and stoichiometry exactly (examples: C30H50O, C15H24, C6H6O2).',
-      '5) Verify against authoritative sources before answering; NEVER guess or fabricate a formula.',
-      '6) Return ONLY TSV. No Markdown table or explanation.',
-      '7) Use EXACTLY this header:',
-      'Compound name\tMolecular formula',
+      '2) Return the authoritative neutral molecular formula for that exact compound/identity when it can be verified.',
+      '3) Prefer primary authoritative identity sources in this order when available: PubChem, NIST Chemistry WebBook, ChEBI, ChemSpider, then peer-reviewed literature.',
+      '4) Do NOT infer or guess a formula from a similar compound, synonym, chemical class, or fragment. If the exact identity is ambiguous or the formula cannot be verified, leave Molecular formula blank.',
+      '5) Preserve element capitalization and stoichiometry exactly (examples: C30H50O, C15H24, C6H6O2). Do not add HTML subscripts.',
+      '6) Formula reference: state the database/article used to verify the formula, including identifier when available (e.g. PubChem CID, NIST CAS, DOI/PMID).',
+      '7) Formula source URL: provide the direct authoritative URL used for verification. Do not fabricate URLs.',
+      '8) If the formula cannot be verified, leave Molecular formula and Formula source URL blank and write "Formula not verified" in Formula reference.',
+      '9) NEVER fabricate a formula, CID, CAS, DOI, PMID, reference, or URL.',
+      '10) Return ONLY TSV (TAB-separated values). No Markdown table, code fence, introduction, or explanation.',
+      '11) Use EXACTLY this header:',
+      'Compound name\tMolecular formula\tFormula reference\tFormula source URL',
       '',
       'Compounds selected from GC-MS identifications with Score ≥ '+threshold+':',
       'Compound name\tBest score'
@@ -3527,6 +3700,7 @@ window.GCMS_SUPABASE_CONFIG = {
     rows.forEach(function(r){intro.push(r.name+'\t'+fmtNum(r.bestScore,1));});
     return intro.join('\n');
   }
+
   function buildCompoundCategoryPrompt(minScore,customRows){
     var rows=Array.isArray(customRows)?customRows:aiKnowledgePromptRows(minScore),threshold=Math.max(0,Math.min(100,Number(minScore)||0));
     var vocab=['Anti-inflammatory','Anticancer / Antitumor','Antioxidant','Antimicrobial','Antibacterial','Antifungal','Antiviral','Analgesic / Antinociceptive','Neuroprotective','Cardioprotective','Hepatoprotective','Gastroprotective','Antidiabetic / Metabolic','Immunomodulatory','Wound healing','Insecticidal / Repellent','Aroma / Flavor','Industrial / Other','Unclassified'];
@@ -3603,15 +3777,17 @@ window.GCMS_SUPABASE_CONFIG = {
       common:['commonname','common','trivialname','ทั่วไป','ชื่อสามัญ','ชื่อสามัญทั่วไป'],
       thai:['thaicommonname','thainame','ชื่อไทย','ชื่อสามัญภาษาไทย'],
       formula:['molecularformula','formula','chemicalformula','molecularformulae','สูตรโมเลกุล','สูตรเคมี'],
+      formulaReference:['formulareference','formularef','formulaevidence','formulasource','อ้างอิงสูตร','แหล่งอ้างอิงสูตร'],
+      formulaSourceUrl:['formulasourceurl','formulaurl','formulaevidenceurl','ลิงก์สูตร','แหล่งสูตรurl','urlสูตร'],
       categories:['activitycategories','activitycategory','categories','category','biologicalactivitycategories','biologicalcategories','หมวดหมู่','ประเภทสาร','หมวดหมู่คุณสมบัติ','ประเภทคุณสมบัติ'],
       benefits:['propertiesbenefits','benefits','properties','healthrelevance','biologicalrelevance','สรรพคุณ','ประโยชน์','คุณสมบัติ','คุณสมบัติสรรพคุณ'],
       references:['references','reference','refs','citation','citations','อ้างอิง','เอกสารอ้างอิง','แหล่งอ้างอิง'],
       sourceUrl:['sourceurl','url','source','link','links','doiurl','pubmedurl','pubchemurl','แหล่งที่มา','ลิงก์']
     };
     function idx(type){for(var i=0;i<hdr.length;i++){if(aliases[type].indexOf(hdr[i])!==-1)return i;}return -1;}
-    var ci=idx('compound'),co=idx('common'),ti=idx('thai'),fi=idx('formula'),cati=idx('categories'),bi=idx('benefits'),ri=idx('references'),ui=idx('sourceUrl'),start=1;
-    if(ci<0){ci=0;co=1;ti=2;fi=3;cati=4;bi=5;ri=6;ui=7;start=0;}
-    var out=[];for(var r=start;r<matrix.length;r++){var row=matrix[r],name=String(row[ci]||'').trim();if(!name||/^compound\s*name$/i.test(name))continue;out.push({compound:name,commonName:co>=0?String(row[co]||'').trim():'',thaiCommonName:ti>=0?String(row[ti]||'').trim():'',formula:fi>=0?String(row[fi]||'').trim():'',categories:cati>=0?normalizeCompoundCategories(row[cati]||''):[],benefits:bi>=0?String(row[bi]||'').trim():'',references:ri>=0?String(row[ri]||'').trim():'',sourceUrl:ui>=0?String(row[ui]||'').trim():''});}
+    var ci=idx('compound'),co=idx('common'),ti=idx('thai'),fi=idx('formula'),fri=idx('formulaReference'),fui=idx('formulaSourceUrl'),cati=idx('categories'),bi=idx('benefits'),ri=idx('references'),ui=idx('sourceUrl'),start=1;
+    if(ci<0){ci=0;co=1;ti=2;fi=3;fri=-1;fui=-1;cati=4;bi=5;ri=6;ui=7;start=0;}
+    var out=[];for(var r=start;r<matrix.length;r++){var row=matrix[r],name=String(row[ci]||'').trim();if(!name||/^compound\s*name$/i.test(name))continue;out.push({compound:name,commonName:co>=0?String(row[co]||'').trim():'',thaiCommonName:ti>=0?String(row[ti]||'').trim():'',formula:fi>=0?String(row[fi]||'').trim():'',formulaReference:fri>=0?String(row[fri]||'').trim():'',formulaSourceUrl:fui>=0?String(row[fui]||'').trim():'',categories:cati>=0?normalizeCompoundCategories(row[cati]||''):[],benefits:bi>=0?String(row[bi]||'').trim():'',references:ri>=0?String(row[ri]||'').trim():'',sourceUrl:ui>=0?String(row[ui]||'').trim():''});}
     return out;
   }
   function knowledgeHasAiMemory(c){
@@ -3619,12 +3795,12 @@ window.GCMS_SUPABASE_CONFIG = {
     return !!(String(c.aiCommonName||'').trim()||String(c.aiThaiCommonName||'').trim()||normalizeCompoundCategories(c.aiCategories||[]).length||String(c.aiBenefits||'').trim()||String(c.aiReferences||'').trim()||String(c.aiSourceUrl||'').trim());
   }
   function knowledgeIncomingHasData(r){
-    return !!(String(r.commonName||'').trim()||String(r.thaiCommonName||'').trim()||String(r.formula||'').trim()||normalizeCompoundCategories(r.categories||[]).length||String(r.benefits||'').trim()||String(r.references||'').trim()||String(r.sourceUrl||'').trim());
+    return !!(String(r.commonName||'').trim()||String(r.thaiCommonName||'').trim()||String(r.formula||'').trim()||String(r.formulaReference||'').trim()||String(r.formulaSourceUrl||'').trim()||normalizeCompoundCategories(r.categories||[]).length||String(r.benefits||'').trim()||String(r.references||'').trim()||String(r.sourceUrl||'').trim());
   }
   function knowledgeRowDiffers(r,c){
     c=c||{};
     var pairs=[
-      [r.commonName,c.aiCommonName],[r.thaiCommonName,c.aiThaiCommonName],[r.formula,c.formula],[normalizeCompoundCategories(r.categories||[]).join(' | '),normalizeCompoundCategories(c.aiCategories||[]).join(' | ')],[r.benefits,c.aiBenefits],
+      [r.commonName,c.aiCommonName],[r.thaiCommonName,c.aiThaiCommonName],[r.formula,c.formula],[r.formulaReference,c.formulaReference],[r.formulaSourceUrl,c.formulaSourceUrl],[normalizeCompoundCategories(r.categories||[]).join(' | '),normalizeCompoundCategories(c.aiCategories||[]).join(' | ')],[r.benefits,c.aiBenefits],
       [r.references,c.aiReferences],[r.sourceUrl,c.aiSourceUrl]
     ];
     return pairs.some(function(pair){var incoming=String(pair[0]||'').trim();return incoming!==''&&incoming!==String(pair[1]||'').trim();});
@@ -3633,11 +3809,16 @@ window.GCMS_SUPABASE_CONFIG = {
     var known=new Set(libraryUniqueRows().map(function(d){return d.key;})),seen={};
     return (rows||[]).map(function(r,index){
       var key=libraryKey(r.compound),status='new',reason='',existing=compoundLibraryCache[key]||{};
+      var formulaOnly=!!(String(r.formula||'').trim()||String(r.formulaReference||'').trim()||String(r.formulaSourceUrl||'').trim())&&!String(r.commonName||'').trim()&&!String(r.thaiCommonName||'').trim()&&!normalizeCompoundCategories(r.categories||[]).length&&!String(r.benefits||'').trim()&&!String(r.references||'').trim()&&!String(r.sourceUrl||'').trim();
       if(!knowledgeIncomingHasData(r)){status='empty';reason='ไม่มีข้อมูลนอกจากชื่อสาร';}
       else if(seen[key]){status='duplicate';reason='ชื่อสารซ้ำในข้อมูลที่วาง · ใช้แถวแรกเท่านั้น';}
       else if(!known.has(key)){status='unmatched';reason='ไม่พบชื่อสารนี้ใน GC-MS Compound Library';}
-      else if(String(r.formula||'').trim()&&!String(existing.formula||'').trim()&&!String(r.commonName||'').trim()&&!String(r.thaiCommonName||'').trim()&&!normalizeCompoundCategories(r.categories||[]).length&&!String(r.benefits||'').trim()&&!String(r.references||'').trim()&&!String(r.sourceUrl||'').trim()){
-        status='new';reason='เติม Molecular formula ที่ยังไม่มี โดยไม่แก้ข้อมูลสรรพคุณ/อ้างอิงเดิม';
+      else if(formulaOnly){
+        var sameFormula=(!String(r.formula||'').trim()||String(r.formula||'').trim()===String(existing.formula||'').trim())&&(!String(r.formulaReference||'').trim()||String(r.formulaReference||'').trim()===String(existing.formulaReference||'').trim())&&(!String(r.formulaSourceUrl||'').trim()||String(r.formulaSourceUrl||'').trim()===String(existing.formulaSourceUrl||'').trim());
+        var hasFormulaMeta=!!(String(existing.formula||'').trim()||String(existing.formulaReference||'').trim()||String(existing.formulaSourceUrl||'').trim());
+        if(hasFormulaMeta&&sameFormula){status='same';reason='สูตรโมเลกุลและแหล่งอ้างอิงนี้มีอยู่แล้ว';}
+        else if(hasFormulaMeta){status='update';reason='พบ Molecular formula / แหล่งอ้างอิงใหม่สำหรับสารเดิม';}
+        else{status='new';reason='พร้อมเติม Molecular formula และแหล่งอ้างอิง';}
       }else if(knowledgeHasAiMemory(existing)){
         if(knowledgeRowDiffers(r,existing)){status='update';reason='มีข้อมูลเดิมและค่าที่วางมามีการเปลี่ยนแปลง';}
         else{status='same';reason='มีข้อมูลนี้อยู่แล้ว · ไม่เพิ่มซ้ำ';}
@@ -3646,6 +3827,7 @@ window.GCMS_SUPABASE_CONFIG = {
       return {row:r,key:key,status:status,reason:reason,rowNo:index+1,existing:existing};
     });
   }
+
   function knowledgeStatusLabel(status){
     return {new:'ใหม่',update:'มีข้อมูลเปลี่ยน',same:'มีแล้ว',duplicate:'ซ้ำในข้อมูลที่วาง',unmatched:'จับคู่ไม่ได้',empty:'ไม่มีข้อมูล'}[status]||status;
   }
@@ -3671,6 +3853,8 @@ window.GCMS_SUPABASE_CONFIG = {
       '<td>'+knowledgePreviewValue(r.commonName,80)+'</td>'+ 
       '<td>'+knowledgePreviewValue(r.thaiCommonName,80)+'</td>'+ 
       '<td>'+knowledgePreviewValue(r.formula,70)+'</td>'+
+      '<td>'+knowledgePreviewValue(r.formulaReference,120)+'</td>'+
+      '<td>'+knowledgePreviewValue(r.formulaSourceUrl,120)+'</td>'+
       '<td>'+knowledgePreviewValue(normalizeCompoundCategories(r.categories||[]).join(' | '),130)+'</td>'+
       '<td>'+knowledgePreviewValue(r.benefits,150)+'</td>'+ 
       '<td>'+knowledgePreviewValue(r.references,150)+'</td>'+ 
@@ -3678,7 +3862,7 @@ window.GCMS_SUPABASE_CONFIG = {
     return '<div class="ai-knowledge-preview">'+
       '<div class="ai-knowledge-preview-head"><div><div class="ai-knowledge-preview-title">Preview ก่อนบันทึก · '+c.total+' แถว</div><div class="mini-muted">ระบบจะบันทึกได้ '+eligible+' แถวตามนโยบายปัจจุบัน</div></div>'+ 
       '<div class="ai-knowledge-preview-summary"><span class="ai-preview-chip new">ใหม่ '+c.new+'</span><span class="ai-preview-chip update">เปลี่ยน '+c.update+'</span><span class="ai-preview-chip skip">มีแล้ว '+c.same+'</span><span class="ai-preview-chip bad">ซ้ำ '+c.duplicate+'</span><span class="ai-preview-chip bad">จับคู่ไม่ได้ '+c.unmatched+'</span></div></div>'+ 
-      '<div class="ai-knowledge-preview-table"><table><thead><tr><th class="num">#</th><th>Status</th><th>Compound name</th><th>Common name</th><th>Thai common name</th><th>Molecular formula</th><th>Activity categories</th><th>Properties / Benefits</th><th>References</th><th>Source URL</th></tr></thead><tbody>'+rowsHtml+'</tbody></table></div>'+ 
+      '<div class="ai-knowledge-preview-table"><table><thead><tr><th class="num">#</th><th>Status</th><th>Compound name</th><th>Common name</th><th>Thai common name</th><th>Molecular formula</th><th>Formula reference</th><th>Formula source URL</th><th>Activity categories</th><th>Properties / Benefits</th><th>References</th><th>Source URL</th></tr></thead><tbody>'+rowsHtml+'</tbody></table></div>'+ 
     '</div>';
   }
   function refreshAiKnowledgePreview(){
@@ -3692,10 +3876,12 @@ window.GCMS_SUPABASE_CONFIG = {
       var r=item.row,key=item.key,status=item.status;
       if(status==='duplicate'||status==='unmatched'||status==='same'||status==='empty'){skipped++;return;}
       if(status==='update'&&policy!=='update'){skipped++;return;}
-      var old=compoundLibraryCache[key]||{},patch={aiKnowledgeVersion:3,aiSource:'AI',aiUpdatedAt:new Date().toISOString()};
+      var old=compoundLibraryCache[key]||{},patch={aiKnowledgeVersion:4,aiSource:'AI',aiUpdatedAt:new Date().toISOString()};
       if(r.commonName)patch.aiCommonName=r.commonName;
       if(r.thaiCommonName)patch.aiThaiCommonName=r.thaiCommonName;
-      if(r.formula)patch.formula=r.formula;
+      if(r.formula){patch.formula=r.formula;patch.formulaVerifiedAt=new Date().toISOString();}
+      if(r.formulaReference)patch.formulaReference=r.formulaReference;
+      if(r.formulaSourceUrl)patch.formulaSourceUrl=r.formulaSourceUrl;
       if(normalizeCompoundCategories(r.categories||[]).length)patch.aiCategories=normalizeCompoundCategories(r.categories);
       if(r.benefits)patch.aiBenefits=r.benefits;
       if(r.references)patch.aiReferences=r.references;
@@ -3740,17 +3926,20 @@ window.GCMS_SUPABASE_CONFIG = {
     '</div>';
   }
   function renderAiKnowledgeWorkflow(){
-    var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),missingRows=aiKnowledgeMissingPromptRows(compoundKnowledgeState.minScore),missingCategoryRows=aiCategoryMissingPromptRows(compoundKnowledgeState.minScore),missingFormulaRows=aiFormulaMissingPromptRows(compoundKnowledgeState.minScore),remembered=libraryUniqueRows().filter(function(d){var c=libraryCacheFor(d.name)||{};return !!(c.aiCommonName||c.aiThaiCommonName||normalizeCompoundCategories(c.aiCategories||[]).length||c.aiBenefits||c.aiReferences||c.aiSourceUrl);}).length;
+    var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),missingRows=aiKnowledgeMissingPromptRows(compoundKnowledgeState.minScore),missingCategoryRows=aiCategoryMissingPromptRows(compoundKnowledgeState.minScore),missingFormulaRows=aiFormulaMissingPromptRows(compoundKnowledgeState.minScore),remembered=libraryUniqueRows().filter(function(d){var c=libraryCacheFor(d.name)||{};return !!(c.aiCommonName||c.aiThaiCommonName||c.formula||normalizeCompoundCategories(c.aiCategories||[]).length||c.aiBenefits||c.aiReferences||c.aiSourceUrl);}).length;
     var policy=compoundKnowledgeState.duplicatePolicy||'skip';
+    var formulaTemplate=buildCompoundFormulaPrompt(compoundKnowledgeState.minScore,missingFormulaRows.length?missingFormulaRows:rows.slice(0,Math.min(rows.length,12)));
     return '<section class="ai-knowledge-panel">'+
-      '<div class="ai-knowledge-head"><div><div class="ai-knowledge-title">✦ AI Compound Knowledge · ชื่อสามัญ / สูตรโมเลกุล / หมวดหมู่ / สรรพคุณ / อ้างอิง</div><div class="ai-knowledge-sub">เลือกระดับ Score ขั้นต่ำ ระบบจะรวมชื่อสารแบบไม่ซ้ำและสร้าง Prompt ที่บังคับให้ AI ใช้แหล่งอ้างอิงจริง รองรับการค้นหา Molecular formula แยกเฉพาะรายการที่ยังขาด และผล TSV จะแสดง Preview ก่อนบันทึก</div></div><span class="library-status ok">Remembered '+remembered+'</span></div>'+ 
-      '<div class="ai-knowledge-controls"><div class="field"><label>Minimum score</label><input id="aiKnowledgeScore" type="number" min="0" max="100" step="1" value="'+escapeHtml(compoundKnowledgeState.minScore)+'"></div><div class="ai-knowledge-count">พบ <b>'+rows.length+'</b> สาร · ยังไม่มีข้อมูล <b>'+missingRows.length+'</b></div><button class="btn" id="copyMissingAiKnowledgePrompt" type="button"'+(!missingRows.length?' disabled':'')+'>คัดลอก Prompt เฉพาะสารที่ยังไม่มีข้อมูล ('+missingRows.length+')</button><button class="btn btn-primary" id="copyAiKnowledgePrompt" type="button"'+(!rows.length?' disabled':'')+'>คัดลอก Prompt ทุกสาร</button><button class="btn" id="copyMissingFormulaPrompt" type="button"'+(!missingFormulaRows.length?' disabled':'')+'>Prompt สูตรโมเลกุลที่ยังไม่มี ('+missingFormulaRows.length+')</button><button class="btn" id="copyMissingCategoryPrompt" type="button"'+(!missingCategoryRows.length?' disabled':'')+'>Prompt จัดหมวดหมู่ที่ยังไม่มี ('+missingCategoryRows.length+')</button><button class="btn" id="copyAllCategoryPrompt" type="button"'+(!rows.length?' disabled':'')+'>Prompt จัดหมวดหมู่ทุกสาร</button></div>'+ 
-      '<div class="ai-knowledge-import"><div class="field"><label>วางตารางที่ AI ตอบกลับ (TSV)</label><textarea id="aiKnowledgeImport" placeholder="Compound name\tCommon name\tThai common name\tMolecular formula\tActivity categories\tProperties / Benefits\tReferences\tSource URL">'+escapeHtml(compoundKnowledgeState.importText||'')+'</textarea></div><div class="ai-knowledge-actions"><button class="btn btn-primary" id="importAiKnowledgeBtn" type="button">บันทึกรายการที่ผ่านการตรวจ</button><button class="btn btn-sm" id="clearAiKnowledgeImport" type="button">ล้างช่อง</button></div></div>'+ 
-      '<div class="ai-knowledge-import-options"><div class="field"><label>เมื่อสารนี้มีข้อมูลอยู่แล้ว</label><select id="aiKnowledgeDuplicatePolicy"><option value="skip"'+(policy==='skip'?' selected':'')+'>ข้ามข้อมูลเดิม (แนะนำ)</option><option value="update"'+(policy==='update'?' selected':'')+'>อัปเดตข้อมูลเดิม</option></select></div><div class="ai-knowledge-duplicate-note"><b>ป้องกันข้อมูลซ้ำ:</b> ชื่อสารซ้ำภายในชุดที่วางจะใช้เฉพาะแถวแรก · รายการที่เหมือนข้อมูลเดิมทุกช่องจะไม่บันทึกซ้ำ · ฐานข้อมูลมี Unique key ต่อ User + Compound key อีกชั้น</div></div>'+ 
+      '<div class="ai-knowledge-head"><div><div class="ai-knowledge-title">✦ AI Compound Knowledge · ชื่อสามัญ / สูตรโมเลกุล / หมวดหมู่ / สรรพคุณ / อ้างอิง</div><div class="ai-knowledge-sub">เลือกระดับ Score ขั้นต่ำ ระบบจะรวมชื่อสารแบบไม่ซ้ำและสร้าง Prompt ที่บังคับให้ AI ใช้แหล่งอ้างอิงจริง สูตรโมเลกุลสามารถค้นหาแยกเป็นงานเฉพาะและบันทึกกลับเข้า Compound Library + Supabase ได้</div></div><span class="library-status ok">Remembered '+remembered+'</span></div>'+ 
+      '<div class="ai-knowledge-controls"><div class="field"><label>Minimum score</label><input id="aiKnowledgeScore" type="number" min="0" max="100" step="1" value="'+escapeHtml(compoundKnowledgeState.minScore)+'"></div><div class="ai-knowledge-count">พบ <b>'+rows.length+'</b> สาร · ยังไม่มีสูตร <b>'+missingFormulaRows.length+'</b> · ยังไม่มีข้อมูล <b>'+missingRows.length+'</b></div><button class="btn" id="copyMissingAiKnowledgePrompt" type="button"'+(!missingRows.length?' disabled':'')+'>Prompt เฉพาะสารที่ยังไม่มีข้อมูล ('+missingRows.length+')</button><button class="btn btn-primary" id="copyAiKnowledgePrompt" type="button"'+(!rows.length?' disabled':'')+'>Prompt ทุกข้อมูล ทุกสาร</button><button class="btn" id="copyMissingCategoryPrompt" type="button"'+(!missingCategoryRows.length?' disabled':'')+'>Prompt จัดหมวดหมู่ที่ยังไม่มี ('+missingCategoryRows.length+')</button><button class="btn" id="copyAllCategoryPrompt" type="button"'+(!rows.length?' disabled':'')+'>Prompt จัดหมวดหมู่ทุกสาร</button></div>'+ 
+      '<div class="formula-prompt-panel"><div class="formula-prompt-head"><div><div class="formula-prompt-title">Molecular Formula Prompt Template</div><div class="formula-prompt-sub">ใช้ค้นหาและยืนยันสูตรเคมีของชื่อสารจาก GC-MS โดยคงชื่อ Compound เดิมแบบตรงตัว พร้อมเก็บแหล่งอ้างอิงของสูตรแยกจากอ้างอิงสรรพคุณ</div></div><div class="formula-prompt-actions"><button class="btn btn-sm btn-primary" id="copyMissingFormulaPrompt" type="button"'+(!missingFormulaRows.length?' disabled':'')+'>คัดลอกสูตรที่ยังไม่มี ('+missingFormulaRows.length+')</button><button class="btn btn-sm" id="copyAllFormulaPrompt" type="button"'+(!rows.length?' disabled':'')+'>คัดลอกสูตรทุกสาร</button></div></div><textarea id="formulaPromptTemplate" readonly>'+escapeHtml(formulaTemplate)+'</textarea><div class="formula-source-note"><b>ผลลัพธ์ที่รองรับ:</b> Compound name → Molecular formula → Formula reference → Formula source URL · เมื่อนำ TSV มาวางด้านล่าง ระบบจะ Preview ก่อน แล้วบันทึกลง Compound Library และคอลัมน์ molecular_formula ใน Supabase</div></div>'+ 
+      '<div class="ai-knowledge-import"><div class="field"><label>วางตารางที่ AI ตอบกลับ (TSV)</label><textarea id="aiKnowledgeImport" placeholder="Compound name\tMolecular formula\tFormula reference\tFormula source URL\nหรือใช้ตารางเต็ม: Compound name\tCommon name\tThai common name\tMolecular formula\tActivity categories\tProperties / Benefits\tReferences\tSource URL">'+escapeHtml(compoundKnowledgeState.importText||'')+'</textarea></div><div class="ai-knowledge-actions"><button class="btn btn-primary" id="importAiKnowledgeBtn" type="button">บันทึก / อัปเดต Compound Library</button><button class="btn btn-sm" id="clearAiKnowledgeImport" type="button">ล้างช่อง</button></div></div>'+ 
+      '<div class="ai-knowledge-import-options"><div class="field"><label>เมื่อสารนี้มีข้อมูลอยู่แล้ว</label><select id="aiKnowledgeDuplicatePolicy"><option value="skip"'+(policy==='skip'?' selected':'')+'>ข้ามข้อมูลเดิม (แนะนำ)</option><option value="update"'+(policy==='update'?' selected':'')+'>อัปเดตข้อมูลเดิม</option></select></div><div class="ai-knowledge-duplicate-note"><b>สูตรโมเลกุล:</b> ถ้ารายการนั้นมีสูตรเดิมอยู่แล้วและผลใหม่ต่างกัน ระบบจะจัดเป็น “มีข้อมูลเปลี่ยน” และต้องเลือกนโยบาย “อัปเดตข้อมูลเดิม” ก่อนบันทึก เพื่อป้องกันการแทนค่าผิดโดยไม่ตั้งใจ</div></div>'+ 
       '<div id="aiKnowledgePreview">'+renderAiKnowledgePreviewHtml(compoundKnowledgeState.importText||'')+'</div>'+ 
-      '<div class="ai-knowledge-format"><b>Import behavior:</b> Activity categories จะบันทึกเป็นหลายหมวดหมู่ต่อสารได้ · ใช้ตัวคั่น | · ข้อมูลชื่อ/สรรพคุณ/อ้างอิงเดิมยังคงรองรับ และระบบไม่แก้ชื่อ Compound ดิบจาก GC-MS</div>'+ 
+      '<div class="ai-knowledge-format"><b>Import behavior:</b> Molecular formula + formula source ถูกเก็บแยกเป็น metadata ของ identity · Activity categories เป็นหลายหมวดต่อสารได้ · ระบบไม่แก้ชื่อ Compound ดิบจาก GC-MS</div>'+ 
     '</section>';
   }
+
   function libraryCardHtml(d){
     var c=libraryCacheFor(d.name)||{}, status=c.status||'local', statusLabel=status==='ok'?'Reference':status==='loading'?'Loading…':status==='error'?'Not found':'Local only';
     var summary=c.manualSummary||c.description|| (currentLang==='en'?'Reference details have not been loaded yet.':'ยังไม่ได้ดึงข้อมูลอ้างอิง — กด “ดึงข้อมูล” เพื่อเติมข้อมูล');
@@ -3766,6 +3955,7 @@ window.GCMS_SUPABASE_CONFIG = {
       '<div class="library-summary"><b>'+(currentLang==='en'?'Identity / short reference':'ข้อมูลสารแบบสั้น')+'</b><br>'+escapeHtml(libraryShortText(summary,230))+'</div>'+
       (c.iupacName?'<div class="library-iupac"><b>IUPAC:</b> '+escapeHtml(c.iupacName)+'</div>':'')+
       ((compoundMolecularFormula(d.name)||c.molecularWeight||c.cid)?'<div class="library-meta"><div class="library-meta-cell"><div class="k">Formula</div><div class="v">'+escapeHtml(compoundMolecularFormula(d.name)||'—')+'</div></div><div class="library-meta-cell"><div class="k">Molecular weight</div><div class="v">'+escapeHtml(String(c.molecularWeight||'—'))+'</div></div></div>':'')+
+      ((c.formulaReference||c.formulaSourceUrl)?'<div class="library-iupac"><b>Formula source:</b> '+escapeHtml(libraryShortText(c.formulaReference||'',180))+(c.formulaSourceUrl?' · '+escapeHtml(libraryShortText(c.formulaSourceUrl,180)):'')+'</div>':'')+
       '<div class="library-health-disclaimer">'+(currentLang==='en'?'GC-MS detection alone does not prove a clinical benefit, effective dose, or safety of the sample.':'การตรวจพบสารด้วย GC-MS เพียงอย่างเดียว ไม่ได้พิสูจน์ประโยชน์ทางคลินิก ปริมาณที่ออกฤทธิ์ หรือความปลอดภัยของตัวอย่าง')+'</div>'+
       '<div class="library-admin-note"><div class="library-admin-note-copy"><b>'+(currentLang==='en'?'Admin health note':'สรุปสุขภาพโดย Admin')+'</b>'+(c.manualHealthSummary?escapeHtml(libraryShortText(c.manualHealthSummary,170)):(currentLang==='en'?'Optional short health interpretation that overrides the automatic Health relevance text.':'ใส่สรุปด้านสุขภาพสั้น ๆ เองได้ และจะแสดงแทน Health relevance อัตโนมัติ'))+'</div><button class="btn btn-sm library-edit-health" data-compound="'+escapeHtml(d.name)+'" type="button">♥✎</button></div>'+
       '<div class="library-admin-note"><div class="library-admin-note-copy"><b>'+(currentLang==='en'?'Admin identity note':'สรุปข้อมูลสารโดย Admin')+'</b>'+(c.manualSummary?escapeHtml(libraryShortText(c.manualSummary,150)):(currentLang==='en'?'Optional concise identity/reference note.':'ใส่คำอธิบายข้อมูลสารสั้น ๆ เองได้'))+'</div><button class="btn btn-sm library-edit-note" data-compound="'+escapeHtml(d.name)+'" type="button">✎</button></div>'+
@@ -3779,7 +3969,7 @@ window.GCMS_SUPABASE_CONFIG = {
     if(compoundDetailNav.name){var detail=all.find(function(d){return d.key===libraryKey(compoundDetailNav.name);});if(detail){el.innerHTML=renderCompoundDetailPage(detail);wireLibraryEvents([detail]);return;}compoundDetailNav.name='';}
     var q=String(compoundLibraryState.q||'').trim().toLowerCase();
     var enriched=all.map(function(d){d.cache=libraryCacheFor(d.name)||{};return d;});
-    if(q)enriched=enriched.filter(function(d){var c=d.cache||{};return [d.name,c.title,c.iupacName,c.formula,c.aiCommonName,c.aiThaiCommonName,normalizeCompoundCategories(c.aiCategories||[]).join(' '),c.aiBenefits,c.aiReferences,c.aiSourceUrl,c.manualSummary,c.manualHealthSummary,c.description,(c.healthTags||[]).join(' '),(c.safetyTags||[]).join(' '),c.healthEvidence,c.safetyEvidence].some(function(v){return String(v||'').toLowerCase().indexOf(q)!==-1;});});
+    if(q)enriched=enriched.filter(function(d){var c=d.cache||{};return [d.name,c.title,c.iupacName,c.formula,c.formulaReference,c.formulaSourceUrl,c.aiCommonName,c.aiThaiCommonName,normalizeCompoundCategories(c.aiCategories||[]).join(' '),c.aiBenefits,c.aiReferences,c.aiSourceUrl,c.manualSummary,c.manualHealthSummary,c.description,(c.healthTags||[]).join(' '),(c.safetyTags||[]).join(' '),c.healthEvidence,c.safetyEvidence].some(function(v){return String(v||'').toLowerCase().indexOf(q)!==-1;});});
     if(compoundLibraryState.status==='referenced')enriched=enriched.filter(function(d){return d.cache&&d.cache.status==='ok';});
     if(compoundLibraryState.status==='missing')enriched=enriched.filter(function(d){return !d.cache||d.cache.status!=='ok';});
     enriched.sort(function(a,b){if(compoundLibraryState.sort==='name')return a.name.localeCompare(b.name);if(compoundLibraryState.sort==='score')return (b.meanScore||0)-(a.meanScore||0);if(compoundLibraryState.sort==='recent'){var ad=libraryLatestDetection(a.name),bd=libraryLatestDetection(b.name),ar=ad&&runById(ad.runId),br=bd&&runById(bd.runId);return String((br&&(br.createdAt||br.date))||'').localeCompare(String((ar&&(ar.createdAt||ar.date))||''));}return b.detections-a.detections;});
@@ -3799,6 +3989,7 @@ window.GCMS_SUPABASE_CONFIG = {
     var copyPrompt=document.getElementById('copyAiKnowledgePrompt');if(copyPrompt)copyPrompt.addEventListener('click',async function(){var prompt=buildCompoundAiPrompt(compoundKnowledgeState.minScore),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt ทุกสารแล้ว · พร้อมส่ง AI':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
     var copyMissing=document.getElementById('copyMissingAiKnowledgePrompt');if(copyMissing)copyMissing.addEventListener('click',async function(){var missing=aiKnowledgeMissingPromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundAiPrompt(compoundKnowledgeState.minScore,missing),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt เฉพาะ '+missing.length+' สารที่ยังไม่มีข้อมูลแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
     var copyMissingFormula=document.getElementById('copyMissingFormulaPrompt');if(copyMissingFormula)copyMissingFormula.addEventListener('click',async function(){var rows=aiFormulaMissingPromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundFormulaPrompt(compoundKnowledgeState.minScore,rows),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt สูตรโมเลกุล '+rows.length+' สารที่ยังไม่มีสูตรแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
+    var copyAllFormula=document.getElementById('copyAllFormulaPrompt');if(copyAllFormula)copyAllFormula.addEventListener('click',async function(){var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundFormulaPrompt(compoundKnowledgeState.minScore,rows),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt สูตรโมเลกุลทุกสาร '+rows.length+' รายการแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
     var copyMissingCat=document.getElementById('copyMissingCategoryPrompt');if(copyMissingCat)copyMissingCat.addEventListener('click',async function(){var rows=aiCategoryMissingPromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundCategoryPrompt(compoundKnowledgeState.minScore,rows),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt จัดหมวดหมู่ '+rows.length+' สารที่ยังไม่มีประเภทแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
     var copyAllCat=document.getElementById('copyAllCategoryPrompt');if(copyAllCat)copyAllCat.addEventListener('click',async function(){var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundCategoryPrompt(compoundKnowledgeState.minScore,rows),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt จัดหมวดหมู่ทุกสารแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
     var detailBack=document.getElementById('compoundDetailBack');if(detailBack)detailBack.addEventListener('click',backFromCompoundLibraryDetail);
@@ -5842,6 +6033,78 @@ window.GCMS_SUPABASE_CONFIG = {
   }
 
 
+  /* ---------- records: bulk Run metadata editing ---------- */
+  function recordBulkSelectedIds(){
+    var valid=new Set(runsIndex.map(function(r){return r.id;}));
+    recordBulkState.selectedRunIds=(recordBulkState.selectedRunIds||[]).filter(function(id){return valid.has(id);});
+    return recordBulkState.selectedRunIds.slice();
+  }
+  function recordMetadataFilteredRuns(){
+    return runsIndex.filter(function(r){
+      if(filters.sample!=="all"&&r.sample!==filters.sample)return false;
+      if(filters.sampleQ&&String(r.sample||"").toLowerCase().indexOf(String(filters.sampleQ).toLowerCase())===-1)return false;
+      if(filters.solvent!=="all"&&r.solvent!==filters.solvent)return false;
+      if(filters.date!=="all"&&r.date!==filters.date)return false;
+      if(filters.run!=="all"&&r.id!==filters.run)return false;
+      return true;
+    });
+  }
+  function recordBulkSolventOptions(){
+    return uniqueSorted(SOLVENT_PRESETS.concat(runsIndex.map(function(r){return String(r.solvent||"").trim();}).filter(Boolean)));
+  }
+  function renderRecordBulkEditor(opts){
+    opts=opts||{dates:[]};
+    var selected=recordBulkSelectedIds();
+    var solvents=recordBulkSolventOptions();
+    var dateOptions='<option value="all"'+(recordBulkState.date==='all'?' selected':'')+'>ทุกวันที่</option>'+opts.dates.map(function(d){return '<option value="'+escapeHtml(d)+'"'+(recordBulkState.date===d?' selected':'')+'>'+escapeHtml(fmtDate(d))+'</option>';}).join('');
+    var solventOptions='<option value="">— เลือก Solvent ใหม่ —</option>'+solvents.map(function(v){return '<option value="'+escapeHtml(v)+'">'+escapeHtml(v)+'</option>';}).join('')+'<option value="'+CUSTOM_VALUE+'">อื่น ๆ (พิมพ์เอง)</option>';
+    return '<section class="bulk-edit-card">'+
+      '<div class="bulk-edit-head"><div><div class="bulk-edit-title">Bulk Edit · แก้ข้อมูลหลาย Run พร้อมกัน</div><div class="bulk-edit-sub">เลือก Run ด้วย checkbox หรือเลือกทั้งชุดตามวันที่ แล้วแก้ Solvent ครั้งเดียว · การแก้ Solvent ไม่เปลี่ยน peak/compound raw data</div></div><span class="bulk-edit-count">เลือก '+selected.length+' Run</span></div>'+
+      '<div class="bulk-edit-grid">'+
+        '<div class="field"><label>เลือกตามวันที่</label><select id="bulkRunDate">'+dateOptions+'</select></div>'+
+        '<button class="btn btn-sm" id="bulkSelectDateBtn" type="button">เลือกทั้งวันที่</button>'+
+        '<button class="btn btn-sm" id="bulkSelectVisibleBtn" type="button">เลือก Run ที่แสดง</button>'+
+        '<button class="btn btn-sm btn-ghost" id="bulkClearRunsBtn" type="button">ล้างการเลือก</button>'+
+        '<div class="field bulk-solvent-field"><label>Solvent ใหม่</label><select id="bulkSolventValue">'+solventOptions+'</select></div>'+
+        '<div class="field bulk-custom-field"><label>Custom solvent</label><input id="bulkSolventCustom" type="text" placeholder="พิมพ์ชื่อ solvent" disabled></div>'+
+        '<button class="btn btn-primary bulk-apply" id="bulkApplySolventBtn" type="button"'+(selected.length?'':' disabled')+'>Apply Solvent</button>'+
+      '</div>'+
+      '<div class="bulk-edit-mixture"><span class="tag-solvent">Preset mixture</span><b>'+escapeHtml(SOLVENT_MIXTURE_1111)+'</b><span>เป็น solvent ผสม 4 ชนิดในอัตราส่วน 1:1:1:1 ไม่ใช่ 4 solvent แยกกัน</span></div>'+
+    '</section>';
+  }
+  function bulkToggleRun(id,checked){
+    var arr=recordBulkSelectedIds(),i=arr.indexOf(id);
+    if(checked&&i===-1)arr.push(id);else if(!checked&&i!==-1)arr.splice(i,1);
+    recordBulkState.selectedRunIds=arr;
+  }
+  function bulkSelectRunsByDate(date){
+    var ids=runsIndex.filter(function(r){return date==='all'||r.date===date;}).map(function(r){return r.id;});
+    recordBulkState.selectedRunIds=uniqueSorted((recordBulkState.selectedRunIds||[]).concat(ids));
+  }
+  function bulkSelectVisibleRuns(){
+    var ids=recordMetadataFilteredRuns().map(function(r){return r.id;});
+    recordBulkState.selectedRunIds=uniqueSorted((recordBulkState.selectedRunIds||[]).concat(ids));
+  }
+  async function applyBulkRunSolvent(){
+    var ids=recordBulkSelectedIds(),sel=document.getElementById('bulkSolventValue'),custom=document.getElementById('bulkSolventCustom');
+    if(!ids.length){showToast('เลือก Run ที่ต้องการแก้ก่อน',true);return;}
+    if(!sel){return;}
+    var value=sel.value===CUSTOM_VALUE?String(custom&&custom.value||'').trim():String(sel.value||'').trim();
+    if(!value){showToast('เลือกหรือพิมพ์ Solvent ใหม่ก่อน',true);return;}
+    var affected=runsIndex.filter(function(r){return ids.indexOf(r.id)!==-1;});
+    if(!affected.length){showToast('ไม่พบ Run ที่เลือก',true);return;}
+    var oldSummary=uniqueSorted(affected.map(function(r){return r.solvent||'—';})).join(', ');
+    var ok=window.confirm('ยืนยันแก้ Solvent ของ '+affected.length+' Run\n\nจาก: '+oldSummary+'\nเป็น: '+value+'\n\nPeak/compound raw data จะไม่ถูกแก้');
+    if(!ok)return;
+    affected.forEach(function(r){r.solvent=value;});
+    addAudit('bulk_run_solvent_updated',affected.length+' runs → '+value,{runIds:affected.map(function(r){return r.id;}),previousSolvents:oldSummary,newSolvent:value});
+    var saved=await persistIndex();
+    if(saved)await persistResearchSuite();
+    if(filters.solvent!=='all'&&!runsIndex.some(function(r){return r.solvent===filters.solvent;}))filters.solvent='all';
+    showToast(saved?'อัปเดต Solvent '+affected.length+' Run แล้ว':'อัปเดต Solvent ไม่สำเร็จ',!saved);
+    if(saved){recordBulkState.selectedRunIds=[];renderMain();}
+  }
+
   /* ---------- rendering: main area (filters + table + runs) ---------- */
   function renderMain() {
     var mainArea = $("#mainArea");
@@ -5876,6 +6139,7 @@ window.GCMS_SUPABASE_CONFIG = {
     html += '<label class="export-option"><input id="exportReferencesToggle" type="checkbox"'+(exportOptions.includeReferences?' checked':'')+'> รวมอ้างอิง</label>';
     html += '<button class="btn btn-sm" id="exportCsvBtn" type="button">ดาวน์โหลด CSV + ชื่อสามัญ</button>';
     html += '</div>';
+    html += renderRecordBulkEditor(opts);
 
     var rows = getFilteredRows();
     var qualityScopeRows = getRecordScopeRowsWithoutScore();
@@ -5933,7 +6197,8 @@ window.GCMS_SUPABASE_CONFIG = {
       var isActive = filters.run === r.id;
       var confirming = activeConfirmDeleteId === r.id;
       html += '<div class="run-chip' + (isActive ? ' active' : '') + '" data-run-id="' + r.id + '">';
-      html += '<div class="rc-top"><span class="rc-sample">' + escapeHtml(r.sample) + (r.part ? ' (' + escapeHtml(r.part) + ')' : '') + '</span></div>';
+      var bulkChecked = recordBulkSelectedIds().indexOf(r.id)!==-1;
+      html += '<div class="rc-top"><span class="rc-sample">' + escapeHtml(r.sample) + (r.part ? ' (' + escapeHtml(r.part) + ')' : '') + '</span><label class="bulk-run-select" title="เลือก Run นี้สำหรับ Bulk Edit"><input class="bulk-run-check" data-run-id="'+escapeHtml(r.id)+'" type="checkbox"'+(bulkChecked?' checked':'')+'> เลือกแก้</label></div>';
       html += '<div class="rc-meta">' + escapeHtml(fmtDate(r.date)) + ' · ครั้งที่ ' + escapeHtml(r.runNo) + ' · ' + escapeHtml(r.solvent) + '</div>';
       var qc = runQualityCounts(r.id);
       var qc80 = allCompounds.filter(function(c){return c.runId===r.id && compoundMatchesScoreMode(c,"score80");}).length;
@@ -6002,6 +6267,14 @@ window.GCMS_SUPABASE_CONFIG = {
     var exportBtn = $("#exportCsvBtn");
     if (exportBtn) exportBtn.addEventListener("click", exportCsv);
 
+    var bulkDate=$("#bulkRunDate");if(bulkDate)bulkDate.addEventListener("change",function(){recordBulkState.date=this.value;});
+    var bulkDateBtn=$("#bulkSelectDateBtn");if(bulkDateBtn)bulkDateBtn.addEventListener("click",function(){bulkSelectRunsByDate(recordBulkState.date||"all");renderMain();});
+    var bulkVisibleBtn=$("#bulkSelectVisibleBtn");if(bulkVisibleBtn)bulkVisibleBtn.addEventListener("click",function(){bulkSelectVisibleRuns();renderMain();});
+    var bulkClearBtn=$("#bulkClearRunsBtn");if(bulkClearBtn)bulkClearBtn.addEventListener("click",function(){recordBulkState.selectedRunIds=[];renderMain();});
+    var bulkSolvent=$("#bulkSolventValue"),bulkCustom=$("#bulkSolventCustom");if(bulkSolvent)bulkSolvent.addEventListener("change",function(){if(bulkCustom){var custom=this.value===CUSTOM_VALUE;bulkCustom.disabled=!custom;if(custom)bulkCustom.focus();}});
+    var bulkApply=$("#bulkApplySolventBtn");if(bulkApply)bulkApply.addEventListener("click",applyBulkRunSolvent);
+    document.querySelectorAll(".bulk-run-check").forEach(function(cb){cb.addEventListener("click",function(e){e.stopPropagation();});cb.addEventListener("change",function(e){e.stopPropagation();bulkToggleRun(cb.getAttribute("data-run-id"),cb.checked);renderMain();});});
+
     document.querySelectorAll(".sort-th").forEach(function (th) {
       th.addEventListener("click", function () {
         var key = th.getAttribute("data-key");
@@ -6013,7 +6286,7 @@ window.GCMS_SUPABASE_CONFIG = {
 
     document.querySelectorAll(".run-chip").forEach(function (chip) {
       chip.addEventListener("click", function (e) {
-        if (e.target.closest("button")) return;
+        if (e.target.closest("button") || e.target.closest(".bulk-run-select")) return;
         var id = chip.getAttribute("data-run-id");
         filters.run = filters.run === id ? "all" : id;
         renderMain();
@@ -6079,6 +6352,7 @@ window.GCMS_SUPABASE_CONFIG = {
     allSpectra = allSpectra.filter(function (x) { return x.runId !== id; });
     if (filters.run === id) filters.run = "all";
     activeConfirmDeleteId = null;
+    recordBulkState.selectedRunIds = (recordBulkState.selectedRunIds||[]).filter(function(runId){return runId!==id;});
     researchState.selectedRuns = researchState.selectedRuns.filter(function (runId) { return runId !== id; });
     if (reportState.runId === id) { reportState.runId = null; reportState.selectedPeakKey = null; reportLastPoint = null; }
     await persistIndex();
