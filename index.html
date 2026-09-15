@@ -1485,7 +1485,12 @@ tbody tr:hover{background:#F6FAF9;}
 .present-paper-title{font-family:var(--font-display);font-size:16px;font-weight:800;margin:0 0 3px;}
 .present-paper-sub{font-size:10.5px;color:var(--ink-soft);line-height:1.5;max-width:86ch;}
 .present-paper-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.present-paper-fit-btn.active{background:var(--accent-2);border-color:var(--accent-2);color:#fff;}
 .present-paper-wrap{overflow:auto;max-height:680px;background:#fff;padding:0 14px 12px;}
+.present-paper-card.paper-fit-mode .present-paper-wrap{overflow:hidden;max-height:none;}
+.present-paper-card.paper-fit-mode .present-paper-table{transform-origin:top left;}
+.present-paper-fit-hint{display:none;font-size:9px;color:var(--ink-soft);font-family:var(--font-mono);}
+.present-paper-card.paper-fit-mode .present-paper-fit-hint{display:inline;}
 .present-paper-table{border-collapse:collapse;width:max-content;min-width:100%;font-family:Georgia,'Times New Roman',serif;font-size:12px;color:#1d1f21;background:#fff;}
 .present-paper-table th,.present-paper-table td{padding:7px 10px;vertical-align:middle;border:0;border-bottom:1px solid #e5e5e5;}
 .present-paper-table thead th{background:#fff;color:#1d1f21;text-transform:none;letter-spacing:0;cursor:default;text-align:center;white-space:normal;}
@@ -2300,7 +2305,7 @@ window.GCMS_SUPABASE_CONFIG = {
   var ROW_CAP = 500;
   var currentView = "dashboard";
   var VIEW_IDS = { dashboard: "viewDashboard", present:"viewPresent", add: "viewAdd", records: "viewRecords", library: "viewLibrary", projects:"viewProjects", statistics:"viewStatistics", report: "viewReport", research: "viewResearch" };
-  var presentState = { selectedSamples:[], scoreMode:"qualified", filter:"all", speciesFilter:"all", categoryFilter:"all", q:"", topN:"all", customTopN:15, sort:"rt_asc", selectedCompounds:[], initialized:false, sampleSelectionTouched:false, sampleQuery:"", sampleGroupMode:"species", sampleGroupValue:"all", sampleListCollapsed:false };
+  var presentState = { selectedSamples:[], scoreMode:"qualified", filter:"all", speciesFilter:"all", categoryFilter:"all", q:"", topN:"all", customTopN:15, sort:"rt_asc", selectedCompounds:[], initialized:false, sampleSelectionTouched:false, sampleQuery:"", sampleGroupMode:"species", sampleGroupValue:"all", sampleListCollapsed:false, paperFit:false };
   var reportState = { runId: null, sort: "rt_asc", metric: "relArea", labelCount: 12, selectedPeakKey: null, scoreMode: "qualified", compareRuns: [], topN: 5, topScope: "current", presenceMode:"shared", presenceX:2, presenceRule:"atleast", presenceFilter:"all", presenceSort:"meanRelArea", presenceSortDir:"desc" };
   var dashboardTopState = { group: "sample", solvent: "all" };
   var dashboardExclusiveState = { scoreMode: "qualified" };
@@ -4684,7 +4689,7 @@ window.GCMS_SUPABASE_CONFIG = {
     var row3=groups.map(function(g){return '<th class="paper-value">'+escapeHtml(g.solvent)+'</th>';}).join('');
     var body=rows.map(function(r){var c=r.compound,cells=groups.map(function(g){var x=r.values[g.key]||{present:false,value:0};return '<td class="paper-value '+(x.present?'':'paper-missing')+'">'+(x.present?fmtNum(x.value,2):'-')+'</td>';}).join('');return '<tr><td class="paper-rt">'+(c.avgRt===null||c.avgRt===undefined?'–':fmtNum(c.avgRt,2))+'</td><td class="paper-name">'+presenceCompoundPopupButtonHtml(c.label)+'</td><td class="paper-formula">'+molecularFormulaHtml(r.formula)+'</td>'+cells+'</tr>';}).join('');
     if(!body)body='<tr><td colspan="'+(3+groups.length)+'" class="present-empty">ไม่พบสารตามตัวกรองปัจจุบัน</td></tr>';
-    return '<section class="present-paper-card"><div class="present-paper-head"><div><div class="present-paper-title">Phytochemical profile table</div><div class="present-paper-sub">รูปแบบหลักสำหรับนำเสนอผลตามงานวิจัย: Rt + Phytochemical Name + Molecular Formula และ % Relative Content แยกตาม Sample × Solvent</div></div><div class="present-paper-actions"><span class="graph-badge">'+rows.length+' compounds</span><button class="btn btn-sm btn-primary" id="presentExportPaperCsv" type="button">Export table CSV</button></div></div><div class="present-paper-wrap"><table class="present-paper-table"><thead><tr>'+row1+'</tr><tr>'+row2+'</tr><tr>'+row3+'</tr></thead><tbody>'+body+'</tbody></table></div><div class="present-paper-foot"><b>Calculation:</b> ถ้ามีหลาย Run ใน Sample + Solvent เดียวกัน ระบบแสดงค่าเฉลี่ย Relative Area (%) ของ Run ที่เลือก โดย Run ที่ไม่ตรวจพบสารคิดเป็น 0 ในค่าเฉลี่ย; ถ้าไม่พบในทุก Run จะแสดง “-”. Rt เป็นค่าเฉลี่ยของ detection ที่เลือก. Molecular Formula ดึงจาก Compound Library ก่อน และใช้ Spectrum metadata เป็น fallback.</div></section>';
+    return '<section class="present-paper-card"><div class="present-paper-head"><div><div class="present-paper-title">Phytochemical profile table</div><div class="present-paper-sub">รูปแบบหลักสำหรับนำเสนอผลตามงานวิจัย: Rt + Phytochemical Name + Molecular Formula และ % Relative Content แยกตาม Sample × Solvent</div></div><div class="present-paper-actions"><span class="graph-badge">'+rows.length+' compounds</span><span class="present-paper-fit-hint" id="presentFitScale"></span><button class="btn btn-sm present-paper-fit-btn'+(presentState.paperFit?' active':'')+'" id="presentFitPaperTable" type="button" title="ย่อทุกคอลัมน์ให้พอดีกับความกว้างหน้าจอ">'+(presentState.paperFit?'ขนาดปกติ':'พอดีหน้าจอ')+'</button><button class="btn btn-sm btn-primary" id="presentExportPaperCsv" type="button">Export table CSV</button></div></div><div class="present-paper-wrap"><table class="present-paper-table"><thead><tr>'+row1+'</tr><tr>'+row2+'</tr><tr>'+row3+'</tr></thead><tbody>'+body+'</tbody></table></div><div class="present-paper-foot"><b>Calculation:</b> ถ้ามีหลาย Run ใน Sample + Solvent เดียวกัน ระบบแสดงค่าเฉลี่ย Relative Area (%) ของ Run ที่เลือก โดย Run ที่ไม่ตรวจพบสารคิดเป็น 0 ในค่าเฉลี่ย; ถ้าไม่พบในทุก Run จะแสดง “-”. Rt เป็นค่าเฉลี่ยของ detection ที่เลือก. Molecular Formula ดึงจาก Compound Library ก่อน และใช้ Spectrum metadata เป็น fallback.</div></section>';
   }
   function presentCsvCell(v){var x=v===null||v===undefined?'':String(v);return /[,"\n]/.test(x)?'"'+x.replace(/"/g,'""')+'"':x;}
   function exportPresentPublicationCsv(){
@@ -4743,6 +4748,17 @@ window.GCMS_SUPABASE_CONFIG = {
     var traces=selected.map(function(c,i){return {type:'bar',name:c.label,x:d.samples,y:d.samples.map(function(sm){return c.bySample[sm]?c.bySample[sm].relMean:0;}),marker:{color:PALETTE[i%PALETTE.length]},hovertemplate:'<b>'+escapeHtml(c.label)+'</b><br>%{x}<br>Mean Relative Area %{y:.3f}%<extra></extra>'};});
     Plotly.react(compEl,traces,{barmode:'group',paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:56,r:16,t:12,b:85},font:{family:'Inter, sans-serif',size:9,color:'#5B6472'},legend:{orientation:'h',y:1.18,x:0},xaxis:{tickangle:-28,automargin:true},yaxis:{title:'Mean Relative Area (%)',rangemode:'tozero',gridcolor:'#EBEFED'}},{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d','select2d']});
   }
+  function applyPresentPaperFit(){
+    var card=document.querySelector('#viewPresent .present-paper-card'),wrap=card&&card.querySelector('.present-paper-wrap'),table=card&&card.querySelector('.present-paper-table'),btn=document.getElementById('presentFitPaperTable'),scaleEl=document.getElementById('presentFitScale');
+    if(!card||!wrap||!table)return;
+    table.style.transform='';table.style.transformOrigin='';wrap.style.height='';wrap.style.overflowX='';card.classList.remove('paper-fit-mode');
+    if(!presentState.paperFit){if(btn){btn.classList.remove('active');btn.textContent='พอดีหน้าจอ';}if(scaleEl)scaleEl.textContent='';return;}
+    var cs=window.getComputedStyle(wrap),pad=(parseFloat(cs.paddingLeft)||0)+(parseFloat(cs.paddingRight)||0),available=Math.max(120,wrap.clientWidth-pad),natural=Math.max(table.scrollWidth,table.getBoundingClientRect().width||0),scale=natural>0?Math.min(1,available/natural):1;
+    card.classList.add('paper-fit-mode');table.style.transformOrigin='top left';table.style.transform='scale('+scale.toFixed(4)+')';wrap.style.height=Math.ceil(table.offsetHeight*scale+12)+'px';wrap.style.overflowX='hidden';
+    if(btn){btn.classList.add('active');btn.textContent='ขนาดปกติ';btn.title='กลับเป็นขนาดปกติและเลื่อนตารางแนวนอนได้';}
+    if(scaleEl)scaleEl.textContent='Fit '+Math.round(scale*100)+'%';
+  }
+  if(!window.__presentPaperFitResizeBound){window.__presentPaperFitResizeBound=true;window.addEventListener('resize',function(){if(currentView==='present'&&presentState.paperFit){clearTimeout(window.__presentPaperFitResizeTimer);window.__presentPaperFitResizeTimer=setTimeout(applyPresentPaperFit,90);}});}
   function wirePresentEvents(){
     var score=document.getElementById('presentScore');if(score)score.addEventListener('change',function(){applyGlobalScoreMode(this.value);});
     var filter=document.getElementById('presentFilter');if(filter)filter.addEventListener('change',function(){presentState.filter=this.value;presentState.speciesFilter='all';renderPresent();});
@@ -4765,7 +4781,9 @@ window.GCMS_SUPABASE_CONFIG = {
     var toggleList=document.getElementById('presentToggleSampleList');if(toggleList)toggleList.addEventListener('click',function(){presentState.sampleListCollapsed=!presentState.sampleListCollapsed;renderPresent();});
     document.querySelectorAll('[data-present-compare]').forEach(function(btn){btn.addEventListener('click',function(){var name=btn.getAttribute('data-present-compare'),arr=(presentState.selectedCompounds||[]).slice(),idx=arr.findIndex(function(n){return compoundKeyName(n)===compoundKeyName(name);});if(idx>=0)arr.splice(idx,1);else{if(arr.length>=4){showToast('Compare ได้สูงสุด 4 สารในหน้า Present',true);return;}arr.push(name);}presentState.selectedCompounds=arr;presentState.initialized=true;renderPresent();});});
     document.querySelectorAll('.present-compare-remove').forEach(function(btn){btn.addEventListener('click',function(){var name=btn.getAttribute('data-compound');presentState.selectedCompounds=(presentState.selectedCompounds||[]).filter(function(n){return compoundKeyName(n)!==compoundKeyName(name);});presentState.initialized=true;renderPresent();});});
+    var paperFit=document.getElementById('presentFitPaperTable');if(paperFit)paperFit.addEventListener('click',function(){presentState.paperFit=!presentState.paperFit;applyPresentPaperFit();});
     var paperCsv=document.getElementById('presentExportPaperCsv');if(paperCsv)paperCsv.addEventListener('click',exportPresentPublicationCsv);
+    requestAnimationFrame(applyPresentPaperFit);
     var presenceAll=document.getElementById('presentPresenceSelectAll');if(presenceAll)presenceAll.addEventListener('click',function(){presentState.topN='all';renderPresent();});
     var clear=document.getElementById('presentClearCompare');if(clear)clear.addEventListener('click',function(){presentState.selectedCompounds=[];presentState.initialized=true;renderPresent();});
     var open=document.getElementById('presentOpenResearch');if(open)open.addEventListener('click',function(){var runs=presentSelectedRuns();researchState.selectedRuns=runs.map(function(r){return r.id;});researchState.selectedCompounds=(presentState.selectedCompounds||[]).slice();researchState.userClearedCompounds=!researchState.selectedCompounds.length;researchState.initialized=true;researchState.scoreMode=presentState.scoreMode;researchState.groupBy='sample';researchState.graphType=researchState.selectedCompounds.length?'compound':'heatmap';switchView('research');});
