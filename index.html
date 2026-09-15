@@ -1282,6 +1282,10 @@ tbody tr:hover{background:#F6FAF9;}
 .present-sample-empty{font-size:10.5px;color:var(--ink-soft);padding:8px 2px;}
 .present-top-control{display:grid;grid-template-columns:minmax(105px,1fr) 88px;gap:6px;}
 .present-top-control .hidden{display:none!important;}
+.compound-category-list{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin-top:6px;}
+.compound-category-chip{display:inline-flex;align-items:center;padding:3px 7px;border-radius:999px;border:1px solid var(--accent-2-soft);background:#F3FBFA;color:var(--accent-2);font-family:var(--font-mono);font-size:9px;font-weight:800;line-height:1.25;}
+.compound-category-chip.muted{border-color:var(--line);background:var(--bg);color:var(--ink-soft);}
+.present-category-note{font-size:9px;color:var(--accent-2);margin-top:3px;white-space:normal;line-height:1.35;}
 @media(max-width:860px){.present-sample-tools{grid-template-columns:1fr 1fr}.present-sample-tools .btn-row{grid-column:1/-1}.present-top-control{grid-template-columns:1fr 84px}}
 @media(max-width:560px){.present-sample-tools{grid-template-columns:1fr}.present-sample-tools .btn-row{grid-column:auto}.present-sample-head>div:last-child{width:100%;display:flex;flex-wrap:wrap;gap:4px}.present-sample-head .btn{flex:1 1 auto}}
 .present-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;}
@@ -2110,7 +2114,7 @@ window.GCMS_SUPABASE_CONFIG = {
   var ROW_CAP = 500;
   var currentView = "dashboard";
   var VIEW_IDS = { dashboard: "viewDashboard", present:"viewPresent", add: "viewAdd", records: "viewRecords", library: "viewLibrary", projects:"viewProjects", statistics:"viewStatistics", report: "viewReport", research: "viewResearch" };
-  var presentState = { selectedSamples:[], scoreMode:"qualified", filter:"variable", speciesFilter:"all", q:"", topN:"20", customTopN:15, sort:"prevalence_desc", selectedCompounds:[], initialized:false, sampleSelectionTouched:false, sampleQuery:"", sampleGroupMode:"species", sampleGroupValue:"all", sampleListCollapsed:false };
+  var presentState = { selectedSamples:[], scoreMode:"qualified", filter:"variable", speciesFilter:"all", categoryFilter:"all", q:"", topN:"20", customTopN:15, sort:"prevalence_desc", selectedCompounds:[], initialized:false, sampleSelectionTouched:false, sampleQuery:"", sampleGroupMode:"species", sampleGroupValue:"all", sampleListCollapsed:false };
   var reportState = { runId: null, sort: "rt_asc", metric: "relArea", labelCount: 12, selectedPeakKey: null, scoreMode: "qualified", compareRuns: [], topN: 5, topScope: "current", presenceMode:"shared", presenceX:2, presenceRule:"atleast", presenceFilter:"all", presenceSort:"meanRelArea", presenceSortDir:"desc" };
   var dashboardTopState = { group: "sample", solvent: "all" };
   var dashboardExclusiveState = { scoreMode: "qualified" };
@@ -2986,12 +2990,12 @@ window.GCMS_SUPABASE_CONFIG = {
   function ensureCompoundProfileModal(){var b=document.getElementById('compoundProfileBackdrop');if(b)return b;b=document.createElement('div');b.id='compoundProfileBackdrop';b.className='intel-modal-backdrop hidden';b.innerHTML='<div class="intel-modal" id="compoundProfileModal"><div id="compoundProfileContent"></div></div>';document.body.appendChild(b);b.addEventListener('click',function(e){if(e.target===b)b.classList.add('hidden');});return b;}
   function compoundProfileLibraryHtml(name){
     var c=libraryCacheFor(name)||{}, status=c.status||'local';
-    var aiCommon=String(c.aiCommonName||'').trim(), aiThai=String(c.aiThaiCommonName||'').trim(), aiBenefits=String(c.aiBenefits||'').trim(), aiRefs=String(c.aiReferences||'').trim(), aiUrl=String(c.aiSourceUrl||'').trim();
+    var aiCommon=String(c.aiCommonName||'').trim(), aiThai=String(c.aiThaiCommonName||'').trim(), aiCategories=normalizeCompoundCategories(c.aiCategories||[]), aiBenefits=String(c.aiBenefits||'').trim(), aiRefs=String(c.aiReferences||'').trim(), aiUrl=String(c.aiSourceUrl||'').trim();
     var common=aiCommon||(c.title&&libraryKey(c.title)!==libraryKey(name)?String(c.title).trim():''), thai=aiThai;
     var identity=c.manualSummary||c.description||'', health='', safety='';
     try{health=libraryHealthSummary(c)||'';}catch(e){health=c.manualHealthSummary||'';}
     try{safety=librarySafetySummary(c)||'';}catch(e){safety='';}
-    var hasAny=!!(common||thai||c.iupacName||c.formula||c.molecularWeight||c.cas||c.cid||identity||aiBenefits||health||safety||aiRefs||aiUrl||c.manualHealthSummary||c.healthEvidence||c.safetyEvidence);
+    var hasAny=!!(common||thai||aiCategories.length||c.iupacName||c.formula||c.molecularWeight||c.cas||c.cid||identity||aiBenefits||health||safety||aiRefs||aiUrl||c.manualHealthSummary||c.healthEvidence||c.safetyEvidence);
     var statusLabel=status==='ok'?(currentLang==='en'?'Referenced':'มีข้อมูลอ้างอิง'):status==='loading'?(currentLang==='en'?'Loading':'กำลังโหลด'):status==='error'?(currentLang==='en'?'Reference unavailable':'ไม่พบข้อมูลอ้างอิง'):(currentLang==='en'?'Local / saved data':'ข้อมูลที่บันทึกไว้');
     if(!hasAny){
       return '<section class="compound-profile-library"><div class="compound-profile-library-head"><div><div class="compound-profile-library-title">Compound Library information</div><div class="compound-profile-library-sub">ชื่อและคุณสมบัติที่บันทึกไว้ในคลังสาร</div></div><span class="compound-profile-library-status">'+escapeHtml(statusLabel)+'</span></div><div class="compound-profile-library-empty">'+(currentLang==='en'?'No additional Compound Library information has been saved for this compound yet.':'สารนี้ยังไม่มีข้อมูลชื่อหรือคุณสมบัติเพิ่มเติมที่บันทึกไว้ใน Compound Library')+'</div></section>';
@@ -3005,6 +3009,7 @@ window.GCMS_SUPABASE_CONFIG = {
     if(c.cid)cells+='<div class="compound-profile-library-cell"><div class="k">PubChem CID</div><div class="v">'+escapeHtml(String(c.cid))+'</div></div>';
     return '<section class="compound-profile-library"><div class="compound-profile-library-head"><div><div class="compound-profile-library-title">Compound Library information</div><div class="compound-profile-library-sub">ข้อมูลชื่อ คุณสมบัติ และ reference ที่บันทึกไว้สำหรับสารนี้</div></div><span class="compound-profile-library-status">'+escapeHtml(statusLabel)+'</span></div>'+
       (cells?'<div class="compound-profile-library-grid">'+cells+'</div>':'')+
+      (aiCategories.length?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Activity categories':'หมวดหมู่คุณสมบัติ')+':</b><div class="compound-category-list">'+aiCategories.map(function(cat){return '<span class="compound-category-chip">'+escapeHtml(cat)+'</span>';}).join('')+'</div></div>':'')+
       (c.iupacName?'<div class="compound-profile-library-block"><b>IUPAC name:</b> '+escapeHtml(c.iupacName)+'</div>':'')+
       (identity?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Identity / description':'ข้อมูลสาร / คำอธิบาย')+':</b> '+escapeHtml(libraryShortText(identity,500))+'</div>':'')+
       (aiBenefits?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Properties / benefits':'คุณสมบัติ / สรรพคุณ')+':</b> '+escapeHtml(libraryShortText(aiBenefits,700))+'</div>':'')+
@@ -3361,22 +3366,46 @@ window.GCMS_SUPABASE_CONFIG = {
   }
   function compoundReferences(name){ return String((compoundKnowledgeFor(name).aiReferences)||'').trim(); }
   function compoundSourceUrl(name){ return String((compoundKnowledgeFor(name).aiSourceUrl)||'').trim(); }
+  function normalizeCompoundCategories(value){
+    var raw=[];
+    if(Array.isArray(value))raw=value.slice();
+    else if(value!==null&&value!==undefined)raw=String(value).split(/[|;,\n]+/);
+    var seen={},out=[];
+    raw.forEach(function(v){var x=String(v||'').trim().replace(/\s+/g,' ');if(!x)return;var k=x.toLowerCase();if(!seen[k]){seen[k]=1;out.push(x);}});
+    return out;
+  }
+  function compoundCategories(name){return normalizeCompoundCategories((compoundKnowledgeFor(name)||{}).aiCategories||[]);}
+  function allCompoundCategoryOptions(names){
+    var set={};(names||[]).forEach(function(name){compoundCategories(name).forEach(function(cat){set[cat.toLowerCase()]=cat;});});
+    return Object.keys(set).map(function(k){return set[k];}).sort(function(a,b){return a.localeCompare(b);});
+  }
+  function compoundCategoryChipsHtml(name,max){
+    var cats=compoundCategories(name),lim=max||6;if(!cats.length)return '';
+    var shown=cats.slice(0,lim),html=shown.map(function(cat){return '<span class="compound-category-chip">'+escapeHtml(cat)+'</span>';}).join('');
+    if(cats.length>shown.length)html+='<span class="compound-category-chip muted">+'+(cats.length-shown.length)+'</span>';
+    return '<div class="compound-category-list">'+html+'</div>';
+  }
 
   async function loadCompoundKnowledgeTable(){
     if(!sbClient||!currentAuthUser)return false;
     try{
-      var res=await sbClient.from('gcms_compound_knowledge')
-        .select('compound_name,compound_key,common_name,common_name_th,properties_benefits,references_text,source_url,source,updated_at')
-        .eq('user_id',currentAuthUser.id);
-      if(res.error)throw res.error;
+      var fields='compound_name,compound_key,common_name,common_name_th,activity_categories,properties_benefits,references_text,source_url,source,updated_at';
+      var res=await sbClient.from('gcms_compound_knowledge').select(fields).eq('user_id',currentAuthUser.id);
+      if(res.error){
+        var legacy=await sbClient.from('gcms_compound_knowledge')
+          .select('compound_name,compound_key,common_name,common_name_th,properties_benefits,references_text,source_url,source,updated_at')
+          .eq('user_id',currentAuthUser.id);
+        if(legacy.error)throw legacy.error;res=legacy;
+      }
       (res.data||[]).forEach(function(row){
         var key=libraryKey(row.compound_key||row.compound_name);if(!key)return;var old=compoundLibraryCache[key]||{};
         compoundLibraryCache[key]=Object.assign({},old,{
-          aiKnowledgeVersion:2,
+          aiKnowledgeVersion:3,
           aiSource:row.source||old.aiSource||'AI',
           aiUpdatedAt:row.updated_at||old.aiUpdatedAt||'',
           aiCommonName:row.common_name||old.aiCommonName||'',
           aiThaiCommonName:row.common_name_th||old.aiThaiCommonName||'',
+          aiCategories:normalizeCompoundCategories(row.activity_categories!==undefined?row.activity_categories:(old.aiCategories||[])),
           aiBenefits:row.properties_benefits||old.aiBenefits||'',
           aiReferences:row.references_text||old.aiReferences||'',
           aiSourceUrl:row.source_url||old.aiSourceUrl||''
@@ -3397,6 +3426,7 @@ window.GCMS_SUPABASE_CONFIG = {
       compound_key:libraryKey(r.compound),
       common_name:String(cached.aiCommonName||r.commonName||'').trim()||null,
       common_name_th:String(cached.aiThaiCommonName||r.thaiCommonName||'').trim()||null,
+      activity_categories:normalizeCompoundCategories(cached.aiCategories||r.categories||[]),
       properties_benefits:String(cached.aiBenefits||r.benefits||'').trim()||null,
       references_text:String(cached.aiReferences||r.references||'').trim()||null,
       source_url:String(cached.aiSourceUrl||r.sourceUrl||'').trim()||null,
@@ -3409,7 +3439,7 @@ window.GCMS_SUPABASE_CONFIG = {
       return true;
     }catch(err){
       console.warn('Could not write gcms_compound_knowledge; legacy cache was still saved.',err);
-      showToast('บันทึกใน Compound Library แล้ว แต่ตาราง gcms_compound_knowledge ยังไม่พร้อม กรุณารัน SQL update',true);
+      showToast('บันทึกใน Compound Library แล้ว แต่หมวดหมู่ยังส่งขึ้น Supabase ไม่สำเร็จ · กรุณารัน SQL category update',true);
       return false;
     }
   }
@@ -3425,8 +3455,36 @@ window.GCMS_SUPABASE_CONFIG = {
   function aiKnowledgeMissingPromptRows(minScore){
     return aiKnowledgePromptRows(minScore).filter(function(r){return !knowledgeHasAiMemory(compoundLibraryCache[libraryKey(r.name)]||{});});
   }
+  function aiCategoryMissingPromptRows(minScore){
+    return aiKnowledgePromptRows(minScore).filter(function(r){return !compoundCategories(r.name).length;});
+  }
+  function buildCompoundCategoryPrompt(minScore,customRows){
+    var rows=Array.isArray(customRows)?customRows:aiKnowledgePromptRows(minScore),threshold=Math.max(0,Math.min(100,Number(minScore)||0));
+    var vocab=['Anti-inflammatory','Anticancer / Antitumor','Antioxidant','Antimicrobial','Antibacterial','Antifungal','Antiviral','Analgesic / Antinociceptive','Neuroprotective','Cardioprotective','Hepatoprotective','Gastroprotective','Antidiabetic / Metabolic','Immunomodulatory','Wound healing','Insecticidal / Repellent','Aroma / Flavor','Industrial / Other','Unclassified'];
+    var intro=[
+      'You are classifying GC-MS compounds into evidence-based activity categories for a scientific compound library.',
+      '',
+      'RULES:',
+      '1) Keep each supplied Compound name EXACTLY unchanged.',
+      '2) Assign one or more Activity categories ONLY when supported by reliable scientific evidence for that compound itself. Do not infer activity from chemical class or structural similarity alone.',
+      '3) Use ONLY these controlled labels: '+vocab.join(' | ')+'.',
+      '4) Multiple categories must be separated with " | ". If no category can be supported, use "Unclassified".',
+      '5) Be conservative: in-vitro/in-vivo evidence may justify a category, but this does not imply a clinical benefit in the GC-MS sample.',
+      '6) References must support the assigned categories. Prefer peer-reviewed literature, PubMed/NCBI, PubChem, NIH, WHO, EFSA, FDA, or EMA.',
+      '7) NEVER fabricate references, DOI, PMID, or URLs. If evidence cannot be verified, use Unclassified and write "Reference not verified".',
+      '8) Return ONLY TSV. No Markdown table or explanation.',
+      '9) Use EXACTLY this header:',
+      'Compound name\tActivity categories\tReferences\tSource URL',
+      '',
+      'Compounds selected from GC-MS identifications with Score ≥ '+threshold+':',
+      'Compound name\tCurrent Properties / Benefits\tBest score'
+    ];
+    rows.forEach(function(r){intro.push(r.name+'\t'+String(compoundBenefits(r.name)||'').replace(/[\t\r\n]+/g,' ')+'\t'+fmtNum(r.bestScore,1));});
+    return intro.join('\n');
+  }
   function buildCompoundAiPrompt(minScore,customRows){
     var rows=Array.isArray(customRows)?customRows:aiKnowledgePromptRows(minScore),threshold=Math.max(0,Math.min(100,Number(minScore)||0));
+    var vocab=['Anti-inflammatory','Anticancer / Antitumor','Antioxidant','Antimicrobial','Antibacterial','Antifungal','Antiviral','Analgesic / Antinociceptive','Neuroprotective','Cardioprotective','Hepatoprotective','Gastroprotective','Antidiabetic / Metabolic','Immunomodulatory','Wound healing','Insecticidal / Repellent','Aroma / Flavor','Industrial / Other','Unclassified'];
     var intro=[
       'You are assisting with scientific annotation of compounds detected by GC-MS.',
       '',
@@ -3436,15 +3494,16 @@ window.GCMS_SUPABASE_CONFIG = {
       '1) Compound name: copy the supplied GC-MS compound name exactly. Do not rename, normalize, abbreviate, add, or omit compounds.',
       '2) Common name: provide an established/common English name if available. If no established common name exists, use the most appropriate recognized name; do not invent one.',
       '3) Thai common name: provide a recognized Thai common name when available. If none is established, provide a cautious Thai transliteration or leave blank; do not invent medicinal/traditional names.',
-      '4) Properties / Benefits: summarize documented biological activity, pharmacological properties, food/aroma relevance, industrial use, or other scientifically supported properties in 1–2 concise sentences.',
-      '5) Clearly distinguish experimental/in-vitro or in-vivo activity, traditional/reported use, and established clinical benefit. Detection by GC-MS alone does NOT prove that the sample provides the same health benefit.',
-      '6) References: cite reliable sources that actually support the Properties / Benefits. Prefer peer-reviewed journal articles and authoritative databases/agencies such as PubMed/NCBI, PubChem, NIH, WHO, EFSA, FDA, or EMA. Include author or organization, year, journal/database, and DOI/PMID when available.',
-      '7) Source URL: provide a DOI URL, PubMed URL, PubChem URL, or other authoritative source URL. Multiple URLs may be separated by " | ".',
-      '8) NEVER fabricate references, article titles, authors, journals, DOI, PMID, or URLs. If a reliable reference cannot be verified, write "Reference not verified" in References and leave Source URL blank.',
-      '9) Do not infer medicinal benefit solely from chemical class or structural similarity. Be conservative with health claims.',
-      '10) Return ONLY TSV (TAB-separated values). Do not use a Markdown table, code fence, introduction, explanation, or text after the table.',
-      '11) Use EXACTLY this header:',
-      'Compound name\tCommon name\tThai common name\tProperties / Benefits\tReferences\tSource URL',
+      '4) Activity categories: choose one or more evidence-supported labels ONLY from this controlled vocabulary: '+vocab.join(' | ')+'. Separate multiple labels with " | ". If no category is adequately supported, use "Unclassified".',
+      '5) Properties / Benefits: summarize documented biological activity, pharmacological properties, food/aroma relevance, industrial use, or other scientifically supported properties in 1–2 concise sentences.',
+      '6) Clearly distinguish experimental/in-vitro or in-vivo activity, traditional/reported use, and established clinical benefit. Detection by GC-MS alone does NOT prove that the sample provides the same health benefit.',
+      '7) References: cite reliable sources that actually support BOTH the assigned categories and Properties / Benefits. Prefer peer-reviewed journal articles and authoritative databases/agencies such as PubMed/NCBI, PubChem, NIH, WHO, EFSA, FDA, or EMA. Include author or organization, year, journal/database, and DOI/PMID when available.',
+      '8) Source URL: provide a DOI URL, PubMed URL, PubChem URL, or other authoritative source URL. Multiple URLs may be separated by " | ".',
+      '9) NEVER fabricate references, article titles, authors, journals, DOI, PMID, or URLs. If a reliable reference cannot be verified, write "Reference not verified" in References and leave Source URL blank.',
+      '10) Do not infer medicinal benefit or a category solely from chemical class or structural similarity. Be conservative with health claims.',
+      '11) Return ONLY TSV (TAB-separated values). Do not use a Markdown table, code fence, introduction, explanation, or text after the table.',
+      '12) Use EXACTLY this header:',
+      'Compound name\tCommon name\tThai common name\tActivity categories\tProperties / Benefits\tReferences\tSource URL',
       '',
       'The following list was selected from GC-MS identifications with Score ≥ '+threshold+':',
       'Compound name\tBest score'
@@ -3473,27 +3532,28 @@ window.GCMS_SUPABASE_CONFIG = {
       compound:['compoundname','compound','originalcompound','originalname','ชื่อสาร'],
       common:['commonname','common','trivialname','ทั่วไป','ชื่อสามัญ','ชื่อสามัญทั่วไป'],
       thai:['thaicommonname','thainame','ชื่อไทย','ชื่อสามัญภาษาไทย'],
+      categories:['activitycategories','activitycategory','categories','category','biologicalactivitycategories','biologicalcategories','หมวดหมู่','ประเภทสาร','หมวดหมู่คุณสมบัติ','ประเภทคุณสมบัติ'],
       benefits:['propertiesbenefits','benefits','properties','healthrelevance','biologicalrelevance','สรรพคุณ','ประโยชน์','คุณสมบัติ','คุณสมบัติสรรพคุณ'],
       references:['references','reference','refs','citation','citations','อ้างอิง','เอกสารอ้างอิง','แหล่งอ้างอิง'],
       sourceUrl:['sourceurl','url','source','link','links','doiurl','pubmedurl','pubchemurl','แหล่งที่มา','ลิงก์']
     };
     function idx(type){for(var i=0;i<hdr.length;i++){if(aliases[type].indexOf(hdr[i])!==-1)return i;}return -1;}
-    var ci=idx('compound'),co=idx('common'),ti=idx('thai'),bi=idx('benefits'),ri=idx('references'),ui=idx('sourceUrl'),start=1;
-    if(ci<0){ci=0;co=1;ti=2;bi=3;ri=4;ui=5;start=0;}
-    var out=[];for(var r=start;r<matrix.length;r++){var row=matrix[r],name=String(row[ci]||'').trim();if(!name||/^compound\s*name$/i.test(name))continue;out.push({compound:name,commonName:String(row[co]||'').trim(),thaiCommonName:String(row[ti]||'').trim(),benefits:String(row[bi]||'').trim(),references:String(row[ri]||'').trim(),sourceUrl:String(row[ui]||'').trim()});}
+    var ci=idx('compound'),co=idx('common'),ti=idx('thai'),cati=idx('categories'),bi=idx('benefits'),ri=idx('references'),ui=idx('sourceUrl'),start=1;
+    if(ci<0){ci=0;co=1;ti=2;cati=3;bi=4;ri=5;ui=6;start=0;}
+    var out=[];for(var r=start;r<matrix.length;r++){var row=matrix[r],name=String(row[ci]||'').trim();if(!name||/^compound\s*name$/i.test(name))continue;out.push({compound:name,commonName:co>=0?String(row[co]||'').trim():'',thaiCommonName:ti>=0?String(row[ti]||'').trim():'',categories:cati>=0?normalizeCompoundCategories(row[cati]||''):[],benefits:bi>=0?String(row[bi]||'').trim():'',references:ri>=0?String(row[ri]||'').trim():'',sourceUrl:ui>=0?String(row[ui]||'').trim():''});}
     return out;
   }
   function knowledgeHasAiMemory(c){
     c=c||{};
-    return !!(String(c.aiCommonName||'').trim()||String(c.aiThaiCommonName||'').trim()||String(c.aiBenefits||'').trim()||String(c.aiReferences||'').trim()||String(c.aiSourceUrl||'').trim());
+    return !!(String(c.aiCommonName||'').trim()||String(c.aiThaiCommonName||'').trim()||normalizeCompoundCategories(c.aiCategories||[]).length||String(c.aiBenefits||'').trim()||String(c.aiReferences||'').trim()||String(c.aiSourceUrl||'').trim());
   }
   function knowledgeIncomingHasData(r){
-    return !!(String(r.commonName||'').trim()||String(r.thaiCommonName||'').trim()||String(r.benefits||'').trim()||String(r.references||'').trim()||String(r.sourceUrl||'').trim());
+    return !!(String(r.commonName||'').trim()||String(r.thaiCommonName||'').trim()||normalizeCompoundCategories(r.categories||[]).length||String(r.benefits||'').trim()||String(r.references||'').trim()||String(r.sourceUrl||'').trim());
   }
   function knowledgeRowDiffers(r,c){
     c=c||{};
     var pairs=[
-      [r.commonName,c.aiCommonName],[r.thaiCommonName,c.aiThaiCommonName],[r.benefits,c.aiBenefits],
+      [r.commonName,c.aiCommonName],[r.thaiCommonName,c.aiThaiCommonName],[normalizeCompoundCategories(r.categories||[]).join(' | '),normalizeCompoundCategories(c.aiCategories||[]).join(' | ')],[r.benefits,c.aiBenefits],
       [r.references,c.aiReferences],[r.sourceUrl,c.aiSourceUrl]
     ];
     return pairs.some(function(pair){var incoming=String(pair[0]||'').trim();return incoming!==''&&incoming!==String(pair[1]||'').trim();});
@@ -3529,7 +3589,7 @@ window.GCMS_SUPABASE_CONFIG = {
   function renderAiKnowledgePreviewHtml(text){
     var data=compoundKnowledgePreviewData(text),c=data.counts,policy=compoundKnowledgeState.duplicatePolicy||'skip';
     if(!String(text||'').trim())return '<div class="ai-knowledge-preview"><div class="ai-knowledge-preview-empty">วางผลลัพธ์จาก AI แล้วระบบจะแสดง Preview เป็นตารางตรงนี้ก่อนบันทึก</div></div>';
-    if(!data.analyzed.length)return '<div class="ai-knowledge-preview"><div class="ai-knowledge-preview-empty">ยังอ่านตารางไม่ได้ · ตรวจว่ามีหัวตาราง 6 คอลัมน์ตาม Prompt</div></div>';
+    if(!data.analyzed.length)return '<div class="ai-knowledge-preview"><div class="ai-knowledge-preview-empty">ยังอ่านตารางไม่ได้ · ตรวจหัวตารางตาม Prompt (รองรับทั้ง Prompt เต็มและ Prompt จัดหมวดหมู่)</div></div>';
     var eligible=c.new+(policy==='update'?c.update:0);
     var rowsHtml=data.analyzed.map(function(x){var r=x.row;return '<tr>'+ 
       '<td class="num">'+x.rowNo+'</td>'+ 
@@ -3537,13 +3597,14 @@ window.GCMS_SUPABASE_CONFIG = {
       '<td class="preview-compound">'+knowledgePreviewValue(r.compound,90)+'</td>'+ 
       '<td>'+knowledgePreviewValue(r.commonName,80)+'</td>'+ 
       '<td>'+knowledgePreviewValue(r.thaiCommonName,80)+'</td>'+ 
+      '<td>'+knowledgePreviewValue(normalizeCompoundCategories(r.categories||[]).join(' | '),130)+'</td>'+
       '<td>'+knowledgePreviewValue(r.benefits,150)+'</td>'+ 
       '<td>'+knowledgePreviewValue(r.references,150)+'</td>'+ 
       '<td>'+knowledgePreviewValue(r.sourceUrl,120)+'</td></tr>';}).join('');
     return '<div class="ai-knowledge-preview">'+
       '<div class="ai-knowledge-preview-head"><div><div class="ai-knowledge-preview-title">Preview ก่อนบันทึก · '+c.total+' แถว</div><div class="mini-muted">ระบบจะบันทึกได้ '+eligible+' แถวตามนโยบายปัจจุบัน</div></div>'+ 
       '<div class="ai-knowledge-preview-summary"><span class="ai-preview-chip new">ใหม่ '+c.new+'</span><span class="ai-preview-chip update">เปลี่ยน '+c.update+'</span><span class="ai-preview-chip skip">มีแล้ว '+c.same+'</span><span class="ai-preview-chip bad">ซ้ำ '+c.duplicate+'</span><span class="ai-preview-chip bad">จับคู่ไม่ได้ '+c.unmatched+'</span></div></div>'+ 
-      '<div class="ai-knowledge-preview-table"><table><thead><tr><th class="num">#</th><th>Status</th><th>Compound name</th><th>Common name</th><th>Thai common name</th><th>Properties / Benefits</th><th>References</th><th>Source URL</th></tr></thead><tbody>'+rowsHtml+'</tbody></table></div>'+ 
+      '<div class="ai-knowledge-preview-table"><table><thead><tr><th class="num">#</th><th>Status</th><th>Compound name</th><th>Common name</th><th>Thai common name</th><th>Activity categories</th><th>Properties / Benefits</th><th>References</th><th>Source URL</th></tr></thead><tbody>'+rowsHtml+'</tbody></table></div>'+ 
     '</div>';
   }
   function refreshAiKnowledgePreview(){
@@ -3551,15 +3612,16 @@ window.GCMS_SUPABASE_CONFIG = {
     var data=compoundKnowledgePreviewData(compoundKnowledgeState.importText||''),policy=compoundKnowledgeState.duplicatePolicy||'skip',eligible=data.counts.new+(policy==='update'?data.counts.update:0),btn=document.getElementById('importAiKnowledgeBtn');if(btn)btn.disabled=eligible===0;
   }
   async function importCompoundAiKnowledge(text){
-    var data=compoundKnowledgePreviewData(text),rows=data.rows;if(!rows.length){showToast('ไม่พบตาราง AI ที่อ่านได้ กรุณาใช้ TSV ตามหัวตาราง 6 คอลัมน์ที่กำหนด',true);return;}
+    var data=compoundKnowledgePreviewData(text),rows=data.rows;if(!rows.length){showToast('ไม่พบตาราง AI ที่อ่านได้ กรุณาใช้ TSV ตามหัวตารางที่กำหนดใน Prompt',true);return;}
     var policy=compoundKnowledgeState.duplicatePolicy||'skip',saved=0,updated=0,skipped=0,matched=[];
     data.analyzed.forEach(function(item){
       var r=item.row,key=item.key,status=item.status;
       if(status==='duplicate'||status==='unmatched'||status==='same'||status==='empty'){skipped++;return;}
       if(status==='update'&&policy!=='update'){skipped++;return;}
-      var old=compoundLibraryCache[key]||{},patch={aiKnowledgeVersion:2,aiSource:'AI',aiUpdatedAt:new Date().toISOString()};
+      var old=compoundLibraryCache[key]||{},patch={aiKnowledgeVersion:3,aiSource:'AI',aiUpdatedAt:new Date().toISOString()};
       if(r.commonName)patch.aiCommonName=r.commonName;
       if(r.thaiCommonName)patch.aiThaiCommonName=r.thaiCommonName;
+      if(normalizeCompoundCategories(r.categories||[]).length)patch.aiCategories=normalizeCompoundCategories(r.categories);
       if(r.benefits)patch.aiBenefits=r.benefits;
       if(r.references)patch.aiReferences=r.references;
       if(r.sourceUrl)patch.aiSourceUrl=r.sourceUrl;
@@ -3603,27 +3665,27 @@ window.GCMS_SUPABASE_CONFIG = {
     '</div>';
   }
   function renderAiKnowledgeWorkflow(){
-    var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),missingRows=aiKnowledgeMissingPromptRows(compoundKnowledgeState.minScore),remembered=libraryUniqueRows().filter(function(d){var c=libraryCacheFor(d.name)||{};return !!(c.aiCommonName||c.aiThaiCommonName||c.aiBenefits||c.aiReferences||c.aiSourceUrl);}).length;
+    var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),missingRows=aiKnowledgeMissingPromptRows(compoundKnowledgeState.minScore),missingCategoryRows=aiCategoryMissingPromptRows(compoundKnowledgeState.minScore),remembered=libraryUniqueRows().filter(function(d){var c=libraryCacheFor(d.name)||{};return !!(c.aiCommonName||c.aiThaiCommonName||normalizeCompoundCategories(c.aiCategories||[]).length||c.aiBenefits||c.aiReferences||c.aiSourceUrl);}).length;
     var policy=compoundKnowledgeState.duplicatePolicy||'skip';
     return '<section class="ai-knowledge-panel">'+
-      '<div class="ai-knowledge-head"><div><div class="ai-knowledge-title">✦ AI Compound Knowledge · ชื่อสามัญ / สรรพคุณ / อ้างอิง</div><div class="ai-knowledge-sub">เลือกระดับ Score ขั้นต่ำ ระบบจะรวมชื่อสารแบบไม่ซ้ำและสร้าง Prompt ที่บังคับให้ AI ระบุแหล่งอ้างอิงโดยไม่สร้างข้อมูลขึ้นเอง จากนั้นวาง TSV 6 คอลัมน์กลับมา ระบบจะแสดง Preview และตรวจข้อมูลซ้ำก่อนบันทึก</div></div><span class="library-status ok">Remembered '+remembered+'</span></div>'+ 
-      '<div class="ai-knowledge-controls"><div class="field"><label>Minimum score</label><input id="aiKnowledgeScore" type="number" min="0" max="100" step="1" value="'+escapeHtml(compoundKnowledgeState.minScore)+'"></div><div class="ai-knowledge-count">พบ <b>'+rows.length+'</b> สาร · ยังไม่มีข้อมูล <b>'+missingRows.length+'</b></div><button class="btn" id="copyMissingAiKnowledgePrompt" type="button"'+(!missingRows.length?' disabled':'')+'>คัดลอก Prompt เฉพาะสารที่ยังไม่มีข้อมูล ('+missingRows.length+')</button><button class="btn btn-primary" id="copyAiKnowledgePrompt" type="button"'+(!rows.length?' disabled':'')+'>คัดลอก Prompt ทุกสาร</button></div>'+ 
-      '<div class="ai-knowledge-import"><div class="field"><label>วางตารางที่ AI ตอบกลับ (TSV)</label><textarea id="aiKnowledgeImport" placeholder="Compound name\tCommon name\tThai common name\tProperties / Benefits\tReferences\tSource URL">'+escapeHtml(compoundKnowledgeState.importText||'')+'</textarea></div><div class="ai-knowledge-actions"><button class="btn btn-primary" id="importAiKnowledgeBtn" type="button">บันทึกรายการที่ผ่านการตรวจ</button><button class="btn btn-sm" id="clearAiKnowledgeImport" type="button">ล้างช่อง</button></div></div>'+ 
+      '<div class="ai-knowledge-head"><div><div class="ai-knowledge-title">✦ AI Compound Knowledge · ชื่อสามัญ / หมวดหมู่ / สรรพคุณ / อ้างอิง</div><div class="ai-knowledge-sub">เลือกระดับ Score ขั้นต่ำ ระบบจะรวมชื่อสารแบบไม่ซ้ำและสร้าง Prompt ที่บังคับให้ AI ระบุแหล่งอ้างอิงโดยไม่สร้างข้อมูลขึ้นเอง จากนั้นวาง TSV กลับมา ระบบรองรับทั้ง Prompt เต็มและ Prompt จัดหมวดหมู่ และจะแสดง Preview ก่อนบันทึก</div></div><span class="library-status ok">Remembered '+remembered+'</span></div>'+ 
+      '<div class="ai-knowledge-controls"><div class="field"><label>Minimum score</label><input id="aiKnowledgeScore" type="number" min="0" max="100" step="1" value="'+escapeHtml(compoundKnowledgeState.minScore)+'"></div><div class="ai-knowledge-count">พบ <b>'+rows.length+'</b> สาร · ยังไม่มีข้อมูล <b>'+missingRows.length+'</b></div><button class="btn" id="copyMissingAiKnowledgePrompt" type="button"'+(!missingRows.length?' disabled':'')+'>คัดลอก Prompt เฉพาะสารที่ยังไม่มีข้อมูล ('+missingRows.length+')</button><button class="btn btn-primary" id="copyAiKnowledgePrompt" type="button"'+(!rows.length?' disabled':'')+'>คัดลอก Prompt ทุกสาร</button><button class="btn" id="copyMissingCategoryPrompt" type="button"'+(!missingCategoryRows.length?' disabled':'')+'>Prompt จัดหมวดหมู่ที่ยังไม่มี ('+missingCategoryRows.length+')</button><button class="btn" id="copyAllCategoryPrompt" type="button"'+(!rows.length?' disabled':'')+'>Prompt จัดหมวดหมู่ทุกสาร</button></div>'+ 
+      '<div class="ai-knowledge-import"><div class="field"><label>วางตารางที่ AI ตอบกลับ (TSV)</label><textarea id="aiKnowledgeImport" placeholder="Compound name\tCommon name\tThai common name\tActivity categories\tProperties / Benefits\tReferences\tSource URL">'+escapeHtml(compoundKnowledgeState.importText||'')+'</textarea></div><div class="ai-knowledge-actions"><button class="btn btn-primary" id="importAiKnowledgeBtn" type="button">บันทึกรายการที่ผ่านการตรวจ</button><button class="btn btn-sm" id="clearAiKnowledgeImport" type="button">ล้างช่อง</button></div></div>'+ 
       '<div class="ai-knowledge-import-options"><div class="field"><label>เมื่อสารนี้มีข้อมูลอยู่แล้ว</label><select id="aiKnowledgeDuplicatePolicy"><option value="skip"'+(policy==='skip'?' selected':'')+'>ข้ามข้อมูลเดิม (แนะนำ)</option><option value="update"'+(policy==='update'?' selected':'')+'>อัปเดตข้อมูลเดิม</option></select></div><div class="ai-knowledge-duplicate-note"><b>ป้องกันข้อมูลซ้ำ:</b> ชื่อสารซ้ำภายในชุดที่วางจะใช้เฉพาะแถวแรก · รายการที่เหมือนข้อมูลเดิมทุกช่องจะไม่บันทึกซ้ำ · ฐานข้อมูลมี Unique key ต่อ User + Compound key อีกชั้น</div></div>'+ 
       '<div id="aiKnowledgePreview">'+renderAiKnowledgePreviewHtml(compoundKnowledgeState.importText||'')+'</div>'+ 
-      '<div class="ai-knowledge-format"><b>Export behavior:</b> CommonName + ThaiCommonName ติด CSV อัตโนมัติ · “รวมสรรพคุณ” เพิ่ม Properties / Benefits · “รวมอ้างอิง” เพิ่ม References + Source URL · ระบบไม่แก้ชื่อ Compound ดิบจาก GC-MS</div>'+ 
+      '<div class="ai-knowledge-format"><b>Import behavior:</b> Activity categories จะบันทึกเป็นหลายหมวดหมู่ต่อสารได้ · ใช้ตัวคั่น | · ข้อมูลชื่อ/สรรพคุณ/อ้างอิงเดิมยังคงรองรับ และระบบไม่แก้ชื่อ Compound ดิบจาก GC-MS</div>'+ 
     '</section>';
   }
   function libraryCardHtml(d){
     var c=libraryCacheFor(d.name)||{}, status=c.status||'local', statusLabel=status==='ok'?'Reference':status==='loading'?'Loading…':status==='error'?'Not found':'Local only';
     var summary=c.manualSummary||c.description|| (currentLang==='en'?'Reference details have not been loaded yet.':'ยังไม่ได้ดึงข้อมูลอ้างอิง — กด “ดึงข้อมูล” เพื่อเติมข้อมูล');
-    var aiCommon=String(c.aiCommonName||'').trim(),aiThai=String(c.aiThaiCommonName||'').trim(),aiBenefits=String(c.aiBenefits||'').trim(),aiRefs=String(c.aiReferences||'').trim(),aiUrl=String(c.aiSourceUrl||'').trim();
+    var aiCommon=String(c.aiCommonName||'').trim(),aiThai=String(c.aiThaiCommonName||'').trim(),aiCategories=normalizeCompoundCategories(c.aiCategories||[]),aiBenefits=String(c.aiBenefits||'').trim(),aiRefs=String(c.aiReferences||'').trim(),aiUrl=String(c.aiSourceUrl||'').trim();
     var title=aiCommon||(c.title&&libraryKey(c.title)!==libraryKey(d.name)?c.title:''),health=libraryHealthSummary(c),safety=librarySafetySummary(c),hasRisk=(c.safetyTags||[]).some(function(t){return t!=='lowHazard';});
     var healthBadge=(c.healthTags&&c.healthTags.length)?(currentLang==='en'?'Referenced':'มีข้อมูลอ้างอิง'):(currentLang==='en'?'Limited data':'ข้อมูลจำกัด');
     return '<article class="library-card" data-library-card="'+escapeHtml(d.key)+'">'+
       '<div class="library-card-head"><div style="min-width:0"><div class="library-card-name">'+escapeHtml(d.name)+'</div>'+(title?'<div class="library-card-common">'+escapeHtml(title)+'</div>':'')+'</div><span class="library-status '+(status==='ok'?'ok':status==='error'?'err':status==='loading'?'loading':'')+'">'+escapeHtml(statusLabel)+'</span></div>'+
       '<div class="library-meta"><div class="library-meta-cell"><div class="k">Detected</div><div class="v">'+d.detections+' peaks · '+d.runs+' runs</div></div><div class="library-meta-cell"><div class="k">Samples</div><div class="v">'+d.samples+'</div></div><div class="library-meta-cell"><div class="k">Mean RT</div><div class="v">'+fmtNum(d.meanRt,3)+' min</div></div><div class="library-meta-cell"><div class="k">Mean score</div><div class="v">'+fmtNum(d.meanScore,1)+'</div></div></div>'+
-      ((aiCommon||aiThai||aiBenefits||aiRefs||aiUrl)?'<div class="library-ai-memory"><div class="library-ai-name">✦ AI memory</div>'+(aiCommon?'<b>Common name:</b> '+escapeHtml(aiCommon)+'<br>':'')+(aiThai?'<b>ชื่อไทย:</b> '+escapeHtml(aiThai)+'<br>':'')+(aiBenefits?'<b>สรรพคุณ:</b> '+escapeHtml(libraryShortText(aiBenefits,240))+'<br>':'')+(aiRefs?'<b>อ้างอิง:</b> '+escapeHtml(libraryShortText(aiRefs,260))+'<br>':'')+(aiUrl?'<b>Source URL:</b> '+escapeHtml(libraryShortText(aiUrl,260)):'')+'</div>':'')+
+      ((aiCommon||aiThai||aiCategories.length||aiBenefits||aiRefs||aiUrl)?'<div class="library-ai-memory"><div class="library-ai-name">✦ AI memory</div>'+(aiCommon?'<b>Common name:</b> '+escapeHtml(aiCommon)+'<br>':'')+(aiThai?'<b>ชื่อไทย:</b> '+escapeHtml(aiThai)+'<br>':'')+(aiCategories.length?'<b>หมวดหมู่:</b> '+escapeHtml(aiCategories.join(' | '))+'<br>':'')+(aiBenefits?'<b>สรรพคุณ:</b> '+escapeHtml(libraryShortText(aiBenefits,240))+'<br>':'')+(aiRefs?'<b>อ้างอิง:</b> '+escapeHtml(libraryShortText(aiRefs,260))+'<br>':'')+(aiUrl?'<b>Source URL:</b> '+escapeHtml(libraryShortText(aiUrl,260)):'')+'</div>':'')+
       '<div class="library-health"><div class="library-health-head"><span class="library-health-title">♥ '+(currentLang==='en'?'Health relevance':'ความสำคัญต่อสุขภาพ')+'</span><span class="library-health-badge">'+escapeHtml(healthBadge)+'</span></div><div class="library-health-text">'+escapeHtml(libraryShortText(health,260))+'</div>'+(c.healthEvidence?'<div class="library-health-evidence"><b>'+(currentLang==='en'?'Reference note:':'ข้อความอ้างอิง:')+'</b> '+escapeHtml(libraryShortText(c.healthEvidence,180))+'</div>':'')+'</div>'+
       (safety?'<div class="library-safety '+(hasRisk?'risk':'')+'"><b>⚠ '+(currentLang==='en'?'Safety':'ข้อควรระวัง')+':</b> '+escapeHtml(libraryShortText(safety,220))+(c.safetyEvidence?'<div class="library-health-evidence">'+escapeHtml(libraryShortText(c.safetyEvidence,150))+'</div>':'')+'</div>':'')+
       '<div class="library-summary"><b>'+(currentLang==='en'?'Identity / short reference':'ข้อมูลสารแบบสั้น')+'</b><br>'+escapeHtml(libraryShortText(summary,230))+'</div>'+
@@ -3642,7 +3704,7 @@ window.GCMS_SUPABASE_CONFIG = {
     if(compoundDetailNav.name){var detail=all.find(function(d){return d.key===libraryKey(compoundDetailNav.name);});if(detail){el.innerHTML=renderCompoundDetailPage(detail);wireLibraryEvents([detail]);return;}compoundDetailNav.name='';}
     var q=String(compoundLibraryState.q||'').trim().toLowerCase();
     var enriched=all.map(function(d){d.cache=libraryCacheFor(d.name)||{};return d;});
-    if(q)enriched=enriched.filter(function(d){var c=d.cache||{};return [d.name,c.title,c.iupacName,c.formula,c.aiCommonName,c.aiThaiCommonName,c.aiBenefits,c.aiReferences,c.aiSourceUrl,c.manualSummary,c.manualHealthSummary,c.description,(c.healthTags||[]).join(' '),(c.safetyTags||[]).join(' '),c.healthEvidence,c.safetyEvidence].some(function(v){return String(v||'').toLowerCase().indexOf(q)!==-1;});});
+    if(q)enriched=enriched.filter(function(d){var c=d.cache||{};return [d.name,c.title,c.iupacName,c.formula,c.aiCommonName,c.aiThaiCommonName,normalizeCompoundCategories(c.aiCategories||[]).join(' '),c.aiBenefits,c.aiReferences,c.aiSourceUrl,c.manualSummary,c.manualHealthSummary,c.description,(c.healthTags||[]).join(' '),(c.safetyTags||[]).join(' '),c.healthEvidence,c.safetyEvidence].some(function(v){return String(v||'').toLowerCase().indexOf(q)!==-1;});});
     if(compoundLibraryState.status==='referenced')enriched=enriched.filter(function(d){return d.cache&&d.cache.status==='ok';});
     if(compoundLibraryState.status==='missing')enriched=enriched.filter(function(d){return !d.cache||d.cache.status!=='ok';});
     enriched.sort(function(a,b){if(compoundLibraryState.sort==='name')return a.name.localeCompare(b.name);if(compoundLibraryState.sort==='score')return (b.meanScore||0)-(a.meanScore||0);if(compoundLibraryState.sort==='recent'){var ad=libraryLatestDetection(a.name),bd=libraryLatestDetection(b.name),ar=ad&&runById(ad.runId),br=bd&&runById(bd.runId);return String((br&&(br.createdAt||br.date))||'').localeCompare(String((ar&&(ar.createdAt||ar.date))||''));}return b.detections-a.detections;});
@@ -3661,6 +3723,8 @@ window.GCMS_SUPABASE_CONFIG = {
     var aiText=document.getElementById('aiKnowledgeImport');if(aiText)aiText.addEventListener('input',function(){compoundKnowledgeState.importText=this.value;refreshAiKnowledgePreview();});
     var copyPrompt=document.getElementById('copyAiKnowledgePrompt');if(copyPrompt)copyPrompt.addEventListener('click',async function(){var prompt=buildCompoundAiPrompt(compoundKnowledgeState.minScore),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt ทุกสารแล้ว · พร้อมส่ง AI':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
     var copyMissing=document.getElementById('copyMissingAiKnowledgePrompt');if(copyMissing)copyMissing.addEventListener('click',async function(){var missing=aiKnowledgeMissingPromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundAiPrompt(compoundKnowledgeState.minScore,missing),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt เฉพาะ '+missing.length+' สารที่ยังไม่มีข้อมูลแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
+    var copyMissingCat=document.getElementById('copyMissingCategoryPrompt');if(copyMissingCat)copyMissingCat.addEventListener('click',async function(){var rows=aiCategoryMissingPromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundCategoryPrompt(compoundKnowledgeState.minScore,rows),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt จัดหมวดหมู่ '+rows.length+' สารที่ยังไม่มีประเภทแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
+    var copyAllCat=document.getElementById('copyAllCategoryPrompt');if(copyAllCat)copyAllCat.addEventListener('click',async function(){var rows=aiKnowledgePromptRows(compoundKnowledgeState.minScore),prompt=buildCompoundCategoryPrompt(compoundKnowledgeState.minScore,rows),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt จัดหมวดหมู่ทุกสารแล้ว':'คัดลอกไม่สำเร็จ กรุณาอนุญาต Clipboard',!ok);});
     var detailBack=document.getElementById('compoundDetailBack');if(detailBack)detailBack.addEventListener('click',backFromCompoundLibraryDetail);
     var singlePrompt=document.getElementById('copySingleCompoundPrompt');if(singlePrompt)singlePrompt.addEventListener('click',async function(){var name=singlePrompt.getAttribute('data-compound')||'',all=aiKnowledgePromptRows(0),row=all.find(function(r){return libraryKey(r.name)===libraryKey(name);})||{name:name,bestScore:0},prompt=buildCompoundAiPrompt(Math.max(0,Number(row.bestScore)||0),[row]),ok=await copyTextSmart(prompt);showToast(ok?'คัดลอก Prompt สำหรับ '+name+' แล้ว':'คัดลอกไม่สำเร็จ',!ok);});
     var duplicatePolicy=document.getElementById('aiKnowledgeDuplicatePolicy');if(duplicatePolicy)duplicatePolicy.addEventListener('change',function(){compoundKnowledgeState.duplicatePolicy=this.value==='update'?'update':'skip';refreshAiKnowledgePreview();});
@@ -4227,8 +4291,9 @@ window.GCMS_SUPABASE_CONFIG = {
     return {samples:samples,runs:runs,species:species,sampleSpecies:sampleSpecies,compounds:compounds,summary:summary};
   }
   function presentFilteredCompounds(d){
-    var rows=(d.compounds||[]).slice(),n=d.samples.length,q=String(presentState.q||'').trim().toLowerCase(),mode=presentState.filter||'variable';
+    var rows=(d.compounds||[]).slice(),n=d.samples.length,q=String(presentState.q||'').trim().toLowerCase(),mode=presentState.filter||'variable',category=String(presentState.categoryFilter||'all');
     if(q)rows=rows.filter(function(c){return String(c.label||'').toLowerCase().indexOf(q)>=0;});
+    if(category!=='all')rows=rows.filter(function(c){return compoundCategories(c.label).indexOf(category)>=0;});
     if(mode==='shared')rows=rows.filter(function(c){return n>0&&c.sampleCount===n;});
     else if(mode==='variable')rows=rows.filter(function(c){return c.sampleCount>0&&c.sampleCount<n;});
     else if(mode==='exclusiveSample')rows=rows.filter(function(c){return c.sampleCount===1;});
@@ -4265,7 +4330,8 @@ window.GCMS_SUPABASE_CONFIG = {
     var body=rows.map(function(c){
       var cells=d.samples.map(function(sm){var x=c.bySample[sm]||{present:false,relMean:0};return '<td class="present-cell"><span class="present-status '+(x.present?'yes':'no')+'">'+(x.present?'✓ พบ':'— ไม่พบ')+(x.present?'<small>'+fmtNum(x.relMean,2)+'%</small>':'')+'</span></td>';}).join('');
       var active=(presentState.selectedCompounds||[]).some(function(n){return compoundKeyName(n)===compoundKeyName(c.label);});
-      return '<tr><td class="compound-col">'+presenceCompoundPopupButtonHtml(c.label)+'<div class="mini-muted" style="margin-top:3px">'+c.sampleCount+'/'+c.totalSamples+' samples · '+fmtNum(c.prevalence,0)+'% prevalence</div></td>'+cells+'<td class="compare-col"><button class="present-compare-btn'+(active?' active':'')+'" data-present-compare="'+escapeHtml(c.label)+'" type="button">'+(active?'✓ Comparing':'Compare')+'</button></td></tr>';
+      var cats=compoundCategories(c.label),catNote=cats.length?'<div class="present-category-note">'+escapeHtml(cats.slice(0,3).join(' · '))+(cats.length>3?' · +'+(cats.length-3):'')+'</div>':'';
+      return '<tr><td class="compound-col">'+presenceCompoundPopupButtonHtml(c.label)+'<div class="mini-muted" style="margin-top:3px">'+c.sampleCount+'/'+c.totalSamples+' samples · '+fmtNum(c.prevalence,0)+'% prevalence</div>'+catNote+'</td>'+cells+'<td class="compare-col"><button class="present-compare-btn'+(active?' active':'')+'" data-present-compare="'+escapeHtml(c.label)+'" type="button">'+(active?'✓ Comparing':'Compare')+'</button></td></tr>';
     }).join('');
     return '<div class="present-matrix-wrap"><table class="present-matrix"><thead><tr><th class="compound-col">Compound</th>'+head+'<th class="compare-col">Compare</th></tr></thead><tbody>'+body+'</tbody></table></div>';
   }
@@ -4274,23 +4340,27 @@ window.GCMS_SUPABASE_CONFIG = {
     if(!runsIndex.length){el.innerHTML='<div class="empty-state"><div class="icon">▥</div><h3>ยังไม่มีข้อมูลสำหรับ Present</h3><p>เพิ่มผล GC-MS ก่อน แล้วหน้านี้จะสรุปตัวอย่าง สารที่พบ และ Presence / Absence ให้อัตโนมัติ</p><button class="btn btn-primary" id="presentGoAdd" type="button">+ เพิ่มชุดข้อมูล</button></div>';var ga=document.getElementById('presentGoAdd');if(ga)ga.onclick=function(){switchView('add');};return;}
     var all=presentAllSamples();presentEnsureSelection();var d=presentData();presentEnsureCompare(d);
     if(presentState.speciesFilter!=='all'&&d.species.indexOf(presentState.speciesFilter)<0)presentState.speciesFilter='all';
+    var categoryOptions=allCompoundCategoryOptions(d.compounds.map(function(c){return c.label;}));
+    if(presentState.categoryFilter!=='all'&&categoryOptions.indexOf(presentState.categoryFilter)<0)presentState.categoryFilter='all';
     var shared=d.compounds.filter(function(c){return d.samples.length&&c.sampleCount===d.samples.length;}),variable=d.compounds.filter(function(c){return c.sampleCount>0&&c.sampleCount<d.samples.length;}),exclusive=d.compounds.filter(function(c){return c.sampleCount===1;}),speciesExclusive=d.compounds.filter(function(c){return d.species.length>1&&c.speciesCount===1;});
     var compareChips=(presentState.selectedCompounds||[]).map(function(n){return '<span class="present-compare-chip"><span>'+escapeHtml(n)+'</span><button type="button" class="present-compare-remove" data-compound="'+escapeHtml(n)+'">×</button></span>';}).join('');
     var groupMode=presentState.sampleGroupMode||'species',groupValues=presentSampleGroupValues(groupMode);
     if(presentState.sampleGroupValue!=='all'&&groupValues.indexOf(presentState.sampleGroupValue)<0)presentState.sampleGroupValue='all';
     var sampleQuery=String(presentState.sampleQuery||'').trim().toLowerCase();
-    var visibleSamples=all.filter(function(sm){return !sampleQuery||String(sm).toLowerCase().indexOf(sampleQuery)>=0;});
+    var groupedSamples=presentSamplesForGroup(groupMode,presentState.sampleGroupValue),groupSet=new Set(groupedSamples);
+    var visibleSamples=all.filter(function(sm){return groupSet.has(sm)&&(!sampleQuery||String(sm).toLowerCase().indexOf(sampleQuery)>=0);});
     var sampleChips=visibleSamples.map(function(sm){var checked=presentState.selectedSamples.indexOf(sm)>=0;return '<label class="present-sample-chip'+(checked?' active':'')+'"><input class="present-sample-toggle" type="checkbox" value="'+escapeHtml(sm)+'"'+(checked?' checked':'')+'> '+escapeHtml(sm)+'</label>';}).join('');
     var groupValueOptions='<option value="all">ทุกกลุ่ม</option>'+groupValues.map(function(v){return '<option value="'+escapeHtml(v)+'"'+(presentState.sampleGroupValue===v?' selected':'')+'>'+escapeHtml(v)+'</option>';}).join('');
     var speciesControl=presentState.filter==='exclusiveSpecies'?'<div class="field"><label>Plant species</label><select id="presentSpeciesFilter"><option value="all">ทุก species</option>'+d.species.map(function(sp){return '<option value="'+escapeHtml(sp)+'"'+(presentState.speciesFilter===sp?' selected':'')+'>'+escapeHtml(sp)+'</option>';}).join('')+'</select></div>':'';
+    var categoryControl='<div class="field"><label>Compound category</label><select id="presentCategoryFilter"><option value="all">ทุกประเภทสาร</option>'+categoryOptions.map(function(cat){return '<option value="'+escapeHtml(cat)+'"'+(presentState.categoryFilter===cat?' selected':'')+'>'+escapeHtml(cat)+'</option>';}).join('')+'</select></div>';
     var topMode=String(presentState.topN===undefined?'20':presentState.topN),topOptions=[3,5,10,20,50,100].map(function(n){return '<option value="'+n+'"'+(topMode===String(n)?' selected':'')+'>Top '+n+'</option>';}).join('')+'<option value="all"'+(topMode==='all'?' selected':'')+'>ทั้งหมด</option><option value="custom"'+(topMode==='custom'?' selected':'')+'>Custom…</option>';
     var sampleExclusiveCards=d.samples.map(function(sm){var rows=exclusive.filter(function(c){return c.exclusiveSample===sm;}).sort(function(a,b){return b.meanRelArea-a.meanRelArea;});return '<div class="present-insight-card"><div class="present-insight-title">'+escapeHtml(sm)+' · Exclusive '+rows.length+'</div><div class="present-insight-sub">สารที่พบใน Sample นี้ แต่ไม่พบใน Sample อื่นที่กำลังเปรียบเทียบ</div><div class="present-insight-list">'+presentInsightPills(rows,10)+'</div></div>';}).join('');
     var html='<div class="present-shell">'+
       '<section class="present-hero"><div><div class="eyebrow">PRESENTATION VIEW</div><h2>Sample & Compound Overview</h2><p>หน้าสำหรับนำเสนอผลแบบอ่านง่าย: เปรียบเทียบจำนวนสารในแต่ละ Sample, ดูสารที่พบร่วม/แตกต่าง, ตรวจ ✓ พบ หรือ — ไม่พบ ทีละสาร และเลือกสารเพื่อ Compare ได้ทันที</p></div><div class="present-hero-actions"><button class="btn btn-primary" id="presentOpenResearch" type="button">เปิดชุดนี้ใน Research Graph</button></div></section>'+
-      '<section class="present-controls"><div class="field"><label>ค้นหาสารใน Matrix</label><input id="presentSearch" type="text" value="'+escapeHtml(presentState.q||'')+'" placeholder="Search compound..."></div><div class="field"><label>Presence view</label><select id="presentFilter"><option value="all"'+(presentState.filter==='all'?' selected':'')+'>ทั้งหมด</option><option value="variable"'+(presentState.filter==='variable'?' selected':'')+'>แตกต่างระหว่าง Sample</option><option value="shared"'+(presentState.filter==='shared'?' selected':'')+'>พบร่วมทุก Sample</option><option value="exclusiveSample"'+(presentState.filter==='exclusiveSample'?' selected':'')+'>เฉพาะ Sample เดียว</option><option value="exclusiveSpecies"'+(presentState.filter==='exclusiveSpecies'?' selected':'')+'>เฉพาะ Plant species</option></select></div>'+speciesControl+'<div class="field"><label>แสดงสาร</label><div class="present-top-control"><select id="presentTopN">'+topOptions+'</select><input id="presentTopCustom" class="'+(topMode==='custom'?'':'hidden')+'" type="number" min="1" step="1" value="'+escapeHtml(presentState.customTopN||15)+'" title="Custom Top"></div></div><div class="field"><label>เรียงผล</label><select id="presentSort"><option value="prevalence_desc"'+(presentState.sort==='prevalence_desc'?' selected':'')+'>พบมาก → น้อย</option><option value="presence_asc"'+(presentState.sort==='presence_asc'?' selected':'')+'>พบน้อย → มาก</option><option value="rel_desc"'+(presentState.sort==='rel_desc'?' selected':'')+'>Mean Rel. area มาก → น้อย</option><option value="name_asc"'+(presentState.sort==='name_asc'?' selected':'')+'>ชื่อ A → Z</option></select></div><div class="field"><label>Score threshold</label><select id="presentScore"><option value="qualified"'+(presentState.scoreMode==='qualified'?' selected':'')+'>Score ≥70</option><option value="score80"'+(presentState.scoreMode==='score80'?' selected':'')+'>Score ≥80</option><option value="high"'+(presentState.scoreMode==='high'?' selected':'')+'>Score ≥90</option></select></div><div class="present-sample-box"><div class="present-sample-head"><div><div class="present-sample-title">Samples ที่ใช้ใน Present · เลือก/ยกเลิกเพื่อเปลี่ยนชุดเปรียบเทียบ</div><div class="present-sample-summary"><span class="count">เลือก '+presentState.selectedSamples.length+' / '+all.length+'</span><span>รองรับเลือกเป็นกลุ่มตาม Species / Biological group / วันที่</span></div></div><div><button class="btn btn-sm btn-ghost" id="presentSelectAllSamples" type="button">เลือกทั้งหมด</button><button class="btn btn-sm btn-ghost" id="presentClearSamples" type="button">ล้างการเลือก</button><button class="btn btn-sm btn-ghost" id="presentDefaultSamples" type="button">เลือก 6 แรก</button><button class="btn btn-sm btn-ghost" id="presentToggleSampleList" type="button">'+(presentState.sampleListCollapsed?'แสดงรายชื่อ':'ย่อรายชื่อ')+'</button></div></div><div class="present-sample-tools"><div class="field"><label>ค้นหา Sample</label><input id="presentSampleSearch" type="text" value="'+escapeHtml(presentState.sampleQuery||'')+'" placeholder="Search sample..."></div><div class="field"><label>จัดกลุ่มตาม</label><select id="presentSampleGroupMode"><option value="species"'+(groupMode==='species'?' selected':'')+'>Plant species</option><option value="bio"'+(groupMode==='bio'?' selected':'')+'>Biological group</option><option value="date"'+(groupMode==='date'?' selected':'')+'>Analysis date</option></select></div><div class="field"><label>เลือกกลุ่ม</label><select id="presentSampleGroupValue">'+groupValueOptions+'</select></div><div class="btn-row"><button class="btn btn-sm btn-primary" id="presentAddGroup" type="button">+ เลือกทั้งกลุ่ม</button><button class="btn btn-sm" id="presentRemoveGroup" type="button">− เอากลุ่มออก</button></div></div><div class="present-sample-list'+(presentState.sampleListCollapsed?' collapsed':'')+'">'+(sampleChips||'<div class="present-sample-empty">ไม่พบ Sample ตามคำค้น</div>')+'</div></div></section>'+
+      '<section class="present-controls"><div class="field"><label>ค้นหาสารใน Matrix</label><input id="presentSearch" type="text" value="'+escapeHtml(presentState.q||'')+'" placeholder="Search compound..."></div><div class="field"><label>Presence view</label><select id="presentFilter"><option value="all"'+(presentState.filter==='all'?' selected':'')+'>ทั้งหมด</option><option value="variable"'+(presentState.filter==='variable'?' selected':'')+'>แตกต่างระหว่าง Sample</option><option value="shared"'+(presentState.filter==='shared'?' selected':'')+'>พบร่วมทุก Sample</option><option value="exclusiveSample"'+(presentState.filter==='exclusiveSample'?' selected':'')+'>เฉพาะ Sample เดียว</option><option value="exclusiveSpecies"'+(presentState.filter==='exclusiveSpecies'?' selected':'')+'>เฉพาะ Plant species</option></select></div>'+categoryControl+speciesControl+'<div class="field"><label>แสดงสาร</label><div class="present-top-control"><select id="presentTopN">'+topOptions+'</select><input id="presentTopCustom" class="'+(topMode==='custom'?'':'hidden')+'" type="number" min="1" step="1" value="'+escapeHtml(presentState.customTopN||15)+'" title="Custom Top"></div></div><div class="field"><label>เรียงผล</label><select id="presentSort"><option value="prevalence_desc"'+(presentState.sort==='prevalence_desc'?' selected':'')+'>พบมาก → น้อย</option><option value="presence_asc"'+(presentState.sort==='presence_asc'?' selected':'')+'>พบน้อย → มาก</option><option value="rel_desc"'+(presentState.sort==='rel_desc'?' selected':'')+'>Mean Rel. area มาก → น้อย</option><option value="name_asc"'+(presentState.sort==='name_asc'?' selected':'')+'>ชื่อ A → Z</option></select></div><div class="field"><label>Score threshold</label><select id="presentScore"><option value="qualified"'+(presentState.scoreMode==='qualified'?' selected':'')+'>Score ≥70</option><option value="score80"'+(presentState.scoreMode==='score80'?' selected':'')+'>Score ≥80</option><option value="high"'+(presentState.scoreMode==='high'?' selected':'')+'>Score ≥90</option></select></div><div class="present-sample-box"><div class="present-sample-head"><div><div class="present-sample-title">Samples ที่ใช้ใน Present · เลือก/ยกเลิกเพื่อเปลี่ยนชุดเปรียบเทียบ</div><div class="present-sample-summary"><span class="count">เลือก '+presentState.selectedSamples.length+' / '+all.length+'</span><span>แสดง '+visibleSamples.length+' Sample ตามตัวกรอง</span><span>รองรับเลือกเป็นกลุ่มตาม Species / Biological group / วันที่</span></div></div><div><button class="btn btn-sm btn-ghost" id="presentSelectAllSamples" type="button">เลือกทั้งหมดที่แสดง</button><button class="btn btn-sm btn-ghost" id="presentClearSamples" type="button">ล้างการเลือก</button><button class="btn btn-sm btn-ghost" id="presentDefaultSamples" type="button">เลือก 6 แรก</button><button class="btn btn-sm btn-ghost" id="presentToggleSampleList" type="button">'+(presentState.sampleListCollapsed?'แสดงรายชื่อ':'ย่อรายชื่อ')+'</button></div></div><div class="present-sample-tools"><div class="field"><label>ค้นหา Sample</label><input id="presentSampleSearch" type="text" value="'+escapeHtml(presentState.sampleQuery||'')+'" placeholder="Search sample..."></div><div class="field"><label>จัดกลุ่มตาม</label><select id="presentSampleGroupMode"><option value="species"'+(groupMode==='species'?' selected':'')+'>Plant species</option><option value="bio"'+(groupMode==='bio'?' selected':'')+'>Biological group</option><option value="date"'+(groupMode==='date'?' selected':'')+'>Analysis date</option></select></div><div class="field"><label>เลือกกลุ่ม</label><select id="presentSampleGroupValue">'+groupValueOptions+'</select></div><div class="btn-row"><button class="btn btn-sm btn-primary" id="presentAddGroup" type="button">+ เลือกทั้งกลุ่ม</button><button class="btn btn-sm" id="presentRemoveGroup" type="button">− เอากลุ่มออก</button></div></div><div class="present-sample-list'+(presentState.sampleListCollapsed?' collapsed':'')+'">'+(sampleChips||'<div class="present-sample-empty">ไม่พบ Sample ตามคำค้น</div>')+'</div></div></section>'+
       '<section class="present-kpis"><div class="present-kpi"><div class="v">'+d.samples.length+'</div><div class="k">Samples compared</div></div><div class="present-kpi"><div class="v">'+d.compounds.length+'</div><div class="k">Compounds detected</div></div><div class="present-kpi shared"><div class="v">'+shared.length+'</div><div class="k">Shared in all samples</div></div><div class="present-kpi variable"><div class="v">'+variable.length+'</div><div class="k">Different between samples</div></div><div class="present-kpi exclusive"><div class="v">'+exclusive.length+'</div><div class="k">Sample-exclusive</div></div></section>'+
       '<section class="present-chart-grid"><div class="present-chart-card"><div class="present-card-head"><div><div class="present-card-title">Detected compounds by Sample</div><div class="present-card-sub">จำนวนสารที่ผ่าน Score threshold ในแต่ละ Sample</div></div></div><div id="presentSampleChart" class="present-chart"></div></div><div class="present-chart-card"><div class="present-card-head"><div><div class="present-card-title">Compound comparison</div><div class="present-card-sub">Mean Relative Area (%) ต่อ Sample · เลือก Compare ได้สูงสุด 4 สารจาก Matrix</div></div><button class="btn btn-sm btn-ghost" id="presentClearCompare" type="button">Clear</button></div><div class="present-compare-chips">'+(compareChips||'<span class="mini-muted">กด Compare ที่สารด้านล่าง</span>')+'</div><div id="presentCompoundChart" class="present-chart"></div></div></section>'+
-      '<section class="present-presence-card"><div class="present-presence-head"><div><h3>Compound Presence & Exclusivity</h3><div class="present-card-sub">อ่านแนวนอนเพื่อดูว่าสารเดียวกัน “มีในตัวไหน / ไม่มีในตัวไหน” · ค่าใต้ ✓ คือ Mean Relative Area (%) ของ Sample นั้น</div></div><div class="present-legend"><span><i class="yes"></i> ✓ พบ</span><span><i class="no"></i> — ไม่พบ</span><span>'+presentFilteredCompounds(d).length+' rows shown</span></div></div>'+presentMatrixHtml(d)+'</section>'+
+      '<section class="present-presence-card"><div class="present-presence-head"><div><h3>Compound Presence & Exclusivity</h3><div class="present-card-sub">อ่านแนวนอนเพื่อดูว่าสารเดียวกัน “มีในตัวไหน / ไม่มีในตัวไหน” · ค่าใต้ ✓ คือ Mean Relative Area (%) ของ Sample นั้น</div></div><div style="display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap"><div class="present-legend"><span><i class="yes"></i> ✓ พบ</span><span><i class="no"></i> — ไม่พบ</span><span>'+presentFilteredCompounds(d).length+' rows shown</span></div><button class="btn btn-sm" id="presentPresenceSelectAll" type="button">เลือกทั้งหมด</button></div></div>'+presentMatrixHtml(d)+'</section>'+
       '<section><div class="present-card-head"><div><div class="present-card-title">Exclusive compounds by Sample</div><div class="present-card-sub">สรุปสารที่ช่วยแยกแต่ละ Sample ออกจากชุดเปรียบเทียบ · กดชื่อสารเพื่อเปิด Compound Library popup</div></div></div><div class="present-insights">'+(sampleExclusiveCards||'<div class="present-insight-card">ยังไม่มี Sample-exclusive compound</div>')+'</div></section>'+
       '<section class="present-insights"><div class="present-insight-card"><div class="present-insight-title">Shared in every Sample · '+shared.length+'</div><div class="present-insight-sub">สารที่พบอย่างน้อย 1 Run ในทุก Sample ที่เลือก</div><div class="present-insight-list">'+presentInsightPills(shared.sort(function(a,b){return b.meanRelArea-a.meanRelArea;}),14)+'</div></div><div class="present-insight-card"><div class="present-insight-title">Variable / differentiating · '+variable.length+'</div><div class="present-insight-sub">พบในบาง Sample แต่ไม่พบครบทุก Sample เหมาะสำหรับชี้ความแตกต่าง</div><div class="present-insight-list">'+presentInsightPills(variable.sort(function(a,b){return b.meanRelArea-a.meanRelArea;}),14)+'</div></div><div class="present-insight-card"><div class="present-insight-title">Plant-species-exclusive · '+speciesExclusive.length+'</div><div class="present-insight-sub">พบเฉพาะ plant species เดียวภายในชุดเปรียบเทียบปัจจุบัน</div><div class="present-insight-list">'+presentInsightPills(speciesExclusive.sort(function(a,b){return b.meanRelArea-a.meanRelArea;}),14)+'</div></div></section>'+
       '</div>';
@@ -4310,6 +4380,7 @@ window.GCMS_SUPABASE_CONFIG = {
   function wirePresentEvents(){
     var score=document.getElementById('presentScore');if(score)score.addEventListener('change',function(){applyGlobalScoreMode(this.value);});
     var filter=document.getElementById('presentFilter');if(filter)filter.addEventListener('change',function(){presentState.filter=this.value;presentState.speciesFilter='all';renderPresent();});
+    var category=document.getElementById('presentCategoryFilter');if(category)category.addEventListener('change',function(){presentState.categoryFilter=this.value;renderPresent();});
     var sp=document.getElementById('presentSpeciesFilter');if(sp)sp.addEventListener('change',function(){presentState.speciesFilter=this.value;renderPresent();});
     var top=document.getElementById('presentTopN');if(top)top.addEventListener('change',function(){presentState.topN=this.value;renderPresent();});
     var customTop=document.getElementById('presentTopCustom');if(customTop)customTop.addEventListener('change',function(){presentState.customTopN=Math.max(1,parseInt(this.value,10)||15);presentState.topN='custom';renderPresent();});
@@ -4317,9 +4388,9 @@ window.GCMS_SUPABASE_CONFIG = {
     var q=document.getElementById('presentSearch');if(q)q.addEventListener('input',function(){presentState.q=this.value;clearTimeout(wirePresentEvents._q);wirePresentEvents._q=setTimeout(renderPresent,170);});
     var sq=document.getElementById('presentSampleSearch');if(sq)sq.addEventListener('input',function(){presentState.sampleQuery=this.value;clearTimeout(wirePresentEvents._sq);wirePresentEvents._sq=setTimeout(renderPresent,170);});
     var gm=document.getElementById('presentSampleGroupMode');if(gm)gm.addEventListener('change',function(){presentState.sampleGroupMode=this.value;presentState.sampleGroupValue='all';renderPresent();});
-    var gv=document.getElementById('presentSampleGroupValue');if(gv)gv.addEventListener('change',function(){presentState.sampleGroupValue=this.value;});
+    var gv=document.getElementById('presentSampleGroupValue');if(gv)gv.addEventListener('change',function(){presentState.sampleGroupValue=this.value;renderPresent();});
     document.querySelectorAll('.present-sample-toggle').forEach(function(cb){cb.addEventListener('change',function(){var v=cb.value,arr=(presentState.selectedSamples||[]).slice(),i=arr.indexOf(v);if(cb.checked&&i<0)arr.push(v);if(!cb.checked&&i>=0)arr.splice(i,1);presentState.selectedSamples=arr;presentState.sampleSelectionTouched=true;presentState.initialized=false;renderPresent();});});
-    var all=document.getElementById('presentSelectAllSamples');if(all)all.addEventListener('click',function(){presentState.selectedSamples=presentAllSamples();presentState.sampleSelectionTouched=true;presentState.initialized=false;renderPresent();});
+    var all=document.getElementById('presentSelectAllSamples');if(all)all.addEventListener('click',function(){var mode=presentState.sampleGroupMode||'species',group=presentState.sampleGroupValue||'all',q=String(presentState.sampleQuery||'').trim().toLowerCase(),vals=presentSamplesForGroup(mode,group).filter(function(sm){return !q||String(sm).toLowerCase().indexOf(q)>=0;}),set=new Set(presentState.selectedSamples||[]);vals.forEach(function(sm){set.add(sm);});presentState.selectedSamples=Array.from(set);presentState.sampleSelectionTouched=true;presentState.initialized=false;renderPresent();});
     var clearSamples=document.getElementById('presentClearSamples');if(clearSamples)clearSamples.addEventListener('click',function(){presentState.selectedSamples=[];presentState.sampleSelectionTouched=true;presentState.selectedCompounds=[];presentState.initialized=true;renderPresent();});
     var def=document.getElementById('presentDefaultSamples');if(def)def.addEventListener('click',function(){presentState.selectedSamples=presentAllSamples().slice(0,6);presentState.sampleSelectionTouched=true;presentState.initialized=false;renderPresent();});
     var addGroup=document.getElementById('presentAddGroup');if(addGroup)addGroup.addEventListener('click',function(){var vals=presentSamplesForGroup(presentState.sampleGroupMode,presentState.sampleGroupValue),set=new Set(presentState.selectedSamples||[]);vals.forEach(function(s){set.add(s);});presentState.selectedSamples=Array.from(set);presentState.sampleSelectionTouched=true;presentState.initialized=false;renderPresent();});
@@ -4327,6 +4398,7 @@ window.GCMS_SUPABASE_CONFIG = {
     var toggleList=document.getElementById('presentToggleSampleList');if(toggleList)toggleList.addEventListener('click',function(){presentState.sampleListCollapsed=!presentState.sampleListCollapsed;renderPresent();});
     document.querySelectorAll('[data-present-compare]').forEach(function(btn){btn.addEventListener('click',function(){var name=btn.getAttribute('data-present-compare'),arr=(presentState.selectedCompounds||[]).slice(),idx=arr.findIndex(function(n){return compoundKeyName(n)===compoundKeyName(name);});if(idx>=0)arr.splice(idx,1);else{if(arr.length>=4){showToast('Compare ได้สูงสุด 4 สารในหน้า Present',true);return;}arr.push(name);}presentState.selectedCompounds=arr;presentState.initialized=true;renderPresent();});});
     document.querySelectorAll('.present-compare-remove').forEach(function(btn){btn.addEventListener('click',function(){var name=btn.getAttribute('data-compound');presentState.selectedCompounds=(presentState.selectedCompounds||[]).filter(function(n){return compoundKeyName(n)!==compoundKeyName(name);});presentState.initialized=true;renderPresent();});});
+    var presenceAll=document.getElementById('presentPresenceSelectAll');if(presenceAll)presenceAll.addEventListener('click',function(){presentState.topN='all';renderPresent();});
     var clear=document.getElementById('presentClearCompare');if(clear)clear.addEventListener('click',function(){presentState.selectedCompounds=[];presentState.initialized=true;renderPresent();});
     var open=document.getElementById('presentOpenResearch');if(open)open.addEventListener('click',function(){var runs=presentSelectedRuns();researchState.selectedRuns=runs.map(function(r){return r.id;});researchState.selectedCompounds=(presentState.selectedCompounds||[]).slice();researchState.userClearedCompounds=!researchState.selectedCompounds.length;researchState.initialized=true;researchState.scoreMode=presentState.scoreMode;researchState.groupBy='sample';researchState.graphType=researchState.selectedCompounds.length?'compound':'heatmap';switchView('research');});
   }
