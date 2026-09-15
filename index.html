@@ -579,7 +579,13 @@
   .presence-prevalence{font-family:var(--font-mono);font-weight:800;color:var(--accent-2);}
   .presence-exclusive{font-weight:750;color:var(--ink);}
   .presence-help-note{font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin-top:8px;}
-  @media(max-width:640px){.presence-controls .field{min-width:0;flex:1 1 140px}.presence-table{max-height:440px}.presence-samples{min-width:180px}}
+  .presence-sort-btn{width:100%;border:0;background:transparent;color:inherit;font:inherit;font-weight:700;text-transform:inherit;letter-spacing:inherit;padding:0;display:inline-flex;align-items:center;gap:5px;justify-content:flex-start;cursor:pointer;white-space:nowrap;}
+  th.num .presence-sort-btn{justify-content:flex-end;}
+  .presence-sort-btn:hover{color:var(--accent-2);}
+  .presence-sort-btn.active{color:var(--accent-2);}
+  .presence-sort-arrow{font-size:10px;color:var(--accent-2);line-height:1;}
+  .presence-filter-chip{display:inline-flex;align-items:center;gap:5px;padding:3px 7px;border-radius:99px;background:var(--accent-2-soft);color:var(--accent-2);font-family:var(--font-mono);font-size:10px;font-weight:800;}
+  @media(max-width:640px){.presence-controls .field{min-width:0;flex:1 1 140px}.presence-table{max-height:440px}.presence-samples{min-width:180px}.presence-sort-btn{font-size:9.5px;}}
 
   /* ---------- dashboard: plant-exclusive compounds ---------- */
   .plant-exclusive-card{border-left:4px solid var(--accent-2);}
@@ -1249,6 +1255,77 @@ tbody tr:hover{background:#F6FAF9;}
 .suite-section-title{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 10px}.suite-section-title h2{font-family:var(--font-display);font-size:17px;margin:0}.suite-note{font-size:10px;color:var(--ink-soft);line-height:1.5}
 .form-grid.advanced-meta{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
 
+
+
+/* ---------- Present view: presentation-first sample + compound overview ---------- */
+.present-shell{display:grid;gap:14px;}
+.present-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding:20px 22px;border:1px solid var(--accent-2-soft);border-radius:18px;background:linear-gradient(145deg,#ffffff 0%,#f3fbfa 100%);box-shadow:0 10px 28px rgba(22,33,58,.045);}
+.present-hero h2{font-family:var(--font-display);font-size:24px;line-height:1.15;margin:2px 0 7px;letter-spacing:-.025em;}
+.present-hero p{margin:0;color:var(--ink-soft);font-size:12.5px;line-height:1.65;max-width:76ch;}
+.present-hero-actions{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+.present-controls{display:grid;grid-template-columns:minmax(250px,1.6fr) repeat(4,minmax(135px,.7fr));gap:9px;align-items:end;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--surface);}
+.present-controls .field label{font-size:9.5px;}
+.present-sample-box{grid-column:1/-1;border:1px dashed var(--line);border-radius:11px;padding:10px;background:var(--bg);}
+.present-sample-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;}
+.present-sample-title{font-size:11px;font-weight:800;color:var(--ink);}
+.present-sample-list{display:flex;gap:6px;flex-wrap:wrap;max-height:116px;overflow:auto;}
+.present-sample-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:999px;padding:6px 10px;font-size:10.5px;font-weight:700;cursor:pointer;}
+.present-sample-chip input{margin:0;accent-color:var(--accent-2);}
+.present-sample-chip.active{border-color:var(--accent-2);background:var(--accent-2-soft);color:var(--accent-2);}
+.present-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;}
+.present-kpi{border:1px solid var(--line);border-radius:13px;background:var(--surface);padding:12px 13px;min-width:0;}
+.present-kpi .v{font-family:var(--font-display);font-size:23px;font-weight:800;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.present-kpi .k{font-size:9.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.035em;margin-top:5px;}
+.present-kpi.shared{border-color:#cbe7d5;background:linear-gradient(145deg,#fff 0%,#f3fbf6 100%);}
+.present-kpi.variable{border-color:var(--accent-soft);background:linear-gradient(145deg,#fff 0%,#fff9f4 100%);}
+.present-kpi.exclusive{border-color:var(--accent-2-soft);background:linear-gradient(145deg,#fff 0%,#f4fbfa 100%);}
+.present-chart-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr);gap:12px;}
+.present-chart-card{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:14px;min-width:0;}
+.present-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.present-card-title{font-family:var(--font-display);font-size:14px;font-weight:800;}
+.present-card-sub{font-size:10.5px;color:var(--ink-soft);margin-top:2px;line-height:1.45;}
+.present-chart{height:300px;min-width:0;}
+.present-compare-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;min-height:30px;align-items:center;}
+.present-compare-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--accent-2-soft);background:#f3fbfa;color:var(--accent-2);border-radius:999px;padding:5px 7px 5px 9px;font-size:10px;font-weight:800;max-width:230px;}
+.present-compare-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.present-compare-chip button{border:0;background:transparent;color:inherit;cursor:pointer;font-size:13px;padding:0 2px;}
+.present-presence-card{border:1px solid var(--line);border-radius:15px;background:var(--surface);overflow:hidden;}
+.present-presence-head{padding:14px 15px 11px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;}
+.present-presence-head h3{font-family:var(--font-display);font-size:16px;margin:0 0 3px;}
+.present-legend{display:flex;gap:10px;flex-wrap:wrap;font-size:10.5px;color:var(--ink-soft);align-items:center;}
+.present-legend span{display:inline-flex;align-items:center;gap:5px;}
+.present-legend i{width:12px;height:12px;border-radius:4px;display:inline-block;border:1px solid var(--line);}
+.present-legend .yes{background:var(--good-bg);border-color:#cbe7d5;}
+.present-legend .no{background:var(--bg);}
+.present-matrix-wrap{overflow:auto;max-height:610px;}
+.present-matrix{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:11px;}
+.present-matrix th,.present-matrix td{padding:8px 9px;border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);text-align:center;vertical-align:middle;}
+.present-matrix thead th{position:sticky;top:0;z-index:4;background:#fbfcfc;color:var(--ink-soft);font-size:9.5px;text-transform:none;letter-spacing:0;cursor:default;}
+.present-matrix .compound-col{position:sticky;left:0;z-index:3;background:var(--surface);text-align:left;min-width:250px;max-width:330px;}
+.present-matrix thead .compound-col{z-index:6;background:#fbfcfc;}
+.present-matrix .compare-col{position:sticky;right:0;z-index:3;background:var(--surface);min-width:92px;}
+.present-matrix thead .compare-col{z-index:6;background:#fbfcfc;}
+.present-matrix tbody tr:hover td{background:#fbfefe;}
+.present-matrix tbody tr:hover .compound-col,.present-matrix tbody tr:hover .compare-col{background:#fbfefe;}
+.present-cell{min-width:98px;}
+.present-status{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:72px;border-radius:8px;padding:5px 7px;font-family:var(--font-mono);font-size:10px;font-weight:800;}
+.present-status.yes{background:var(--good-bg);color:var(--good);}
+.present-status.no{background:var(--bg);color:#9aa4a2;}
+.present-status small{font-size:8.5px;font-weight:700;opacity:.8;}
+.present-compare-btn{border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:8px;padding:5px 8px;font-size:9.5px;font-weight:800;cursor:pointer;white-space:nowrap;}
+.present-compare-btn:hover{border-color:var(--accent-2);color:var(--accent-2);}
+.present-compare-btn.active{background:var(--accent-2);border-color:var(--accent-2);color:#fff;}
+.present-insights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.present-insight-card{border:1px solid var(--line);border-radius:13px;background:var(--surface);padding:12px;min-width:0;}
+.present-insight-title{font-size:11.5px;font-weight:850;margin-bottom:3px;}
+.present-insight-sub{font-size:9.5px;color:var(--ink-soft);line-height:1.4;margin-bottom:8px;}
+.present-insight-list{display:flex;gap:5px;flex-wrap:wrap;max-height:112px;overflow:auto;}
+.present-compound-pill{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 8px;font-size:9.5px;font-weight:700;cursor:pointer;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.present-compound-pill:hover{border-color:var(--accent-2);color:var(--accent-2);background:#f5fbfa;}
+.present-empty{padding:34px 18px;text-align:center;color:var(--ink-soft);font-size:12px;}
+@media(max-width:980px){.present-controls{grid-template-columns:repeat(3,1fr)}.present-chart-grid{grid-template-columns:1fr}.present-insights{grid-template-columns:1fr}.present-kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.present-controls{grid-template-columns:1fr 1fr}.present-controls .field:first-child{grid-column:1/-1}.present-kpis{grid-template-columns:repeat(2,1fr)}.present-hero{padding:16px}.present-matrix .compound-col{min-width:200px}.present-status{min-width:62px;padding:5px}.present-chart{height:280px}}
+
 </style>
 
 <script>
@@ -1389,6 +1466,10 @@ window.GCMS_SUPABASE_CONFIG = {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
       <span class="tab-label">แดชบอร์ด</span>
     </button>
+    <button class="nav-tab" data-view="present" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4M7 13l3-3 2 2 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="tab-label">Present</span>
+    </button>
     <button class="nav-tab" data-view="add" type="button">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
       <span class="tab-label">เพิ่มข้อมูล</span>
@@ -1434,6 +1515,7 @@ window.GCMS_SUPABASE_CONFIG = {
   </div>
 
   <div id="viewDashboard" class="view-panel"></div>
+  <div id="viewPresent" class="view-panel hidden"></div>
 
   <div id="viewAdd" class="view-panel hidden">
   <div class="card" id="addRunCard">
@@ -2015,8 +2097,9 @@ window.GCMS_SUPABASE_CONFIG = {
   var activeConfirmDeleteId = null;
   var ROW_CAP = 500;
   var currentView = "dashboard";
-  var VIEW_IDS = { dashboard: "viewDashboard", add: "viewAdd", records: "viewRecords", library: "viewLibrary", projects:"viewProjects", statistics:"viewStatistics", report: "viewReport", research: "viewResearch" };
-  var reportState = { runId: null, sort: "rt_asc", metric: "relArea", labelCount: 12, selectedPeakKey: null, scoreMode: "qualified", compareRuns: [], topN: 5, topScope: "current", presenceMode:"shared", presenceX:2, presenceRule:"atleast" };
+  var VIEW_IDS = { dashboard: "viewDashboard", present:"viewPresent", add: "viewAdd", records: "viewRecords", library: "viewLibrary", projects:"viewProjects", statistics:"viewStatistics", report: "viewReport", research: "viewResearch" };
+  var presentState = { selectedSamples:[], scoreMode:"qualified", filter:"variable", speciesFilter:"all", q:"", topN:20, sort:"prevalence_desc", selectedCompounds:[], initialized:false };
+  var reportState = { runId: null, sort: "rt_asc", metric: "relArea", labelCount: 12, selectedPeakKey: null, scoreMode: "qualified", compareRuns: [], topN: 5, topScope: "current", presenceMode:"shared", presenceX:2, presenceRule:"atleast", presenceFilter:"all", presenceSort:"meanRelArea", presenceSortDir:"desc" };
   var dashboardTopState = { group: "sample", solvent: "all" };
   var dashboardExclusiveState = { scoreMode: "qualified" };
   function defaultIntelligenceState(){return {watchlist:[],trendCompound:"",reportSections:{top:true,overview:true,labeled:true,peakTable:true,spectrum:true,comparison:true}};}
@@ -2059,6 +2142,9 @@ window.GCMS_SUPABASE_CONFIG = {
     presenceMode: "shared",
     presenceX: 2,
     presenceRule: "atleast",
+    presenceFilter: "all",
+    presenceSort: "meanRelArea",
+    presenceSortDir: "desc",
     initialized: false,
     userClearedCompounds: false
   };
@@ -2560,6 +2646,7 @@ window.GCMS_SUPABASE_CONFIG = {
   }
 
   function activeScoreModeForCurrentView() {
+    if (currentView === "present") return presentState.scoreMode;
     if (currentView === "report") return reportState.scoreMode;
     if (currentView === "research") return researchState.scoreMode;
     return filters.scoreMode;
@@ -2574,6 +2661,7 @@ window.GCMS_SUPABASE_CONFIG = {
   function applyGlobalScoreMode(mode) {
     if (["qualified","score80","high"].indexOf(mode) === -1) mode = "qualified";
     filters.scoreMode = mode;
+    presentState.scoreMode = mode;
     reportState.scoreMode = mode;
     researchState.scoreMode = mode;
     reportState.selectedPeakKey = null;
@@ -2581,6 +2669,7 @@ window.GCMS_SUPABASE_CONFIG = {
     researchLastPoint = null;
     updateGlobalScoreButtons();
     if (currentView === "dashboard") renderDashboard();
+    else if (currentView === "present") renderPresent();
     else if (currentView === "records") renderMain();
     else if (currentView === "report") renderReport();
     else if (currentView === "research") { researchState.selectedCompounds=[]; researchState.userClearedCompounds=false; renderResearch(); }
@@ -3582,6 +3671,7 @@ window.GCMS_SUPABASE_CONFIG = {
   function refreshAll() {
     renderMain();
     renderDashboard();
+    renderPresent();
     renderLibrary();
     renderProjects();
     renderStatistics();
@@ -3600,6 +3690,7 @@ window.GCMS_SUPABASE_CONFIG = {
       if (panel) panel.classList.toggle("hidden", key !== view);
     });
     if (view === "dashboard") renderDashboard();
+    if (view === "present") renderPresent();
     if (view === "library") renderLibrary();
     if (view === "projects") renderProjects();
     if (view === "statistics") renderStatistics();
@@ -3909,11 +4000,13 @@ window.GCMS_SUPABASE_CONFIG = {
     var clearCompare=$("#reportClearCompare"); if(clearCompare)clearCompare.addEventListener('click',function(){reportState.compareRuns=[];renderReport();});
     document.querySelectorAll('.report-compare-remove').forEach(function(b){b.addEventListener('click',function(){var id=b.getAttribute('data-run');reportState.compareRuns=reportState.compareRuns.filter(function(x){return x!==id;});renderReport();});});
     var sendSet=$("#reportSendResearch"); if(sendSet)sendSet.addEventListener('click',function(){var ids=reportCompareRunObjects().map(function(r){return r.id;});if(ids.length<2)return;researchState.selectedRuns=ids;researchState.selectedCompounds=[];researchState.userClearedCompounds=false;researchState.initialized=true;researchState.scoreMode=reportState.scoreMode;switchView('research');});
-    var rpMode=$("#reportPresenceMode"); if(rpMode)rpMode.addEventListener('change',function(){reportState.presenceMode=this.value;renderReport();});
+    var rpMode=$("#reportPresenceMode"); if(rpMode)rpMode.addEventListener('change',function(){reportState.presenceMode=this.value;reportState.presenceFilter='all';renderReport();});
     var rpRule=$("#reportPresenceRule"); if(rpRule)rpRule.addEventListener('change',function(){reportState.presenceRule=this.value;renderReport();});
     var rpX=$("#reportPresenceX"); if(rpX)rpX.addEventListener('change',function(){reportState.presenceX=Math.max(2,parseInt(this.value,10)||2);renderReport();});
+    var rpFilter=$("#reportPresenceFilter"); if(rpFilter)rpFilter.addEventListener('change',function(){reportState.presenceFilter=this.value||'all';renderReport();});
+    document.querySelectorAll('#viewReport .presence-sort-btn').forEach(function(btn){btn.addEventListener('click',function(){var k=btn.getAttribute('data-presence-sort');if(reportState.presenceSort===k)reportState.presenceSortDir=reportState.presenceSortDir==='desc'?'asc':'desc';else{reportState.presenceSort=k;reportState.presenceSortDir=(k==='compound'||k==='exclusiveSample'||k==='exclusiveSpecies'||k==='plantSpecies'||k==='samples')?'asc':'desc';}renderReport();});});
     var rpExport=$("#reportPresenceExport"); if(rpExport)rpExport.addEventListener('click',exportReportPresenceCsv);
-    var rpResearch=$("#reportPresenceToResearch"); if(rpResearch)rpResearch.addEventListener('click',function(){var runs=reportCompareRunObjects(),d=compoundPresenceAcrossSamples(runs,reportState.scoreMode),rows=filterPresenceCompounds(d,reportState.presenceMode,reportState.presenceX,reportState.presenceRule);if(!rows.length)return;researchState.selectedRuns=runs.map(function(r){return r.id;});researchState.selectedCompounds=rows.map(function(c){return c.label;});researchState.userClearedCompounds=false;researchState.initialized=true;researchState.scoreMode=reportState.scoreMode;researchState.presenceMode=reportState.presenceMode;researchState.presenceX=reportState.presenceX;researchState.presenceRule=reportState.presenceRule;researchState.groupBy='sample';researchState.graphType=rows.length>20?'heatmap':'compound';switchView('research');});
+    var rpResearch=$("#reportPresenceToResearch"); if(rpResearch)rpResearch.addEventListener('click',function(){var runs=reportCompareRunObjects(),d=compoundPresenceAcrossSamples(runs,reportState.scoreMode),rows=presenceRowsForView(d,reportState.presenceMode,reportState.presenceX,reportState.presenceRule,reportState.presenceFilter,reportState.presenceSort,reportState.presenceSortDir);if(!rows.length)return;researchState.selectedRuns=runs.map(function(r){return r.id;});researchState.selectedCompounds=rows.map(function(c){return c.label;});researchState.userClearedCompounds=false;researchState.initialized=true;researchState.scoreMode=reportState.scoreMode;researchState.presenceMode=reportState.presenceMode;researchState.presenceX=reportState.presenceX;researchState.presenceRule=reportState.presenceRule;researchState.presenceFilter=reportState.presenceFilter;researchState.presenceSort=reportState.presenceSort;researchState.presenceSortDir=reportState.presenceSortDir;researchState.groupBy='sample';researchState.graphType=rows.length>20?'heatmap':'compound';switchView('research');});
     var commonToResearch=$("#reportCommonToResearch"); if(commonToResearch)commonToResearch.addEventListener('click',function(){var runs=reportCompareRunObjects(),d=commonCompoundsAcrossSamples(runs,reportState.scoreMode);if(!d.compounds.length)return;researchState.selectedRuns=runs.map(function(r){return r.id;});researchState.selectedCompounds=d.compounds.map(function(c){return c.label;});researchState.userClearedCompounds=false;researchState.initialized=true;researchState.scoreMode=reportState.scoreMode;researchState.groupBy='sample';researchState.graphType=d.compounds.length>20?'heatmap':'compound';switchView('research');});
     var pr=$("#reportPrintBtn"); if(pr) pr.addEventListener("click",function(){window.print();});
     var reportBenefits=$("#reportExportBenefits"); if(reportBenefits) reportBenefits.addEventListener("change",function(){exportOptions.includeBenefits=!!this.checked;});
@@ -4065,6 +4158,134 @@ window.GCMS_SUPABASE_CONFIG = {
     Plotly.react(el,traces,{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:58,r:18,t:22,b:46},font:{family:'Inter, sans-serif',size:9,color:'#5B6472'},hovermode:'closest',legend:{orientation:'h',x:1,xanchor:'right',y:1.12,yanchor:'top',font:{size:9}},xaxis:{title:'m/z',gridcolor:'#F2F4F3',linecolor:'#DCE3E0'},yaxis:{title:'Relative abundance (%)',range:[-105,105],gridcolor:'#EBEFED',zeroline:true,zerolinecolor:'#16213A',zerolinewidth:1,tickvals:[-100,-50,0,50,100],ticktext:['100','50','0','50','100']}},{responsive:true,displaylogo:false,scrollZoom:true,modeBarButtonsToRemove:['lasso2d','select2d']});
   }
 
+
+  /* ---------- Present view ---------- */
+  function presentAllSamples(){
+    return uniqueSorted(runsIndex.map(function(r){return String(r.sample||'').trim();}).filter(Boolean));
+  }
+  function presentEnsureSelection(){
+    var all=presentAllSamples();
+    presentState.selectedSamples=(presentState.selectedSamples||[]).filter(function(s){return all.indexOf(s)>=0;});
+    if(!presentState.selectedSamples.length&&all.length)presentState.selectedSamples=all.slice(0,Math.min(6,all.length));
+  }
+  function presentSelectedRuns(){
+    presentEnsureSelection();
+    var set=new Set(presentState.selectedSamples||[]);
+    return runsIndex.filter(function(r){return set.has(String(r.sample||'').trim());});
+  }
+  function presentData(){
+    presentEnsureSelection();
+    var samples=(presentState.selectedSamples||[]).slice(), runs=presentSelectedRuns(), runBy={}, runsBySample={}, sampleSpecies={};
+    runs.forEach(function(r){
+      runBy[r.id]=r;var sm=String(r.sample||'').trim();if(!runsBySample[sm])runsBySample[sm]=[];runsBySample[sm].push(r.id);if(!sampleSpecies[sm])sampleSpecies[sm]=plantSpeciesNameFromRun(r)||sm;
+    });
+    samples=samples.filter(function(sm){return !!runsBySample[sm];});
+    var species=uniqueSorted(samples.map(function(sm){return sampleSpecies[sm]||sm;})),map={};
+    allCompounds.forEach(function(c){
+      var r=runBy[c.runId];if(!r||!compoundMatchesScoreMode(c,presentState.scoreMode))return;
+      var label=String(c.compound||'').trim();if(!label)return;var key=compoundKeyName(label),sm=String(r.sample||'').trim();
+      if(!map[key])map[key]={label:label,byRun:{},rtSum:0,rtN:0,scoreSum:0,scoreN:0};
+      var d=map[key];if(!d.byRun[c.runId])d.byRun[c.runId]={relArea:0,present:false};d.byRun[c.runId].present=true;d.byRun[c.runId].relArea+=Number(c.relArea)||0;
+      if(c.rt!==null&&c.rt!==undefined&&isFinite(Number(c.rt))){d.rtSum+=Number(c.rt);d.rtN++;}var sc=validScore(c);if(sc!==null){d.scoreSum+=sc;d.scoreN++;}
+    });
+    var compounds=Object.keys(map).map(function(key){
+      var d=map[key],bySample={},sampleCount=0,speciesSeen={};
+      samples.forEach(function(sm){var ids=runsBySample[sm]||[],sum=0,present=false;ids.forEach(function(id){var br=d.byRun[id];if(br&&br.present)present=true;sum+=br?br.relArea:0;});var rel=ids.length?sum/ids.length:0;bySample[sm]={present:present,relMean:rel};if(present){sampleCount++;speciesSeen[sampleSpecies[sm]||sm]=true;}});
+      var speciesNames=Object.keys(speciesSeen),meanRel=samples.length?samples.reduce(function(a,sm){return a+(bySample[sm]?bySample[sm].relMean:0);},0)/samples.length:0;
+      return {key:key,label:d.label,bySample:bySample,sampleCount:sampleCount,totalSamples:samples.length,prevalence:samples.length?sampleCount/samples.length*100:0,speciesCount:speciesNames.length,totalSpecies:species.length,speciesNames:speciesNames,exclusiveSample:sampleCount===1?samples.filter(function(sm){return bySample[sm]&&bySample[sm].present;})[0]:'',exclusiveSpecies:speciesNames.length===1?speciesNames[0]:'',meanRelArea:meanRel,avgRt:d.rtN?d.rtSum/d.rtN:null,meanScore:d.scoreN?d.scoreSum/d.scoreN:null};
+    });
+    compounds.sort(function(a,b){return b.prevalence-a.prevalence||b.meanRelArea-a.meanRelArea||a.label.localeCompare(b.label);});
+    var summary={};samples.forEach(function(sm){summary[sm]={detected:0,exclusive:0};});
+    compounds.forEach(function(c){samples.forEach(function(sm){if(c.bySample[sm]&&c.bySample[sm].present)summary[sm].detected++;});if(c.exclusiveSample&&summary[c.exclusiveSample])summary[c.exclusiveSample].exclusive++;});
+    return {samples:samples,runs:runs,species:species,sampleSpecies:sampleSpecies,compounds:compounds,summary:summary};
+  }
+  function presentFilteredCompounds(d){
+    var rows=(d.compounds||[]).slice(),n=d.samples.length,q=String(presentState.q||'').trim().toLowerCase(),mode=presentState.filter||'variable';
+    if(q)rows=rows.filter(function(c){return String(c.label||'').toLowerCase().indexOf(q)>=0;});
+    if(mode==='shared')rows=rows.filter(function(c){return n>0&&c.sampleCount===n;});
+    else if(mode==='variable')rows=rows.filter(function(c){return c.sampleCount>0&&c.sampleCount<n;});
+    else if(mode==='exclusiveSample')rows=rows.filter(function(c){return c.sampleCount===1;});
+    else if(mode==='exclusiveSpecies')rows=rows.filter(function(c){return d.species.length>1&&c.speciesCount===1;});
+    if(mode==='exclusiveSpecies'&&presentState.speciesFilter&&presentState.speciesFilter!=='all')rows=rows.filter(function(c){return c.exclusiveSpecies===presentState.speciesFilter;});
+    var sort=presentState.sort||'prevalence_desc';rows.sort(function(a,b){
+      if(sort==='name_asc')return a.label.localeCompare(b.label);
+      if(sort==='rel_desc')return b.meanRelArea-a.meanRelArea||b.prevalence-a.prevalence||a.label.localeCompare(b.label);
+      if(sort==='presence_asc')return a.sampleCount-b.sampleCount||b.meanRelArea-a.meanRelArea||a.label.localeCompare(b.label);
+      return b.prevalence-a.prevalence||b.meanRelArea-a.meanRelArea||a.label.localeCompare(b.label);
+    });
+    return rows.slice(0,Math.max(5,parseInt(presentState.topN,10)||20));
+  }
+  function presentEnsureCompare(d){
+    var keys=new Set((d.compounds||[]).map(function(c){return compoundKeyName(c.label);}));
+    presentState.selectedCompounds=(presentState.selectedCompounds||[]).filter(function(n){return keys.has(compoundKeyName(n));}).slice(0,4);
+    if(!presentState.initialized&&d.compounds.length){
+      var variable=d.compounds.filter(function(c){return c.sampleCount>0&&c.sampleCount<d.samples.length;}).sort(function(a,b){return b.meanRelArea-a.meanRelArea;});
+      presentState.selectedCompounds=(variable.length?variable:d.compounds).slice(0,2).map(function(c){return c.label;});presentState.initialized=true;
+    }
+  }
+  function presentInsightPills(rows,limit){
+    rows=(rows||[]).slice(0,limit||10);if(!rows.length)return '<span class="mini-muted">— ไม่มีรายการตามชุดตัวอย่างนี้ —</span>';
+    return rows.map(function(c){return '<button class="present-compound-pill compound-profile-btn" data-compound="'+escapeHtml(c.label)+'" type="button" title="เปิดรายละเอียดสาร">'+escapeHtml(c.label)+'</button>';}).join('');
+  }
+  function presentMatrixHtml(d){
+    var rows=presentFilteredCompounds(d);
+    if(!d.samples.length)return '<div class="present-empty">เลือก Sample อย่างน้อย 1 ตัวอย่าง</div>';
+    if(!rows.length)return '<div class="present-empty">ไม่พบสารตามตัวกรองปัจจุบัน</div>';
+    var head=d.samples.map(function(sm){return '<th title="'+escapeHtml(sm)+'">'+escapeHtml(sm)+'</th>';}).join('');
+    var body=rows.map(function(c){
+      var cells=d.samples.map(function(sm){var x=c.bySample[sm]||{present:false,relMean:0};return '<td class="present-cell"><span class="present-status '+(x.present?'yes':'no')+'">'+(x.present?'✓ พบ':'— ไม่พบ')+(x.present?'<small>'+fmtNum(x.relMean,2)+'%</small>':'')+'</span></td>';}).join('');
+      var active=(presentState.selectedCompounds||[]).some(function(n){return compoundKeyName(n)===compoundKeyName(c.label);});
+      return '<tr><td class="compound-col">'+presenceCompoundPopupButtonHtml(c.label)+'<div class="mini-muted" style="margin-top:3px">'+c.sampleCount+'/'+c.totalSamples+' samples · '+fmtNum(c.prevalence,0)+'% prevalence</div></td>'+cells+'<td class="compare-col"><button class="present-compare-btn'+(active?' active':'')+'" data-present-compare="'+escapeHtml(c.label)+'" type="button">'+(active?'✓ Comparing':'Compare')+'</button></td></tr>';
+    }).join('');
+    return '<div class="present-matrix-wrap"><table class="present-matrix"><thead><tr><th class="compound-col">Compound</th>'+head+'<th class="compare-col">Compare</th></tr></thead><tbody>'+body+'</tbody></table></div>';
+  }
+  function renderPresent(){
+    var el=document.getElementById('viewPresent');if(!el)return;
+    if(!runsIndex.length){el.innerHTML='<div class="empty-state"><div class="icon">▥</div><h3>ยังไม่มีข้อมูลสำหรับ Present</h3><p>เพิ่มผล GC-MS ก่อน แล้วหน้านี้จะสรุปตัวอย่าง สารที่พบ และ Presence / Absence ให้อัตโนมัติ</p><button class="btn btn-primary" id="presentGoAdd" type="button">+ เพิ่มชุดข้อมูล</button></div>';var ga=document.getElementById('presentGoAdd');if(ga)ga.onclick=function(){switchView('add');};return;}
+    var all=presentAllSamples();presentEnsureSelection();var d=presentData();presentEnsureCompare(d);
+    if(presentState.speciesFilter!=='all'&&d.species.indexOf(presentState.speciesFilter)<0)presentState.speciesFilter='all';
+    var shared=d.compounds.filter(function(c){return d.samples.length&&c.sampleCount===d.samples.length;}),variable=d.compounds.filter(function(c){return c.sampleCount>0&&c.sampleCount<d.samples.length;}),exclusive=d.compounds.filter(function(c){return c.sampleCount===1;}),speciesExclusive=d.compounds.filter(function(c){return d.species.length>1&&c.speciesCount===1;});
+    var compareChips=(presentState.selectedCompounds||[]).map(function(n){return '<span class="present-compare-chip"><span>'+escapeHtml(n)+'</span><button type="button" class="present-compare-remove" data-compound="'+escapeHtml(n)+'">×</button></span>';}).join('');
+    var sampleChips=all.map(function(sm){var checked=presentState.selectedSamples.indexOf(sm)>=0;return '<label class="present-sample-chip'+(checked?' active':'')+'"><input class="present-sample-toggle" type="checkbox" value="'+escapeHtml(sm)+'"'+(checked?' checked':'')+'> '+escapeHtml(sm)+'</label>';}).join('');
+    var speciesControl=presentState.filter==='exclusiveSpecies'?'<div class="field"><label>Plant species</label><select id="presentSpeciesFilter"><option value="all">ทุก species</option>'+d.species.map(function(sp){return '<option value="'+escapeHtml(sp)+'"'+(presentState.speciesFilter===sp?' selected':'')+'>'+escapeHtml(sp)+'</option>';}).join('')+'</select></div>':'';
+    var sampleExclusiveCards=d.samples.map(function(sm){var rows=exclusive.filter(function(c){return c.exclusiveSample===sm;}).sort(function(a,b){return b.meanRelArea-a.meanRelArea;});return '<div class="present-insight-card"><div class="present-insight-title">'+escapeHtml(sm)+' · Exclusive '+rows.length+'</div><div class="present-insight-sub">สารที่พบใน Sample นี้ แต่ไม่พบใน Sample อื่นที่กำลังเปรียบเทียบ</div><div class="present-insight-list">'+presentInsightPills(rows,10)+'</div></div>';}).join('');
+    var html='<div class="present-shell">'+
+      '<section class="present-hero"><div><div class="eyebrow">PRESENTATION VIEW</div><h2>Sample & Compound Overview</h2><p>หน้าสำหรับนำเสนอผลแบบอ่านง่าย: เปรียบเทียบจำนวนสารในแต่ละ Sample, ดูสารที่พบร่วม/แตกต่าง, ตรวจ ✓ พบ หรือ — ไม่พบ ทีละสาร และเลือกสารเพื่อ Compare ได้ทันที</p></div><div class="present-hero-actions"><button class="btn btn-primary" id="presentOpenResearch" type="button">เปิดชุดนี้ใน Research Graph</button></div></section>'+
+      '<section class="present-controls"><div class="field"><label>ค้นหาสารใน Matrix</label><input id="presentSearch" type="text" value="'+escapeHtml(presentState.q||'')+'" placeholder="Search compound..."></div><div class="field"><label>Presence view</label><select id="presentFilter"><option value="all"'+(presentState.filter==='all'?' selected':'')+'>ทั้งหมด</option><option value="variable"'+(presentState.filter==='variable'?' selected':'')+'>แตกต่างระหว่าง Sample</option><option value="shared"'+(presentState.filter==='shared'?' selected':'')+'>พบร่วมทุก Sample</option><option value="exclusiveSample"'+(presentState.filter==='exclusiveSample'?' selected':'')+'>เฉพาะ Sample เดียว</option><option value="exclusiveSpecies"'+(presentState.filter==='exclusiveSpecies'?' selected':'')+'>เฉพาะ Plant species</option></select></div>'+speciesControl+'<div class="field"><label>แสดงสาร</label><select id="presentTopN">'+[10,20,30,50,100].map(function(n){return '<option value="'+n+'"'+(presentState.topN===n?' selected':'')+'>Top '+n+'</option>';}).join('')+'</select></div><div class="field"><label>เรียงผล</label><select id="presentSort"><option value="prevalence_desc"'+(presentState.sort==='prevalence_desc'?' selected':'')+'>พบมาก → น้อย</option><option value="presence_asc"'+(presentState.sort==='presence_asc'?' selected':'')+'>พบน้อย → มาก</option><option value="rel_desc"'+(presentState.sort==='rel_desc'?' selected':'')+'>Mean Rel. area มาก → น้อย</option><option value="name_asc"'+(presentState.sort==='name_asc'?' selected':'')+'>ชื่อ A → Z</option></select></div><div class="field"><label>Score threshold</label><select id="presentScore"><option value="qualified"'+(presentState.scoreMode==='qualified'?' selected':'')+'>Score ≥70</option><option value="score80"'+(presentState.scoreMode==='score80'?' selected':'')+'>Score ≥80</option><option value="high"'+(presentState.scoreMode==='high'?' selected':'')+'>Score ≥90</option></select></div><div class="present-sample-box"><div class="present-sample-head"><div class="present-sample-title">Samples ที่ใช้ใน Present · เลือก/ยกเลิกเพื่อเปลี่ยนชุดเปรียบเทียบ</div><div><button class="btn btn-sm btn-ghost" id="presentSelectAllSamples" type="button">เลือกทั้งหมด</button><button class="btn btn-sm btn-ghost" id="presentDefaultSamples" type="button">เลือก 6 แรก</button></div></div><div class="present-sample-list">'+sampleChips+'</div></div></section>'+
+      '<section class="present-kpis"><div class="present-kpi"><div class="v">'+d.samples.length+'</div><div class="k">Samples compared</div></div><div class="present-kpi"><div class="v">'+d.compounds.length+'</div><div class="k">Compounds detected</div></div><div class="present-kpi shared"><div class="v">'+shared.length+'</div><div class="k">Shared in all samples</div></div><div class="present-kpi variable"><div class="v">'+variable.length+'</div><div class="k">Different between samples</div></div><div class="present-kpi exclusive"><div class="v">'+exclusive.length+'</div><div class="k">Sample-exclusive</div></div></section>'+
+      '<section class="present-chart-grid"><div class="present-chart-card"><div class="present-card-head"><div><div class="present-card-title">Detected compounds by Sample</div><div class="present-card-sub">จำนวนสารที่ผ่าน Score threshold ในแต่ละ Sample</div></div></div><div id="presentSampleChart" class="present-chart"></div></div><div class="present-chart-card"><div class="present-card-head"><div><div class="present-card-title">Compound comparison</div><div class="present-card-sub">Mean Relative Area (%) ต่อ Sample · เลือก Compare ได้สูงสุด 4 สารจาก Matrix</div></div><button class="btn btn-sm btn-ghost" id="presentClearCompare" type="button">Clear</button></div><div class="present-compare-chips">'+(compareChips||'<span class="mini-muted">กด Compare ที่สารด้านล่าง</span>')+'</div><div id="presentCompoundChart" class="present-chart"></div></div></section>'+
+      '<section class="present-presence-card"><div class="present-presence-head"><div><h3>Compound Presence & Exclusivity</h3><div class="present-card-sub">อ่านแนวนอนเพื่อดูว่าสารเดียวกัน “มีในตัวไหน / ไม่มีในตัวไหน” · ค่าใต้ ✓ คือ Mean Relative Area (%) ของ Sample นั้น</div></div><div class="present-legend"><span><i class="yes"></i> ✓ พบ</span><span><i class="no"></i> — ไม่พบ</span><span>'+presentFilteredCompounds(d).length+' rows shown</span></div></div>'+presentMatrixHtml(d)+'</section>'+
+      '<section><div class="present-card-head"><div><div class="present-card-title">Exclusive compounds by Sample</div><div class="present-card-sub">สรุปสารที่ช่วยแยกแต่ละ Sample ออกจากชุดเปรียบเทียบ · กดชื่อสารเพื่อเปิด Compound Library popup</div></div></div><div class="present-insights">'+(sampleExclusiveCards||'<div class="present-insight-card">ยังไม่มี Sample-exclusive compound</div>')+'</div></section>'+
+      '<section class="present-insights"><div class="present-insight-card"><div class="present-insight-title">Shared in every Sample · '+shared.length+'</div><div class="present-insight-sub">สารที่พบอย่างน้อย 1 Run ในทุก Sample ที่เลือก</div><div class="present-insight-list">'+presentInsightPills(shared.sort(function(a,b){return b.meanRelArea-a.meanRelArea;}),14)+'</div></div><div class="present-insight-card"><div class="present-insight-title">Variable / differentiating · '+variable.length+'</div><div class="present-insight-sub">พบในบาง Sample แต่ไม่พบครบทุก Sample เหมาะสำหรับชี้ความแตกต่าง</div><div class="present-insight-list">'+presentInsightPills(variable.sort(function(a,b){return b.meanRelArea-a.meanRelArea;}),14)+'</div></div><div class="present-insight-card"><div class="present-insight-title">Plant-species-exclusive · '+speciesExclusive.length+'</div><div class="present-insight-sub">พบเฉพาะ plant species เดียวภายในชุดเปรียบเทียบปัจจุบัน</div><div class="present-insight-list">'+presentInsightPills(speciesExclusive.sort(function(a,b){return b.meanRelArea-a.meanRelArea;}),14)+'</div></div></section>'+
+      '</div>';
+    el.innerHTML=html;wirePresentEvents();wireCompoundActionEvents(el);requestAnimationFrame(drawPresentCharts);if(currentLang==='en')translateNode(el);
+  }
+  function drawPresentCharts(){
+    var d=presentData(),sampleEl=document.getElementById('presentSampleChart'),compEl=document.getElementById('presentCompoundChart');if(!sampleEl||!compEl)return;
+    if(!window.Plotly){ensurePlotly(function(ok){if(ok)drawPresentCharts();else{sampleEl.innerHTML='<div class="present-empty">โหลดกราฟไม่สำเร็จ</div>';compEl.innerHTML='<div class="present-empty">โหลดกราฟไม่สำเร็จ</div>';}});return;}
+    var counts=d.samples.map(function(sm){return d.summary[sm]?d.summary[sm].detected:0;}),height=Math.max(280,Math.min(520,d.samples.length*34+90));sampleEl.style.height=height+'px';
+    Plotly.react(sampleEl,[{type:'bar',orientation:'h',y:d.samples,x:counts,marker:{color:'#147D82'},text:counts,textposition:'auto',hovertemplate:'%{y}<br>%{x} compounds<extra></extra>'}],{paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:Math.min(210,Math.max(90,Math.max.apply(null,d.samples.map(function(s){return String(s).length;}))*7)),r:18,t:12,b:42},font:{family:'Inter, sans-serif',size:10,color:'#5B6472'},showlegend:false,xaxis:{title:'Detected compounds',rangemode:'tozero',gridcolor:'#EBEFED'},yaxis:{automargin:true,categoryorder:'total ascending'}},{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d','select2d']});
+    var selected=(presentState.selectedCompounds||[]).map(function(n){return d.compounds.find(function(c){return compoundKeyName(c.label)===compoundKeyName(n);});}).filter(Boolean);
+    if(!selected.length){compEl.innerHTML='<div class="present-empty">กด Compare ที่สารใน Presence Matrix เพื่อสร้างกราฟเปรียบเทียบ</div>';return;}
+    var traces=selected.map(function(c,i){return {type:'bar',name:c.label,x:d.samples,y:d.samples.map(function(sm){return c.bySample[sm]?c.bySample[sm].relMean:0;}),marker:{color:PALETTE[i%PALETTE.length]},hovertemplate:'<b>'+escapeHtml(c.label)+'</b><br>%{x}<br>Mean Relative Area %{y:.3f}%<extra></extra>'};});
+    Plotly.react(compEl,traces,{barmode:'group',paper_bgcolor:'#fff',plot_bgcolor:'#fff',margin:{l:56,r:16,t:12,b:85},font:{family:'Inter, sans-serif',size:9,color:'#5B6472'},legend:{orientation:'h',y:1.18,x:0},xaxis:{tickangle:-28,automargin:true},yaxis:{title:'Mean Relative Area (%)',rangemode:'tozero',gridcolor:'#EBEFED'}},{responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d','select2d']});
+  }
+  function wirePresentEvents(){
+    var score=document.getElementById('presentScore');if(score)score.addEventListener('change',function(){applyGlobalScoreMode(this.value);});
+    var filter=document.getElementById('presentFilter');if(filter)filter.addEventListener('change',function(){presentState.filter=this.value;presentState.speciesFilter='all';renderPresent();});
+    var sp=document.getElementById('presentSpeciesFilter');if(sp)sp.addEventListener('change',function(){presentState.speciesFilter=this.value;renderPresent();});
+    var top=document.getElementById('presentTopN');if(top)top.addEventListener('change',function(){presentState.topN=parseInt(this.value,10)||20;renderPresent();});
+    var sort=document.getElementById('presentSort');if(sort)sort.addEventListener('change',function(){presentState.sort=this.value;renderPresent();});
+    var q=document.getElementById('presentSearch');if(q)q.addEventListener('input',function(){presentState.q=this.value;clearTimeout(wirePresentEvents._q);wirePresentEvents._q=setTimeout(renderPresent,170);});
+    document.querySelectorAll('.present-sample-toggle').forEach(function(cb){cb.addEventListener('change',function(){var v=cb.value,arr=(presentState.selectedSamples||[]).slice(),i=arr.indexOf(v);if(cb.checked&&i<0)arr.push(v);if(!cb.checked&&i>=0)arr.splice(i,1);presentState.selectedSamples=arr;presentState.initialized=false;renderPresent();});});
+    var all=document.getElementById('presentSelectAllSamples');if(all)all.addEventListener('click',function(){presentState.selectedSamples=presentAllSamples();presentState.initialized=false;renderPresent();});
+    var def=document.getElementById('presentDefaultSamples');if(def)def.addEventListener('click',function(){presentState.selectedSamples=presentAllSamples().slice(0,6);presentState.initialized=false;renderPresent();});
+    document.querySelectorAll('[data-present-compare]').forEach(function(btn){btn.addEventListener('click',function(){var name=btn.getAttribute('data-present-compare'),arr=(presentState.selectedCompounds||[]).slice(),idx=arr.findIndex(function(n){return compoundKeyName(n)===compoundKeyName(name);});if(idx>=0)arr.splice(idx,1);else{if(arr.length>=4){showToast('Compare ได้สูงสุด 4 สารในหน้า Present',true);return;}arr.push(name);}presentState.selectedCompounds=arr;presentState.initialized=true;renderPresent();});});
+    document.querySelectorAll('.present-compare-remove').forEach(function(btn){btn.addEventListener('click',function(){var name=btn.getAttribute('data-compound');presentState.selectedCompounds=(presentState.selectedCompounds||[]).filter(function(n){return compoundKeyName(n)!==compoundKeyName(name);});presentState.initialized=true;renderPresent();});});
+    var clear=document.getElementById('presentClearCompare');if(clear)clear.addEventListener('click',function(){presentState.selectedCompounds=[];presentState.initialized=true;renderPresent();});
+    var open=document.getElementById('presentOpenResearch');if(open)open.addEventListener('click',function(){var runs=presentSelectedRuns();researchState.selectedRuns=runs.map(function(r){return r.id;});researchState.selectedCompounds=(presentState.selectedCompounds||[]).slice();researchState.userClearedCompounds=!researchState.selectedCompounds.length;researchState.initialized=true;researchState.scoreMode=presentState.scoreMode;researchState.groupBy='sample';researchState.graphType=researchState.selectedCompounds.length?'compound':'heatmap';switchView('research');});
+  }
+
   function commonCompoundsAcrossSamples(runObjects, scoreMode) {
     var runs=(runObjects||[]).filter(Boolean);
     var runById={}, runsBySample={};
@@ -4187,18 +4408,70 @@ window.GCMS_SUPABASE_CONFIG = {
     return currentLang==='en'?'Shared prevalence':'สารที่พบร่วมตามจำนวน Sample';
   }
 
-  function renderPresenceResultTable(data, mode, x, rule, maxRows) {
-    var rows=filterPresenceCompounds(data,mode,x,rule), shown=rows.slice(0,maxRows||300), body='';
+  function presenceFilterOptions(data, mode) {
+    if(mode==='exclusiveSpecies')return (data&&data.species?data.species:[]).slice();
+    if(mode==='exclusiveSample')return (data&&data.samples?data.samples:[]).slice();
+    return [];
+  }
+
+  function normalizePresenceFilter(data, mode, value) {
+    var v=String(value||'all');
+    if(v==='all')return 'all';
+    return presenceFilterOptions(data,mode).indexOf(v)>=0?v:'all';
+  }
+
+  function presenceRowsForView(data, mode, x, rule, filterValue, sortKey, sortDir) {
+    var rows=filterPresenceCompounds(data,mode,x,rule).slice(), filter=normalizePresenceFilter(data,mode,filterValue);
+    if(filter!=='all'){
+      if(mode==='exclusiveSpecies')rows=rows.filter(function(c){return c.exclusiveSpecies===filter;});
+      else if(mode==='exclusiveSample')rows=rows.filter(function(c){return c.exclusiveSample===filter;});
+    }
+    var key=sortKey||'meanRelArea', dir=sortDir==='asc'?1:-1;
+    function value(c){
+      if(key==='compound')return String(c.label||'').toLowerCase();
+      if(key==='exclusiveSample')return String(c.exclusiveSample||'').toLowerCase();
+      if(key==='plantSpecies')return String((data.sampleSpecies&&data.sampleSpecies[c.exclusiveSample])||'').toLowerCase();
+      if(key==='exclusiveSpecies')return String(c.exclusiveSpecies||'').toLowerCase();
+      if(key==='samples')return String((c.sampleNames||[]).join(', ')).toLowerCase();
+      if(key==='sampleCount')return Number(c.sampleCount)||0;
+      if(key==='speciesSampleCount')return Number(c.speciesSampleCount)||0;
+      if(key==='prevalence')return Number(c.prevalence)||0;
+      if(key==='speciesPrevalence')return Number(c.speciesPrevalence)||0;
+      if(key==='speciesCount')return Number(c.speciesCount)||0;
+      if(key==='avgRt')return c.avgRt===null||c.avgRt===undefined?-Infinity:Number(c.avgRt)||0;
+      if(key==='meanScore')return c.meanScore===null||c.meanScore===undefined?-Infinity:Number(c.meanScore)||0;
+      return Number(c.meanRelArea)||0;
+    }
+    rows.sort(function(a,b){
+      var av=value(a),bv=value(b),cmp;
+      if(typeof av==='string'||typeof bv==='string')cmp=String(av).localeCompare(String(bv));
+      else cmp=av===bv?0:(av<bv?-1:1);
+      if(!cmp)cmp=String(a.label||'').localeCompare(String(b.label||''));
+      return cmp*dir;
+    });
+    return rows;
+  }
+
+  function presenceSortHeader(label,key,activeKey,sortDir,numClass){
+    var active=key===activeKey, arrow=active?(sortDir==='asc'?'▲':'▼'):'↕';
+    return '<th'+(numClass?' class="num"':'')+'><button class="presence-sort-btn'+(active?' active':'')+'" type="button" data-presence-sort="'+escapeHtml(key)+'" title="คลิกเพื่อเรียง มาก→น้อย / น้อย→มาก">'+escapeHtml(label)+'<span class="presence-sort-arrow">'+arrow+'</span></button></th>';
+  }
+
+  function renderPresenceResultTable(data, mode, x, rule, maxRows, filterValue, sortKey, sortDir) {
+    var rows=presenceRowsForView(data,mode,x,rule,filterValue,sortKey,sortDir), shown=rows.slice(0,maxRows||300), body='', th='';
     if(mode==='exclusiveSample'){
       body=shown.map(function(c){return '<tr><td class="compound-cell">'+presenceCompoundPopupButtonHtml(c.label)+'</td><td class="presence-exclusive">'+escapeHtml(c.exclusiveSample)+'</td><td>'+escapeHtml((data.sampleSpecies&&data.sampleSpecies[c.exclusiveSample])||'—')+'</td><td class="num presence-prevalence">'+fmtNum(c.prevalence,1)+'%</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td><td class="num">'+fmtNum(c.avgRt,3)+'</td></tr>';}).join('');
-      return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr><th>Compound</th><th>Exclusive sample</th><th>Plant species</th><th class="num">Prevalence</th><th class="num">Mean Relative Area</th><th class="num">RT≈</th></tr></thead><tbody>'+body+'</tbody></table></div>'};
+      th=presenceSortHeader('Compound','compound',sortKey,sortDir)+presenceSortHeader('Exclusive sample','exclusiveSample',sortKey,sortDir)+presenceSortHeader('Plant species','plantSpecies',sortKey,sortDir)+presenceSortHeader('Prevalence','prevalence',sortKey,sortDir,true)+presenceSortHeader('Mean Relative Area','meanRelArea',sortKey,sortDir,true)+presenceSortHeader('RT≈','avgRt',sortKey,sortDir,true);
+      return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr>'+th+'</tr></thead><tbody>'+body+'</tbody></table></div>'};
     }
     if(mode==='exclusiveSpecies'){
       body=shown.map(function(c){return '<tr><td class="compound-cell">'+presenceCompoundPopupButtonHtml(c.label)+'</td><td class="presence-exclusive">'+escapeHtml(c.exclusiveSpecies)+'</td><td class="num">'+c.speciesSampleCount+'/'+c.speciesTotalSamples+'</td><td class="num presence-prevalence">'+fmtNum(c.speciesPrevalence,1)+'%</td><td class="presence-samples">'+escapeHtml(c.sampleNames.join(', '))+'</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td></tr>';}).join('');
-      return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr><th>Compound</th><th>Exclusive species</th><th class="num">Samples detected</th><th class="num">Within-species prevalence</th><th>Samples</th><th class="num">Mean Relative Area</th></tr></thead><tbody>'+body+'</tbody></table></div>'};
+      th=presenceSortHeader('Compound','compound',sortKey,sortDir)+presenceSortHeader('Exclusive species','exclusiveSpecies',sortKey,sortDir)+presenceSortHeader('Samples detected','speciesSampleCount',sortKey,sortDir,true)+presenceSortHeader('Within-species prevalence','speciesPrevalence',sortKey,sortDir,true)+presenceSortHeader('Samples','samples',sortKey,sortDir)+presenceSortHeader('Mean Relative Area','meanRelArea',sortKey,sortDir,true);
+      return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr>'+th+'</tr></thead><tbody>'+body+'</tbody></table></div>'};
     }
     body=shown.map(function(c){return '<tr><td class="compound-cell">'+presenceCompoundPopupButtonHtml(c.label)+'</td><td class="num"><b>'+c.sampleCount+'/'+c.totalSamples+'</b></td><td class="num presence-prevalence">'+fmtNum(c.prevalence,1)+'%</td><td class="presence-samples">'+escapeHtml(c.sampleNames.join(', '))+'</td><td class="num">'+c.speciesCount+'/'+c.totalSpecies+'</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td><td class="num">'+fmtNum(c.avgRt,3)+'</td></tr>';}).join('');
-    return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr><th>Compound</th><th class="num">Samples detected</th><th class="num">Prevalence</th><th>Samples</th><th class="num">Species</th><th class="num">Mean Relative Area</th><th class="num">RT≈</th></tr></thead><tbody>'+body+'</tbody></table></div>'};
+    th=presenceSortHeader('Compound','compound',sortKey,sortDir)+presenceSortHeader('Samples detected','sampleCount',sortKey,sortDir,true)+presenceSortHeader('Prevalence','prevalence',sortKey,sortDir,true)+presenceSortHeader('Samples','samples',sortKey,sortDir)+presenceSortHeader('Species','speciesCount',sortKey,sortDir,true)+presenceSortHeader('Mean Relative Area','meanRelArea',sortKey,sortDir,true)+presenceSortHeader('RT≈','avgRt',sortKey,sortDir,true);
+    return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr>'+th+'</tr></thead><tbody>'+body+'</tbody></table></div>'};
   }
 
   function presenceCsv(rows, data, mode, filename) {
@@ -4224,19 +4497,27 @@ window.GCMS_SUPABASE_CONFIG = {
     var compounds=Object.keys(map).map(function(k){var d=map[k],vals=runs.map(function(r){return d.byRun[r.id]||0;});d.values=vals;d.mean=vals.length?vals.reduce(function(a,b){return a+b;},0)/vals.length:0;d.avgRt=d.rtN?d.rtSum/d.rtN:null;return d;}).sort(function(a,b){return b.mean-a.mean||a.label.localeCompare(b.label);});
     return {runs:runs,rows:rows,compounds:compounds};
   }
+  function reportPresenceRows(){
+    var d=compoundPresenceAcrossSamples(reportCompareRunObjects(),reportState.scoreMode);
+    return presenceRowsForView(d,reportState.presenceMode,reportState.presenceX,reportState.presenceRule,reportState.presenceFilter,reportState.presenceSort,reportState.presenceSortDir);
+  }
   function renderReportPresenceAnalysis(runObjects){
     var d=compoundPresenceAcrossSamples(runObjects,reportState.scoreMode), n=d.samples.length, mode=reportState.presenceMode||'shared';
     if(n<2)return '<div class="report-compare-empty">เลือกอย่างน้อย 2 Sample เพื่อวิเคราะห์ Compound Presence</div>';
     if(reportState.presenceX>n)reportState.presenceX=n;if(reportState.presenceX<2)reportState.presenceX=2;
+    reportState.presenceFilter=normalizePresenceFilter(d,mode,reportState.presenceFilter);
     var x=[];for(var i=2;i<=n;i++)x.push('<option value="'+i+'"'+(reportState.presenceX===i?' selected':'')+'>'+i+'</option>');
-    var t=renderPresenceResultTable(d,mode,reportState.presenceX,reportState.presenceRule,250), rows=t.rows;
+    var t=renderPresenceResultTable(d,mode,reportState.presenceX,reportState.presenceRule,250,reportState.presenceFilter,reportState.presenceSort,reportState.presenceSortDir), rows=t.rows;
     var controls='<div class="presence-controls no-print"><div class="field"><label>รูปแบบการค้นหา</label><select id="reportPresenceMode"><option value="shared"'+(mode==='shared'?' selected':'')+'>พบร่วมตามจำนวน Sample</option><option value="exclusiveSample"'+(mode==='exclusiveSample'?' selected':'')+'>เฉพาะของ Sample</option><option value="exclusiveSpecies"'+(mode==='exclusiveSpecies'?' selected':'')+'>เฉพาะของ Plant species</option></select></div>';
     if(mode==='shared')controls+='<div class="field"><label>เกณฑ์จำนวน Sample</label><select id="reportPresenceRule"><option value="atleast"'+(reportState.presenceRule==='atleast'?' selected':'')+'>อย่างน้อย (≥)</option><option value="exact"'+(reportState.presenceRule==='exact'?' selected':'')+'>เท่ากับ (=)</option></select></div><div class="field"><label>จำนวน Sample</label><select id="reportPresenceX">'+x.join('')+'</select></div>';
+    if(mode==='exclusiveSpecies')controls+='<div class="field"><label>กรอง Plant species</label><select id="reportPresenceFilter"><option value="all">ทุก Plant species</option>'+d.species.map(function(sp){return '<option value="'+escapeHtml(sp)+'"'+(reportState.presenceFilter===sp?' selected':'')+'>'+escapeHtml(sp)+'</option>';}).join('')+'</select></div>';
+    if(mode==='exclusiveSample')controls+='<div class="field"><label>กรอง Sample</label><select id="reportPresenceFilter"><option value="all">ทุก Sample</option>'+d.samples.map(function(sm){return '<option value="'+escapeHtml(sm)+'"'+(reportState.presenceFilter===sm?' selected':'')+'>'+escapeHtml(sm)+'</option>';}).join('')+'</select></div>';
     controls+='</div>';
     var empty='';if(mode==='exclusiveSpecies'&&d.species.length<2)empty='<div class="report-compare-empty">ต้องมีอย่างน้อย 2 Plant species เพื่อหาสารเฉพาะ species</div>';else if(!rows.length)empty='<div class="report-compare-empty">ไม่พบสารตามเงื่อนไขที่เลือก</div>';
-    return controls+'<div class="presence-summary-line"><span class="pill">'+rows.length+' compounds</span><span class="pill">'+n+' Samples</span><span class="pill">'+d.species.length+' Plant species</span><span>Prevalence = จำนวน Sample ที่พบสาร ÷ จำนวน Sample ที่เลือก × 100</span><button class="btn btn-sm btn-primary no-print" id="reportPresenceToResearch" type="button">ส่งสารชุดนี้ไป Research Graph</button><button class="btn btn-sm no-print" id="reportPresenceExport" type="button">Export Presence CSV</button></div>'+(empty||t.html)+'<div class="presence-help-note">Sample-exclusive พิจารณาจาก Sample ที่เลือกทั้งหมด ส่วน species-exclusive จะรวม Sample ที่เป็น plant species เดียวกันก่อน เช่นคนละ part ก็ยังถือเป็น species เดียวกัน</div>';
+    var filterChip=reportState.presenceFilter!=='all'?'<span class="presence-filter-chip">Filter: '+escapeHtml(reportState.presenceFilter)+'</span>':'';
+    return controls+'<div class="presence-summary-line"><span class="pill">'+rows.length+' compounds</span><span class="pill">'+n+' Samples</span><span class="pill">'+d.species.length+' Plant species</span>'+filterChip+'<span>Prevalence = จำนวน Sample ที่พบสาร ÷ จำนวน Sample ที่เลือก × 100</span><button class="btn btn-sm btn-primary no-print" id="reportPresenceToResearch" type="button">ส่งสารชุดนี้ไป Research Graph</button><button class="btn btn-sm no-print" id="reportPresenceExport" type="button">Export Presence CSV</button></div>'+(empty||t.html)+'<div class="presence-help-note">กดหัวตารางเพื่อเรียง มาก→น้อย / น้อย→มาก · Sample-exclusive พิจารณาจาก Sample ที่เลือกทั้งหมด ส่วน species-exclusive จะรวม Sample ที่เป็น plant species เดียวกันก่อน เช่นคนละ part ก็ยังถือเป็น species เดียวกัน</div>';
   }
-  function exportReportPresenceCsv(){var runs=reportCompareRunObjects(),d=compoundPresenceAcrossSamples(runs,reportState.scoreMode),rows=filterPresenceCompounds(d,reportState.presenceMode,reportState.presenceX,reportState.presenceRule);presenceCsv(rows,d,reportState.presenceMode,'gcms-report-compound-presence-'+reportState.presenceMode+'.csv');}
+  function exportReportPresenceCsv(){var runs=reportCompareRunObjects(),d=compoundPresenceAcrossSamples(runs,reportState.scoreMode),rows=presenceRowsForView(d,reportState.presenceMode,reportState.presenceX,reportState.presenceRule,reportState.presenceFilter,reportState.presenceSort,reportState.presenceSortDir);presenceCsv(rows,d,reportState.presenceMode,'gcms-report-compound-presence-'+reportState.presenceMode+'.csv');}
 
   function renderReportComparisonSection(){
     var d=reportComparisonData();
@@ -4429,23 +4710,28 @@ window.GCMS_SUPABASE_CONFIG = {
   }
 
   function researchPresenceData(){return compoundPresenceAcrossSamples(researchSelectedRunObjects(),researchState.scoreMode);}
+  function researchPresenceRows(){var d=researchPresenceData();return presenceRowsForView(d,researchState.presenceMode,researchState.presenceX,researchState.presenceRule,researchState.presenceFilter,researchState.presenceSort,researchState.presenceSortDir);}
   function renderResearchPresencePanel(){
     var d=researchPresenceData(), n=d.samples.length, mode=researchState.presenceMode||'shared';
     if(n<2)return '<div class="card presence-analysis-card"><div class="section-title" style="margin-bottom:3px;">'+featureTitleHtml('Compound Presence & Exclusivity','presenceAnalysis')+'</div><div class="common-compounds-note">ต้องเลือกอย่างน้อย 2 Sample เพื่อวิเคราะห์ prevalence หรือสารเฉพาะกลุ่ม</div></div>';
     if(researchState.presenceX>n)researchState.presenceX=n;
     if(researchState.presenceX<2)researchState.presenceX=2;
+    researchState.presenceFilter=normalizePresenceFilter(d,mode,researchState.presenceFilter);
     var xOpts=[];for(var i=2;i<=n;i++)xOpts.push('<option value="'+i+'"'+(researchState.presenceX===i?' selected':'')+'>'+i+'</option>');
-    var table=renderPresenceResultTable(d,mode,researchState.presenceX,researchState.presenceRule,300), rows=table.rows;
+    var table=renderPresenceResultTable(d,mode,researchState.presenceX,researchState.presenceRule,300,researchState.presenceFilter,researchState.presenceSort,researchState.presenceSortDir), rows=table.rows;
     var controls='<div class="presence-controls"><div class="field"><label>รูปแบบการค้นหา</label><select id="rgPresenceMode"><option value="shared"'+(mode==='shared'?' selected':'')+'>พบร่วมตามจำนวน Sample</option><option value="exclusiveSample"'+(mode==='exclusiveSample'?' selected':'')+'>เฉพาะของ Sample</option><option value="exclusiveSpecies"'+(mode==='exclusiveSpecies'?' selected':'')+'>เฉพาะของ Plant species</option></select></div>';
     if(mode==='shared')controls+='<div class="field"><label>เกณฑ์จำนวน Sample</label><select id="rgPresenceRule"><option value="atleast"'+(researchState.presenceRule==='atleast'?' selected':'')+'>อย่างน้อย (≥)</option><option value="exact"'+(researchState.presenceRule==='exact'?' selected':'')+'>เท่ากับ (=)</option></select></div><div class="field"><label>จำนวน Sample</label><select id="rgPresenceX">'+xOpts.join('')+'</select></div>';
+    if(mode==='exclusiveSpecies')controls+='<div class="field"><label>กรอง Plant species</label><select id="rgPresenceFilter"><option value="all">ทุก Plant species</option>'+d.species.map(function(sp){return '<option value="'+escapeHtml(sp)+'"'+(researchState.presenceFilter===sp?' selected':'')+'>'+escapeHtml(sp)+'</option>';}).join('')+'</select></div>';
+    if(mode==='exclusiveSample')controls+='<div class="field"><label>กรอง Sample</label><select id="rgPresenceFilter"><option value="all">ทุก Sample</option>'+d.samples.map(function(sm){return '<option value="'+escapeHtml(sm)+'"'+(researchState.presenceFilter===sm?' selected':'')+'>'+escapeHtml(sm)+'</option>';}).join('')+'</select></div>';
     controls+='</div>';
     var empty='';
     if(mode==='exclusiveSpecies'&&d.species.length<2)empty='<div class="empty-chart">ต้องมีอย่างน้อย 2 Plant species เพื่อหาสารเฉพาะ species</div>';
     else if(!rows.length)empty='<div class="empty-chart">ไม่พบสารตามเงื่อนไขที่เลือก</div>';
     var subtitle=mode==='shared'?(researchState.presenceRule==='exact'?'พบในเท่ากับ ':'พบอย่างน้อย ')+researchState.presenceX+' จาก '+n+' Samples':mode==='exclusiveSample'?'พบเฉพาะ Sample เดียวจาก '+n+' Samples':'พบเฉพาะ Plant species เดียวจาก '+d.species.length+' species';
-    return '<div class="card presence-analysis-card"><div class="common-compounds-head"><div><div class="section-title" style="margin-bottom:2px;">'+featureTitleHtml('Compound Presence & Exclusivity','presenceAnalysis')+' <span class="pill high">'+rows.length+'</span></div><div class="common-compounds-note">'+escapeHtml(subtitle)+' · Score filter: '+escapeHtml(scoreModeLabel(researchState.scoreMode))+'</div></div><div class="common-compounds-actions"><button class="btn btn-sm btn-primary" id="rgSelectPresenceBtn" type="button">เลือกสารที่แสดงทั้งหมด</button><button class="btn btn-sm" id="rgExportPresenceBtn" type="button">Export Presence CSV</button></div></div>'+controls+'<div class="presence-summary-line"><span class="pill">'+n+' Samples</span><span class="pill">'+d.species.length+' Plant species</span><span>Prevalence = จำนวน Sample ที่พบสาร ÷ จำนวน Sample ที่เลือก × 100</span></div>'+(empty||table.html)+'<div class="presence-help-note">Exclusive to Sample = สารนั้นพบใน Sample เดียวของชุดเปรียบเทียบ · Exclusive to Plant species = สารนั้นอาจพบหลายส่วนของพืชเดียวกันได้ แต่ต้องไม่พบใน species อื่นที่เลือก</div></div>';
+    var filterChip=researchState.presenceFilter!=='all'?'<span class="presence-filter-chip">Filter: '+escapeHtml(researchState.presenceFilter)+'</span>':'';
+    return '<div class="card presence-analysis-card"><div class="common-compounds-head"><div><div class="section-title" style="margin-bottom:2px;">'+featureTitleHtml('Compound Presence & Exclusivity','presenceAnalysis')+' <span class="pill high">'+rows.length+'</span></div><div class="common-compounds-note">'+escapeHtml(subtitle)+' · Score filter: '+escapeHtml(scoreModeLabel(researchState.scoreMode))+'</div></div><div class="common-compounds-actions"><button class="btn btn-sm btn-primary" id="rgSelectPresenceBtn" type="button">เลือกสารที่แสดงทั้งหมด</button><button class="btn btn-sm" id="rgExportPresenceBtn" type="button">Export Presence CSV</button></div></div>'+controls+'<div class="presence-summary-line"><span class="pill">'+n+' Samples</span><span class="pill">'+d.species.length+' Plant species</span>'+filterChip+'<span>Prevalence = จำนวน Sample ที่พบสาร ÷ จำนวน Sample ที่เลือก × 100</span></div>'+(empty||table.html)+'<div class="presence-help-note">กดหัวตารางเพื่อเรียง มาก→น้อย / น้อย→มาก · Exclusive to Sample = สารนั้นพบใน Sample เดียวของชุดเปรียบเทียบ · Exclusive to Plant species = สารนั้นอาจพบหลายส่วนของพืชเดียวกันได้ แต่ต้องไม่พบใน species อื่นที่เลือก</div></div>';
   }
-  function exportResearchPresenceCsv(){var d=researchPresenceData(),rows=filterPresenceCompounds(d,researchState.presenceMode,researchState.presenceX,researchState.presenceRule);presenceCsv(rows,d,researchState.presenceMode,'gcms-compound-presence-'+researchState.presenceMode+'.csv');}
+  function exportResearchPresenceCsv(){var d=researchPresenceData(),rows=presenceRowsForView(d,researchState.presenceMode,researchState.presenceX,researchState.presenceRule,researchState.presenceFilter,researchState.presenceSort,researchState.presenceSortDir);presenceCsv(rows,d,researchState.presenceMode,'gcms-compound-presence-'+researchState.presenceMode+'.csv');}
 
   function researchAllCompoundOptions() {
     return researchSortCompoundStats(researchCompoundStats());
@@ -4854,10 +5140,12 @@ window.GCMS_SUPABASE_CONFIG = {
       renderResearchSummaryTable();
       document.querySelectorAll(".research-compound-check").forEach(function(cb){cb.checked=false;});
     });
-    var presenceMode=$("#rgPresenceMode"); if(presenceMode)presenceMode.addEventListener("change",function(){researchState.presenceMode=this.value;renderResearch();});
+    var presenceMode=$("#rgPresenceMode"); if(presenceMode)presenceMode.addEventListener("change",function(){researchState.presenceMode=this.value;researchState.presenceFilter='all';renderResearch();});
     var presenceRule=$("#rgPresenceRule"); if(presenceRule)presenceRule.addEventListener("change",function(){researchState.presenceRule=this.value;renderResearch();});
     var presenceX=$("#rgPresenceX"); if(presenceX)presenceX.addEventListener("change",function(){researchState.presenceX=Math.max(2,parseInt(this.value,10)||2);renderResearch();});
-    var presenceSelect=$("#rgSelectPresenceBtn"); if(presenceSelect)presenceSelect.addEventListener("click",function(){var d=researchPresenceData(),rows=filterPresenceCompounds(d,researchState.presenceMode,researchState.presenceX,researchState.presenceRule);researchState.selectedCompounds=rows.map(function(c){return c.label;});researchState.userClearedCompounds=false;researchState.groupBy='sample';researchState.graphType=rows.length>20?'heatmap':'compound';renderResearch();});
+    var presenceFilter=$("#rgPresenceFilter"); if(presenceFilter)presenceFilter.addEventListener("change",function(){researchState.presenceFilter=this.value||'all';renderResearch();});
+    document.querySelectorAll('#viewResearch .presence-sort-btn').forEach(function(btn){btn.addEventListener('click',function(){var k=btn.getAttribute('data-presence-sort');if(researchState.presenceSort===k)researchState.presenceSortDir=researchState.presenceSortDir==='desc'?'asc':'desc';else{researchState.presenceSort=k;researchState.presenceSortDir=(k==='compound'||k==='exclusiveSample'||k==='exclusiveSpecies'||k==='plantSpecies'||k==='samples')?'asc':'desc';}renderResearch();});});
+    var presenceSelect=$("#rgSelectPresenceBtn"); if(presenceSelect)presenceSelect.addEventListener("click",function(){var rows=researchPresenceRows();researchState.selectedCompounds=rows.map(function(c){return c.label;});researchState.userClearedCompounds=false;researchState.groupBy='sample';researchState.graphType=rows.length>20?'heatmap':'compound';renderResearch();});
     var presenceExport=$("#rgExportPresenceBtn"); if(presenceExport)presenceExport.addEventListener("click",exportResearchPresenceCsv);
     wireCompoundActionEvents(document.getElementById("viewResearch"));
     var commonBtn=$("#rgSelectCommonBtn");
