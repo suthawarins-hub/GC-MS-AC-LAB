@@ -2149,7 +2149,7 @@ window.GCMS_SUPABASE_CONFIG = {
     reportComparison:{th:["Report Comparison","เปรียบเทียบ Run/Sample จาก Compare Tray ในหน้า Report เดียว","มี Peak Profile overlay, Heatmap, Top compounds และ Common compounds","ควรใช้ตัวกรอง Solvent/Score เดียวกันเมื่ออยากเทียบเชิงทดลองอย่างเป็นธรรม"],en:["Report Comparison","Compares selected runs/samples from the Compare Tray in one report.","Includes peak-profile overlay, heatmap, top compounds, and common compounds.","Use consistent solvent and score filters for fair experimental comparison."]},
     commonCompounds:{th:["Common Compounds","หารายชื่อสารที่พบอย่างน้อย 1 Run ในทุก Sample ที่เลือก","จำนวน Runs ที่พบจะแสดงแยกเพื่อให้เห็นความสม่ำเสมอของ replicate","เหมาะสำหรับหาสารร่วมก่อนส่งไป Heatmap หรือกราฟเปรียบเทียบ"],en:["Common Compounds","Finds compounds detected in at least one run of every selected sample.","Run detection counts are shown to reveal replicate consistency.","Useful for identifying shared compounds before heatmap or comparison analysis."]},
     presenceAnalysis:{th:["Compound Presence & Exclusivity","สรุปว่าสารแต่ละชนิดพบในกี่ Sample และคิด Prevalence จาก Sample ที่เลือกใน Compare","โหมด Shared เลือกได้ว่าต้องพบอย่างน้อย X Sample หรือเท่ากับ X Sample โดย X เริ่มที่ 2","Exclusive to Sample = พบเฉพาะ Sample เดียวในชุดเปรียบเทียบ; Exclusive to Plant species = พบเฉพาะ species เดียว แม้จะพบหลายส่วนของพืช species นั้น"],en:["Compound Presence & Exclusivity","Summarizes how many selected samples contain each compound and calculates prevalence across the comparison set.","Shared mode supports at least X or exactly X samples, with X starting at 2.","Sample-exclusive means detected in only one selected sample; species-exclusive means detected only in one plant species, even if present in multiple plant parts of that species."]},
-    compoundLibrary:{th:["Compound Library / คลังสาร","รวมสารที่ตรวจพบจาก GC-MS แบบไม่ซ้ำ พร้อมสถิติการพบ ข้อมูลระบุสาร และความเกี่ยวข้องต่อสุขภาพแบบสั้น","AI Compound Knowledge ให้เลือก Score ขั้นต่ำ คัดลอก Prompt และนำตาราง Common name / Thai common name / Properties-Benefits / References / Source URL กลับมาบันทึกเพื่อใช้ซ้ำทุก Run","กดดึงข้อมูลอ้างอิงเพื่อเติมชื่อมาตรฐาน สูตรโมเลกุล รวมถึง annotation ด้าน Pharmacology, biological role และ Safety จาก PubChem","คำว่า Health relevance หมายถึงสิ่งที่มีข้อมูลอ้างอิงว่าสารเกี่ยวข้องกับชีววิทยา สุขภาพ ยา หรือความปลอดภัยอย่างไร ไม่ได้แปลว่าการพบสารในตัวอย่างพิสูจน์ว่าตัวอย่างนั้นดีต่อสุขภาพ"],en:["Compound Library","Collects unique GC-MS compounds with detection statistics, identity information, and a concise health-relevance summary.","AI Compound Knowledge can filter by minimum score, copy an AI-ready prompt, and import Common name / Thai common name / Properties-Benefits / References / Source URL for reuse across runs.","Reference lookup adds standard identity data plus PubChem annotations on pharmacology, biological role, medication, and safety.","Health relevance describes documented biological, clinical, or safety context; detecting a compound does not by itself prove that the sample provides a health benefit."]},
+    compoundLibrary:{th:["Compound Library / คลังสาร","รวมสารที่ตรวจพบจาก GC-MS แบบไม่ซ้ำ พร้อมสถิติการพบ ข้อมูลระบุสาร และความเกี่ยวข้องต่อสุขภาพแบบสั้น","Compound Knowledge เป็นคลังกลางร่วมทุกบัญชี: Common name / Thai name / สูตรโมเลกุล / หมวดหมู่ / Properties-Benefits / References บันทึกครั้งเดียวแล้วใช้ซ้ำได้ทุกบัญชีและทุก Run","กดดึงข้อมูลอ้างอิงเพื่อเติมชื่อมาตรฐาน สูตรโมเลกุล รวมถึง annotation ด้าน Pharmacology, biological role และ Safety จาก PubChem","คำว่า Health relevance หมายถึงสิ่งที่มีข้อมูลอ้างอิงว่าสารเกี่ยวข้องกับชีววิทยา สุขภาพ ยา หรือความปลอดภัยอย่างไร ไม่ได้แปลว่าการพบสารในตัวอย่างพิสูจน์ว่าตัวอย่างนั้นดีต่อสุขภาพ"],en:["Compound Library","Collects unique GC-MS compounds with detection statistics, identity information, and a concise health-relevance summary.","Compound Knowledge is shared across accounts: common names, molecular formula, categories, benefits, and references are stored once and reused across users and runs.","Reference lookup adds standard identity data plus PubChem annotations on pharmacology, biological role, medication, and safety.","Health relevance describes documented biological, clinical, or safety context; detecting a compound does not by itself prove that the sample provides a health benefit."]},
     researchGraph:{th:["Research Graph Studio","พื้นที่วิเคราะห์เปรียบเทียบแบบยืดหยุ่น เลือก Run ได้ไม่จำกัด พร้อมเลือก Compound, Metric, Normalization และ Grouping","Peak profile overlay ใช้ดูตำแหน่งพีค, Compound comparison ใช้เทียบสาร, Heatmap ใช้ดูหลายสารหลาย Run","ก่อนสรุปผลควรตรวจจำนวน replicate และเงื่อนไขทดลองให้สอดคล้องกัน"],en:["Research Graph Studio","Flexible comparison workspace with unlimited run selection plus compounds, metrics, normalization, and grouping.","Use peak overlay for peak locations, compound comparison for selected compounds, and heatmap for many compounds across runs.","Before interpretation, verify replicate counts and experimental conditions are comparable."]},
     graphDisplay:{th:["Graph Display Options","เลือกวิธีนำเสนอข้อมูลชุดเดียวกัน เช่นแท่ง เส้น จุด หรือ stick peak โดยไม่เปลี่ยนข้อมูลต้นฉบับ","Error bar จะแสดง SD เมื่อมีการรวม replicate; Legend/Grid/ขนาดกราฟปรับเพื่อให้อ่านง่ายขึ้น","เส้นที่เชื่อม peak เป็นเพียงการช่วยมองแนวโน้มของจุดที่ตรวจพบ ไม่ใช่ raw TIC chromatogram"],en:["Graph Display Options","Choose how the same data are presented, such as bars, lines, markers, or stick peaks, without changing the underlying data.","Error bars show SD when replicates are grouped; legend, grid, and plot size can be adjusted for readability.","Lines connecting detected peaks are only a visual aid and are not a reconstructed raw TIC chromatogram."]}
   };
@@ -2534,14 +2534,19 @@ window.GCMS_SUPABASE_CONFIG = {
       intelligenceState.reportSections = Object.assign(defaultIntelligenceState().reportSections, (savedIntel&&savedIntel.reportSections)||{});
       if(!Array.isArray(intelligenceState.watchlist)) intelligenceState.watchlist=[];
     } catch (e) { intelligenceState = defaultIntelligenceState(); }
-    try {
-      var r5 = await storageGet(K_LIBRARY);
-      compoundLibraryCache = r5 && r5.value ? JSON.parse(r5.value) : {};
-      if(!compoundLibraryCache || typeof compoundLibraryCache !== "object" || Array.isArray(compoundLibraryCache)) compoundLibraryCache={};
-    } catch (e) { compoundLibraryCache = {}; }
-    // Merge dedicated Compound Knowledge rows from Supabase over the legacy JSON cache.
-    // If the migration table has not been installed yet, the app keeps working from K_LIBRARY.
-    try { await loadCompoundKnowledgeTable(); } catch (_knowledgeLoadError) {}
+    // Compound identity / formula / bioactivity knowledge is shared across accounts.
+    // Load the shared catalog first so the same chemical metadata is stored only once in Supabase.
+    compoundLibraryCache = {};
+    var sharedCompoundCatalogLoaded = false;
+    try { sharedCompoundCatalogLoaded = await loadCompoundKnowledgeTable(); } catch (_knowledgeLoadError) { sharedCompoundCatalogLoaded = false; }
+    // Backward-compatible fallback only when the shared catalog migration has not been installed yet.
+    if(!sharedCompoundCatalogLoaded){
+      try {
+        var r5 = await storageGet(K_LIBRARY);
+        compoundLibraryCache = r5 && r5.value ? JSON.parse(r5.value) : {};
+        if(!compoundLibraryCache || typeof compoundLibraryCache !== "object" || Array.isArray(compoundLibraryCache)) compoundLibraryCache={};
+      } catch (e) { compoundLibraryCache = {}; }
+    }
     try {
       var r6 = await storageGet(K_RESEARCH_SUITE);
       var savedSuite = r6 && r6.value ? JSON.parse(r6.value) : {};
@@ -2569,8 +2574,9 @@ window.GCMS_SUPABASE_CONFIG = {
     catch (e) { showToast("บันทึกการตั้งค่า Research Intelligence ไม่สำเร็จ", true); return false; }
   }
   async function persistCompoundLibrary() {
-    try { await storageSet(K_LIBRARY, JSON.stringify(compoundLibraryCache)); return true; }
-    catch (e) { showToast("บันทึก Compound Library ไม่สำเร็จ", true); return false; }
+    // Shared Compound Knowledge is persisted in public.gcms_compound_catalog.
+    // Intentionally do NOT write the whole cache to gcms_user_storage per account.
+    return true;
   }
 
   /* ---------- parsing pasted GC-MS table ---------- */
@@ -3202,7 +3208,7 @@ window.GCMS_SUPABASE_CONFIG = {
       (aiBenefits?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Properties / benefits':'คุณสมบัติ / สรรพคุณ')+':</b> '+escapeHtml(libraryShortText(aiBenefits,700))+'</div>':'')+
       (health?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Health relevance':'ความสำคัญต่อสุขภาพ')+':</b> '+escapeHtml(libraryShortText(health,600))+(c.healthEvidence?'<br><span class="mini-muted">'+escapeHtml(libraryShortText(c.healthEvidence,350))+'</span>':'')+'</div>':'')+
       (safety?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Safety / cautions':'ข้อควรระวัง')+':</b> '+escapeHtml(libraryShortText(safety,500))+(c.safetyEvidence?'<br><span class="mini-muted">'+escapeHtml(libraryShortText(c.safetyEvidence,300))+'</span>':'')+'</div>':'')+
-      (c.manualHealthSummary?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Admin health note':'สรุปสุขภาพโดย Admin')+':</b> '+escapeHtml(libraryShortText(c.manualHealthSummary,450))+'</div>':'')+
+      (c.manualHealthSummary?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'Shared health note':'สรุปสุขภาพในคลังกลาง')+':</b> '+escapeHtml(libraryShortText(c.manualHealthSummary,450))+'</div>':'')+
       (aiRefs?'<div class="compound-profile-library-block"><b>'+(currentLang==='en'?'References':'อ้างอิง')+':</b> '+escapeHtml(libraryShortText(aiRefs,700))+'</div>':'')+
       (aiUrl?'<div class="compound-profile-library-block"><b>Source URL:</b> '+escapeHtml(libraryShortText(aiUrl,500))+'</div>':'')+
       '<div class="compound-profile-library-note">'+(currentLang==='en'?'This information is read from the saved Compound Library record; GC-MS detection alone does not establish clinical benefit or safety.':'ข้อมูลส่วนนี้อ่านจาก Compound Library ที่บันทึกไว้ การตรวจพบด้วย GC-MS เพียงอย่างเดียวไม่ได้ยืนยันประโยชน์ทางคลินิกหรือความปลอดภัย')+'</div></section>';
@@ -3529,10 +3535,10 @@ window.GCMS_SUPABASE_CONFIG = {
       await libraryDelay(300);
       var safety=await libraryFetchHeading(cid,'Safety and Hazards');safetyStrings=safetyStrings.concat(libraryFindDescriptionStrings(safety,[]));
       compoundLibraryCache[key]=Object.assign({},old,{status:'ok',healthVersion:1,queryName:name,cid:cid,title:props.Title||name,iupacName:props.IUPACName||'',formula:props.MolecularFormula||'',molecularWeight:props.MolecularWeight||'',description:librarySafeReferenceSummary(desc),healthTags:libraryTagHealth(healthStrings),healthEvidence:libraryPickEvidence(healthStrings,'health'),safetyTags:libraryTagSafety(safetyStrings),safetyEvidence:libraryPickEvidence(safetyStrings,'safety'),fetchedAt:new Date().toISOString(),lastError:''});
-      await persistCompoundLibrary(); showToast(currentLang==='en'?'Identity + health reference updated.':'อัปเดตข้อมูลสารและความเกี่ยวข้องต่อสุขภาพแล้ว');
+      await upsertSharedCompoundCatalogNames([name],'PubChem'); showToast(currentLang==='en'?'Shared identity + health reference updated.':'อัปเดตข้อมูลสารในคลังกลางและความเกี่ยวข้องต่อสุขภาพแล้ว');
     }catch(err){
       compoundLibraryCache[key]=Object.assign({},old,{status:'error',queryName:name,lastError:String(err&&err.message||err||'Lookup failed'),fetchedAt:new Date().toISOString()});
-      await persistCompoundLibrary(); showToast(currentLang==='en'?'No public reference match was found.':'ไม่พบข้อมูลอ้างอิงที่ตรงกับชื่อสารนี้',true);
+      showToast(currentLang==='en'?'No public reference match was found.':'ไม่พบข้อมูลอ้างอิงที่ตรงกับชื่อสารนี้',true);
     }
     renderLibrary(); return compoundLibraryCache[key];
   }
@@ -3582,77 +3588,126 @@ window.GCMS_SUPABASE_CONFIG = {
     return '<div class="compound-category-list">'+html+'</div>';
   }
 
+  function sharedCatalogCachePatch(row,old){
+    old=old||{};row=row||{};
+    return Object.assign({},old,{
+      aiKnowledgeVersion:5,
+      sharedCatalog:true,
+      aiSource:row.source||old.aiSource||'Shared catalog',
+      aiUpdatedAt:row.updated_at||old.aiUpdatedAt||'',
+      aiCommonName:row.common_name||old.aiCommonName||'',
+      aiThaiCommonName:row.common_name_th||old.aiThaiCommonName||'',
+      title:row.title||old.title||row.compound_name||'',
+      iupacName:row.iupac_name||old.iupacName||'',
+      formula:row.molecular_formula||old.formula||'',
+      molecularWeight:row.molecular_weight||old.molecularWeight||'',
+      casNumber:row.cas_number||old.casNumber||'',
+      cid:row.pubchem_cid||old.cid||'',
+      formulaReference:row.formula_reference||old.formulaReference||'',
+      formulaSourceUrl:row.formula_source_url||old.formulaSourceUrl||'',
+      formulaVerifiedAt:row.formula_verified_at||old.formulaVerifiedAt||'',
+      aiCategories:normalizeCompoundCategories(row.activity_categories!==undefined?row.activity_categories:(old.aiCategories||[])),
+      aiBenefits:row.properties_benefits||old.aiBenefits||'',
+      aiReferences:row.references_text||old.aiReferences||'',
+      aiSourceUrl:row.source_url||old.aiSourceUrl||'',
+      description:row.description||old.description||'',
+      healthTags:Array.isArray(row.health_tags)?row.health_tags:(old.healthTags||[]),
+      healthEvidence:row.health_evidence||old.healthEvidence||'',
+      safetyTags:Array.isArray(row.safety_tags)?row.safety_tags:(old.safetyTags||[]),
+      safetyEvidence:row.safety_evidence||old.safetyEvidence||'',
+      manualSummary:row.manual_summary||old.manualSummary||'',
+      manualHealthSummary:row.manual_health_summary||old.manualHealthSummary||'',
+      status:row.reference_status||old.status||(row.pubchem_cid?'ok':'local'),
+      healthVersion:Number(row.health_version||old.healthVersion||0),
+      fetchedAt:row.fetched_at||old.fetchedAt||'',
+      lastError:''
+    });
+  }
+
   async function loadCompoundKnowledgeTable(){
     if(!sbClient||!currentAuthUser)return false;
     try{
-      var fields='compound_name,compound_key,common_name,common_name_th,molecular_formula,formula_reference,formula_source_url,formula_verified_at,activity_categories,properties_benefits,references_text,source_url,source,updated_at';
-      var res=await sbClient.from('gcms_compound_knowledge').select(fields).eq('user_id',currentAuthUser.id);
-      if(res.error){
-        var categoryFallback=await sbClient.from('gcms_compound_knowledge')
-          .select('compound_name,compound_key,common_name,common_name_th,activity_categories,properties_benefits,references_text,source_url,source,updated_at')
-          .eq('user_id',currentAuthUser.id);
-        if(!categoryFallback.error)res=categoryFallback;
-        else{
-          var legacy=await sbClient.from('gcms_compound_knowledge')
-            .select('compound_name,compound_key,common_name,common_name_th,properties_benefits,references_text,source_url,source,updated_at')
-            .eq('user_id',currentAuthUser.id);
-          if(legacy.error)throw legacy.error;res=legacy;
-        }
-      }
+      var fields='compound_name,compound_key,common_name,common_name_th,title,iupac_name,molecular_formula,molecular_weight,cas_number,pubchem_cid,formula_reference,formula_source_url,formula_verified_at,activity_categories,properties_benefits,references_text,source_url,description,health_tags,health_evidence,safety_tags,safety_evidence,manual_summary,manual_health_summary,source,reference_status,health_version,fetched_at,updated_at';
+      var res=await sbClient.from('gcms_compound_catalog').select(fields).order('compound_key',{ascending:true});
+      if(res.error)throw res.error;
       (res.data||[]).forEach(function(row){
-        var key=libraryKey(row.compound_key||row.compound_name);if(!key)return;var old=compoundLibraryCache[key]||{};
-        compoundLibraryCache[key]=Object.assign({},old,{
-          aiKnowledgeVersion:4,
-          aiSource:row.source||old.aiSource||'AI',
-          aiUpdatedAt:row.updated_at||old.aiUpdatedAt||'',
-          aiCommonName:row.common_name||old.aiCommonName||'',
-          aiThaiCommonName:row.common_name_th||old.aiThaiCommonName||'',
-          formula:row.molecular_formula||old.formula||'',
-          formulaReference:row.formula_reference||old.formulaReference||'',
-          formulaSourceUrl:row.formula_source_url||old.formulaSourceUrl||'',
-          formulaVerifiedAt:row.formula_verified_at||old.formulaVerifiedAt||'',
-          aiCategories:normalizeCompoundCategories(row.activity_categories!==undefined?row.activity_categories:(old.aiCategories||[])),
-          aiBenefits:row.properties_benefits||old.aiBenefits||'',
-          aiReferences:row.references_text||old.aiReferences||'',
-          aiSourceUrl:row.source_url||old.aiSourceUrl||''
-        });
+        var key=libraryKey(row.compound_key||row.compound_name);if(!key)return;
+        compoundLibraryCache[key]=sharedCatalogCachePatch(row,compoundLibraryCache[key]||{});
       });
       return true;
     }catch(err){
-      console.warn('gcms_compound_knowledge is unavailable; using legacy compound cache.',err);
+      console.warn('Shared gcms_compound_catalog is unavailable; trying legacy per-user knowledge.',err);
+      // Temporary backward compatibility with the old per-account table.
+      try{
+        var legacy=await sbClient.from('gcms_compound_knowledge').select('*').eq('user_id',currentAuthUser.id);
+        if(legacy.error)throw legacy.error;
+        (legacy.data||[]).forEach(function(row){
+          var key=libraryKey(row.compound_key||row.compound_name);if(!key)return;
+          compoundLibraryCache[key]=sharedCatalogCachePatch(row,compoundLibraryCache[key]||{});
+        });
+        return (legacy.data||[]).length>0;
+      }catch(legacyErr){
+        console.warn('Legacy gcms_compound_knowledge is unavailable too.',legacyErr);
+        return false;
+      }
+    }
+  }
+
+  function sharedCatalogPayloadForName(name,sourceOverride){
+    name=String(name||'').trim();var key=libraryKey(name),c=compoundLibraryCache[key]||{},now=new Date().toISOString();
+    var cid=Number(c.cid);if(!isFinite(cid))cid=null;
+    return {
+      compound_key:key,
+      compound_name:name||c.queryName||c.title||key,
+      common_name:String(c.aiCommonName||'').trim()||null,
+      common_name_th:String(c.aiThaiCommonName||'').trim()||null,
+      title:String(c.title||'').trim()||null,
+      iupac_name:String(c.iupacName||'').trim()||null,
+      molecular_formula:String(c.formula||'').trim()||null,
+      molecular_weight:String(c.molecularWeight||'').trim()||null,
+      cas_number:String(c.casNumber||'').trim()||null,
+      pubchem_cid:cid,
+      formula_reference:String(c.formulaReference||'').trim()||null,
+      formula_source_url:String(c.formulaSourceUrl||'').trim()||null,
+      formula_verified_at:c.formula?String(c.formulaVerifiedAt||now):null,
+      activity_categories:normalizeCompoundCategories(c.aiCategories||[]),
+      properties_benefits:String(c.aiBenefits||'').trim()||null,
+      references_text:String(c.aiReferences||'').trim()||null,
+      source_url:String(c.aiSourceUrl||'').trim()||null,
+      description:String(c.description||'').trim()||null,
+      health_tags:Array.isArray(c.healthTags)?c.healthTags:[],
+      health_evidence:String(c.healthEvidence||'').trim()||null,
+      safety_tags:Array.isArray(c.safetyTags)?c.safetyTags:[],
+      safety_evidence:String(c.safetyEvidence||'').trim()||null,
+      manual_summary:String(c.manualSummary||'').trim()||null,
+      manual_health_summary:String(c.manualHealthSummary||'').trim()||null,
+      source:String(sourceOverride||c.aiSource||(c.cid?'PubChem':'Shared catalog')).trim(),
+      reference_status:String(c.status||'local'),
+      health_version:Number(c.healthVersion||0),
+      fetched_at:c.fetchedAt||null,
+      updated_by:currentAuthUser?currentAuthUser.id:null,
+      updated_at:now
+    };
+  }
+
+  async function upsertSharedCompoundCatalogNames(names,sourceOverride){
+    if(!sbClient||!currentAuthUser)return false;
+    var seen={},payload=[];(names||[]).forEach(function(name){var key=libraryKey(name);if(!key||seen[key])return;seen[key]=1;payload.push(sharedCatalogPayloadForName(name,sourceOverride));});
+    if(!payload.length)return true;
+    try{
+      var res=await sbClient.from('gcms_compound_catalog').upsert(payload,{onConflict:'compound_key'});
+      if(res.error)throw res.error;
+      return true;
+    }catch(err){
+      console.warn('Could not write shared gcms_compound_catalog.',err);
+      showToast(currentLang==='en'?'Shared Compound Library could not be updated. Run the shared-catalog SQL migration.':'อัปเดตคลังสารกลางไม่สำเร็จ · กรุณารัน SQL Shared Compound Catalog',true);
       return false;
     }
   }
 
   async function upsertCompoundKnowledgeRows(rows){
     if(!rows||!rows.length||!sbClient||!currentAuthUser)return false;
-    var now=new Date().toISOString();
-    var payload=rows.map(function(r){var cached=compoundLibraryCache[libraryKey(r.compound)]||{},formula=String(cached.formula||r.formula||'').trim();return {
-      user_id:currentAuthUser.id,
-      compound_name:r.compound,
-      compound_key:libraryKey(r.compound),
-      common_name:String(cached.aiCommonName||r.commonName||'').trim()||null,
-      common_name_th:String(cached.aiThaiCommonName||r.thaiCommonName||'').trim()||null,
-      molecular_formula:formula||null,
-      formula_reference:String(cached.formulaReference||r.formulaReference||'').trim()||null,
-      formula_source_url:String(cached.formulaSourceUrl||r.formulaSourceUrl||'').trim()||null,
-      formula_verified_at:formula?(cached.formulaVerifiedAt||now):null,
-      activity_categories:normalizeCompoundCategories(cached.aiCategories||r.categories||[]),
-      properties_benefits:String(cached.aiBenefits||r.benefits||'').trim()||null,
-      references_text:String(cached.aiReferences||r.references||'').trim()||null,
-      source_url:String(cached.aiSourceUrl||r.sourceUrl||'').trim()||null,
-      source:'AI',
-      updated_at:now
-    };});
-    try{
-      var res=await sbClient.from('gcms_compound_knowledge').upsert(payload,{onConflict:'user_id,compound_key'});
-      if(res.error)throw res.error;
-      return true;
-    }catch(err){
-      console.warn('Could not write gcms_compound_knowledge; legacy cache was still saved.',err);
-      showToast('บันทึกใน Compound Library แล้ว แต่ Molecular formula ยังส่งขึ้น Supabase ไม่สำเร็จ · กรุณารัน SQL formula update',true);
-      return false;
-    }
+    return upsertSharedCompoundCatalogNames(rows.map(function(r){return r.compound;}),'AI');
   }
 
   function aiKnowledgePromptRows(minScore){
@@ -3888,7 +3943,7 @@ window.GCMS_SUPABASE_CONFIG = {
       if(r.sourceUrl)patch.aiSourceUrl=r.sourceUrl;
       compoundLibraryCache[key]=Object.assign({},old,patch);matched.push(r);saved++;if(status==='update')updated++;
     });
-    if(saved){await persistCompoundLibrary();await upsertCompoundKnowledgeRows(matched);}
+    if(saved){await upsertCompoundKnowledgeRows(matched);}
     compoundKnowledgeState.importText='';renderLibrary();
     showToast('บันทึก '+saved+' สาร'+(updated?' · อัปเดต '+updated:'')+(skipped?' · ข้าม '+skipped:'')+(data.counts.duplicate?' · กันข้อมูลซ้ำ '+data.counts.duplicate:''),!saved);
   }
@@ -3957,8 +4012,8 @@ window.GCMS_SUPABASE_CONFIG = {
       ((compoundMolecularFormula(d.name)||c.molecularWeight||c.cid)?'<div class="library-meta"><div class="library-meta-cell"><div class="k">Formula</div><div class="v">'+escapeHtml(compoundMolecularFormula(d.name)||'—')+'</div></div><div class="library-meta-cell"><div class="k">Molecular weight</div><div class="v">'+escapeHtml(String(c.molecularWeight||'—'))+'</div></div></div>':'')+
       ((c.formulaReference||c.formulaSourceUrl)?'<div class="library-iupac"><b>Formula source:</b> '+escapeHtml(libraryShortText(c.formulaReference||'',180))+(c.formulaSourceUrl?' · '+escapeHtml(libraryShortText(c.formulaSourceUrl,180)):'')+'</div>':'')+
       '<div class="library-health-disclaimer">'+(currentLang==='en'?'GC-MS detection alone does not prove a clinical benefit, effective dose, or safety of the sample.':'การตรวจพบสารด้วย GC-MS เพียงอย่างเดียว ไม่ได้พิสูจน์ประโยชน์ทางคลินิก ปริมาณที่ออกฤทธิ์ หรือความปลอดภัยของตัวอย่าง')+'</div>'+
-      '<div class="library-admin-note"><div class="library-admin-note-copy"><b>'+(currentLang==='en'?'Admin health note':'สรุปสุขภาพโดย Admin')+'</b>'+(c.manualHealthSummary?escapeHtml(libraryShortText(c.manualHealthSummary,170)):(currentLang==='en'?'Optional short health interpretation that overrides the automatic Health relevance text.':'ใส่สรุปด้านสุขภาพสั้น ๆ เองได้ และจะแสดงแทน Health relevance อัตโนมัติ'))+'</div><button class="btn btn-sm library-edit-health" data-compound="'+escapeHtml(d.name)+'" type="button">♥✎</button></div>'+
-      '<div class="library-admin-note"><div class="library-admin-note-copy"><b>'+(currentLang==='en'?'Admin identity note':'สรุปข้อมูลสารโดย Admin')+'</b>'+(c.manualSummary?escapeHtml(libraryShortText(c.manualSummary,150)):(currentLang==='en'?'Optional concise identity/reference note.':'ใส่คำอธิบายข้อมูลสารสั้น ๆ เองได้'))+'</div><button class="btn btn-sm library-edit-note" data-compound="'+escapeHtml(d.name)+'" type="button">✎</button></div>'+
+      '<div class="library-admin-note"><div class="library-admin-note-copy"><b>'+(currentLang==='en'?'Shared health note':'สรุปสุขภาพในคลังกลาง')+'</b>'+(c.manualHealthSummary?escapeHtml(libraryShortText(c.manualHealthSummary,170)):(currentLang==='en'?'Optional short health interpretation that overrides the automatic Health relevance text.':'ใส่สรุปด้านสุขภาพสั้น ๆ เองได้ และจะแสดงแทน Health relevance อัตโนมัติ'))+'</div><button class="btn btn-sm library-edit-health" data-compound="'+escapeHtml(d.name)+'" type="button">♥✎</button></div>'+
+      '<div class="library-admin-note"><div class="library-admin-note-copy"><b>'+(currentLang==='en'?'Shared identity note':'สรุปข้อมูลสารในคลังกลาง')+'</b>'+(c.manualSummary?escapeHtml(libraryShortText(c.manualSummary,150)):(currentLang==='en'?'Optional concise identity/reference note.':'ใส่คำอธิบายข้อมูลสารสั้น ๆ เองได้'))+'</div><button class="btn btn-sm library-edit-note" data-compound="'+escapeHtml(d.name)+'" type="button">✎</button></div>'+
       '<div class="library-card-actions"><button class="btn btn-sm library-lookup" data-compound="'+escapeHtml(d.name)+'" type="button"'+(status==='loading'?' disabled':'')+'>'+(status==='ok'?(currentLang==='en'?'Refresh health info':'อัปเดตสุขภาพ'):(currentLang==='en'?'Get health reference':'ดึงข้อมูลสุขภาพ'))+'</button><button class="btn btn-sm library-records" data-compound="'+escapeHtml(d.name)+'" type="button">'+(currentLang==='en'?'Records':'ดู Records')+'</button><button class="btn btn-sm btn-primary library-report" data-compound="'+escapeHtml(d.name)+'" type="button">'+(currentLang==='en'?'Open report':'Open Report')+'</button></div>'+
       (status==='error'?'<div class="mini-muted">'+escapeHtml(c.lastError||'Reference lookup failed')+'</div>':'')+
     '</article>';
@@ -3975,10 +4030,10 @@ window.GCMS_SUPABASE_CONFIG = {
     enriched.sort(function(a,b){if(compoundLibraryState.sort==='name')return a.name.localeCompare(b.name);if(compoundLibraryState.sort==='score')return (b.meanScore||0)-(a.meanScore||0);if(compoundLibraryState.sort==='recent'){var ad=libraryLatestDetection(a.name),bd=libraryLatestDetection(b.name),ar=ad&&runById(ad.runId),br=bd&&runById(bd.runId);return String((br&&(br.createdAt||br.date))||'').localeCompare(String((ar&&(ar.createdAt||ar.date))||''));}return b.detections-a.detections;});
     var total=all.length,refCount=all.filter(function(d){var c=libraryCacheFor(d.name);return c&&c.status==='ok'&&c.healthVersion===1;}).length,manualCount=all.filter(function(d){var c=libraryCacheFor(d.name);return c&&(c.manualSummary||c.manualHealthSummary||c.aiCommonName||c.aiThaiCommonName||c.aiBenefits||c.aiReferences||c.aiSourceUrl);}).length;
     var pages=Math.max(1,Math.ceil(enriched.length/compoundLibraryState.pageSize));compoundLibraryState.page=Math.min(Math.max(1,compoundLibraryState.page),pages);var start=(compoundLibraryState.page-1)*compoundLibraryState.pageSize,shown=enriched.slice(start,start+compoundLibraryState.pageSize);
-    var html='<div class="library-shell"><div class="library-hero"><section class="library-hero-main"><h2>'+featureTitleHtml(currentLang==='en'?'Compound Library':'Compound Library · คลังสาร','compoundLibrary')+'</h2><p>'+(currentLang==='en'?'A health-oriented compound library built from compounds detected in your GC-MS records. It summarizes documented biological/clinical relevance and safety context from public chemical annotations without changing your raw data.':'รวมสารที่ตรวจพบจาก GC-MS แบบไม่ซ้ำ พร้อมสรุปสั้น ๆ ว่าเกี่ยวข้องกับสุขภาพอย่างไร มีบทบาททางชีวภาพ/ยาอะไร และมีข้อควรระวังอะไร โดยไม่แก้ข้อมูลดิบของ GC-MS')+'</p><span class="library-source-badge"><span class="library-source-dot"></span>'+(currentLang==='en'?'Public reference lookup · cached per account':'Public reference lookup · เก็บ cache แยกตามบัญชี')+'</span></section><aside class="library-hero-side"><div class="library-kpis"><div class="library-kpi"><div class="v">'+total+'</div><div class="k">Unique compounds</div></div><div class="library-kpi"><div class="v">'+refCount+'</div><div class="k">Referenced</div></div><div class="library-kpi"><div class="v">'+(total-refCount)+'</div><div class="k">Waiting</div></div><div class="library-kpi"><div class="v">'+manualCount+'</div><div class="k">Admin notes</div></div></div></aside></div>'+
+    var html='<div class="library-shell"><div class="library-hero"><section class="library-hero-main"><h2>'+featureTitleHtml(currentLang==='en'?'Compound Library':'Compound Library · คลังสาร','compoundLibrary')+'</h2><p>'+(currentLang==='en'?'A health-oriented compound library built from compounds detected in your GC-MS records. It summarizes documented biological/clinical relevance and safety context from public chemical annotations without changing your raw data.':'รวมสารที่ตรวจพบจาก GC-MS แบบไม่ซ้ำ พร้อมสรุปสั้น ๆ ว่าเกี่ยวข้องกับสุขภาพอย่างไร มีบทบาททางชีวภาพ/ยาอะไร และมีข้อควรระวังอะไร โดยไม่แก้ข้อมูลดิบของ GC-MS')+'</p><span class="library-source-badge"><span class="library-source-dot"></span>'+(currentLang==='en'?'Shared Compound Knowledge · one catalog for all accounts':'Shared Compound Knowledge · ใช้ข้อมูลสารร่วมกันทุกบัญชี')+'</span></section><aside class="library-hero-side"><div class="library-kpis"><div class="library-kpi"><div class="v">'+total+'</div><div class="k">Unique compounds</div></div><div class="library-kpi"><div class="v">'+refCount+'</div><div class="k">Referenced</div></div><div class="library-kpi"><div class="v">'+(total-refCount)+'</div><div class="k">Waiting</div></div><div class="library-kpi"><div class="v">'+manualCount+'</div><div class="k">Shared notes</div></div></div></aside></div>'+
       renderAiKnowledgeWorkflow()+
       '<div class="library-toolbar"><div class="field"><label>'+(currentLang==='en'?'Search library':'ค้นหาในคลังสาร')+'</label><input id="librarySearch" type="text" value="'+escapeHtml(compoundLibraryState.q)+'" placeholder="'+(currentLang==='en'?'Compound, standard name, formula…':'ชื่อสาร, ชื่อมาตรฐาน, สูตรโมเลกุล…')+'"></div><div class="field"><label>Status</label><select id="libraryStatus"><option value="all"'+(compoundLibraryState.status==='all'?' selected':'')+'>'+(currentLang==='en'?'All':'ทั้งหมด')+'</option><option value="referenced"'+(compoundLibraryState.status==='referenced'?' selected':'')+'>'+(currentLang==='en'?'Referenced':'มีข้อมูลอ้างอิง')+'</option><option value="missing"'+(compoundLibraryState.status==='missing'?' selected':'')+'>'+(currentLang==='en'?'Not yet referenced':'ยังไม่ได้ดึงข้อมูล')+'</option></select></div><div class="field"><label>'+(currentLang==='en'?'Sort':'เรียง')+'</label><select id="librarySort"><option value="occurrence"'+(compoundLibraryState.sort==='occurrence'?' selected':'')+'>'+(currentLang==='en'?'Most detected':'พบมากที่สุด')+'</option><option value="score"'+(compoundLibraryState.sort==='score'?' selected':'')+'>'+(currentLang==='en'?'Mean score':'Mean score')+'</option><option value="recent"'+(compoundLibraryState.sort==='recent'?' selected':'')+'>'+(currentLang==='en'?'Most recent':'ล่าสุด')+'</option><option value="name"'+(compoundLibraryState.sort==='name'?' selected':'')+'>A → Z</option></select></div><button class="btn btn-primary" id="librarySyncPage" type="button"'+(compoundLibraryState.syncing||!shown.length?' disabled':'')+'>'+(compoundLibraryState.syncing?(currentLang==='en'?'Syncing…':'กำลังดึง…'):(currentLang==='en'?'Sync missing on page':'ดึงข้อมูลหน้าปัจจุบัน'))+'</button></div>'+
-      '<div class="library-note"><b>'+(currentLang==='en'?'Reference scope:':'ขอบเขตข้อมูล:')+'</b> '+(currentLang==='en'?'Health relevance is based on public annotations such as pharmacology, biological roles, medication information, and safety. GC-MS detection alone does not prove that the sample provides a health benefit. Public lookups are cached per account.':'Health relevance สรุปจาก annotation สาธารณะด้าน pharmacology, biological role, medication และ safety การพบสารจาก GC-MS ไม่ได้หมายความว่าตัวอย่างนั้นมีประโยชน์ต่อสุขภาพโดยอัตโนมัติ และระบบจะเก็บ cache เพื่อลดการเรียก API ซ้ำ')+'</div>'+
+      '<div class="library-note"><b>'+(currentLang==='en'?'Reference scope:':'ขอบเขตข้อมูล:')+'</b> '+(currentLang==='en'?'Health relevance is based on public annotations such as pharmacology, biological roles, medication information, and safety. GC-MS detection alone does not prove that the sample provides a health benefit. Compound identity, formula, bioactivity, references, and public lookups are stored once in a shared catalog and reused by every account.':'Health relevance สรุปจาก annotation สาธารณะด้าน pharmacology, biological role, medication และ safety การพบสารจาก GC-MS ไม่ได้หมายความว่าตัวอย่างนั้นมีประโยชน์ต่อสุขภาพโดยอัตโนมัติ ข้อมูลชื่อ สูตร คุณสมบัติ หมวดหมู่ และอ้างอิงจะเก็บเพียงชุดเดียวในคลังกลางและทุกบัญชีเรียกใช้ร่วมกัน เพื่อลดข้อมูลซ้ำและลดการเรียก API')+'</div>'+
       (shown.length?'<div class="library-grid">'+shown.map(libraryCardHtml).join('')+'</div>':'<div class="library-empty"><strong>'+(total?(currentLang==='en'?'No compounds match these filters.':'ไม่พบสารตามตัวกรองนี้'):(currentLang==='en'?'No compounds yet.':'ยังไม่มีสารในคลัง'))+'</strong>'+(total?(currentLang==='en'?'Try a different search or status filter.':'ลองเปลี่ยนคำค้นหาหรือตัวกรอง'):(currentLang==='en'?'Add a GC-MS dataset first; detected compound names will appear here automatically.':'เพิ่มผล GC-MS ก่อน แล้วชื่อสารที่ตรวจพบจะเข้าคลังนี้อัตโนมัติ'))+'</div>')+
       '<div class="library-pagination"><span>'+(enriched.length?(currentLang==='en'?'Showing ':'แสดง ')+(start+1)+'–'+Math.min(start+compoundLibraryState.pageSize,enriched.length)+' / '+enriched.length:(currentLang==='en'?'0 compounds':'0 สาร'))+'</span><div class="library-pagination-actions"><button class="btn btn-sm" id="libraryPrev" type="button"'+(compoundLibraryState.page<=1?' disabled':'')+'>'+(currentLang==='en'?'Previous':'ก่อนหน้า')+'</button><span>'+compoundLibraryState.page+' / '+pages+'</span><button class="btn btn-sm" id="libraryNext" type="button"'+(compoundLibraryState.page>=pages?' disabled':'')+'>'+(currentLang==='en'?'Next':'ถัดไป')+'</button></div></div></div>';
     el.innerHTML=html; wireLibraryEvents(shown);
@@ -4006,8 +4061,8 @@ window.GCMS_SUPABASE_CONFIG = {
     document.querySelectorAll('.library-lookup').forEach(function(b){b.addEventListener('click',function(){lookupCompoundReference(b.getAttribute('data-compound'),true);});});
     document.querySelectorAll('.library-records').forEach(function(b){b.addEventListener('click',function(){filters.q=b.getAttribute('data-compound')||'';filters.run='all';switchView('records');renderMain();});});
     document.querySelectorAll('.library-report').forEach(function(b){b.addEventListener('click',function(){var d=libraryLatestDetection(b.getAttribute('data-compound'));if(!d){showToast('ไม่พบ Run สำหรับสารนี้',true);return;}openReportAt(d.runId,reportPeakKey(d),'reportPeakTableSection');});});
-    document.querySelectorAll('.library-edit-health').forEach(function(b){b.addEventListener('click',async function(){var name=b.getAttribute('data-compound'),key=libraryKey(name),c=compoundLibraryCache[key]||{},msg=currentLang==='en'?'Short health relevance for '+name+' (leave blank to use automatic reference):':'สรุปความสำคัญต่อสุขภาพของ '+name+' แบบสั้น ๆ (เว้นว่างเพื่อกลับไปใช้ข้อมูลอัตโนมัติ):',v=window.prompt(msg,c.manualHealthSummary||'');if(v===null)return;compoundLibraryCache[key]=Object.assign({},c,{manualHealthSummary:String(v||'').trim()});await persistCompoundLibrary();renderLibrary();});});
-    document.querySelectorAll('.library-edit-note').forEach(function(b){b.addEventListener('click',async function(){var name=b.getAttribute('data-compound'),key=libraryKey(name),c=compoundLibraryCache[key]||{},msg=currentLang==='en'?'Short identity/reference summary for '+name+' (leave blank to clear):':'สรุปข้อมูลสารแบบสั้นสำหรับ '+name+' (เว้นว่างเพื่อลบ):',v=window.prompt(msg,c.manualSummary||'');if(v===null)return;compoundLibraryCache[key]=Object.assign({},c,{manualSummary:String(v||'').trim()});await persistCompoundLibrary();renderLibrary();});});
+    document.querySelectorAll('.library-edit-health').forEach(function(b){b.addEventListener('click',async function(){var name=b.getAttribute('data-compound'),key=libraryKey(name),c=compoundLibraryCache[key]||{},msg=currentLang==='en'?'Short shared health relevance for '+name+' (leave blank to use automatic reference):':'สรุปความสำคัญต่อสุขภาพแบบใช้ร่วมกันของ '+name+' (เว้นว่างเพื่อกลับไปใช้ข้อมูลอัตโนมัติ):',v=window.prompt(msg,c.manualHealthSummary||'');if(v===null)return;compoundLibraryCache[key]=Object.assign({},c,{manualHealthSummary:String(v||'').trim()});await upsertSharedCompoundCatalogNames([name],'Manual');renderLibrary();});});
+    document.querySelectorAll('.library-edit-note').forEach(function(b){b.addEventListener('click',async function(){var name=b.getAttribute('data-compound'),key=libraryKey(name),c=compoundLibraryCache[key]||{},msg=currentLang==='en'?'Short shared identity/reference summary for '+name+' (leave blank to clear):':'สรุปข้อมูลสารแบบใช้ร่วมกันสำหรับ '+name+' (เว้นว่างเพื่อลบ):',v=window.prompt(msg,c.manualSummary||'');if(v===null)return;compoundLibraryCache[key]=Object.assign({},c,{manualSummary:String(v||'').trim()});await upsertSharedCompoundCatalogNames([name],'Manual');renderLibrary();});});
     var sync=document.getElementById('librarySyncPage');if(sync)sync.addEventListener('click',async function(){var todo=(shown||[]).filter(function(d){var c=libraryCacheFor(d.name);return !c||c.status!=='ok'||c.healthVersion!==1;}).slice(0,6);if(!todo.length){showToast(currentLang==='en'?'This page is already referenced.':'รายการในหน้านี้มีข้อมูลอ้างอิงแล้ว');return;}compoundLibraryState.syncing=true;renderLibrary();for(var i=0;i<todo.length;i++){await lookupCompoundReference(todo[i].name,false);await new Promise(function(resolve){setTimeout(resolve,650);});}compoundLibraryState.syncing=false;renderLibrary();});
   }
 
