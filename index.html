@@ -3437,6 +3437,9 @@ window.GCMS_SUPABASE_CONFIG = {
   function compoundDetailButtonHtml(name){
     return '<button class="compound-info-link" type="button" data-compound-detail="'+escapeHtml(name)+'" title="เปิดข้อมูลสารเคมี">'+escapeHtml(name)+'<span class="jump">↗</span></button>';
   }
+  function presenceCompoundPopupButtonHtml(name){
+    return '<button class="compound-info-link compound-profile-btn" type="button" data-compound="'+escapeHtml(name)+'" title="ดูรายละเอียดสารแบบป๊อปอัพ">'+escapeHtml(name)+'<span class="jump">＋</span></button>';
+  }
   function openCompoundLibraryDetail(name){
     name=String(name||'').trim();if(!name)return;
     compoundDetailNav={name:name,returnView:currentView||'dashboard',returnScrollY:window.scrollY||0};
@@ -4153,14 +4156,14 @@ window.GCMS_SUPABASE_CONFIG = {
   function renderPresenceResultTable(data, mode, x, rule, maxRows) {
     var rows=filterPresenceCompounds(data,mode,x,rule), shown=rows.slice(0,maxRows||300), body='';
     if(mode==='exclusiveSample'){
-      body=shown.map(function(c){return '<tr><td class="compound-cell">'+compoundDetailButtonHtml(c.label)+'</td><td class="presence-exclusive">'+escapeHtml(c.exclusiveSample)+'</td><td>'+escapeHtml((data.sampleSpecies&&data.sampleSpecies[c.exclusiveSample])||'—')+'</td><td class="num presence-prevalence">'+fmtNum(c.prevalence,1)+'%</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td><td class="num">'+fmtNum(c.avgRt,3)+'</td></tr>';}).join('');
+      body=shown.map(function(c){return '<tr><td class="compound-cell">'+presenceCompoundPopupButtonHtml(c.label)+'</td><td class="presence-exclusive">'+escapeHtml(c.exclusiveSample)+'</td><td>'+escapeHtml((data.sampleSpecies&&data.sampleSpecies[c.exclusiveSample])||'—')+'</td><td class="num presence-prevalence">'+fmtNum(c.prevalence,1)+'%</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td><td class="num">'+fmtNum(c.avgRt,3)+'</td></tr>';}).join('');
       return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr><th>Compound</th><th>Exclusive sample</th><th>Plant species</th><th class="num">Prevalence</th><th class="num">Mean Relative Area</th><th class="num">RT≈</th></tr></thead><tbody>'+body+'</tbody></table></div>'};
     }
     if(mode==='exclusiveSpecies'){
-      body=shown.map(function(c){return '<tr><td class="compound-cell">'+compoundDetailButtonHtml(c.label)+'</td><td class="presence-exclusive">'+escapeHtml(c.exclusiveSpecies)+'</td><td class="num">'+c.speciesSampleCount+'/'+c.speciesTotalSamples+'</td><td class="num presence-prevalence">'+fmtNum(c.speciesPrevalence,1)+'%</td><td class="presence-samples">'+escapeHtml(c.sampleNames.join(', '))+'</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td></tr>';}).join('');
+      body=shown.map(function(c){return '<tr><td class="compound-cell">'+presenceCompoundPopupButtonHtml(c.label)+'</td><td class="presence-exclusive">'+escapeHtml(c.exclusiveSpecies)+'</td><td class="num">'+c.speciesSampleCount+'/'+c.speciesTotalSamples+'</td><td class="num presence-prevalence">'+fmtNum(c.speciesPrevalence,1)+'%</td><td class="presence-samples">'+escapeHtml(c.sampleNames.join(', '))+'</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td></tr>';}).join('');
       return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr><th>Compound</th><th>Exclusive species</th><th class="num">Samples detected</th><th class="num">Within-species prevalence</th><th>Samples</th><th class="num">Mean Relative Area</th></tr></thead><tbody>'+body+'</tbody></table></div>'};
     }
-    body=shown.map(function(c){return '<tr><td class="compound-cell">'+compoundDetailButtonHtml(c.label)+'</td><td class="num"><b>'+c.sampleCount+'/'+c.totalSamples+'</b></td><td class="num presence-prevalence">'+fmtNum(c.prevalence,1)+'%</td><td class="presence-samples">'+escapeHtml(c.sampleNames.join(', '))+'</td><td class="num">'+c.speciesCount+'/'+c.totalSpecies+'</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td><td class="num">'+fmtNum(c.avgRt,3)+'</td></tr>';}).join('');
+    body=shown.map(function(c){return '<tr><td class="compound-cell">'+presenceCompoundPopupButtonHtml(c.label)+'</td><td class="num"><b>'+c.sampleCount+'/'+c.totalSamples+'</b></td><td class="num presence-prevalence">'+fmtNum(c.prevalence,1)+'%</td><td class="presence-samples">'+escapeHtml(c.sampleNames.join(', '))+'</td><td class="num">'+c.speciesCount+'/'+c.totalSpecies+'</td><td class="num">'+fmtNum(c.meanRelArea,3)+'</td><td class="num">'+fmtNum(c.avgRt,3)+'</td></tr>';}).join('');
     return {rows:rows,html:'<div class="table-wrap presence-table"><table><thead><tr><th>Compound</th><th class="num">Samples detected</th><th class="num">Prevalence</th><th>Samples</th><th class="num">Species</th><th class="num">Mean Relative Area</th><th class="num">RT≈</th></tr></thead><tbody>'+body+'</tbody></table></div>'};
   }
 
@@ -4822,6 +4825,7 @@ window.GCMS_SUPABASE_CONFIG = {
     var presenceX=$("#rgPresenceX"); if(presenceX)presenceX.addEventListener("change",function(){researchState.presenceX=Math.max(2,parseInt(this.value,10)||2);renderResearch();});
     var presenceSelect=$("#rgSelectPresenceBtn"); if(presenceSelect)presenceSelect.addEventListener("click",function(){var d=researchPresenceData(),rows=filterPresenceCompounds(d,researchState.presenceMode,researchState.presenceX,researchState.presenceRule);researchState.selectedCompounds=rows.map(function(c){return c.label;});researchState.userClearedCompounds=false;researchState.groupBy='sample';researchState.graphType=rows.length>20?'heatmap':'compound';renderResearch();});
     var presenceExport=$("#rgExportPresenceBtn"); if(presenceExport)presenceExport.addEventListener("click",exportResearchPresenceCsv);
+    wireCompoundActionEvents(document.getElementById("viewResearch"));
     var commonBtn=$("#rgSelectCommonBtn");
     if(commonBtn)commonBtn.addEventListener("click",function(){
       var d=researchCommonCompoundsBySample();
